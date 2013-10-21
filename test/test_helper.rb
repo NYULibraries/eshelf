@@ -1,6 +1,6 @@
 # Wear coveralls
-# require 'coveralls'
-# Coveralls.wear!
+require 'coveralls'
+Coveralls.wear!
 
 ENV["RAILS_ENV"] = 'test'
 
