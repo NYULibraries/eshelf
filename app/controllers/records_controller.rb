@@ -16,7 +16,7 @@
 # Copyright:: Copyright (c) 2013 New York University
 # License::   Distributes under the same terms as Ruby
 class RecordsController < ApplicationController
-  API_ACTIONS = %w( from_external_system create destroy)
+  API_ACTIONS = %w{ from_external_system create destroy }
 
   after_filter :respond_with_csrf_header
 
@@ -42,7 +42,7 @@ class RecordsController < ApplicationController
     # Get the relevant page unless all is specified
     @records = (params[:per].eql? "all") ? 
       @records.page(1).per(user_records.count) : @records.page(params[:page]).per(params[:per])
-    respond_with(@records.scoped)
+    respond_with(@records.scoped) unless performed?
   end
 
   # Show the record based on id
