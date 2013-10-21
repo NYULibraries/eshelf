@@ -1,7 +1,7 @@
 # Default Settings
 databases:
   host: localhost
-  database: eshelf_test
+  database: nyu_eshelf_test
   username: root
   password:
 
