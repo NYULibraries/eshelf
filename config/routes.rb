@@ -6,6 +6,7 @@ Eshelf::Application.routes.draw do
 
   get "users/account", :as => :user_account
   get "users/tags", :as => :user_tags
+  match 'account', :to => 'users#account', :as => :account
 
   resources(:records, :except => [:new, :edit]) do
     get 'print/:print_format', :to => 'records#print', :on => :collection, :as => :print
