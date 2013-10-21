@@ -21,12 +21,6 @@ class User < ActiveRecord::Base
   # Make pretty URLs for users based on their usernames
   def to_param; username end
 
-  def account
-    if current_user.blank?
-      redirect_to(login_url({ institution: current_primary_institution.name }))
-    end
-  end
-
   def self.first_or_initialize_from_old_user(old_user)
     raise_argument_error_unless_old_user(old_user)
     user = User.where(username: old_user.username).first_or_initialize
