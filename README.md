@@ -23,7 +23,7 @@ In the future, e-Shelf plans to support
 - EDS
 
 ## Features
-- [CORS JavaScript API](/NYULibraries/eshelf/wiki/CORS-JavaScript-API) for external systems
+- [CORS JavaScript API](../../wiki/CORS-JavaScript-API) for external systems
 - Standard Send/Share options based on the [ex_cite gem](/NYULibraries/ex_cite)
 - Labels
 - Brief, medium and full records emailing and printing
