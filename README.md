@@ -1,5 +1,11 @@
 # E-Shelf
 
+[![Build Status](https://travis-ci.org/NYULibraries/eshelf.png?branch=master)](https://travis-ci.org/NYULibraries/eshelf)
+[![Dependency Status](https://gemnasium.com/NYULibraries/eshelf.png)](https://gemnasium.com/NYULibraries/eshelf)
+[![Code Climate](https://codeclimate.com/github/NYULibraries/eshelf.png)](https://codeclimate.com/github/NYULibraries/eshelf)
+[![Coverage Status](https://coveralls.io/repos/NYULibraries/eshelf/badge.png?branch=master)](https://coveralls.io/r/NYULibraries/eshelf)
+
+
 The e-Shelf application at NYU provides a mechanism for cross system set management.  
 It leverages the [acts_as_citable gem](/NYULibraries/acts_as_citable) to normalize data from
 a variety of external systems such as Primo and Xerxes.
