@@ -43,7 +43,7 @@ gem "exlibris-nyu", git: "git://github.com/NYULibraries/exlibris-nyu.git", branc
 gem "authpds-nyu", git: "git://github.com/NYULibraries/authpds-nyu.git", tag: "v1.1.2"
 gem "acts_as_citable", "~> 2.0.0"
 gem "ex_cite", "~> 1.2.5"
-gem 'nyulibraries_deploy', git: "git@github.com:NYULibraries/nyulibraries_deploy.git", tag: "v3.2.0"
+gem 'nyulibraries_deploy', git: "git://github.com/NYULibraries/nyulibraries_deploy.git", tag: "v3.2.0"
 
 # Middleware for jruby
 gem "jruby-rack", "~> 1.1.13", platform: :jruby
