@@ -19,7 +19,7 @@ class RecordsControllerTest < ActionController::TestCase
     request.env['HTTP_ORIGIN'] = nil
     # Pretend we've already checked PDS/Shibboleth for the session
     # and we have a session
-    @request.cookies[:attempted_sso] = { value: "true" }
+    @controller.session[:attempted_sso] = true
     @controller.session[:session_id] = "FakeSessionID"
   end
 
