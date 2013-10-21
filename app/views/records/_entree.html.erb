@@ -1,0 +1,6 @@
+<%= content_tag(:h2, class: "title") { link_to(record.title, getit_record_url(record), target: "_blank") } %>
+<%= content_tag(:div, record.author, class: "author") %>
+<%= content_tag(:div, record.created_at.strftime("%a, %b %d %Y %I:%M%p"), class: "created_at") %>
+<%= content_tag(:div, class: "delivery") { link_to(t('record.getit_html'), getit_record_url(record), class: "text-success") } %>
+<%= render 'no_js', :record => record %>
+<%= render 'tag_list', :form => form, :record => record %>

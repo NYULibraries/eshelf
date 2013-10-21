@@ -1,0 +1,107 @@
+# Reset the tag controls, including links, from the text field
+reset_tag_controls = (input) ->
+  $(input).hide()
+  parent = $(input).parent()
+  $(".#{input.id}_tag_controls").remove()
+  parent.append(tag_controls(input))
+  false
+
+# Create the tag_controls span with the relevant tag controls
+# Tag controls include:
+#   - Comma separated links
+#   - Add or edit icon
+#   - Save icon
+tag_controls = (input) ->
+  links = tag_links(input).toArray().join(", ")
+  $("<span/>").addClass("#{input.id}_tag_controls").
+    append($("<span/>").attr("id", "#{input.id}_links").append(links)).
+      append(if links.length is 0 then add_link input else edit_link input).
+        append(save_link input)
+
+# Get the tag links from the given input
+tag_links = (input) ->
+  # Split the tags based on a comma
+  tags = $(input).val().split(', ')
+  links = $(tag_link(tag) for tag in tags).
+    map (i, link)-> link.html() if link?
+
+# Get the tag link wrapped by an arbitrary tag so we can just grab the html
+tag_link = (tag) ->
+  $("<span/>").append($("<a/>").attr("href", "?tag=#{encodeURIComponent(tag)}").addClass("").text(tag)) if tag
+
+# Create the add link
+add_link = (input) ->
+  control_link(input, name: "add", icon: "add", text: "<%= I18n.t("record.tag_list.add") %>", event: edit_record_tag_list)
+
+# Create the edit link
+edit_link = (input) ->
+  control_link(input, name: "edit", icon: "pencil_add", text: "<%= I18n.t("record.tag_list.edit") %>", event: edit_record_tag_list)
+
+# Create the save link (hidden when created)
+save_link = (input) ->
+  control_link(input, name: "save", icon: "disk", text: "<%= I18n.t("record.tag_list.save") %>", event: update_record_tag_list).hide()
+
+# Create the control link with the given options
+control_link = (input, options) ->
+  $($("<a/>").attr("id", "#{input.id}_#{options.name}").attr("href", "#").addClass("muted btn btn-mini").
+    append($("<span/>").text(options.text)).
+      prepend($("<i/>").addClass("icons-famfamfam-#{options.icon}"))).click((event) ->
+        options.event event, input)
+
+# Enable editing of the tag list
+edit_record_tag_list = (event, input) ->
+  $("##{input.id}_links").hide()
+  $(event.target).parent().hide()
+  $(input).show()
+  $("##{input.id}_save").show()
+  false
+
+# Reset the tags after record update
+# Just uses the given input without parsing the response.
+# TODO: check that the response is equal to input, and
+# display an error if not.
+reset_tags = (data, textStatus, jqXHR, input) ->
+  # Reset the user tags in the sidebar, unless it's got some input
+  reset_user_tags() unless user_tags_search_input().val()
+  # Reset the tag controls based on the input
+  reset_tag_controls(input)
+
+# Update the record's tag list based on the user's input
+update_record_tag_list = (event, input) ->
+  url = $(input).closest("form").attr("action")
+  data = $(input).closest("form").serialize()
+  $.post url, data, (data, textStatus, jqXHR) ->
+    reset_tags(data, textStatus, jqXHR, input)
+  false
+
+# Reset the user tags from source
+reset_user_tags = () ->
+  filter_user_tags("")
+
+# Filter the user tags from source
+filter_user_tags = (query) ->
+  url = user_tags_search_input().closest("form").attr("action")
+  data = "tag=#{query}" if query?
+  $('#user_tags').load url, data
+  false
+
+user_tags_search_input = () ->
+  $("#user_tags_search input[name='tag']")
+
+$ ->
+  # Grab the tag list inputs
+  inputs = $(".record_tag_list input[name='record[tag_list]']")
+  # Hide them
+  inputs.hide();
+  # and attach the update function the form's submit event
+  inputs.closest("form").submit (event) ->
+    input = $(event.target).find("input[name='record[tag_list]']")[0]
+    update_record_tag_list(event, input)
+  # And turn them into tag JS controls, including links
+  reset_tag_controls(input) for input in inputs
+  # Disable the user's tags search form
+  $("#user_tags_search").submit (event)-> false
+  # and attach a typeahead
+  user_tags_search_input().typeahead
+    source: (query, process) -> filter_user_tags(query)
+    minLength: 0

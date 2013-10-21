@@ -1,0 +1,38 @@
+#aleph_account {
+  width: 100%;
+  height: 100%;
+  border: 0px;
+  min-height: 600px;
+}
+
+.js {
+  display: none;
+}
+
+#user_tags_search {
+  margin-bottom: 0;
+  input {
+    margin-left: 15px;
+    padding-left: 24px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: {
+      image: url(image_path("magnifier.png"));
+      repeat: no-repeat;
+      position: 6px 50%;
+    }
+  }
+}
+
+#records_content_types, #user_tags {
+  & > ul > li:first-child {
+    margin-top: 3px;
+  }
+  & > ul > li > a {
+    margin-left: 0px;
+  }
+}
+
+input#select {
+  vertical-align: top;
+}

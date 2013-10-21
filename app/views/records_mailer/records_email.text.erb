@@ -1,0 +1,7 @@
+<%- # Email template: -%>
+<% emailable_records(@records, @email_format).each do |record| %>
+<%- # Collect citation attributes and places a new line between them. -%>
+<%= record.collect_citation_attributes.join("\n") %>
+
+===
+<% end %>

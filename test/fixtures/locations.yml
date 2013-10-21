@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  collection: MyString
+  call_number: MyString
+
+two:
+  collection: MyString
+  call_number: MyString

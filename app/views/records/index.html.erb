@@ -1,0 +1,20 @@
+<%= render 'controls', per_page: @records.limit_value %>
+<div class="results">
+  <p><%= page_entries_info @records %></p>
+  <%= paginate @records, :theme => "bootstrap" %>
+  <div id="select_something" class="alert alert-error fade in hide">
+    <a href="#" class="close" data-hide="alert">&times;</a>
+    <%= content_tag :div, t('record.select.something') %>
+  </div>
+  <% if flash[:notice] %>
+    <div class="alert alert-success fade in">
+      <a href="#" class="close" data-dismiss="alert">&times;</a>
+      <%= content_tag :div, flash[:notice] %>
+    </div>
+  <% end %>
+  <% @records.each_index do |record_idx| %>
+    <%= render 'record', :record => @records[record_idx], :record_idx => @records.offset_value+record_idx+1 %>
+  <% end %>
+  <%= paginate @records, :theme => "bootstrap" %>
+</div>
+<%= render 'modal' %>

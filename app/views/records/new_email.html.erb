@@ -1,0 +1,18 @@
+<%= form_tag email_records_path, method: :post, id: "email_records", class: "form-inline" do %>
+  <% @records.each do |record| %>
+    <%= hidden_field_tag "id[]", record.id, id: "record_#{record.id}" %>
+  <% end %>
+  <%= label_tag :to_address, t('record.collection.email.to_address_html') %>
+  <div class="input-prepend">
+    <span class="add-on"><i class="icon-envelope"></i></span>
+    <%= text_field_tag :to_address, (current_user) ? current_user.email : "" %>
+  </div>
+  <% if @email_format %>
+    <%= hidden_field_tag :email_format, @email_format %>
+  <% else %>
+    <%= tag :br %>
+    <%= label_tag :email_format, t('record.collection.email.format_html') %>
+    <%= select_tag :email_format, email_options_for_select %>
+  <% end %>
+  <%= submit_tag t('record.collection.email.submit_html') %>
+<% end %>

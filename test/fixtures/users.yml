@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+user:
+  username: <%= username = "user" %>
+  email: <%= username + "@university.edu" %>
+  password_salt: <%= salt = Authlogic::Random.hex_token %>
+  crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt(username + salt) %>
+  persistence_token: <%= Authlogic::Random.hex_token %>
+  user_attributes: <%= {}.to_yaml.inspect  %>

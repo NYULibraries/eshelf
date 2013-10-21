@@ -1,0 +1,6 @@
+<%= form_for record, remote: true, namespace: record.id, html: {class: "form-inline"} do |form| %>
+  <div class="result row-fluid">
+    <div class="span1 appetizer"><%= render 'appetizer', :record => record, :record_idx => record_idx, :form => form %></div>
+    <div class="span11 entree"><%= render 'entree', :record => record, :form => form %></div>
+  </div>
+<% end %>

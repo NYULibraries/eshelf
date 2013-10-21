@@ -1,0 +1,38 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  application:
+    title_html: "Eshelf @ NYU Libraries"
+  shelf:
+    content_types:
+      title_html: Formats
+    tags:
+      title_html: Labels
+      placeholder: Filter labels
+    links:
+      account_html: My library account
+      ill_html: My interlibrary loan (ILL)
+      records_html: All saved records
+  record:
+    select:
+      title_html: Select
+      something: Please select some records.
+      all: All
+      none: None
+    url_label: "GetIt @"
+    locations_label: "Locations:"
+    call_number_label: "Call number:"
+    author_label: "Author:"
+    publisher_label: "Publisher:"
+    city_of_publication_label: "City of Publication:"
+    date_of_publication_label: "Date of Publication:"
+    journal_title_label: "Journal title:"
+    subjects_label: "Subjects:"
+    issn_label: "ISSN:"
+    eissn_label: "EISSN:"
+    isbn_label: "ISBN:"
+    related_titles_label: "Related titles:"
+    language_label: "Language:"
+    description_label: "Description:"
+    notes_label: "Notes:"

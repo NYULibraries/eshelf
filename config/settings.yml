@@ -1,0 +1,26 @@
+# Default Settings
+databases:
+  host: localhost
+  database: eshelf_test
+  username: root
+  password:
+
+capistrano:
+  puma_ports: []
+
+pds:
+  login_url: "https://pds.library.edu"
+  logout_url: "http://primo.library.edu/"
+
+session:
+  domain:
+
+newrelic:
+  app_name: Eshelf
+
+secret_token: d4d5e237130cb20986e49c003dc54970f9357ef68ce5ce1a1f2c1d5be0fec0afb49ed1c819ff5545be68fb6cfc76e085137bbc850bcb1b42dcfc03f70e559b16
+
+old_eshelf: {}
+
+origins:
+  - 'example.com'

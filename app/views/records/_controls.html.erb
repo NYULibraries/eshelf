@@ -1,0 +1,9 @@
+<div id="controls" class="btn-toolbar js">
+  <%= button_dropdown(select_title, select_options, false) %>
+  <div class="btn-group"><%= link_to(t('record.collection.delete.title_html'), records_path, confirm: t('record.collection.delete.confirmation_html'), method: :delete, id: "delete", class: "btn") %></div>
+  <%= button_dropdown(t('record.collection.email.title_html'), email_options) %>
+  <%= button_dropdown(t('record.collection.print.title_html'), print_options) %>
+  <%= button_dropdown(t('record.collection.export.title_html'), export_options) %>
+  <%= right_button_dropdown(t('record.collection.sort.title_html') + " ".html_safe + current_sort_label, sort_options)%>
+  <%= right_button_dropdown(content_tag(:span, "#{per_page} ") + t('record.collection.per_page.title_html'), per_page_options)%>
+</div>

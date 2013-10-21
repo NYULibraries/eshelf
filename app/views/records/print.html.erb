@@ -1,0 +1,7 @@
+<ul class="records">
+  <% printable_records(@records, @print_format).each do |record| %>
+    <li>
+      <%= html_safe_citation_for(record) %>
+    </li>
+  <% end %>
+</ul>

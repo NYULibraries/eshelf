@@ -1,0 +1,5 @@
+<%= content_tag :ul, class: ["nav-list", "unstyled", "tags-list"] do
+  tags.each do |tag| %>
+    <%= content_tag(:li, class: ("active" if tag.name.eql?(params[:tag]))) { link_to_tagged_records tag } %><%
+  end
+end %>

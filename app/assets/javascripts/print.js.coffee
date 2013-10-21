@@ -1,0 +1,3 @@
+#= require eshelf
+$ ->
+  window.print()

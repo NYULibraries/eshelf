@@ -1,0 +1,7 @@
+<% if current_user %>
+  <div class="record_tag_list">
+    <%= form.label :tags, t('record.tag_list.label_html') %>
+    <%= form.text_field :tag_list, class: "span10", value: record.tags_from(current_user), placeholder: t('record.tag_list.placeholder') %>
+    <%= form.submit(t('record.tag_list.submit_html'), class: "no-js") %>
+  </div>
+<% end %>
