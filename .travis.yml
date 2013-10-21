@@ -1,0 +1,28 @@
+language: ruby
+
+bundler_args: --without development
+
+services:
+  - memcached
+
+before_script:
+  - mysql -e 'create database nyu_eshelf_test;'
+  - bundle exec rake db:schema:load RAILS_ENV=test
+
+rvm:
+  - jruby-19mode
+  - jruby-head
+
+git:
+  submodules: false
+
+notifications:
+  irc: 
+    channels:
+      - "irc.freenode.org#libtechnyu"
+    template:
+      - "%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}"
+      - "Change view : %{compare_url}"
+      - "Build details : %{build_url}"
+  email:
+    - web.services@library.nyu.edu
