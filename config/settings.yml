@@ -5,6 +5,22 @@ databases:
   username: root
   password:
 
+institutions:
+  NYU:
+    ip_addresses: []
+  NYUAD:
+    ip_addresses: []
+  NYUSH:
+    ip_addresses: []
+  NYSID:
+    ip_addresses: []
+  HSL:
+    ip_addresses: []
+  CU:
+    ip_addresses: []
+  NS:
+    ip_addresses: []
+
 capistrano:
   puma_ports: []
 
