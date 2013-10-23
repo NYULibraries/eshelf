@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/NYULibraries/authpds-nyu.git
-  revision: 93a6400aa108a0c3b1818a5088d6905293fe0135
-  branch: development
+  revision: 7a3739b33c7eedf1312cfc186dd79e61321a4f10
+  tag: v1.1.3
   specs:
-    authpds-nyu (1.1.2)
+    authpds-nyu (1.1.3)
       authpds (~> 1.1.1)
       exlibris-aleph (~> 1.1.0)
       require_all (~> 1.3.1)
