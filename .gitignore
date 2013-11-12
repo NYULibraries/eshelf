@@ -26,3 +26,6 @@ deploy/puma
 
 # Ignore the wiki.
 wiki
+
+# Ignore temporary testing files
+/spec/tmp

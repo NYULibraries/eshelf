@@ -30,10 +30,10 @@ class Defaults
     $(targets).each (index, target) ->
       if target.checked
         text = if user
-                 "In e-Shelf" 
-               else 
-                 "In guest e-Shelf "+
-                 "#{ "(#{login_anchor login_url, "login to save permanently"})" unless @institution is "BHS"}"
+          "In e-Shelf"
+        else
+          "In guest e-Shelf "+
+          "#{"(#{login_anchor login_url, "login to save permanently"})" unless @institution is "BHS"}"
       else
         text = "Add to e-Shelf"
       $(target).removeAttr('disabled')

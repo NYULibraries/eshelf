@@ -1,6 +1,10 @@
 Eshelf::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
+
+  # JasmineRails for JavaScript unit testing
+  mount JasmineRails::Engine => "/specs" if Rails.env.test?
+
   # See how all your routes lay out with "rake routes"
   mount ExCite::Engine, :at => '/', :as => :ex_cite
 
