@@ -32,7 +32,6 @@ group :test do
   gem 'coveralls', "~> 0.7.0", require: false
   gem "vcr", "~> 2.6.0"
   gem "webmock", "~> 1.15.0"
-  gem "rspec-rails", "~> 2.14.0"
   gem "jasmine", "~> 1.3.2"
   gem "jasmine-rails", "~> 0.4.9"
 end
@@ -61,6 +60,8 @@ gem "jquery-rails", "~> 3.0.0"
 gem "modernizr-rails", "~> 2.6.2.3"
 
 # Use mustache
+# Fix to 0.99.4 cuz 0.99.5 broke my shit.
+gem "mustache", "0.99.4"
 gem "mustache-rails", "~> 0.2.3", :require => "mustache/railtie"
 
 # For config settings
