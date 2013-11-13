@@ -33,7 +33,7 @@ group :test do
   gem "vcr", "~> 2.6.0"
   gem "webmock", "~> 1.15.0"
   gem "jasmine", "~> 1.3.2"
-  gem "jasmine-rails", "~> 0.4.9"
+  gem "teaspoon", "~> 0.7.7"
 end
 
 # NYU customization gems

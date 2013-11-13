@@ -11,8 +11,9 @@
 /db/*.sqlite3
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
-/tmp
+log/*.log
+spec/log/
+tmp/
 
 # Ignore public assets and sprites
 /public/assets
