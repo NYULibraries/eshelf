@@ -5,5 +5,5 @@ record = new window.eshelf.Record
   external_id: "primoID"
 
 describe "#external_system", ->
-  it "should have the expected external system", ->
+  it "should have primo as the external system", ->
     expect(record.external_system).toEqual "primo"

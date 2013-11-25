@@ -1,0 +1,47 @@
+class TagControl
+  constructor: (attributes) ->
+    @name = attributes.name
+    @input = attributes.input
+    @text = attributes.text
+    @icon = attributes.icon
+    @id = "#{@input.id}_#{@name}"
+    @famfam_class = "icons-famfamfam-#{@icon}"
+
+  to_jquery: () ->
+    $("<a/>").attr("id", @id).attr("href", "#").addClass("muted btn btn-mini").
+      append($("<span/>").text(@text)).prepend($("<i/>").addClass(@famfam_class))
+
+  to_html: () ->
+    $("<span/>").append(@to_jquery()).html()
+
+class AddControl extends TagControl
+  constructor: (attributes) ->
+    super
+      input: attributes.input
+      name: "add"
+      text: "<%= I18n.t("record.tag_list.add") %>"
+      icon: "add"
+
+class EditControl extends TagControl
+  constructor: (attributes) ->
+    super
+      input: attributes.input
+      name: "edit"
+      text: "<%= I18n.t("record.tag_list.edit") %>"
+      icon: "pencil_add"
+
+class SaveControl extends TagControl
+  constructor: (attributes) ->
+    super
+      input: attributes.input
+      name: "save"
+      text: "<%= I18n.t("record.tag_list.save") %>"
+      icon: "disk"
+
+# Make the Tag class accessible
+window.eshelf ||= {}
+window.eshelf.tags ||= {}
+window.eshelf.tags.TagControl = TagControl
+window.eshelf.tags.AddControl = AddControl
+window.eshelf.tags.EditControl = EditControl
+window.eshelf.tags.SaveControl = SaveControl
