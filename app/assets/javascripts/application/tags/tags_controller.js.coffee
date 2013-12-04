@@ -1,2 +1,0 @@
-# Tags Controller
-class TagsController
