@@ -1,12 +1,19 @@
 class TagList
-  constructor: (attributes) ->
-    @input = attributes.input
-    # Split the input values based on a comma
-    values = $(@input).val().split(', ')
-    # Create an array of tags from the input values
-    @tags = (new window.eshelf.tags.Tag(value: value) for value in values)
+  constructor: (tags...) ->
+    # Create an array of tags from the given values
+    @tags = []
+    @tags = (new window.eshelf.tags.Tag(tag) for tag in tags)
 
-# Make the Tag class accessible
+  size: () ->
+    @tags.length
+
+  jQuery: ()->
+    @_jQuery ||= $("<span/>").append((tag.html() for tag in @tags).join(", "))
+
+  html: () ->
+    $("<span/>").append(@jQuery()).html()
+
+# Make the class accessible
 window.eshelf ||= {}
 window.eshelf.tags ||= {}
 window.eshelf.tags.TagList = TagList

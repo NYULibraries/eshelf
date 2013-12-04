@@ -23,4 +23,9 @@
 //
 // You can require javascript files here. A good place to start is by requiring your application.js.
 //= require application
-
+// Write ajax errors to the console
+$(document).ajaxError(function(event, jqxhr, settings, exception) {
+  console.log("Event: #{event}");
+  console.log("jQuery XMLHTTPReques: #{jqxhr}");
+  console.log("Exception: #{exception}");
+});

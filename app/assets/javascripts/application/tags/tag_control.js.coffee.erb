@@ -1,47 +1,98 @@
 class TagControl
   constructor: (attributes) ->
-    @name = attributes.name
-    @input = attributes.input
+    # Text for the control
     @text = attributes.text
+    # Icon for the control
     @icon = attributes.icon
-    @id = "#{@input.id}_#{@name}"
-    @famfam_class = "icons-famfamfam-#{@icon}"
+    # Click event for the control
+    @click = attributes.click
+    # Famfamfam icon class
+    @iconClass = "icons-famfamfam-#{@icon}"
+    # Initial state is hidden
+    @hide()
 
-  to_jquery: () ->
-    $("<a/>").attr("id", @id).attr("href", "#").addClass("muted btn btn-mini").
-      append($("<span/>").text(@text)).prepend($("<i/>").addClass(@famfam_class))
+  # TagControl as a jQuery Object
+  jQuery: () ->
+    @_jQuery ||= $("<a/>").attr("href", "#").addClass("muted btn btn-mini").
+      append($("<span/>").text(@text)).prepend($("<i/>").addClass(@iconClass)).
+        on("click", @click)
 
-  to_html: () ->
-    $("<span/>").append(@to_jquery()).html()
+  # Hide the TagControl
+  hide: () ->
+    @jQuery().hide()
+
+  # Show the TagControl
+  show: () ->
+    @jQuery().show()
+
+  # TagControl as an HTML string
+  html: () ->
+    $("<span/>").append(@jQuery()).html()
 
 class AddControl extends TagControl
-  constructor: (attributes) ->
+  constructor: (click) ->
     super
-      input: attributes.input
-      name: "add"
+      click: click
       text: "<%= I18n.t("record.tag_list.add") %>"
       icon: "add"
 
 class EditControl extends TagControl
-  constructor: (attributes) ->
+  constructor: (click) ->
     super
-      input: attributes.input
-      name: "edit"
+      click: click
       text: "<%= I18n.t("record.tag_list.edit") %>"
       icon: "pencil_add"
 
 class SaveControl extends TagControl
-  constructor: (attributes) ->
+  constructor: (click) ->
     super
-      input: attributes.input
-      name: "save"
+      click: click
       text: "<%= I18n.t("record.tag_list.save") %>"
       icon: "disk"
 
-# Make the Tag class accessible
+class ControlSet
+  constructor: (attributes) ->
+    @add = attributes.add
+    @edit = attributes.edit
+    @save = attributes.save
+    # Create the tag controls for this set
+    @controls =
+      add: new AddControl @add
+      edit: new EditControl @edit
+      save: new SaveControl @save
+
+  # Show the add control, hide the others
+  showAdd: () ->
+    @controls.add.show()
+    @controls.edit.hide()
+    @controls.save.hide()
+
+  # Show the edit control, hide the others
+  showEdit: () ->
+    @controls.add.hide()
+    @controls.edit.show()
+    @controls.save.hide()
+
+  # Show the save control, hide the others
+  showSave: () ->
+    @controls.add.hide()
+    @controls.edit.hide()
+    @controls.save.show()
+
+  # ControlSet as a jQuery Object
+  jQuery: () ->
+    @_jQuery ||= $("<span class=\"controls\"/>").append(@controls.add.jQuery()).
+      append(@controls.edit.jQuery()).append(@controls.save.jQuery())
+
+  # ControlSet as an HTML string
+  html: () ->
+    $("<span/>").append(@jQuery()).html()
+
+# Make the classes accessible
 window.eshelf ||= {}
 window.eshelf.tags ||= {}
 window.eshelf.tags.TagControl = TagControl
 window.eshelf.tags.AddControl = AddControl
 window.eshelf.tags.EditControl = EditControl
 window.eshelf.tags.SaveControl = SaveControl
+window.eshelf.tags.ControlSet = ControlSet

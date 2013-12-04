@@ -1,15 +1,14 @@
 #= require application/tags/tag
-tag = new window.eshelf.tags.Tag
-  value: "new tag"
+tag = new window.eshelf.tags.Tag "new tag"
 
 describe "Tag#value", ->
   it "should have 'new tag' as the tag value", ->
     expect(tag.value).toEqual "new tag"
 
-describe 'Tag#to_jquery', ->
+describe 'Tag#jQuery', ->
   it "should be defined", ->
-    expect(tag.to_jquery).toBeDefined()
+    expect(tag.jQuery).toBeDefined()
 
-describe "Tag#to_html", ->
+describe "Tag#html", ->
   it "should be expressed as a link", ->
-    expect(tag.to_html()).toEqual "<a href=\"?tag=new%20tag\">new tag</a>"
+    expect(tag.html()).toEqual "<a href=\"?tag=new%20tag\">new tag</a>"
