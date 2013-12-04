@@ -8,5 +8,5 @@
 # Set up a development user
 if Rails.env.development? and User.find_by_username('developer').nil?
   user = User.create!({username: 'developer', firstname: 'Dev', lastname: 'Eloper', email: 'developer@university.edu'})
-  user.records.new({external_id: 'nyu_aleph000980206', external_system: 'primo'}).becomes_external_system.save!
+  user.records.new({external_id: 'nyu_aleph000864162', external_system: 'primo'}).becomes_external_system.save!
 end
