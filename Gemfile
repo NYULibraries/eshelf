@@ -2,7 +2,7 @@ source "https://rubygems.org"
 gem 'rake', '~> 10.1.0'
 # Add CORS support
 gem 'rack-cors', :require => 'rack/cors'
-gem "rails", "~> 3.2.15"
+gem "rails", "~> 3.2.16"
 gem "json", "~> 1.8.0"
 
 # Gems used only for assets and not required
@@ -20,11 +20,17 @@ end
 
 # Development gems
 group :development do
-  gem "better_errors", "~> 1.0.0", platform: :ruby
+  gem "better_errors", "~> 1.0.1", platform: :ruby
   gem "binding_of_caller", "~> 0.7.1", platform: :ruby
   gem "ruby-debug", "~> 0.10.4", platform: :jruby
   gem "debugger", "~> 1.6.0", platform: :mri
   gem "pry"
+end
+
+# Development and testing gems
+group :development, :test do
+  gem "jasmine", "~> 1.3.2"
+  gem "teaspoon", "~> 0.7.7"
 end
 
 # Testing gems
@@ -32,8 +38,6 @@ group :test do
   gem 'coveralls', "~> 0.7.0", require: false
   gem "vcr", "~> 2.6.0"
   gem "webmock", "~> 1.15.0"
-  gem "jasmine", "~> 1.3.2"
-  gem "teaspoon", "~> 0.7.7"
 end
 
 # NYU customization gems
@@ -57,7 +61,7 @@ gem "mysql2", "~> 0.3.11", platform: :ruby
 gem "jquery-rails", "~> 3.0.0"
 
 # Use modernizr
-gem "modernizr-rails", "~> 2.6.2.3"
+gem "modernizr-rails", "~> 2.7.0"
 
 # Use mustache
 # Fix to 0.99.4 cuz 0.99.5 broke my shit.
@@ -77,7 +81,7 @@ gem "dalli", "~> 2.6.0"
 gem "kaminari", "~> 0.14.1"
 
 # Use sorted for sorting
-gem "sorted", "~> 0.4.3"
+gem "sorted", "~> 1.0.0"
 
 # New Relic performance monitoring
 gem "newrelic_rpm", "~> 3.6.8"
