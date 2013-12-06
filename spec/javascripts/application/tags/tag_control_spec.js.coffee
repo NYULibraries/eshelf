@@ -41,15 +41,25 @@ describe "TagControl", ->
     it "should be hidden", ->
       expect(tagControl.jQuery()).toBeHidden()
 
-  describe "TagControl#hide", ->
+  describe "#hide", ->
     it "should be defined", ->
       expect(tagControl.hide).toBeDefined()
 
-    it "should hide the element", ->
+    it "should hide the control", ->
       expect(tagControl.show()).toBeVisible()
       expect(tagControl.jQuery()).toBeVisible()
       expect(tagControl.hide()).toBeHidden()
       expect(tagControl.jQuery()).toBeHidden()
+
+  describe "#show", ->
+    it "should be defined", ->
+      expect(tagControl.show).toBeDefined()
+
+    it "should show the control", ->
+      expect(tagControl.hide()).toBeHidden()
+      expect(tagControl.jQuery()).toBeHidden()
+      expect(tagControl.show()).toBeVisible()
+      expect(tagControl.jQuery()).toBeVisible()
 
   describe "#html", ->
     it "should be defined", ->
@@ -103,11 +113,21 @@ describe "AddControl", ->
     it "should be defined", ->
       expect(addControl.hide).toBeDefined()
 
-    it "should hide the element", ->
+    it "should hide the control", ->
       expect(addControl.show()).toBeVisible()
       expect(addControl.jQuery()).toBeVisible()
       expect(addControl.hide()).toBeHidden()
       expect(addControl.jQuery()).toBeHidden()
+
+  describe "#show", ->
+    it "should be defined", ->
+      expect(addControl.show).toBeDefined()
+
+    it "should show the control", ->
+      expect(addControl.hide()).toBeHidden()
+      expect(addControl.jQuery()).toBeHidden()
+      expect(addControl.show()).toBeVisible()
+      expect(addControl.jQuery()).toBeVisible()
 
   describe "#html", ->
     it "should be defined", ->
@@ -161,11 +181,21 @@ describe "EditControl", ->
     it "should be defined", ->
       expect(editControl.hide).toBeDefined()
 
-    it "should hide the element", ->
+    it "should hide the control", ->
       expect(editControl.show()).toBeVisible()
       expect(editControl.jQuery()).toBeVisible()
       expect(editControl.hide()).toBeHidden()
       expect(editControl.jQuery()).toBeHidden()
+
+  describe "#show", ->
+    it "should be defined", ->
+      expect(editControl.show).toBeDefined()
+
+    it "should show the control", ->
+      expect(editControl.hide()).toBeHidden()
+      expect(editControl.jQuery()).toBeHidden()
+      expect(editControl.show()).toBeVisible()
+      expect(editControl.jQuery()).toBeVisible()
 
   describe "#html", ->
     it "should be defined", ->
@@ -219,11 +249,21 @@ describe "SaveControl", ->
     it "should be defined", ->
       expect(saveControl.hide).toBeDefined()
 
-    it "should hide the element", ->
+    it "should hide the control", ->
       expect(saveControl.show()).toBeVisible()
       expect(saveControl.jQuery()).toBeVisible()
       expect(saveControl.hide()).toBeHidden()
       expect(saveControl.jQuery()).toBeHidden()
+
+  describe "#show", ->
+    it "should be defined", ->
+      expect(saveControl.show).toBeDefined()
+
+    it "should show the control", ->
+      expect(saveControl.hide()).toBeHidden()
+      expect(saveControl.jQuery()).toBeHidden()
+      expect(saveControl.show()).toBeVisible()
+      expect(saveControl.jQuery()).toBeVisible()
 
   describe "#html", ->
     it "should be defined", ->
