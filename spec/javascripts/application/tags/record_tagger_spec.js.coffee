@@ -21,14 +21,16 @@ describe "RecordTagger with tags", ->
     it "has a record id of 1", ->
       expect(recordTagger.recordId).toBe 1
 
+  describe "#parseTags", ->
+    it "should be defined", ->
+      expect(recordTagger.parseTags).toBeDefined()
+
+    it "should be ['tag', 'another tag']", ->
+      expect(recordTagger.parseTags()).toEqual ["tag", "another tag"]
+
   describe "#tagList", ->
     it "should be defined", ->
       expect(recordTagger.tagList).toBeDefined()
-
-    # it "has a tag list with the expected tags", ->
-    #   expectedTagList = new window.eshelf.tags.TagList "tag", "another tag"
-    #   expectedTagList.jQuery()
-    #   expect(recordTagger.tagList()).toEqual expectedTagList
 
   describe "#controlSet", ->
     it "should be defined", ->
@@ -111,18 +113,34 @@ describe "RecordTagger without tags", ->
     it "has a record id of 2", ->
       expect(recordTagger.recordId).toBe 2
 
+  describe "#parseTags", ->
+    it "should be defined", ->
+      expect(recordTagger.parseTags).toBeDefined()
+
+    it "should be []", ->
+      expect(recordTagger.parseTags()).toEqual []
+
   describe "#tagList", ->
     it "should be defined", ->
       expect(recordTagger.tagList).toBeDefined()
 
-    # it "has a tag list with the expected tags", ->
-    #   expectedTagList = new window.eshelf.tags.TagList "tag", "another tag"
-    #   expectedTagList.jQuery()
-    #   expect(recordTagger.tagList()).toEqual expectedTagList
-
   describe "#controlSet", ->
     it "should be defined", ->
       expect(recordTagger.controlSet).toBeDefined()
+
+  describe "#tags", ->
+    it "should be defined", ->
+      expect(recordTagger.tags).toBeDefined()
+
+    it "should be exist", ->
+      expect(recordTagger.tags()).toExist()
+
+  describe "#controls", ->
+    it "should be defined", ->
+      expect(recordTagger.controls).toBeDefined()
+
+    it "should be exist", ->
+      expect(recordTagger.controls()).toExist()
 
   describe "#edit", ->
     beforeEach ->
