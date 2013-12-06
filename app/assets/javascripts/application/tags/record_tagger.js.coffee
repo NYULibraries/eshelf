@@ -14,32 +14,30 @@ class RecordTagger
     # Need to put @ in the referencing environment for the closure
     # so we set it to a local variable, recordTagger
     recordTagger = @
-    # Create the tag controls for this tagger and attach the 
-    # relevant event handlers to them
-    @controlSet = new window.eshelf.tags.ControlSet
-      add: (event) ->
-        recordTagger.edit recordTagger
-        event.preventDefault()
-        event.stopImmediatePropagation()
-      edit: (event) -> 
-        recordTagger.edit recordTagger
-        event.preventDefault()
-        event.stopImmediatePropagation()
-      save: (event) -> 
-        recordTagger.save recordTagger
-        event.preventDefault()
-        event.stopImmediatePropagation()
     # Attach the "save" event handler to the form submit event
-    @form.submit (event) -> recordTagger.save event, recordTagger
+    @form.submit (event) -> recordTagger.save recordTagger
     # Start out in a saved state
     @saved @
 
+  refresh: () ->
+    # Remove this record tagger if it's already in the DOM
+    $("##{@id}").remove()
+    # Reset the instance vars
+    @_tags = null
+    @_tagList = null
+    @_controlSet = null
+    @_controls = null
+    # Append this record tagger to the parent in the DOM
+    @parent.append(@jQuery())
+
   # Event handler for editing the tag list
   edit: (recordTagger) ->
-    # Remove the tags
-    recordTagger.removeTags()
+    # Refresh the tagger
+    recordTagger.refresh()
+    # Hide the tags
+    recordTagger.tags().hide()
     # Show the save control
-    recordTagger.controlSet.showSave()
+    recordTagger.controlSet().showSave()
     # Show the tags input field
     recordTagger.input.show()
 
@@ -61,23 +59,17 @@ class RecordTagger
 
   # Callback after a successful save
   saved: (recordTagger) ->
-    # Remove this record tagger if it's already in the DOM
-    $("##{@id}").remove()
+    recordTagger.refresh()
     # Hide the input, since we've saved
     recordTagger.input.hide()
-    # Append this record tagger to the parent in the DOM
-    recordTagger.parent.append(@jQuery())
+    # Show the tags
+    recordTagger.tags().show()
     # If we don't have any tags, show the "Add" control
     # otherwise show the "Edit" control
-    if recordTagger._tagList.size() is 0 
-      recordTagger.controlSet.showAdd()
+    if recordTagger.tagList().size() is 0 
+      recordTagger.controlSet().showAdd()
     else
-      recordTagger.controlSet.showEdit()
-
-  # Remove tags from the DOM and from this record tagger
-  removeTags: () ->
-    @_tags.remove()
-    @_tags = null
+      recordTagger.controlSet().showEdit()
 
   # Returns a tag list based on comma separated tags in the input
   # This function is "live" so it always processes based on the current state
@@ -87,15 +79,35 @@ class RecordTagger
     # Split the input values based on a comma unless there is nothing there.
     tags = @input.val().split(', ') unless @input.val().length is 0
     # and pass them to the parent
-    @_tagList = new window.eshelf.tags.TagList tags...
+    @_tagList ||= new window.eshelf.tags.TagList tags...
 
   # Returns the jQuery'd tag list
   tags: () ->
     @_tags ||= @tagList().jQuery()
 
+  # Create the tag controls for this tagger and attach the 
+  # relevant event handlers to them
+  controlSet: () ->
+    # Need to put @ in the referencing environment for the closure
+    # so we set it to a local variable, recordTagger
+    recordTagger = @
+    @_controlSet ||= new window.eshelf.tags.ControlSet
+      add: (event) ->
+        recordTagger.edit recordTagger
+        event.preventDefault()
+        event.stopImmediatePropagation()
+      edit: (event) -> 
+        recordTagger.edit recordTagger
+        event.preventDefault()
+        event.stopImmediatePropagation()
+      save: (event) -> 
+        recordTagger.save recordTagger
+        event.preventDefault()
+        event.stopImmediatePropagation()
+
   # Returns the jQuery'd control set
   controls: () ->
-    @_controls ||= @controlSet.jQuery()
+    @_controls ||= @controlSet().jQuery()
 
   # RecordTagger as a jQuery Object
   # This function is "live" since tags change and we want to get

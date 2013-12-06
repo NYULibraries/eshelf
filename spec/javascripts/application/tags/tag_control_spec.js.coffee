@@ -1,158 +1,250 @@
 #= require application/tags/tag_control
-tagControl = new window.eshelf.tags.TagControl
-  text: "add"
-  icon: "add"
+fixture.preload 'tags/controls.html'
+describe "TagControl", ->
+  tagControl = null
+  beforeEach ->
+    @fixtures = fixture.load 'tags/controls.html', true
+    controls = $(".controls", fixture.el)
+    tagControl = new window.eshelf.tags.TagControl
+      text: "add"
+      icon: "add"
+    controls.append tagControl.jQuery()
 
-describe "TagControl#text", ->
-  it "should be defined", ->
-    expect(tagControl.text).toBeDefined()
+  describe "#text", ->
+    it "should be defined", ->
+      expect(tagControl.text).toBeDefined()
 
-  it "should have 'add' as the text", ->
-    expect(tagControl.text).toEqual "add"
+    it "should have 'add' as the text", ->
+      expect(tagControl.text).toEqual "add"
 
-describe "TagControl#icon", ->
-  it "should be defined", ->
-    expect(tagControl.icon).toBeDefined()
+  describe "#icon", ->
+    it "should be defined", ->
+      expect(tagControl.icon).toBeDefined()
 
-  it "should have 'add' as the icon", ->
-    expect(tagControl.icon).toEqual "add"
+    it "should have 'add' as the icon", ->
+      expect(tagControl.icon).toEqual "add"
 
-describe "TagControl#iconClass", ->
-  it "should be defined", ->
-    expect(tagControl.iconClass).toBeDefined()
+  describe "#iconClass", ->
+    it "should be defined", ->
+      expect(tagControl.iconClass).toBeDefined()
 
-  it "should have 'icons-famfamfam-add' as the famfam class", ->
-    expect(tagControl.iconClass).toEqual "icons-famfamfam-add"
+    it "should have 'icons-famfamfam-add' as the famfam class", ->
+      expect(tagControl.iconClass).toEqual "icons-famfamfam-add"
 
-describe "TagControl#jQuery", ->
-  it "should be defined", ->
-    expect(tagControl.jQuery()).toBeDefined()
+  describe "#jQuery", ->
+    it "should be defined", ->
+      expect(tagControl.jQuery()).toBeDefined()
 
-describe "TagControl#html", ->
-  it "should be defined", ->
-    expect(tagControl.html()).toBeDefined()
+    it "should exist", ->
+      expect(tagControl.jQuery()).toExist()
 
-  it "should be an HTML anchor tag", ->
-    expect(tagControl.html()).toEqual(
-      "<a href=\"#\" class=\"muted btn btn-mini\" style=\"display: none; \">"+
-        "<i class=\"icons-famfamfam-add\"></i><span>add</span></a>")
+    it "should be hidden", ->
+      expect(tagControl.jQuery()).toBeHidden()
 
-addControl = new window.eshelf.tags.AddControl
+  describe "TagControl#hide", ->
+    it "should be defined", ->
+      expect(tagControl.hide).toBeDefined()
 
-describe "AddControl#text", ->
-  it "should be defined", ->
-    expect(addControl.text).toBeDefined()
+    it "should hide the element", ->
+      expect(tagControl.show()).toBeVisible()
+      expect(tagControl.jQuery()).toBeVisible()
+      expect(tagControl.hide()).toBeHidden()
+      expect(tagControl.jQuery()).toBeHidden()
 
-  it "should have 'add' as the text", ->
-    expect(addControl.text).toEqual "add"
+  describe "#html", ->
+    it "should be defined", ->
+      expect(tagControl.html()).toBeDefined()
 
-describe "AddControl#icon", ->
-  it "should be defined", ->
-    expect(addControl.icon).toBeDefined()
+    it "should be an HTML anchor tag", ->
+      expect(tagControl.html()).toEqual(
+        "<a href=\"#\" class=\"muted btn btn-mini\" style=\"display: none; \">"+
+          "<i class=\"icons-famfamfam-add\"></i><span>add</span></a>")
 
-  it "should have 'add' as the icon", ->
-    expect(addControl.icon).toEqual "add"
+describe "AddControl", ->
+  addControl = null
+  beforeEach ->
+    @fixtures = fixture.load 'tags/controls.html'
+    controls = $(".controls", fixture.el)
+    addControl = new window.eshelf.tags.AddControl
+    controls.append addControl.jQuery()
 
-describe "AddControl#iconClass", ->
-  it "should be defined", ->
-    expect(addControl.iconClass).toBeDefined()
+  describe "#text", ->
+    it "should be defined", ->
+      expect(addControl.text).toBeDefined()
 
-  it "should have 'icons-famfamfam-add' as the famfam class", ->
-    expect(addControl.iconClass).toEqual "icons-famfamfam-add"
+    it "should have 'add' as the text", ->
+      expect(addControl.text).toEqual "add"
 
-describe "AddControl#jQuery", ->
-  it "should be defined", ->
-    expect(addControl.jQuery()).toBeDefined()
+  describe "#icon", ->
+    it "should be defined", ->
+      expect(addControl.icon).toBeDefined()
 
-describe "AddControl#html", ->
-  it "should be defined", ->
-    expect(addControl.html()).toBeDefined()
+    it "should have 'add' as the icon", ->
+      expect(addControl.icon).toEqual "add"
 
-  it "should be an HTML anchor tag", ->
-    expect(addControl.html()).toEqual(
-      "<a href=\"#\" class=\"muted btn btn-mini\" style=\"display: none; \">"+
-        "<i class=\"icons-famfamfam-add\"></i><span>add</span></a>")
+  describe "#iconClass", ->
+    it "should be defined", ->
+      expect(addControl.iconClass).toBeDefined()
 
-editControl = new window.eshelf.tags.EditControl
+    it "should have 'icons-famfamfam-add' as the famfam class", ->
+      expect(addControl.iconClass).toEqual "icons-famfamfam-add"
 
-describe "EditControl#text", ->
-  it "should be defined", ->
-    expect(editControl.text).toBeDefined()
+  describe "#jQuery", ->
+    it "should be defined", ->
+      expect(addControl.jQuery()).toBeDefined()
 
-  it "should have 'edit' as the text", ->
-    expect(editControl.text).toEqual "edit"
+    it "should exist", ->
+      expect(addControl.jQuery()).toExist()
 
-describe "EditControl#icon", ->
-  it "should be defined", ->
-    expect(editControl.icon).toBeDefined()
+    it "should be hidden", ->
+      expect(addControl.jQuery()).toBeHidden()
 
-  it "should have 'edit' as the icon", ->
-    expect(editControl.icon).toEqual "pencil_add"
+  describe "#hide", ->
+    it "should be defined", ->
+      expect(addControl.hide).toBeDefined()
 
-describe "EditControl#iconClass", ->
-  it "should be defined", ->
-    expect(editControl.iconClass).toBeDefined()
+    it "should hide the element", ->
+      expect(addControl.show()).toBeVisible()
+      expect(addControl.jQuery()).toBeVisible()
+      expect(addControl.hide()).toBeHidden()
+      expect(addControl.jQuery()).toBeHidden()
 
-  it "should have 'icons-famfamfam-pencil_add' as the famfam class", ->
-    expect(editControl.iconClass).toEqual "icons-famfamfam-pencil_add"
+  describe "#html", ->
+    it "should be defined", ->
+      expect(addControl.html()).toBeDefined()
 
-describe "EditControl#jQuery", ->
-  it "should be defined", ->
-    expect(editControl.jQuery()).toBeDefined()
+    it "should be an HTML anchor tag", ->
+      expect(addControl.html()).toEqual(
+        "<a href=\"#\" class=\"muted btn btn-mini\" style=\"display: none; \">"+
+          "<i class=\"icons-famfamfam-add\"></i><span>add</span></a>")
 
-describe "EditControl#html", ->
-  it "should be defined", ->
-    expect(editControl.html()).toBeDefined()
+describe "EditControl", ->
+  editControl = null
+  beforeEach ->
+    @fixtures = fixture.load 'tags/controls.html'
+    controls = $(".controls", fixture.el)
+    editControl = new window.eshelf.tags.EditControl
+    controls.append editControl.jQuery()
 
-  it "should be an HTML anchor tag", ->
-    expect(editControl.html()).toEqual(
-      "<a href=\"#\" class=\"muted btn btn-mini\" style=\"display: none; \">"+
-        "<i class=\"icons-famfamfam-pencil_add\"></i><span>edit</span></a>")
+  describe "#text", ->
+    it "should be defined", ->
+      expect(editControl.text).toBeDefined()
 
-saveControl = new window.eshelf.tags.SaveControl
+    it "should have 'edit' as the text", ->
+      expect(editControl.text).toEqual "edit"
 
-describe "SaveControl#text", ->
-  it "should be defined", ->
-    expect(saveControl.text).toBeDefined()
+  describe "#icon", ->
+    it "should be defined", ->
+      expect(editControl.icon).toBeDefined()
 
-  it "should have add as the text", ->
-    expect(saveControl.text).toEqual "save"
+    it "should have 'edit' as the icon", ->
+      expect(editControl.icon).toEqual "pencil_add"
 
-describe "SaveControl#icon", ->
-  it "should be defined", ->
-    expect(saveControl.icon).toBeDefined()
+  describe "#iconClass", ->
+    it "should be defined", ->
+      expect(editControl.iconClass).toBeDefined()
 
-  it "should have 'disk' as the icon", ->
-    expect(saveControl.icon).toEqual "disk"
+    it "should have 'icons-famfamfam-pencil_add' as the famfam class", ->
+      expect(editControl.iconClass).toEqual "icons-famfamfam-pencil_add"
 
-describe "SaveControl#tagUpdateSpy", ->
-  it "should be defined", ->
-    expect(saveControl.iconClass).toBeDefined()
+  describe "#jQuery", ->
+    it "should be defined", ->
+      expect(editControl.jQuery()).toBeDefined()
 
-  it "should have 'icons-famfamfam-disk' as the famfam class", ->
-    expect(saveControl.iconClass).toEqual "icons-famfamfam-disk"
+    it "should exist", ->
+      expect(editControl.jQuery()).toExist()
 
-describe "SaveControl#jQuery", ->
-  it "should be defined", ->
-    expect(saveControl.jQuery()).toBeDefined()
+    it "should be hidden", ->
+      expect(editControl.jQuery()).toBeHidden()
 
-describe "SaveControl#html", ->
-  it "should be defined", ->
-    expect(saveControl.html()).toBeDefined()
+  describe "#hide", ->
+    it "should be defined", ->
+      expect(editControl.hide).toBeDefined()
 
-  it "should be an HTML anchor tag", ->
-    expect(saveControl.html()).toEqual(
-      "<a href=\"#\" class=\"muted btn btn-mini\" style=\"display: none; \">"+
-        "<i class=\"icons-famfamfam-disk\"></i><span>save</span></a>")
+    it "should hide the element", ->
+      expect(editControl.show()).toBeVisible()
+      expect(editControl.jQuery()).toBeVisible()
+      expect(editControl.hide()).toBeHidden()
+      expect(editControl.jQuery()).toBeHidden()
 
-controlSet = new window.eshelf.tags.ControlSet {}
+  describe "#html", ->
+    it "should be defined", ->
+      expect(editControl.html()).toBeDefined()
 
-describe "ControlSet#controls", ->
-  it "should be defined", ->
-    expect(controlSet.controls).toBeDefined()
+    it "should be an HTML anchor tag", ->
+      expect(editControl.html()).toEqual(
+        "<a href=\"#\" class=\"muted btn btn-mini\" style=\"display: none; \">"+
+          "<i class=\"icons-famfamfam-pencil_add\"></i><span>edit</span></a>")
 
-  # it "has a controlSet with the expected tags", ->
-  #   expect(controlSet.controls).toEqual
-  #     add: new window.eshelf.tags.AddControl
-  #     edit: new window.eshelf.tags.EditControl
-  #     save: new window.eshelf.tags.SaveControl
+describe "SaveControl", ->
+  saveControl = null
+  beforeEach ->
+    @fixtures = fixture.load 'tags/controls.html'
+    controls = $(".controls", fixture.el)
+    saveControl = new window.eshelf.tags.SaveControl
+    controls.append saveControl.jQuery()
+
+  describe "#text", ->
+    it "should be defined", ->
+      expect(saveControl.text).toBeDefined()
+
+    it "should have add as the text", ->
+      expect(saveControl.text).toEqual "save"
+
+  describe "#icon", ->
+    it "should be defined", ->
+      expect(saveControl.icon).toBeDefined()
+
+    it "should have 'disk' as the icon", ->
+      expect(saveControl.icon).toEqual "disk"
+
+  describe "#iconClass", ->
+    it "should be defined", ->
+      expect(saveControl.iconClass).toBeDefined()
+
+    it "should have 'icons-famfamfam-disk' as the famfam class", ->
+      expect(saveControl.iconClass).toEqual "icons-famfamfam-disk"
+
+  describe "#jQuery", ->
+    it "should be defined", ->
+      expect(saveControl.jQuery()).toBeDefined()
+
+    it "should exist", ->
+      expect(saveControl.jQuery()).toExist()
+
+    it "should be hidden", ->
+      expect(saveControl.jQuery()).toBeHidden()
+
+  describe "#hide", ->
+    it "should be defined", ->
+      expect(saveControl.hide).toBeDefined()
+
+    it "should hide the element", ->
+      expect(saveControl.show()).toBeVisible()
+      expect(saveControl.jQuery()).toBeVisible()
+      expect(saveControl.hide()).toBeHidden()
+      expect(saveControl.jQuery()).toBeHidden()
+
+  describe "#html", ->
+    it "should be defined", ->
+      expect(saveControl.html()).toBeDefined()
+
+    it "should be an HTML anchor tag", ->
+      expect(saveControl.html()).toEqual(
+        "<a href=\"#\" class=\"muted btn btn-mini\" style=\"display: none; \">"+
+          "<i class=\"icons-famfamfam-disk\"></i><span>save</span></a>")
+
+describe "ControlSet", ->
+  controlSet = null
+  beforeEach ->
+    controlSet = new window.eshelf.tags.ControlSet {}
+
+  describe "ControlSet#controls", ->
+    it "should be defined", ->
+      expect(controlSet.controls).toBeDefined()
+
+    # it "has a controlSet with the expected tags", ->
+    #   expect(controlSet.controls).toEqual
+    #     add: new window.eshelf.tags.AddControl
+    #     edit: new window.eshelf.tags.EditControl
+    #     save: new window.eshelf.tags.SaveControl

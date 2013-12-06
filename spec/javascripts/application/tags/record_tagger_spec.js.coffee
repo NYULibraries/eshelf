@@ -1,51 +1,182 @@
 #= require application/tags/record_tagger
-form = $("<form/>").append($("<input/>").attr("id", "113_record_tag_list").
-  attr("name", 'record[tag_list]').attr("value", "tag1, tag 2"))
-input = form.find("input")
-recordTagger = new window.eshelf.tags.RecordTagger(input)
+fixture.preload 'tags/record1.html', 'tags/record2.html'
+recordTagger = null
+describe "RecordTagger with tags", ->
+  beforeEach ->
+    @fixtures = fixture.load 'tags/record1.html', true
+    input = $(".record_tag_list input[name='record[tag_list]']", fixture.el).first()
+    recordTagger = new window.eshelf.tags.RecordTagger input
 
-describe "RecordTagger#input", ->
-  it "should be defined", ->
-    expect(recordTagger.input).toBeDefined()
+  describe "#input", ->
+    it "should be defined", ->
+      expect(recordTagger.input).toBeDefined()
 
-  it "has '113_record_tag_list' its input id", ->
-    expect(recordTagger.input.attr("id")).toEqual "113_record_tag_list"
+    it "has '1_record_tag_list' as its input id", ->
+      expect(recordTagger.input.attr("id")).toEqual "1_record_tag_list"
 
-describe "RecordTagger#recordId", ->
-  it "should be defined", ->
-    expect(recordTagger.recordId).toBeDefined()
+  describe "#recordId", ->
+    it "should be defined", ->
+      expect(recordTagger.recordId).toBeDefined()
 
-  it "has a record id of 113", ->
-    expect(recordTagger.recordId).toBe 113
+    it "has a record id of 1", ->
+      expect(recordTagger.recordId).toBe 1
 
-describe "RecordTagger#tagList", ->
-  it "should be defined", ->
-    expect(recordTagger.tagList).toBeDefined()
+  describe "#tagList", ->
+    it "should be defined", ->
+      expect(recordTagger.tagList).toBeDefined()
 
-  it "has a tag list with the expected tags", ->
-    expect(recordTagger.tagList().tags).toEqual [
-      new window.eshelf.tags.Tag("tag1"), 
-        new window.eshelf.tags.Tag("tag 2") ]
+    # it "has a tag list with the expected tags", ->
+    #   expectedTagList = new window.eshelf.tags.TagList "tag", "another tag"
+    #   expectedTagList.jQuery()
+    #   expect(recordTagger.tagList()).toEqual expectedTagList
 
-describe "RecordTagger#controlSet", ->
-  it "should be defined", ->
-    expect(recordTagger.controlSet).toBeDefined()
+  describe "#controlSet", ->
+    it "should be defined", ->
+      expect(recordTagger.controlSet).toBeDefined()
 
-describe "RecordTagger#edit", ->
-  it "should be defined", ->
-    expect(recordTagger.edit).toBeDefined()
+  describe "#edit", ->
+    beforeEach ->
+      recordTagger.edit(recordTagger)
 
-describe "RecordTagger#save", ->
-  it "should be defined", ->
-    expect(recordTagger.save).toBeDefined()
+    it "should be defined", ->
+      expect(recordTagger.edit).toBeDefined()
 
-  it "should trigger an 'tagListSaved' event", ->
-    tagListSavedSpy = jasmine.createSpy "tagListSavedEventSpy"
-    $(document).bind("tagListSaved", tagListSavedSpy)
-    expect(tagListSavedSpy).not.toHaveBeenCalled(); 
-    recordTagger.save(recordTagger);
-#     # expect(tagListSavedSpy).toHaveBeenCalled();
+    it "should hide the tags", ->
+      expect(recordTagger.tags()).toBeHidden()
 
-describe "RecordTagger#saved", ->
-  it "should be defined", ->
-    expect(recordTagger.saved).toBeDefined()
+    it "should show the tags input", ->
+      expect(recordTagger.input).not.toBeHidden()
+
+    it "should show the save control", ->
+      expect(recordTagger.controlSet().controls.save.jQuery()).not.toBeHidden()
+      expect(recordTagger.input).not.toBeHidden()
+
+    it "should hide the add control", ->
+      expect(recordTagger.controlSet().controls.add.jQuery()).toBeHidden()
+
+    it "should hide the edit control", ->
+      expect(recordTagger.controlSet().controls.edit.jQuery()).toBeHidden()
+
+  describe "#save", ->
+    it "should be defined", ->
+      expect(recordTagger.save).toBeDefined()
+
+    it "should trigger an 'tagListSaved' event", ->
+      tagListSavedSpy = jasmine.createSpy "tagListSavedEventSpy"
+      $(document).bind("tagListSaved", tagListSavedSpy)
+      expect(tagListSavedSpy).not.toHaveBeenCalled(); 
+      recordTagger.save(recordTagger);
+    #     # expect(tagListSavedSpy).toHaveBeenCalled();
+
+  describe "#saved", ->
+    beforeEach ->
+      recordTagger.save(recordTagger)
+
+    it "should be defined", ->
+      expect(recordTagger.saved).toBeDefined()
+
+    it "should show the tags", ->
+      expect(recordTagger.tags()).not.toBeHidden()
+
+    it "should hide the tags input", ->
+      expect(recordTagger.input).toBeHidden()
+
+    it "should hide the save control", ->
+      expect(recordTagger.controlSet().controls.save.jQuery()).toBeHidden()
+      expect(recordTagger.input).toBeHidden()
+
+    it "should hide the add control", ->
+      expect(recordTagger.controlSet().controls.add.jQuery()).toBeHidden()
+
+    it "should show the edit control", ->
+      expect(recordTagger.controlSet().controls.edit.jQuery()).not.toBeHidden()
+
+describe "RecordTagger without tags", ->
+  beforeEach ->
+    @fixtures = fixture.load 'tags/record2.html', true
+    input = $(".record_tag_list input[name='record[tag_list]']", fixture.el).first()
+    recordTagger = new window.eshelf.tags.RecordTagger input
+
+  describe "#input", ->
+    it "should be defined", ->
+      expect(recordTagger.input).toBeDefined()
+
+    it "has '2_record_tag_list' as its input id", ->
+      expect(recordTagger.input.attr("id")).toEqual "2_record_tag_list"
+
+  describe "#recordId", ->
+    it "should be defined", ->
+      expect(recordTagger.recordId).toBeDefined()
+
+    it "has a record id of 2", ->
+      expect(recordTagger.recordId).toBe 2
+
+  describe "#tagList", ->
+    it "should be defined", ->
+      expect(recordTagger.tagList).toBeDefined()
+
+    # it "has a tag list with the expected tags", ->
+    #   expectedTagList = new window.eshelf.tags.TagList "tag", "another tag"
+    #   expectedTagList.jQuery()
+    #   expect(recordTagger.tagList()).toEqual expectedTagList
+
+  describe "#controlSet", ->
+    it "should be defined", ->
+      expect(recordTagger.controlSet).toBeDefined()
+
+  describe "#edit", ->
+    beforeEach ->
+      recordTagger.edit(recordTagger)
+
+    it "should be defined", ->
+      expect(recordTagger.edit).toBeDefined()
+
+    it "should hide the tags", ->
+      expect(recordTagger.tags()).toBeHidden()
+
+    it "should show the tags input", ->
+      expect(recordTagger.input).not.toBeHidden()
+
+    it "should show the save control", ->
+      expect(recordTagger.controlSet().controls.save.jQuery()).not.toBeHidden()
+      expect(recordTagger.input).not.toBeHidden()
+
+    it "should hide the add control", ->
+      expect(recordTagger.controlSet().controls.add.jQuery()).toBeHidden()
+
+    it "should hide the edit control", ->
+      expect(recordTagger.controlSet().controls.edit.jQuery()).toBeHidden()
+
+  describe "#save", ->
+    it "should be defined", ->
+      expect(recordTagger.save).toBeDefined()
+
+    it "should trigger an 'tagListSaved' event", ->
+      tagListSavedSpy = jasmine.createSpy "tagListSavedEventSpy"
+      $(document).bind("tagListSaved", tagListSavedSpy)
+      expect(tagListSavedSpy).not.toHaveBeenCalled(); 
+      recordTagger.save(recordTagger);
+    #     # expect(tagListSavedSpy).toHaveBeenCalled();
+
+  describe "#saved", ->
+    beforeEach ->
+      recordTagger.save(recordTagger)
+
+    it "should be defined", ->
+      expect(recordTagger.saved).toBeDefined()
+
+    it "should not show the tags, since there aren't any", ->
+      expect(recordTagger.tags()).toBeHidden()
+
+    it "should hide the tags input", ->
+      expect(recordTagger.input).toBeHidden()
+
+    it "should hide the save control", ->
+      expect(recordTagger.controlSet().controls.save.jQuery()).toBeHidden()
+      expect(recordTagger.input).toBeHidden()
+
+    it "should show the add control", ->
+      expect(recordTagger.controlSet().controls.add.jQuery()).not.toBeHidden()
+
+    it "should hide the edit control", ->
+      expect(recordTagger.controlSet().controls.edit.jQuery()).toBeHidden()
