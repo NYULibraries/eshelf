@@ -1,7 +1,7 @@
 #= require application/tags/record_tagger
 fixture.preload 'tags/record1.html', 'tags/record2.html'
 recordTagger = null
-describe "RecordTagger with tags", ->
+describe "Populate RecordTagger", ->
   beforeEach ->
     @fixtures = fixture.load 'tags/record1.html', true
     input =
@@ -64,12 +64,35 @@ describe "RecordTagger with tags", ->
     it "should be defined", ->
       expect(recordTagger.save).toBeDefined()
 
+    # Fixtures aren't in place for the callback to work.
+    # Skipping the spec with 'xit'
+    xit "should call #saved 1 time", ->
+      ajaxSuccessFlag = false
+      # Run the save
+      runs ->
+        # Spy on recordTagger#saved
+        spyOn recordTagger, "saved"
+        # Spy on the Ajax Success Event from jQuery
+        ajaxSuccessSpy = -> 
+          ajaxSuccessFlag = true
+          console.log "success"
+        $(document).ajaxSuccess(ajaxSuccessSpy)
+        recordTagger.save(recordTagger)
+      # Wait for an Ajax Success Event to be triggered
+      waitsFor (()-> ajaxSuccessFlag == true), 
+        "Ajax should successfully return",500
+      # Make sure that saved called
+      runs ->
+        expect(recordTagger.saved).toHaveBeenCalled()
+        expect(recordTagger.saved).toHaveBeenCalledWith(recordTagger)
+        expect(recordTagger.saved.calls.length).toEqual(1)
+
     it "should trigger an 'tagListSaved' event", ->
       tagListSavedSpy = jasmine.createSpy "tagListSavedEventSpy"
       $(document).bind("tagListSaved", tagListSavedSpy)
       expect(tagListSavedSpy).not.toHaveBeenCalled()
       recordTagger.save(recordTagger)
-    #     # expect(tagListSavedSpy).toHaveBeenCalled()
+      # expect(tagListSavedSpy).toHaveBeenCalled()
 
   describe "#saved", ->
     beforeEach ->
@@ -94,7 +117,7 @@ describe "RecordTagger with tags", ->
     it "should show the edit control", ->
       expect(recordTagger.controlSet().controls.edit.jQuery()).not.toBeHidden()
 
-describe "RecordTagger without tags", ->
+describe "Empty RecordTagger", ->
   beforeEach ->
     @fixtures = fixture.load 'tags/record2.html', true
     input =
