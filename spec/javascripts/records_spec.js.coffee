@@ -8,5 +8,5 @@ describe "including the CORS records' javascript,", ->
       t.setAttribute 'data-eshelf-external-system', 'primo'
       t.src = "./"
       s = document.getElementsByTagName('script')[0]
-      s.parentNode.insertBefore(t, s);
+      s.parentNode.insertBefore(t, s)
     expect(include_fn()).not.toThrow

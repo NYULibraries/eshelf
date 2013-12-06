@@ -4,7 +4,8 @@ recordTagger = null
 describe "RecordTagger with tags", ->
   beforeEach ->
     @fixtures = fixture.load 'tags/record1.html', true
-    input = $(".record_tag_list input[name='record[tag_list]']", fixture.el).first()
+    input =
+      $(".record_tag_list input[name='record[tag_list]']", fixture.el).first()
     recordTagger = new window.eshelf.tags.RecordTagger input
 
   describe "#input", ->
@@ -66,9 +67,9 @@ describe "RecordTagger with tags", ->
     it "should trigger an 'tagListSaved' event", ->
       tagListSavedSpy = jasmine.createSpy "tagListSavedEventSpy"
       $(document).bind("tagListSaved", tagListSavedSpy)
-      expect(tagListSavedSpy).not.toHaveBeenCalled(); 
-      recordTagger.save(recordTagger);
-    #     # expect(tagListSavedSpy).toHaveBeenCalled();
+      expect(tagListSavedSpy).not.toHaveBeenCalled()
+      recordTagger.save(recordTagger)
+    #     # expect(tagListSavedSpy).toHaveBeenCalled()
 
   describe "#saved", ->
     beforeEach ->
@@ -96,7 +97,8 @@ describe "RecordTagger with tags", ->
 describe "RecordTagger without tags", ->
   beforeEach ->
     @fixtures = fixture.load 'tags/record2.html', true
-    input = $(".record_tag_list input[name='record[tag_list]']", fixture.el).first()
+    input =
+      $(".record_tag_list input[name='record[tag_list]']", fixture.el).first()
     recordTagger = new window.eshelf.tags.RecordTagger input
 
   describe "#input", ->
@@ -172,9 +174,9 @@ describe "RecordTagger without tags", ->
     it "should trigger an 'tagListSaved' event", ->
       tagListSavedSpy = jasmine.createSpy "tagListSavedEventSpy"
       $(document).bind("tagListSaved", tagListSavedSpy)
-      expect(tagListSavedSpy).not.toHaveBeenCalled(); 
-      recordTagger.save(recordTagger);
-    #     # expect(tagListSavedSpy).toHaveBeenCalled();
+      expect(tagListSavedSpy).not.toHaveBeenCalled()
+      recordTagger.save(recordTagger)
+    #     # expect(tagListSavedSpy).toHaveBeenCalled()
 
   describe "#saved", ->
     beforeEach ->

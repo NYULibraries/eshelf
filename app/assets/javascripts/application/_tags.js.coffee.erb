@@ -18,7 +18,7 @@ $ ->
   # Set the RecordTaggers for each input (i.e. record)
   taggers = (new window.eshelf.tags.RecordTagger input for input in inputs)
   # RecordTagger triggers a "tagListSaved" event from document on a successful
-  # save of a tag list.  Bind an event handler that updates the user tags to 
+  # save of a tag list.  Bind an event handler that updates the user tags to
   # that event.
   # $(document).bind "tagListSaved", (event) ->
   #   # Reset the user tags in the sidebar, unless it's got some input

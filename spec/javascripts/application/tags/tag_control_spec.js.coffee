@@ -33,7 +33,7 @@ describe "TagControl", ->
 
   describe "#jQuery", ->
     it "should be defined", ->
-      expect(tagControl.jQuery()).toBeDefined()
+      expect(tagControl.jQuery).toBeDefined()
 
     it "should exist", ->
       expect(tagControl.jQuery()).toExist()
@@ -101,7 +101,7 @@ describe "AddControl", ->
 
   describe "#jQuery", ->
     it "should be defined", ->
-      expect(addControl.jQuery()).toBeDefined()
+      expect(addControl.jQuery).toBeDefined()
 
     it "should exist", ->
       expect(addControl.jQuery()).toExist()
@@ -169,7 +169,7 @@ describe "EditControl", ->
 
   describe "#jQuery", ->
     it "should be defined", ->
-      expect(editControl.jQuery()).toBeDefined()
+      expect(editControl.jQuery).toBeDefined()
 
     it "should exist", ->
       expect(editControl.jQuery()).toExist()
@@ -237,7 +237,7 @@ describe "SaveControl", ->
 
   describe "#jQuery", ->
     it "should be defined", ->
-      expect(saveControl.jQuery()).toBeDefined()
+      expect(saveControl.jQuery).toBeDefined()
 
     it "should exist", ->
       expect(saveControl.jQuery()).toExist()
@@ -277,14 +277,88 @@ describe "SaveControl", ->
 describe "ControlSet", ->
   controlSet = null
   beforeEach ->
+    @fixtures = fixture.load 'tags/controls.html'
+    record_tag_list = $(".record_tag_list", fixture.el)
     controlSet = new window.eshelf.tags.ControlSet {}
+    record_tag_list.append controlSet.jQuery()
 
-  describe "ControlSet#controls", ->
+  describe "#controls", ->
     it "should be defined", ->
       expect(controlSet.controls).toBeDefined()
 
-    # it "has a controlSet with the expected tags", ->
-    #   expect(controlSet.controls).toEqual
-    #     add: new window.eshelf.tags.AddControl
-    #     edit: new window.eshelf.tags.EditControl
-    #     save: new window.eshelf.tags.SaveControl
+    it "has an add control", ->
+      expect(controlSet.controls.add.text).toEqual "add"
+
+    it "has an edit control", ->
+      expect(controlSet.controls.edit.text).toEqual "edit"
+
+    it "has an save control", ->
+      expect(controlSet.controls.save.text).toEqual "save"
+
+  describe "#showAdd", ->
+    beforeEach ->
+      controlSet.showAdd()
+
+    it "should be defined", ->
+      expect(controlSet.showAdd).toBeDefined()
+
+    it "should show the add control", ->
+      expect(controlSet.controls.add.jQuery()).not.toBeHidden()
+
+    it "should hide the edit control", ->
+      expect(controlSet.controls.edit.jQuery()).toBeHidden()
+
+    it "should hide the save control", ->
+      expect(controlSet.controls.save.jQuery()).toBeHidden()
+
+  describe "#showEdit", ->
+    beforeEach ->
+      controlSet.showEdit()
+
+    it "should be defined", ->
+      expect(controlSet.showEdit).toBeDefined()
+
+    it "should hide the add control", ->
+      expect(controlSet.controls.add.jQuery()).toBeHidden()
+
+    it "should show the edit control", ->
+      expect(controlSet.controls.edit.jQuery()).not.toBeHidden()
+
+    it "should hide the save control", ->
+      expect(controlSet.controls.save.jQuery()).toBeHidden()
+
+  describe "#showSave", ->
+    beforeEach ->
+      controlSet.showSave()
+
+    it "should be defined", ->
+      expect(controlSet.showSave).toBeDefined()
+
+    it "should hide the add control", ->
+      expect(controlSet.controls.add.jQuery()).toBeHidden()
+
+    it "should hide the edit control", ->
+      expect(controlSet.controls.edit.jQuery()).toBeHidden()
+
+    it "should show the save control", ->
+      expect(controlSet.controls.save.jQuery()).not.toBeHidden()
+
+  describe "#jQuery", ->
+    it "should be defined", ->
+      expect(controlSet.jQuery).toBeDefined()
+
+    it "should exist", ->
+      expect(controlSet.jQuery()).toExist()
+
+  describe "#html", ->
+    it "should be defined", ->
+      expect(controlSet.html).toBeDefined()
+
+    it "should be an HTML span with 3 control anchors", ->
+      expect(controlSet.html()).toEqual "<span class=\"controls\">" +
+        "<a href=\"#\" class=\"muted btn btn-mini\" style=\"display: none; \">"+
+          "<i class=\"icons-famfamfam-add\"></i><span>add</span></a>" +
+        "<a href=\"#\" class=\"muted btn btn-mini\" style=\"display: none; \">"+
+          "<i class=\"icons-famfamfam-pencil_add\"></i><span>edit</span></a>" +
+        "<a href=\"#\" class=\"muted btn btn-mini\" style=\"display: none; \">"+
+          "<i class=\"icons-famfamfam-disk\"></i><span>save</span></a></span>"

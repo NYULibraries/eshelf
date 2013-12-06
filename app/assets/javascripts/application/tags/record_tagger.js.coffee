@@ -66,26 +66,28 @@ class RecordTagger
     recordTagger.tags().show()
     # If we don't have any tags, show the "Add" control
     # otherwise show the "Edit" control
-    if recordTagger.tagList().size() is 0 
+    if recordTagger.tagList().size() is 0
       recordTagger.controlSet().showAdd()
     else
       recordTagger.controlSet().showEdit()
 
-  # Returns a tag list based on comma separated tags in the input
-  # This function is "live" so it always processes based on the current state
-  # of the tag list input.
-  tagList: () ->
-    tags = []
+  # Returns a string array of tags based on comma separated tags in the input
+  parseTags: () ->
+    parsedTags = []
     # Split the input values based on a comma unless there is nothing there.
-    tags = @input.val().split(', ') unless @input.val().length is 0
-    # and pass them to the parent
-    @_tagList ||= new window.eshelf.tags.TagList tags...
+    parsedTags = @input.val().split(', ') unless @input.val().length is 0
+    parsedTags
+
+  # Returns a tag list based on parsed tags from the input
+  tagList: () ->
+    # Parse the tags and pass them to the parent
+    @_tagList ||= new window.eshelf.tags.TagList @parseTags()...
 
   # Returns the jQuery'd tag list
   tags: () ->
     @_tags ||= @tagList().jQuery()
 
-  # Create the tag controls for this tagger and attach the 
+  # Create the tag controls for this tagger and attach the
   # relevant event handlers to them
   controlSet: () ->
     # Need to put @ in the referencing environment for the closure
@@ -96,11 +98,11 @@ class RecordTagger
         recordTagger.edit recordTagger
         event.preventDefault()
         event.stopImmediatePropagation()
-      edit: (event) -> 
+      edit: (event) ->
         recordTagger.edit recordTagger
         event.preventDefault()
         event.stopImmediatePropagation()
-      save: (event) -> 
+      save: (event) ->
         recordTagger.save recordTagger
         event.preventDefault()
         event.stopImmediatePropagation()
