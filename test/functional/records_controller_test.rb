@@ -70,8 +70,13 @@ class RecordsControllerTest < ActionController::TestCase
       {count: 1, data: {method: :delete, confirm: "Are you sure you want to delete these records?"}}
   end
 
-  test "should show user tag search and tag list" do
+  test "should show user tag search and tags link only when there are tags" do
     UserSession.create(@user)
+    get :index
+    assert_response :success
+    assert_nil response.headers['X-CSRF-Token']
+    assert_select "form#user_tags_search.form-search.js", 0
+    assert_select "div#user_tags", 0
     @user.tag(@user_record, with: "tag one", on: :tags)
     get :index
     assert_response :success
@@ -83,7 +88,7 @@ class RecordsControllerTest < ActionController::TestCase
     end
     assert_select "div#user_tags" do |elements|
       elements.each do |element|
-        assert_select element, "ul.tags-list li a", { count: 1, text: "tag one", href: "records?tags=tag+one" }
+        assert_select element, "ul.nav-list > li > a", { count: 1, text: "Your labels", href: "users/tags"}
       end
     end
   end

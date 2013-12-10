@@ -1,1 +1,2 @@
+<%= paginate @tags, :theme => "bootstrap" unless request.xhr? %>
 <%= render 'users/tags', tags: @tags %>

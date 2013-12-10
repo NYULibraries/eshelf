@@ -1,0 +1,94 @@
+# UserTags
+class UserTags
+  # Contructor requires a container
+  constructor: (container) ->
+    @container = $(container)
+    @form = @container.prevAll('form')
+    @url = @form.attr("action")
+    @input = $("input[name='tag']", @form)
+    # Need to put @ in the referencing environment for the closures
+    # so we set it to a local variable, userTags
+    userTags = @
+    # RecordTagger triggers a "tagListSaved" event from document on a successful
+    # save of a tag list.  Bind an event handler to that event which updates the
+    # user's tags.
+    $(document).bind "tagListSaved", (event) ->
+      userTags.filter(userTags.input.val())
+    # Disable the user's tags search form
+    @form.submit (event)-> false
+    # and attach a typeahead
+    @input.typeahead
+      source: (query, process) -> userTags.filter(query)
+      minLength: 0
+      items: 20
+    # and attach a handler to the keyup event to handle
+    # a cleared input field
+    # http://stackoverflow.com/questions/4403444/jquery-how-to-trigger-an-event-when-the-user-clear-a-textbox
+    @input.keyup (event) ->
+      userTags.filter() unless userTags.input.val().length >> 0
+    # Filter with no input to initialize
+    @filter()
+
+  # Filter based on the query
+  filter: (query) ->
+    # (Re)Set current page
+    @currentPage = 1
+    # Need to put @ in the referencing environment for the closures
+    # so we set it to a local variable, userTags
+    userTags = @
+    # Get the tags-list and replace container with response
+    @get query, (response) ->
+      userTags.container.html(response)
+      userTags.appendNextControl(response)
+
+  # Append the next page
+  next: (query) ->
+    # Increment current page
+    @currentPage++
+    # Need to put @ in the referencing environment for the closures
+    # so we set it to a local variable, userTags
+    userTags = @
+    # Get the tags list and append response to tag list
+    @get query, (response) ->
+      userTags.appendNextControl response, () ->
+        $(".tags-list", userTags.container).
+          append($("li", response))
+
+  # Get the user tags
+  get: (query, callback) ->
+    # Set the data
+    data =
+      page: @currentPage
+      tag: query if query?
+    # and make the call
+    $.get @url, data, callback, "html"
+
+  nextControl: () ->
+    # Need to put @ in the referencing environment for the closures
+    # so we set it to a local variable, userTags
+    userTags = @
+    @_nextControl ||= $("<button/>").addClass("btn more_tags").
+      text("<%= I18n.t("shelf.tags.more") %>").click (event) ->
+        userTags.next(userTags.input.val())
+        event.preventDefault()
+        event.stopPropagation()
+
+  appendNextControl: (response, block) ->
+    # Remove the current nextControl
+    @_nextControl.remove() if @_nextControl?
+    @_nextControl = null
+    # Call the block if one was passed in
+    block() if block?
+    # Append the nextControl to the container
+    @container.append(@nextControl())
+    responseSize = $("li", response).length
+    @nextControl().hide() if responseSize < 20
+
+  # UserTags as an HTML string
+  html: () ->
+    $("<span/>").append(@container).html()
+
+# Make the class accessible
+window.eshelf ||= {}
+window.eshelf.tags ||= {}
+window.eshelf.tags.UserTags = UserTags

@@ -23,7 +23,8 @@ class UsersController < ApplicationController
   # Display the tags for the current user.
   def tags
     return head :unauthorized unless current_user
-    @tags = current_user.owned_tags.where("name like ?", "%#{params[:tag]}%")
+    @tags = current_user.owned_tags.where("name like ?", "%#{params[:tag]}%").
+      page(params[:page]).per(20)
     respond_with(@tags)
   end
 end

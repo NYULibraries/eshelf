@@ -73,13 +73,13 @@ describe "Populate RecordTagger", ->
         # Spy on recordTagger#saved
         spyOn recordTagger, "saved"
         # Spy on the Ajax Success Event from jQuery
-        ajaxSuccessSpy = -> 
+        ajaxSuccessSpy = ->
           ajaxSuccessFlag = true
           console.log "success"
         $(document).ajaxSuccess(ajaxSuccessSpy)
         recordTagger.save(recordTagger)
       # Wait for an Ajax Success Event to be triggered
-      waitsFor (()-> ajaxSuccessFlag == true), 
+      waitsFor (()-> ajaxSuccessFlag == true),
         "Ajax should successfully return",500
       # Make sure that saved called
       runs ->

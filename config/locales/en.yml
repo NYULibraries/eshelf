@@ -9,6 +9,8 @@ en:
       title_html: Formats
     tags:
       title_html: Labels
+      user_tags_html: Your labels
+      more: more labels
       placeholder: Filter labels
     links:
       account_html: My library account

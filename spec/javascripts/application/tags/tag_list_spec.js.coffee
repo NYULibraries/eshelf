@@ -25,7 +25,7 @@ describe "TagList", ->
       expect(tagList.html).toBeDefined()
 
     it "should be defined", ->
-      expect(tagList.html()).toEqual "<span>"+
+      expect(tagList.html()).toEqual "<span class=\"tag_list\">"+
         "<a href=\"?tag=this%20tag\">this tag</a>, "+
           "<a href=\"?tag=another%20tag\">another tag</a></span>"
 
@@ -53,4 +53,4 @@ describe "Empty TagList", ->
       expect(emptyTagList.html).toBeDefined()
 
     it "should be defined", ->
-      expect(emptyTagList.html()).toEqual "<span></span>"
+      expect(emptyTagList.html()).toEqual "<span class=\"tag_list\"></span>"

@@ -8,7 +8,8 @@ class TagList
     @tags.length
 
   jQuery: ()->
-    @_jQuery ||= $("<span/>").append((tag.html() for tag in @tags).join(", "))
+    @_jQuery ||= $("<span/>").addClass("tag_list").
+      append((tag.html() for tag in @tags).join(", "))
 
   html: () ->
     $("<span/>").append(@jQuery()).html()

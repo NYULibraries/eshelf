@@ -47,7 +47,7 @@ gem "nokogiri", "~>1.6.0"
 gem "exlibris-nyu", git: "git://github.com/NYULibraries/exlibris-nyu.git", branch: "development"
 gem "authpds-nyu", git: "git://github.com/NYULibraries/authpds-nyu.git", tag: 'v1.1.3'
 gem "acts_as_citable", "~> 2.0.0"
-gem "ex_cite", "~> 1.2.5"
+gem "ex_cite", "~> 1.2.6"
 gem 'nyulibraries_deploy', git: "git://github.com/NYULibraries/nyulibraries_deploy.git", tag: "v3.2.0"
 
 # Middleware for jruby

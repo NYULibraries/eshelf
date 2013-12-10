@@ -36,3 +36,19 @@
 input#select {
   vertical-align: top;
 }
+
+#user_tags {
+  height: 30em;
+  overflow-x: auto;
+  overflow-y: scroll;
+  position: relative;
+}
+
+.more_tags {
+  display: block;
+  width: 100%;
+}
+
+.tag_list {
+  padding-right: 1em;
+}

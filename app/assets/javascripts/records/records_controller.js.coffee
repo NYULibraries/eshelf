@@ -11,12 +11,14 @@ class RecordsController
   # Create a record based on the given target
   create: (target) ->
     text = "Saving..."
-    @target_label(target).replaceWith "<label for=\"#{this.id}\">#{text}</label>"
+    @target_label(target).replaceWith "<label for=\"#{this.id}\">#{text}"+
+      "</label>"
     $.ajax @_crud_settings("POST", target)
   # Destroy a record based on the given target
   destroy: (target) ->
     text = "Removing..."
-    @target_label(target).replaceWith "<label for=\"#{this.id}\">#{text}</label>"
+    @target_label(target).replaceWith "<label for=\"#{this.id}\">#{text}"+
+      "</label>"
     $.ajax @_crud_settings("DELETE", target)
 
   # Convenience method to get the target label
@@ -37,7 +39,8 @@ class RecordsController
     return if @_initialized
     external_ids = $(@selector).map (index, target) ->
       "external_id[]=#{$(target).data().eshelfExternalId}"
-    from_url = "#{@url}/records/from/#{@external_system}.json?per=all&#{external_ids.toArray().join("&")}"
+    from_url = "#{@url}/records/from/#{@external_system}.json?per=all&"+
+      "#{external_ids.toArray().join("&")}"
     $.ajax from_url, @_initialize_settings($(@selector))
   # "Private" method returns CORS setting
   _initialize_settings: (target) ->

@@ -1,31 +1,6 @@
-# Reset the user tags from source
-reset_user_tags = () ->
-  filter_user_tags("")
-
-# Filter the user tags from source
-filter_user_tags = (query) ->
-  url = user_tags_search_input().closest("form").attr("action")
-  data = "tag=#{query}" if query?
-  $('#user_tags').load url, data
-  false
-
-user_tags_search_input = () ->
-  $("#user_tags_search input[name='tag']")
-
 $ ->
   # Grab the tag list inputs
   inputs = $(".record_tag_list input[name='record[tag_list]']")
   # Set the RecordTaggers for each input (i.e. record)
   taggers = (new window.eshelf.tags.RecordTagger input for input in inputs)
-  # RecordTagger triggers a "tagListSaved" event from document on a successful
-  # save of a tag list.  Bind an event handler that updates the user tags to
-  # that event.
-  # $(document).bind "tagListSaved", (event) ->
-  #   # Reset the user tags in the sidebar, unless it's got some input
-  #   reset_user_tags() unless user_tags_search_input().val()
-  # Disable the user's tags search form
-  $("#user_tags_search").submit (event)-> false
-  # and attach a typeahead
-  user_tags_search_input().typeahead
-    source: (query, process) -> filter_user_tags(query)
-    minLength: 0
+  user_tags = new window.eshelf.tags.UserTags $("#user_tags")

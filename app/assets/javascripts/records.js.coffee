@@ -1,21 +1,22 @@
 # Required data attributes
 #   - external system: external system being used
-# 
+#
 # Optional data attributes
 #   - user: boolean indicating if this is a logged in user
 #   - selector: selector for eshelf elements
 #   - record: function that returns a record given a target
-#   - success: callback function that gets called by the records controller on success
+#   - success: callback function that gets called by the records
+#              controller on success
 #   - error: callback function that gets called by the records controller
 #   - records_controller: function that returns a records controller
-# 
+#
 # Sprockets 'requires'
 #   - include jquery and all records classes
-# 
+#
 #= require jquery
 #= require modernizr
 #= require_tree ./records
-_eshelf = _eshelf || [];
+_eshelf = _eshelf || []
 if $('.cors #eshelf-records-controller')
   ((src, options) ->
     _eshelf =
@@ -34,7 +35,8 @@ if $('.cors #eshelf-records-controller')
       #   - login-url: login URL string
       #   - selector: selector for eshelf elements
       #   - record: function that returns a record given a target
-      #   - success: callback function that gets called by the records controller on success
+      #   - success: callback function that gets called by the records
+      #              controller on success
       #   - error: callback function that gets called by the records controller
       user: () ->
         @_user ||= (options.eshelfUser || @defaults.user)
@@ -64,6 +66,7 @@ if $('.cors #eshelf-records-controller')
       record: _eshelf.record()
 
     # Set up the on click event for the targets
-    $(document).on('click', _eshelf.selector(), (event) -> records_controller.toggle(event.target))
-  )($('.cors #eshelf-records-controller').attr('src'), $('.cors #eshelf-records-controller').data())
-
+    $(document).on 'click', _eshelf.selector(), (event) ->
+      records_controller.toggle(event.target)
+  )($('.cors #eshelf-records-controller').attr('src'),
+    $('.cors #eshelf-records-controller').data())

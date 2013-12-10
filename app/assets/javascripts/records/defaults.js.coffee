@@ -33,11 +33,13 @@ class Defaults
           "In e-Shelf"
         else
           "In guest e-Shelf "+
-          "#{"(#{login_anchor login_url, "login to save permanently"})" unless @institution is "BHS"}"
+          "#{"(#{login_anchor login_url, "login to save permanently"}"+
+          ")" unless @institution is "BHS"}"
       else
         text = "Add to e-Shelf"
       $(target).removeAttr('disabled')
-      target_label(target).replaceWith "<label for=\"#{this.id}\">#{text}</label>"
+      target_label(target).replaceWith "<label for=\"#{this.id}\">#{text}"+
+        "</label>"
   # What should we do on a unsuccessful AJAX call
   # Default to some different HTML manipulation
   # Context (this) is the controller
@@ -49,7 +51,8 @@ class Defaults
     target_label = @target_label
     $(targets).each (index, target) ->
       text = "Could not contact e-Shelf"
-      target_label(target).replaceWith "<label for=\"#{this.id}\">#{text}</label>"
+      target_label(target).replaceWith "<label for=\"#{this.id}\">#{text}"+
+        "</label>"
 
 # Make the Defaults class accessible
 window.eshelf ||= {}

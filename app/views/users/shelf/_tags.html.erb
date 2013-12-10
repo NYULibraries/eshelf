@@ -3,5 +3,10 @@
   <%= form_tag user_tags_path, method: :get, remote: true, id: "user_tags_search", class: "form-search js" do %>
     <%= text_field_tag :tag, nil, placeholder: t('shelf.tags.placeholder'), class: ["input-small", "search-query"], autocomplete: "off" %>
   <% end %>
-  <div id="user_tags"><%= render 'users/tags', tags: current_user.owned_tags %></div>
+  <div id="user_tags">
+    <%- # Link to user tags if there isn't any JS. -%>
+    <ul class="nav-list no-js">
+      <li><%= link_to t('shelf.tags.user_tags_html'), user_tags_path %></li>
+    </ul>
+  </div>
 <% end %>

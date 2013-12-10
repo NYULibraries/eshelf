@@ -1,4 +1,5 @@
 class RecordTagger
+  # Contructor requires an input
   constructor: (input) ->
     # jQuery the input
     @input = $(input)
@@ -19,6 +20,7 @@ class RecordTagger
     # Start out in a saved state
     @saved @
 
+  # Refresh the RecordTagger
   refresh: () ->
     # Remove this record tagger if it's already in the DOM
     $("##{@id}").remove()
