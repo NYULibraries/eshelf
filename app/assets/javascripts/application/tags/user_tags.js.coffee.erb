@@ -26,8 +26,20 @@ class UserTags
     # http://stackoverflow.com/questions/4403444/jquery-how-to-trigger-an-event-when-the-user-clear-a-textbox
     @input.keyup (event) ->
       userTags.filter() unless userTags.input.val().length >> 0
+    @enableNext()
     # Filter with no input to initialize
     @filter()
+
+  enableNext: () ->
+    # Need to put @ in the referencing environment for the closures
+    # so we set it to a local variable, userTags
+    userTags = @
+    @container.on "scroll", () ->
+      if userTags.container.scrollTop() > userTags.container.height() - 200
+        userTags.next userTags.input.val()
+
+  disableNext: (response) ->
+    @container.off "scroll" if $("li", response).length < 20
 
   # Filter based on the query
   filter: (query) ->
@@ -38,11 +50,13 @@ class UserTags
     userTags = @
     # Get the tags-list and replace container with response
     @get query, (response) ->
-      userTags.container.html(response)
-      userTags.appendNextControl(response)
+      userTags.enableNext()
+      userTags.container.html response
 
   # Append the next page
   next: (query) ->
+    # Stop if next is disabled
+    return false if @nextDisabled
     # Increment current page
     @currentPage++
     # Need to put @ in the referencing environment for the closures
@@ -50,39 +64,24 @@ class UserTags
     userTags = @
     # Get the tags list and append response to tag list
     @get query, (response) ->
-      userTags.appendNextControl response, () ->
-        $(".tags-list", userTags.container).
-          append($("li", response))
+      $(".tags-list", userTags.container).append($("li", response))
 
   # Get the user tags
-  get: (query, callback) ->
+  get: (query, manipulate) ->
     # Set the data
     data =
       page: @currentPage
       tag: query if query?
-    # and make the call
-    $.get @url, data, callback, "html"
-
-  nextControl: () ->
     # Need to put @ in the referencing environment for the closures
     # so we set it to a local variable, userTags
     userTags = @
-    @_nextControl ||= $("<button/>").addClass("btn more_tags").
-      text("<%= I18n.t("shelf.tags.more") %>").click (event) ->
-        userTags.next(userTags.input.val())
-        event.preventDefault()
-        event.stopPropagation()
-
-  appendNextControl: (response, block) ->
-    # Remove the current nextControl
-    @_nextControl.remove() if @_nextControl?
-    @_nextControl = null
-    # Call the block if one was passed in
-    block() if block?
-    # Append the nextControl to the container
-    @container.append(@nextControl())
-    responseSize = $("li", response).length
-    @nextControl().hide() if responseSize < 20
+    # The callback manipulates the response and
+    # disables next if appropriate
+    callback = (response) -> 
+      manipulate response
+      userTags.disableNext response
+    # and make the call
+    $.get @url, data, callback, "html"
 
   # UserTags as an HTML string
   html: () ->

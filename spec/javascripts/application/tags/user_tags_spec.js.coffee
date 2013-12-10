@@ -72,25 +72,10 @@ describe "UserTags", ->
     it "should be defined", ->
       expect(userTags.next).toBeDefined()
 
-  describe "#nextControl", ->
+  describe "#enableNext", ->
     it "should be defined", ->
-      expect(userTags.nextControl).toBeDefined()
+      expect(userTags.enableNext).toBeDefined()
 
-    it "should be a HTML button", ->
-      html = $("<span/>").append(userTags.nextControl()).html()
-      expectedHtml = 
-        "<button class=\"btn more_tags\">more labels</button>"
-      expect(html).toEqual(expectedHtml)
-
-  describe "#appendNextControl", ->
-    beforeEach ->
-      userTags.appendNextControl()
-
+  describe "#disableNext", ->
     it "should be defined", ->
-      expect(userTags.appendNextControl).toBeDefined()
-
-    it "nextControl should exist", ->
-      expect(userTags.nextControl()).toExist()
-
-    it "nextControl should not be visible", ->
-      expect(userTags.nextControl()).not.toBeVisible()
+      expect(userTags.disableNext).toBeDefined()
