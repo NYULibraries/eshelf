@@ -92,5 +92,5 @@ describe "UserTags", ->
     it "nextControl should exist", ->
       expect(userTags.nextControl()).toExist()
 
-    it "nextControl should be visible", ->
-      expect(userTags.nextControl()).toBeVisible()
+    it "nextControl should not be visible", ->
+      expect(userTags.nextControl()).not.toBeVisible()
