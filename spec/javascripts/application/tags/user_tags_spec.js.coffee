@@ -54,21 +54,22 @@ describe "UserTags", ->
     it "should have 1 as the current page", ->
       expect(userTags.currentPage).toBe(1)
 
+  describe "#disabled", ->
+    it "should be defined", ->
+      expect(userTags.disabled).toBeDefined()
+
+    xit "should be false", ->
+      expect(userTags.disabled).toBe(false)
+
   describe "#get", ->
     it "should be defined", ->
       expect(userTags.get).toBeDefined()
 
   describe "#filter", ->
-    beforeEach ->
-      userTags.filter()
-
     it "should be defined", ->
       expect(userTags.filter).toBeDefined()
 
   describe "#next", ->
-    beforeEach ->
-      userTags.next()
-
     it "should be defined", ->
       expect(userTags.next).toBeDefined()
 

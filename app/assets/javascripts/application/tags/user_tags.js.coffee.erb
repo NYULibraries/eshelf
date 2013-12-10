@@ -6,6 +6,7 @@ class UserTags
     @form = @container.prevAll('form')
     @url = @form.attr("action")
     @input = $("input[name='tag']", @form)
+    @disabled = false
     # Need to put @ in the referencing environment for the closures
     # so we set it to a local variable, userTags
     userTags = @
@@ -55,16 +56,15 @@ class UserTags
 
   # Append the next page
   next: (query) ->
-    # Stop if next is disabled
-    return false if @nextDisabled
-    # Increment current page
-    @currentPage++
-    # Need to put @ in the referencing environment for the closures
-    # so we set it to a local variable, userTags
-    userTags = @
-    # Get the tags list and append response to tag list
-    @get query, (response) ->
-      $(".tags-list", userTags.container).append($("li", response))
+    unless @disabled
+      # Increment current page
+      @currentPage++
+      # Need to put @ in the referencing environment for the closures
+      # so we set it to a local variable, userTags
+      userTags = @
+      # Get the tags list and append response to tag list
+      @get query, (response) ->
+        $(".tags-list", userTags.container).append($("li", response))
 
   # Get the user tags
   get: (query, manipulate) ->
@@ -77,8 +77,10 @@ class UserTags
     userTags = @
     # The callback manipulates the response and
     # disables next if appropriate
+    @disabled = true
     callback = (response) -> 
       manipulate response
+      userTags.disabled = false
       userTags.disableNext response
     # and make the call
     $.get @url, data, callback, "html"
