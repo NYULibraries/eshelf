@@ -3,7 +3,6 @@ class UserTags
   # Contructor requires a container
   constructor: (container) ->
     @container = $(container)
-    @container.addClass("scroll")
     @form = @container.prevAll('form')
     @url = @form.attr("action")
     @input = $("input[name='tag']", @form)
@@ -32,15 +31,26 @@ class UserTags
     # Filter with no input to initialize
     @filter()
 
+  size: () ->
+    $('.tags-list > li', @container).length
+
+  height: () ->
+    @container.height()
+
   enableNext: () ->
     # Need to put @ in the referencing environment for the closures
     # so we set it to a local variable, userTags
     userTags = @
     @container.on "scroll", () ->
-      if userTags.container.scrollTop() > userTags.container.height() - 200
+      if userTags.container.scrollTop() > userTags.height() - 200
         userTags.next userTags.input.val()
 
   handleNext: (response) ->
+    # Set the scrollbar style
+    if @height() < $('.tags-list', @container).height()
+      @container.addClass("scroll")
+    else
+      @container.removeClass("scroll")
     if $("li", response).length < 20
       @container.off "scroll"
 

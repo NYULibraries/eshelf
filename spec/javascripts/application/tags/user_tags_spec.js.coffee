@@ -51,8 +51,22 @@ describe "UserTags", ->
     it "should be defined", ->
       expect(userTags.currentPage).toBeDefined()
 
-    it "should have 1 as the current page", ->
+    it "should be 1", ->
       expect(userTags.currentPage).toBe(1)
+
+  describe "#height", ->
+    it "should be defined", ->
+      expect(userTags.height).toBeDefined()
+
+    it "should be 0", ->
+      expect(userTags.height()).toBe(0)
+
+  describe "#size", ->
+    it "should be defined", ->
+      expect(userTags.size).toBeDefined()
+
+    it "should be 0", ->
+      expect(userTags.size()).toBe(0)
 
   describe "#disabled", ->
     it "should be defined", ->
