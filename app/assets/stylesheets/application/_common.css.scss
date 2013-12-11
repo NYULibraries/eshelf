@@ -45,11 +45,11 @@ input#select {
   &::-webkit-scrollbar {
     width: 6px;
   }
-  &::-webkit-scrollbar-thumb {
+  &.scroll::-webkit-scrollbar-thumb {
     @include border-radius(4px);
     background-color: grey;
   }
-  &::-webkit-scrollbar-track-piece {
+  &.scroll::-webkit-scrollbar-track-piece {
     @include border-radius(4px);
     background-color: whitesmoke;
   }

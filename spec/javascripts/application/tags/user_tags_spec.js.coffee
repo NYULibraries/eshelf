@@ -77,6 +77,6 @@ describe "UserTags", ->
     it "should be defined", ->
       expect(userTags.enableNext).toBeDefined()
 
-  describe "#disableNext", ->
+  describe "#handleNext", ->
     it "should be defined", ->
-      expect(userTags.disableNext).toBeDefined()
+      expect(userTags.handleNext).toBeDefined()

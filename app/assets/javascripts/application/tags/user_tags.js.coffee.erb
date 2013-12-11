@@ -3,6 +3,7 @@ class UserTags
   # Contructor requires a container
   constructor: (container) ->
     @container = $(container)
+    @container.addClass("scroll")
     @form = @container.prevAll('form')
     @url = @form.attr("action")
     @input = $("input[name='tag']", @form)
@@ -39,8 +40,9 @@ class UserTags
       if userTags.container.scrollTop() > userTags.container.height() - 200
         userTags.next userTags.input.val()
 
-  disableNext: (response) ->
-    @container.off "scroll" if $("li", response).length < 20
+  handleNext: (response) ->
+    if $("li", response).length < 20
+      @container.off "scroll"
 
   # Filter based on the query
   filter: (query) ->
@@ -81,7 +83,7 @@ class UserTags
     callback = (response) -> 
       manipulate response
       userTags.disabled = false
-      userTags.disableNext response
+      userTags.handleNext response
     # and make the call
     $.get @url, data, callback, "html"
 
