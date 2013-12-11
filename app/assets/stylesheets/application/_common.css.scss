@@ -42,6 +42,17 @@ input#select {
   overflow-x: auto;
   overflow-y: scroll;
   position: relative;
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    @include border-radius(4px);
+    background-color: grey;
+  }
+  &::-webkit-scrollbar-track-piece {
+    @include border-radius(4px);
+    background-color: whitesmoke;
+  }
 }
 
 .more_tags {
