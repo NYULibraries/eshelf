@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: git://github.com/NYULibraries/exlibris-nyu.git
-  revision: 3aed2af711f4bb62bf30b4fdbc1d84ac82383c94
+  revision: 190caf5baa01ddcaba32d738eb4ab3de1fc4214c
   branch: development
   specs:
     exlibris-nyu (1.1.2)
@@ -20,11 +20,11 @@ GIT
       require_all (~> 1.3.1)
 
 GIT
-  remote: git://github.com/NYULibraries/nyulibraries_assets.git
-  revision: 4fb0bf1515d08a236352c4038e0b574c68df1c83
-  tag: v1.2.0
+  remote: git://github.com/NYULibraries/nyulibraries-assets.git
+  revision: 78cf48ca4192be2cb8a7c85326f703e57836e2db
+  tag: v2.0.0
   specs:
-    nyulibraries_assets (1.2.0)
+    nyulibraries-assets (2.0.0)
       bootstrap-sass (>= 2.2.0, < 2.3.1.1)
       compass (~> 0.12.2)
       institutions (~> 0.1.1)
@@ -366,7 +366,7 @@ DEPENDENCIES
   mysql2 (~> 0.3.11)
   newrelic_rpm (~> 3.6.8)
   nokogiri (~> 1.6.0)
-  nyulibraries_assets!
+  nyulibraries-assets!
   nyulibraries_deploy!
   pry
   puma (~> 2.6.0)

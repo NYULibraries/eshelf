@@ -9,7 +9,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-require 'nyulibraries_assets'
+require 'nyulibraries-assets'
 require 'ex_cite/engine'
 
 module Eshelf
