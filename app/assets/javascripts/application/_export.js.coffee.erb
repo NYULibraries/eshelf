@@ -8,7 +8,11 @@ gather_ids = (event)->
     return false
   $("#select_something").hide()
   # Add question mark if necessary
-  event.target.href += "?" unless event.target.href.match '\\?'
+  unless event.target.href.match '\\?'
+    event.target.href += "?"
+  # Add an ampersand if necessary
+  unless event.target.href.match '\\?$' or event.target.href.match '&$'
+    event.target.href += "&"
   # Get the expired data
   expired_data = $(event.target).attr("data-expired")
   # Remove the expired data, if there is any
