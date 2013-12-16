@@ -12,8 +12,8 @@ gather_ids = (event)->
   # Get the expired data
   expired_data = $(event.target).attr("data-expired")
   # Remove the expired data, if there is any
-  event.target.href =
-    event.target.href.replace(expired_data, "") if expired_data
+  if expired_data
+    event.target.href = event.target.href.replace(expired_data, "")
   # Append the checkedIDs to the URL.
   event.target.href += $.param(checked_ids)
   # Expire this data
