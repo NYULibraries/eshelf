@@ -2,7 +2,14 @@
 describe "TagList", ->
   tagList = null
   beforeEach ->
-    tagList = new window.eshelf.tags.TagList "this tag", "another tag"
+    tagList = new window.eshelf.tags.TagList "NYU", "this tag", "another tag"
+
+  describe "#instituion", ->
+    it "should be defined", ->
+      expect(tagList.institution).toBeDefined()
+
+    it "should be 'NYU'", ->
+      expect(tagList.institution).toEqual("NYU")
 
   describe "#tags", ->
     it "should be defined", ->
@@ -10,8 +17,8 @@ describe "TagList", ->
 
     it "should have tags from the given input", ->
       expect(tagList.tags).toEqual [
-        new window.eshelf.tags.Tag("this tag"),
-          new window.eshelf.tags.Tag("another tag")]
+        new window.eshelf.tags.Tag("this tag", "NYU"),
+          new window.eshelf.tags.Tag("another tag", "NYU")]
 
   describe "#size", ->
     it "should be defined", ->
@@ -26,8 +33,9 @@ describe "TagList", ->
 
     it "should be defined", ->
       expect(tagList.html()).toEqual "<span class=\"tag_list\">"+
-        "<a href=\"?tag=this%20tag\">this tag</a>, "+
-          "<a href=\"?tag=another%20tag\">another tag</a></span>"
+        "<a href=\"?tag=this%20tag&amp;institution=NYU\">this tag</a>, "+
+          "<a href=\"?tag=another%20tag&amp;institution=NYU\">another tag</a>"+
+            "</span>"
 
 describe "Empty TagList", ->
   emptyTagList = null

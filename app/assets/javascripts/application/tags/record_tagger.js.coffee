@@ -20,6 +20,28 @@ class RecordTagger
     # Start out in a saved state
     @saved @
 
+  # Return the institution from the query string
+  institution: () ->
+    return @_institution if @_institution?
+    search = window.location.search
+    # Get rid of the ? if it's there
+    search = search.slice 1 if /^\?/.test(search)
+    # Split on ampersand
+    search = search.split '&'
+    # Set up the institution matching RegEx
+    institutionRegEx = /institution=([A-Z]+)/
+    # Filter search elements with the institution matching RegEx
+    institutionSearches = $.grep search, (searchElement, index) ->
+      institutionRegEx.test searchElement
+    # Get the first institution match
+    institutionSearch = institutionSearches.shift()
+    # If there is a match get the institution,
+    # otherwise set to empty string
+    if institutionSearch?
+      @_institution = institutionSearch.match(institutionRegEx)[1]
+    else
+      @_institution = ""
+
   # Refresh the RecordTagger
   refresh: () ->
     # Remove this record tagger if it's already in the DOM
@@ -83,7 +105,7 @@ class RecordTagger
   # Returns a tag list based on parsed tags from the input
   tagList: () ->
     # Parse the tags and pass them to the parent
-    @_tagList ||= new window.eshelf.tags.TagList @parseTags()...
+    @_tagList ||= new window.eshelf.tags.TagList @institution(), @parseTags()...
 
   # Returns the jQuery'd tag list
   tags: () ->

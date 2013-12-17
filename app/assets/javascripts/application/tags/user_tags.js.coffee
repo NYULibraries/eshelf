@@ -90,7 +90,7 @@ class UserTags
     # The callback manipulates the response and
     # disables next if appropriate
     @disabled = true
-    callback = (response) -> 
+    callback = (response) ->
       manipulate response
       userTags.disabled = false
       userTags.handleNext response

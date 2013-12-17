@@ -1,8 +1,9 @@
 class TagList
-  constructor: (tags...) ->
+  constructor: (institution, tags...) ->
+    @institution = institution
     # Create an array of tags from the given values
     @tags = []
-    @tags = (new window.eshelf.tags.Tag(tag) for tag in tags)
+    @tags = (new window.eshelf.tags.Tag(tag, @institution) for tag in tags)
 
   size: () ->
     @tags.length
