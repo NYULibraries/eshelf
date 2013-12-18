@@ -37,6 +37,10 @@ input#select {
   vertical-align: top;
 }
 
+.record_tag_list > label {
+  margin-bottom: 1px;
+}
+
 #user_tags {
   height: 30em;
   overflow-x: auto;

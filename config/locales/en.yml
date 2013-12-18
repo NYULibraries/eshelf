@@ -39,3 +39,4 @@ en:
     language_label: "Language:"
     description_label: "Description:"
     notes_label: "Notes:"
+    created_at_label: "Added:"
