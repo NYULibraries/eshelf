@@ -36,7 +36,7 @@ class EmailDecoratorTest < ActiveSupport::TestCase
 
   test "email url" do
     email_record = RecordDecorator::EmailDecorator.new(@brief_citation_record)
-    assert_equal "GetIt @ getit/#{@record.id}", @labeled_record.url, "Unexpected url"
+    assert_equal "getit/#{@record.id}", @labeled_record.url, "Unexpected url"
   end
 
 end

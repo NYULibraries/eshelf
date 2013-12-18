@@ -802,7 +802,7 @@ class RecordsControllerTest < ActionController::TestCase
     assert_equal("<li>\n      "+
       "<p><strong>Travels with my aunt [videorecording] (video)</strong></p>"+
       "<p>Locations: NYU Bobst Avery Fisher Center Main Collection</p>"+
-      "<p>GetIt @ #{record_getit_url(record)}</p>\n    </li>", element.to_s)
+      "<p>#{record_getit_url(record)}</p>\n    </li>", element.to_s)
   end
 
   def assert_last_brief_print_record(element, record)
@@ -811,6 +811,6 @@ class RecordsControllerTest < ActionController::TestCase
       "<p><div>Locations:</div>"+
       "<div class=\"location\">NYU Bobst Main Collection (HN49.I56 M67 2003 )</div>"+
       "<div class=\"location\">New School Fogelman Library Main Collection (HN49.I56 M67 2003 )</div></p>"+
-      "<p>GetIt @ #{record_getit_url(record)}</p>\n    </li>", element.to_s)
+      "<p>#{record_getit_url(record)}</p>\n    </li>", element.to_s)
   end
 end

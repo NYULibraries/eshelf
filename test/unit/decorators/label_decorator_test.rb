@@ -16,7 +16,7 @@ class LabelDecoratorTest < ActiveSupport::TestCase
   end
 
   test "label url" do
-    assert_equal "GetIt @ getit/#{@record.id}", @labeled_record.url, "Unexpected url"
+    assert_equal "getit/#{@record.id}", @labeled_record.url, "Unexpected url"
   end
 
   test "locations label" do

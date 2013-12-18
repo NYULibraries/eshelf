@@ -15,12 +15,12 @@ class RecordDecoratorTest < ActiveSupport::TestCase
     assert_nothing_raised {
       email = RecordDecorator.email(@record, MockRecordDecoratorViewContext.new, "brief")
       assert_equal "book", email.content_type, "Unexpected content type"
-      assert_equal "GetIt @ getit/#{@record.id}", email.url, "Unexpected url"
+      assert_equal "getit/#{@record.id}", email.url, "Unexpected url"
     }
     assert_nothing_raised {
       email = RecordDecorator.email(@xerxes_record, MockRecordDecoratorViewContext.new, "brief")
       assert_equal "article", email.content_type, "Unexpected content type"
-      assert_equal "GetIt @ getit/#{@xerxes_record.id}", email.url, "Unexpected url"
+      assert_equal "getit/#{@xerxes_record.id}", email.url, "Unexpected url"
     }
   end
 
@@ -28,12 +28,12 @@ class RecordDecoratorTest < ActiveSupport::TestCase
     assert_nothing_raised {
       print = RecordDecorator.print(@record, MockRecordDecoratorViewContext.new, "brief")
       assert_equal "book", print.content_type, "Unexpected content type"
-      assert_equal "GetIt @ getit/#{@record.id}", print.url, "Unexpected url"
+      assert_equal "getit/#{@record.id}", print.url, "Unexpected url"
     }
     assert_nothing_raised {
       print = RecordDecorator.print(@xerxes_record, MockRecordDecoratorViewContext.new, "brief")
       assert_equal "article", print.content_type, "Unexpected content type"
-      assert_equal "GetIt @ getit/#{@xerxes_record.id}", print.url, "Unexpected url"
+      assert_equal "getit/#{@xerxes_record.id}", print.url, "Unexpected url"
     }
   end
 
@@ -41,12 +41,12 @@ class RecordDecoratorTest < ActiveSupport::TestCase
     assert_nothing_raised {
       citation = RecordDecorator._citation(@record, MockRecordDecoratorViewContext.new, "brief")
       assert_equal "book", citation.content_type, "Unexpected content type"
-      assert_equal "GetIt @ getit/#{@record.id}", citation.url, "Unexpected url"
+      assert_equal "getit/#{@record.id}", citation.url, "Unexpected url"
     }
     assert_nothing_raised {
       citation = RecordDecorator._citation(@xerxes_record, MockRecordDecoratorViewContext.new, "brief")
       assert_equal "article", citation.content_type, "Unexpected content type"
-      assert_equal "GetIt @ getit/#{@xerxes_record.id}", citation.url, "Unexpected url"
+      assert_equal "getit/#{@xerxes_record.id}", citation.url, "Unexpected url"
     }
   end
 
@@ -76,12 +76,12 @@ class RecordDecoratorTest < ActiveSupport::TestCase
     assert_nothing_raised {
       labeled = RecordDecorator._label(@record, MockRecordDecoratorViewContext.new)
       assert_equal "book", labeled.content_type, "Unexpected content type"
-      assert_equal "GetIt @ getit/#{@record.id}", labeled.url, "Unexpected url"
+      assert_equal "getit/#{@record.id}", labeled.url, "Unexpected url"
     }
     assert_nothing_raised {
       labeled = RecordDecorator._label(@xerxes_record, MockRecordDecoratorViewContext.new)
       assert_equal "article", labeled.content_type, "Unexpected content type"
-      assert_equal "GetIt @ getit/#{@xerxes_record.id}", labeled.url, "Unexpected url"
+      assert_equal "getit/#{@xerxes_record.id}", labeled.url, "Unexpected url"
     }
   end
 

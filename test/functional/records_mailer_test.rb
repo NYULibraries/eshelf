@@ -71,13 +71,13 @@ class RecordsMailerTest < ActionMailer::TestCase
 
   def assert_brief_email_body(email)
     assert_equal("Virtual inequality : beyond the digital divide (book)\n"+
-      "GetIt @ #{record_getit_url(@records[0])}\n"+
+      "#{record_getit_url(@records[0])}\n"+
       "Locations: \n"+
       "\tNYU Bobst Main Collection (HN49.I56 M67 2003 )\n"+
       "\tNew School Fogelman Library Main Collection (HN49.I56 M67 2003 )\n\n"+
       "===\n"+
       "Travels with my aunt [videorecording] (video)\n"+
-      "GetIt @ #{record_getit_url(@records[1])}\n"+
+      "#{record_getit_url(@records[1])}\n"+
       "Locations: NYU Bobst Avery Fisher Center Main Collection\n\n"+
       "===\n", email.body.to_s)
   end
