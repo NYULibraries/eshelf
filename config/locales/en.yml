@@ -23,7 +23,7 @@ en:
       something: Please select some records.
       all: All
       none: None
-    url_label: "GetIt @"
+    url_label: ""
     locations_label: "Locations:"
     call_number_label: "Call number:"
     author_label: "Author:"
