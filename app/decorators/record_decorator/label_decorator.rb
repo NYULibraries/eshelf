@@ -68,7 +68,14 @@ module RecordDecorator
     end
 
     def label(attribute, datum)
-      "#{I18n.t("record.#{attribute}_label")} #{datum}" unless datum.blank?
+      if datum.present?
+        label = I18n.t("record.#{attribute}_label")
+        if label.present?
+          "#{label} #{datum}"
+        else
+          datum
+        end
+      end
     end
     private :label
   end
