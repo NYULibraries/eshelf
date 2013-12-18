@@ -70,11 +70,7 @@ module RecordDecorator
     def label(attribute, datum)
       if datum.present?
         label = I18n.t("record.#{attribute}_label")
-        if label.present?
-          "#{label} #{datum}"
-        else
-          datum
-        end
+        (label.present?) ? "#{label} #{datum}" : datum
       end
     end
     private :label
