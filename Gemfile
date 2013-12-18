@@ -15,7 +15,7 @@ group :assets do
   gem "therubyracer", "~> 0.12.0", platform: :ruby
   gem "uglifier", "~> 2.2.1"
   gem "compass-rails", "~> 1.0.3"
-  gem "nyulibraries-assets", git: "git://github.com/NYULibraries/nyulibraries-assets.git", tag: 'v2.0.0'
+  gem "nyulibraries-assets", git: "git://github.com/NYULibraries/nyulibraries-assets.git", tag: 'v2.0.1'
 end
 
 # Development gems

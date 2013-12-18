@@ -21,10 +21,10 @@ GIT
 
 GIT
   remote: git://github.com/NYULibraries/nyulibraries-assets.git
-  revision: 78cf48ca4192be2cb8a7c85326f703e57836e2db
-  tag: v2.0.0
+  revision: c9f706815aacb82a3b145d16f20603c79107f9ad
+  tag: v2.0.1
   specs:
-    nyulibraries-assets (2.0.0)
+    nyulibraries-assets (2.0.1)
       bootstrap-sass (>= 2.2.0, < 2.3.1.1)
       compass (~> 0.12.2)
       institutions (~> 0.1.1)
@@ -194,6 +194,7 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     jruby-rack (1.1.13.3)
+    json (1.8.1)
     json (1.8.1-java)
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
