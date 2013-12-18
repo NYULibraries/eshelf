@@ -72,13 +72,13 @@ gem "mustache-rails", "~> 0.2.3", :require => "mustache/railtie"
 gem "rails_config", "~> 0.3.2"
 
 # Use puma as the app server
-gem "puma", "~> 2.6.0"
+gem "puma", "~> 2.7.0"
 
 # Dalli for caching with memcached
 gem "dalli", "~> 2.6.0"
 
 # Use Kaminari for paging
-gem "kaminari", "~> 0.14.1"
+gem "kaminari", "~> 0.15.0"
 
 # Use sorted for sorting
 gem "sorted", "~> 1.0.0"
