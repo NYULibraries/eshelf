@@ -4,6 +4,7 @@
 en:
   application:
     title_html: "Eshelf @ NYU Libraries"
+    print_title: "BobCat Records"
   shelf:
     content_types:
       title_html: Formats

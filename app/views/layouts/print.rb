@@ -3,7 +3,7 @@ module Views
   module Layouts
     class Print < ActionView::Mustache
       def print_title
-        "BobCat Records"
+        t('application.print_title')
       end
 
       # Print stylesheet is assumed to be in assets/stylesheets/print.css.
