@@ -31,15 +31,15 @@ GIT
 
 GIT
   remote: git://github.com/NYULibraries/nyulibraries_deploy.git
-  revision: fb50274d12329936c7418c6c0a9931d6487b9fac
-  tag: v3.2.0
+  revision: 940ebb60652759180fbfcfaec94e6e6b6a73045d
+  tag: v3.2.1
   specs:
-    nyulibraries_deploy (3.2.0)
+    nyulibraries_deploy (3.2.1)
       cap_git_tools (~> 0.9.1)
       capistrano (~> 2.15.5)
       git (~> 1.2.5)
       mail (~> 2.5.4)
-      newrelic_rpm (~> 3.6.0)
+      newrelic_rpm (~> 3.6)
       rake (~> 10.1.0)
       require_all (~> 1.3.0)
       rvm-capistrano (~> 1.5.0)
@@ -219,7 +219,7 @@ GEM
     net-ssh (2.7.0)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
-    newrelic_rpm (3.6.9.171)
+    newrelic_rpm (3.7.0.177)
     nokogiri (1.6.1-java)
       mini_portile (~> 0.5.0)
     nori (2.1.0)
@@ -365,7 +365,7 @@ DEPENDENCIES
   mustache (= 0.99.4)
   mustache-rails (~> 0.2.3)
   mysql2 (~> 0.3.11)
-  newrelic_rpm (~> 3.6.8)
+  newrelic_rpm (~> 3.7.0)
   nokogiri (~> 1.6.0)
   nyulibraries-assets!
   nyulibraries_deploy!

@@ -48,7 +48,7 @@ gem "exlibris-nyu", git: "git://github.com/NYULibraries/exlibris-nyu.git", branc
 gem "authpds-nyu", git: "git://github.com/NYULibraries/authpds-nyu.git", tag: 'v1.1.3'
 gem "acts_as_citable", "~> 2.0.0"
 gem "ex_cite", "~> 1.3.0"
-gem 'nyulibraries_deploy', git: "git://github.com/NYULibraries/nyulibraries_deploy.git", tag: "v3.2.0"
+gem 'nyulibraries_deploy', git: "git://github.com/NYULibraries/nyulibraries_deploy.git", tag: "v3.2.1"
 
 # Middleware for jruby
 gem "jruby-rack", "~> 1.1.13", platform: :jruby
@@ -84,7 +84,7 @@ gem "kaminari", "~> 0.15.0"
 gem "sorted", "~> 1.0.0"
 
 # New Relic performance monitoring
-gem "newrelic_rpm", "~> 3.6.8"
+gem "newrelic_rpm", "~> 3.7.0"
 
 # Acts as taggable on
 gem 'acts-as-taggable-on', '~> 2.4.0'
