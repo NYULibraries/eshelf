@@ -4,6 +4,10 @@ bundler_args: --without development
 
 services:
   - memcached
+  
+before_install:
+  - echo $JAVA_OPTS
+  - export JAVA_OPTS=-Xmx512m
 
 before_script:
   - mysql -e 'create database nyu_eshelf_test;'
