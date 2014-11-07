@@ -9,7 +9,7 @@ module Views
       end
 
       def gauges_tracking_code
-        Settings.gauges.tracking_code
+        ENV['GAUGES_TOKEN']
       end
 
       # Add e-Shelf to the bread crumbs
