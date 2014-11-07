@@ -1,7 +1,7 @@
 # Default require
-require 'nyulibraries/deploy/capistrano'
+require 'formaggio/capistrano'
 # Specifying server to puma
-require 'nyulibraries/deploy/capistrano/server/puma'
+require 'formaggio/capistrano/server/puma'
 
 # Required variables
 set :app_title, "eshelf"
