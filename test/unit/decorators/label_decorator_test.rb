@@ -45,7 +45,7 @@ class LabelDecoratorTest < ActiveSupport::TestCase
   end
 
   test "label subjects" do
-    assert_equal "Subjects: GDD (Global digital divide); Digital divide; Global digital divide; Divide, Digital", @labeled_record.subjects, "Unexpected subjects"
+    assert_equal "Subjects: Digital divide; Global digital divide; GDD (Global digital divide); Divide, Digital", @labeled_record.subjects, "Unexpected subjects"
   end
 
   test "label issn" do
