@@ -3,7 +3,7 @@
 #   - :index - display a paginated list of user records optionally filtered
 #     by content type, tag and/or id as html, json, xml, ris or bibtex
 #   - :show - show a given record as html, json, xml, ris or bibtex
-#   - :from_external_system - display a paginated list of user records from a given 
+#   - :from_external_system - display a paginated list of user records from a given
 #     external system optionally filtered by external id as html, json, xml, ris or bibtex
 #   - :create - create a record via xml or json
 #   - :update - update a records tags via html, xml or json
@@ -28,7 +28,7 @@ class RecordsController < ApplicationController
   respond_to :ris, :bibtex, only: [:show, :index, :from_external_system]
   respond_to :js, only: [:api]
 
-  # Get the user's records, filtered by 
+  # Get the user's records, filtered by
   # whatever filters were given.
   def index
     # Get the user's records
@@ -40,7 +40,7 @@ class RecordsController < ApplicationController
     # Get the selected id(s) if given
     @records = @records.where(id: params[:id]).scoped if params[:id]
     # Get the relevant page unless all is specified
-    @records = (params[:per].eql? "all") ? 
+    @records = (params[:per].eql? "all") ?
       @records.page(1).per(user_records.count) : @records.page(params[:page]).per(params[:per])
     respond_with(@records.scoped) unless performed?
   end
@@ -57,7 +57,7 @@ class RecordsController < ApplicationController
     @records = user_records.where(external_system: params[:external_system]).scoped
     @records = @records.where(external_id: params[:external_id]).scoped if params[:external_id]
     # Get the relevant page unless all is specified
-    @records = (params[:per].eql? "all") ? 
+    @records = (params[:per].eql? "all") ?
       @records.page(1).per(user_records.count) : @records.page(params[:page]).per(params[:per])
     respond_with(@records) do |format|
       format.html { render :index }
@@ -134,7 +134,7 @@ class RecordsController < ApplicationController
   # that make json requests to approved API actions.
   def respond_with_csrf_header
     # Only return the authenticity token to approved origins.
-    return unless request.headers['HTTP_ORIGIN'] and Settings.origins.include? request.headers['HTTP_ORIGIN'].gsub(/https?:\/\//, '')
+    return unless request.headers['HTTP_ORIGIN'] and whitelisted_origins.include? request.headers['HTTP_ORIGIN'].gsub(/https?:\/\//, '')
     # Only return the authenticity token for JSON requests to approved API actions
     if(API_ACTIONS.include? action_name and formats.include? :json)
       response.headers['X-CSRF-Token'] = form_authenticity_token
@@ -153,4 +153,9 @@ class RecordsController < ApplicationController
     WHITELISTED_PRINT_FORMATS.find{ |format| format == candidate }
   end
   private :whitelist_print_format
+
+  # Whitelisted CORS origins
+  def whitelisted_origins
+    @whitelisted_origins ||= Figs.env['ESHELF_ORIGINS']
+  end
 end

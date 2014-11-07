@@ -72,7 +72,7 @@ module Eshelf
     # Cross Origin Request support
     config.middleware.use Rack::Cors do
       allow do
-        origins *(Settings.origins)
+        origins *(Figs.env['ESHELF_ORIGINS'])
         resource %r{/records/from/\w+.json(\?.*)?}, headers: :any, methods: [:get], expose: 'X-CSRF-Token'
         resource '/records.json', headers: :any, methods: [:post, :delete], expose: 'X-CSRF-Token'
       end
