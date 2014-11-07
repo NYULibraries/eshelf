@@ -65,6 +65,8 @@ gem "modernizr-rails", "~> 2.7.0"
 gem "mustache", "0.99.4"
 gem 'mustache-rails', github: 'josh/mustache-rails', require: 'mustache/railtie', tag: 'v0.2.3'
 
+gem 'figs', '~> 2.0.2'
+
 # Use puma as the app server
 gem "puma", "~> 2.7.0"
 
