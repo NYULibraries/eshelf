@@ -20,10 +20,7 @@ end
 
 # Development gems
 group :development do
-  gem "better_errors", "~> 1.0.1", platform: :ruby
-  gem "binding_of_caller", "~> 0.7.1", platform: :ruby
   gem "ruby-debug", "~> 0.10.4", platform: :jruby
-  gem "debugger", "~> 1.6.0", platform: :mri
   gem "pry"
 end
 

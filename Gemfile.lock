@@ -720,13 +720,10 @@ DEPENDENCIES
   acts-as-taggable-on (~> 2.4.0)
   acts_as_citable (~> 2.0.0)
   authpds-nyu!
-  better_errors (~> 1.0.1)
-  binding_of_caller (~> 0.7.1)
   coffee-rails (~> 3.2.2)
   compass-rails (~> 1.0.3)
   coveralls (~> 0.7.0)
   dalli (~> 2.6.0)
-  debugger (~> 1.6.0)
   ex_cite (~> 1.3.0)
   exlibris-nyu!
   jasmine (~> 1.3.2)
