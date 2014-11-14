@@ -57,7 +57,7 @@ class NormalizeDecoratorTest < ActiveSupport::TestCase
   end
 
   test "normalize subjects" do
-    assert_equal "Digital divide; Global digital divide; GDD (Global digital divide); Divide, Digital", @normalized_record.subjects, "Unexpected subjects"
+    assert_match /GDD \(Global digital divide\);/, @normalized_record.subjects, "Unexpected subjects"
   end
 
   test "normalize issn" do
