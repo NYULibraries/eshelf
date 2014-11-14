@@ -4,7 +4,7 @@ bundler_args: --without development
 
 services:
   - memcached
-  
+
 before_install:
   - echo $JAVA_OPTS
   - export JAVA_OPTS=-Xmx512m
@@ -23,12 +23,13 @@ jdk:
   - openjdk7
   - openjdk6
   - oraclejdk7
+  - oraclejdk8
 
 git:
   submodules: false
 
 notifications:
-  irc: 
+  irc:
     channels:
       - "irc.freenode.org#libtechnyu"
     template:

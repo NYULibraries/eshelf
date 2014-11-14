@@ -7,7 +7,7 @@ require 'nyulibraries/deploy/capistrano/server/puma'
 set :app_title, "eshelf"
 
 # Overriding defaults
-set :rvm_ruby_string, "jruby-1.7.4"
+set :rvm_ruby_string, "jruby-1.7.16"
 set :stages, ["staging", "production"]
 set :recipient, "eshelf.admin@library.nyu.edu"
 
