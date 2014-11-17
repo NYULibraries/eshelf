@@ -70,7 +70,7 @@ class RecordsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
-    assert_select ".nyu-container .btn-toolbar > .btn-group > a#delete.btn", 
+    assert_select ".nyu-container .btn-toolbar > .btn-group > a#delete.btn",
       {count: 1, data: {method: :delete, confirm: "Are you sure you want to delete these records?"}}
   end
 
@@ -301,7 +301,7 @@ class RecordsControllerTest < ActionController::TestCase
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
     get :show, format: "bibtex", id: @tmp_user_record.id
-    assert_response :success  
+    assert_response :success
     assert_nil response.headers['X-CSRF-Token']
   end
 
@@ -347,7 +347,7 @@ class RecordsControllerTest < ActionController::TestCase
   #   get :show, id: @tmp_user_record.id
   #   assert_response :not_acceptable
   # end
-  # 
+  #
   # test "disallowed formats show user record" do
   #   UserSession.create(@user)
   #   get :show, format: "html", id: @user_record.id
@@ -436,7 +436,7 @@ class RecordsControllerTest < ActionController::TestCase
     session[:tmp_user] = @tmp_user
     assert_difference(['@tmp_user.records.count'], -1) do
       VCR.use_cassette('tmp user record becomes primo') do
-        delete :destroy, format: "json", record: { 
+        delete :destroy, format: "json", record: {
           external_id: @tmp_user_record.external_id, external_system: @tmp_user_record.external_system }
       end
     end
@@ -463,7 +463,7 @@ class RecordsControllerTest < ActionController::TestCase
     session[:tmp_user] = @tmp_user
     assert_difference(['@tmp_user.records.count'], -1) do
       VCR.use_cassette('tmp user record becomes primo') do
-        delete :destroy, format: "json", record: { 
+        delete :destroy, format: "json", record: {
           external_id: @tmp_user_record.external_id, external_system: @tmp_user_record.external_system }
       end
     end
