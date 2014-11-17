@@ -81,7 +81,7 @@ gem 'sorted', '~> 1.0.0'
 gem 'newrelic_rpm', '~> 3.9.0'
 
 # Acts as taggable on
-gem 'acts-as-taggable-on', '~> 3.0.0'
+gem 'acts-as-taggable-on', '~> 3.4.0'
 
 # Convert old records with activerecord-import
 gem 'activerecord-import', '~> 0.6.0'
