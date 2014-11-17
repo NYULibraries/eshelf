@@ -25,8 +25,8 @@ end
 
 # Development and testing gems
 group :development, :test do
-  gem 'jasmine', '~> 2.1.0'
-  gem 'teaspoon', '~> 0.7.0'
+  gem 'jasmine', '~> 1.3.0'
+  gem 'teaspoon', '~> 0.8.0'
 end
 
 # Testing gems
