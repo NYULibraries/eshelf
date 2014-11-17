@@ -1,89 +1,87 @@
 source "https://rubygems.org"
 gem 'rake', '~> 10.1.0'
 # Add CORS support
-gem 'rack-cors', :require => 'rack/cors'
-gem "rails", "~> 3.2.16"
-gem "json", "~> 1.8.0"
+gem 'rack-cors', '~>0.2.0', require: 'rack/cors'
+gem 'rails', '~> 3.2.16'
+gem 'json', '~> 1.8.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem "sass-rails",   "~> 3.2.6"
-  gem "coffee-rails", "~> 3.2.2"
+  gem 'sass-rails',   '~> 3.2.6'
+  gem 'coffee-rails', '~> 3.2.2'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem "therubyrhino", "~> 2.0.2", platform: :jruby
-  gem "therubyracer", "~> 0.12.0", platform: :ruby
-  gem "uglifier", "~> 2.2.1"
-  gem "compass-rails", "~> 1.0.3"
-  gem "nyulibraries-assets", git: "git://github.com/NYULibraries/nyulibraries-assets.git", tag: 'v2.0.1'
+  gem 'therubyrhino', '~> 2.0.0'
+  gem 'uglifier', '~> 2.5.0'
+  gem 'compass-rails', '~> 1.0.3'
+  gem 'nyulibraries-assets', github: 'NYULibraries/nyulibraries-assets', tag: 'v2.0.1'
 end
 
 # Development gems
 group :development do
-  gem "ruby-debug", "~> 0.10.4", platform: :jruby
-  gem "pry"
+  gem 'ruby-debug', '~> 0.10.4'
+  gem 'pry', '~> 0.10.0'
 end
 
 # Development and testing gems
 group :development, :test do
-  gem "jasmine", "~> 1.3.2"
-  gem "teaspoon", "~> 0.7.7"
+  gem 'jasmine', '~> 2.1.0'
+  gem 'teaspoon', '~> 0.7.0'
 end
 
 # Testing gems
 group :test do
-  gem 'coveralls', "~> 0.7.0", require: false
-  gem "vcr", "~> 2.6.0"
-  gem "webmock", "~> 1.15.0"
+  gem 'coveralls', '~> 0.7.0', require: false
+  gem 'vcr', '~> 2.9.0'
+  gem 'webmock', '~> 1.20.0'
 end
 
 # NYU customization gems
 # Need to include exlibris-primo before citero
 # so we use the nokogiri Xerces-J jar.
-gem "nokogiri", "~>1.6.0"
-gem "exlibris-nyu", git: "git://github.com/NYULibraries/exlibris-nyu.git", branch: "development"
-gem 'authpds-nyu', github: 'NYULibraries/authpds-nyu', :tag => 'v2.0.1'
-gem "acts_as_citable", "~> 2.0.0"
-gem "ex_cite", "~> 1.3.0"
+gem 'nokogiri', '~>1.6.0'
+gem "exlibris-nyu", github: 'NYULibraries/exlibris-nyu', branch: 'development'
+gem 'authpds-nyu', github: 'NYULibraries/authpds-nyu', tag: 'v2.0.1'
+gem 'acts_as_citable', '~> 2.0.0'
+gem 'ex_cite', '~> 1.3.0'
 
 # Middleware for jruby
-gem "jruby-rack", "~> 1.1.13", platform: :jruby
+gem 'jruby-rack', '~> 1.1.13'
 
 # Use MySQL
-gem "activerecord-jdbcmysql-adapter", "~> 1.3.0", platform: :jruby
-gem "mysql2", "~> 0.3.11", platform: :ruby
+gem 'activerecord-jdbcmysql-adapter', '~> 1.3.0'
 
 # Use jquery
-gem "jquery-rails", "~> 3.0.0"
+gem 'jquery-rails', '~> 3.0.0'
 
 # Use modernizr
-gem "modernizr-rails", "~> 2.7.0"
+gem 'modernizr-rails', '~> 2.7.0'
 
 # Use mustache
 # Fix to 0.99.4 cuz 0.99.5 broke my shit.
-gem "mustache", "0.99.4"
+gem 'mustache', '0.99.4'
 gem 'mustache-rails', github: 'josh/mustache-rails', require: 'mustache/railtie', tag: 'v0.2.3'
 
 gem 'figs', '~> 2.0.2'
 gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.0.1'
 
 # Use puma as the app server
-gem "puma", "~> 2.7.0"
+gem 'puma', '~> 2.9.0'
 
 # Dalli for caching with memcached
-gem "dalli", "~> 2.6.0"
+gem 'dalli', '~> 2.7.0'
 
 # Use Kaminari for paging
-gem "kaminari", "~> 0.15.0"
+gem 'kaminari', '~> 0.16.0'
 
 # Use sorted for sorting
-gem "sorted", "~> 1.0.0"
+gem 'sorted', '~> 1.0.0'
 
 # New Relic performance monitoring
-gem "newrelic_rpm", "~> 3.7.0"
+gem 'newrelic_rpm', '~> 3.9.0'
 
 # Acts as taggable on
-gem 'acts-as-taggable-on', '~> 2.4.0'
+gem 'acts-as-taggable-on', '~> 3.0.0'
 
 # Convert old records with activerecord-import
-gem "activerecord-import", "~> 0.4.1"
+gem 'activerecord-import', '~> 0.6.0'
