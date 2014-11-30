@@ -56,3 +56,7 @@ class ActiveSupport::TestCase
     "http://test.host#{record_getit_path(record)}"
   end
 end
+
+class ActionController::TestRequest
+  def performed?; end
+end
