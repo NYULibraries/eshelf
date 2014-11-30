@@ -22,7 +22,9 @@ class RecordsControllerTest < ActionController::TestCase
     # and we have a session
     @controller.session[:attempted_sso] = true
     @controller.session[:session_id] = "FakeSessionID"
-  end
+    # Setup a Fake Origin
+    Figs.env['ESHELF_ORIGINS'] = [Eshelf::EXAMPLE_ORIGIN]
+   end
 
   test "should have title of BobCat" do
     UserSession.create(@user)
