@@ -156,6 +156,6 @@ class RecordsController < ApplicationController
 
   # Whitelisted CORS origins
   def whitelisted_origins
-    @whitelisted_origins ||= Figs.env['ESHELF_ORIGINS']
+    @whitelisted_origins ||= (Figs.env['ESHELF_ORIGINS'] || [])
   end
 end
