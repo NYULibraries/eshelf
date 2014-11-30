@@ -28,6 +28,7 @@ group :development, :test do
   gem 'jasmine', '~> 1.3.0'
   gem 'teaspoon', '~> 0.8.0'
   gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'rspec-rails', '~> 3.1.0'
 end
 
 # Testing gems
