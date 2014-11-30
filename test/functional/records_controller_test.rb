@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class RecordsControllerTest < ActionController::TestCase
-  EXAMPLE_ORIGIN = 'example.com'
 
   setup do
     activate_authlogic
@@ -23,8 +22,6 @@ class RecordsControllerTest < ActionController::TestCase
     # and we have a session
     @controller.session[:attempted_sso] = true
     @controller.session[:session_id] = "FakeSessionID"
-    # Setup a Fake Origin
-    Figs.env['ESHELF_ORIGINS'] = [EXAMPLE_ORIGIN]
   end
 
   test "should have title of BobCat" do

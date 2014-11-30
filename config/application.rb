@@ -17,6 +17,8 @@ require 'nyulibraries-assets'
 require 'ex_cite/engine'
 
 module Eshelf
+  EXAMPLE_ORIGIN = 'example.com'
+
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -70,9 +72,12 @@ module Eshelf
     config.action_mailer.default_url_options = { protocol: "https", host: "eshelf.library.nyu.edu" }
 
     # Cross Origin Request support
+    whitelisted_origins = ENV.has_key?('ESHELF_ORIGINS') ?
+      Figs.env['ESHELF_ORIGINS'] : EXAMPLE_ORIGIN
+
     config.middleware.use Rack::Cors do
       allow do
-        origins *(Figs.env['ESHELF_ORIGINS'])
+        origins *whitelisted_origins
         resource %r{/records/from/\w+.json(\?.*)?}, headers: :any, methods: [:get], expose: 'X-CSRF-Token'
         resource '/records.json', headers: :any, methods: [:post, :delete], expose: 'X-CSRF-Token'
       end
