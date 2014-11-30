@@ -73,7 +73,7 @@ module Eshelf
 
     # Cross Origin Request support
     whitelisted_origins = ENV.has_key?('ESHELF_ORIGINS') ?
-      Figs.env['ESHELF_ORIGINS'] : EXAMPLE_ORIGIN
+      Figs.env['ESHELF_ORIGINS'] : Eshelf::EXAMPLE_ORIGIN
 
     config.middleware.use Rack::Cors do
       allow do
