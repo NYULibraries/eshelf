@@ -5,6 +5,8 @@ bundler_args: --without development
 services:
   - memcached
 
+env: ESHELF_DB_USER=root
+
 before_install:
   - echo $JAVA_OPTS
   - export JAVA_OPTS=-Xmx512m
