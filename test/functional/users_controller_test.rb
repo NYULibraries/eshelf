@@ -2,14 +2,13 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
-  setup :activate_authlogic
-
   setup do
     @user = FactoryGirl.create(:user)
-    @user_record = FactoryGirl.build(:user_primo_record1)
+    @user_record = FactoryGirl.build(:user_primo_record1, user: @user)
     VCR.use_cassette('record becomes primo', :record => :new_episodes) do
       @user_record.becomes_external_system.save
     end
+    activate_authlogic
   end
 
   test "should get account" do
