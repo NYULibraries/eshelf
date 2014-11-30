@@ -15,7 +15,7 @@ class RecordsControllerTest < ActionController::TestCase
       [@user_record, @user_record2, @tmp_user_record, @tmp_user_record2]
     VCR.use_cassette('record becomes primo', :record => :new_episodes) do
       @primo_records.each do |primo_record|
-        primo_record.becomes_external_system.save
+        primo_record.becomes_external_system.save!
       end
     end
     activate_authlogic
