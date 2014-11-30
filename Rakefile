@@ -5,3 +5,9 @@
 require File.expand_path('../config/application', __FILE__)
 
 Eshelf::Application.load_tasks
+
+if Rails.env.test?
+  # RSpec deletes the test task as a default
+  # We need to add it back here
+  task default: :test
+end
