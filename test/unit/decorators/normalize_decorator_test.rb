@@ -3,7 +3,7 @@ require 'test_helper'
 
 class NormalizeDecoratorTest < ActiveSupport::TestCase
   setup do
-    @record = records(:user_primo_record1)
+    @record = FactoryGirl.build(:user_primo_record1)
     VCR.use_cassette('record becomes primo') do
       @record.becomes_external_system.save
     end
@@ -26,17 +26,20 @@ class NormalizeDecoratorTest < ActiveSupport::TestCase
   end
 
   test "should have author only" do
-    normalized_author_record = RecordDecorator::NormalizeDecorator.new(records(:creator_primo_record))
+    record = FactoryGirl.build(:primo_record_with_creator)
+    normalized_author_record = RecordDecorator::NormalizeDecorator.new(record)
     assert_equal "Barbara Jean  Monroe  1948-", normalized_author_record.author, "Unexpected author for Primo author only"
   end
 
   test "should have contributor only" do
-    normalized_contributor_record = RecordDecorator::NormalizeDecorator.new(records(:contributor_primo_record))
+    record = FactoryGirl.build(:primo_record_with_contributor)
+    normalized_contributor_record = RecordDecorator::NormalizeDecorator.new(record)
     assert_equal "Fay Patel", normalized_contributor_record.author, "Unexpected author for Primo contributor only"
   end
 
   test "should not have author" do
-    normalized_authorless_record = RecordDecorator::NormalizeDecorator.new(records(:authorless_primo_record))
+    record = FactoryGirl.build(:primo_record_without_author)
+    normalized_authorless_record = RecordDecorator::NormalizeDecorator.new(record)
     assert_nil normalized_authorless_record.author, "Expected author to be nil for authorless Primo record"
   end
 

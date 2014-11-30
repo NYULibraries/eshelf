@@ -5,8 +5,8 @@ class UsersControllerTest < ActionController::TestCase
   setup :activate_authlogic
 
   setup do
-    @user = users(:user)
-    @user_record = records(:user_primo_record1)
+    @user = FactoryGirl.create(:user)
+    @user_record = FactoryGirl.build(:user_primo_record1)
     VCR.use_cassette('record becomes primo', :record => :new_episodes) do
       @user_record.becomes_external_system.save
     end

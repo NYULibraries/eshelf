@@ -4,11 +4,11 @@ class UserSessionsControllerTest < ActionController::TestCase
   setup :activate_authlogic
 
   setup do
-    @user = users(:user)
-    @tmp_user = tmp_users(:tmp_user)
-    @user_record = records(:user_primo_record1)
-    @tmp_user_record = records(:tmp_user_primo_record1)
-    @primo_records = records(:user_primo_record1, :user_primo_record2,
+    @user = FactoryGirl.create(:user)
+    @tmp_user = FactoryGirl.build(:tmp_user)
+    @user_record = FactoryGirl.build(:user_primo_record1)
+    @tmp_user_record = FactoryGirl.build(:tmp_user_primo_record1)
+    @primo_records = FactoryGirl.build(:user_primo_record1, :user_primo_record2,
       :tmp_user_primo_record1, :tmp_user_primo_record2)
     VCR.use_cassette('record becomes primo', :record => :new_episodes) do
       @primo_records.each do |primo_record|
