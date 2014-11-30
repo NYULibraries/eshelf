@@ -30,9 +30,12 @@ qa:
 production:
   <<: *eshelf
 
+# Don't load the old eshelf in Travis.
+<% unless ENV['TRAVIS'] %>
 old_eshelf:
   <<: *development
   host: <%= ENV['OLD_ESHELF_DB_HOST'] %>
   username: <%= ENV['OLD_ESHELF_DB_USER'] %>
   password: <%= ENV['OLD_ESHELF_DB_PASSWORD'] %>
   database: <%= ENV['OLD_ESHELF_DB_DATABASE'] %>
+<% end %>
