@@ -1,22 +1,5 @@
-# Eshelf institution specific settings
-# This is just used for keeping IP ranges private
-NYU:
-  ip_addresses: <%= Settings.institutions.NYU.ip_addresses %>
-
-NYUAD:
-  ip_addresses: <%= Settings.institutions.NYUAD.ip_addresses %>
-
-NYUSH:
-  ip_addresses: <%= Settings.institutions.NYUAD.ip_addresses %>
-
-CU:
-  ip_addresses: <%= Settings.institutions.CU.ip_addresses %>
-
-NS:
-  ip_addresses: <%= Settings.institutions.NS.ip_addresses %>
-
-NYSID:
-  ip_addresses: <%= Settings.institutions.NYSID.ip_addresses %>
-
-HSL:
-  ip_addresses: <%= Settings.institutions.HSL.ip_addresses %>
+# Defer private institutional settings to Figs
+<% DEFAULT_INSTITUTIONS = {'NYU' => {'ip_addresses' => ['127.0.0.1']}} %>
+<% institutions = (ENV.has_key?('INSTITUTIONS')) ? 
+    Figs.env.institutions : DEFAULT_INSTITUTIONS %>
+<%= institutions.to_yaml %>

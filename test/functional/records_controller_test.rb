@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class RecordsControllerTest < ActionController::TestCase
+
   setup do
     activate_authlogic
     @user = users(:user)
@@ -21,7 +22,9 @@ class RecordsControllerTest < ActionController::TestCase
     # and we have a session
     @controller.session[:attempted_sso] = true
     @controller.session[:session_id] = "FakeSessionID"
-  end
+    # Setup a Fake Origin
+    Figs.env['ESHELF_ORIGINS'] = [Eshelf::EXAMPLE_ORIGIN]
+   end
 
   test "should have title of BobCat" do
     UserSession.create(@user)
@@ -66,7 +69,7 @@ class RecordsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
-    assert_select ".nyu-container .btn-toolbar > .btn-group > a#delete.btn", 
+    assert_select ".nyu-container .btn-toolbar > .btn-group > a#delete.btn",
       {count: 1, data: {method: :delete, confirm: "Are you sure you want to delete these records?"}}
   end
 
@@ -245,7 +248,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should create new tmp user record CORS json" do
-    request.env['HTTP_ORIGIN']='http://example.com'
+    request.env['HTTP_ORIGIN'] = "http://#{Eshelf::EXAMPLE_ORIGIN}"
     assert_difference(['TmpUser.count', 'Record.count', 'Location.count']) do
       VCR.use_cassette('tmp user record becomes primo') do
         post :create, format: "json", record: { external_id: "nyu_aleph001044111", external_system: "primo" }
@@ -258,7 +261,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should create existing tmp user record CORS json" do
-    request.env['HTTP_ORIGIN']='https://example.com'
+    request.env['HTTP_ORIGIN'] = "https://#{Eshelf::EXAMPLE_ORIGIN}"
     session[:tmp_user] = @tmp_user
     assert_difference(['@tmp_user.records.count', 'Location.count']) do
       VCR.use_cassette('tmp user record becomes primo') do
@@ -272,7 +275,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should create user record CORS json" do
-    request.env['HTTP_ORIGIN']='http://example.com'
+    request.env['HTTP_ORIGIN'] = "http://#{Eshelf::EXAMPLE_ORIGIN}"
     UserSession.create(@user)
     assert_difference(['@user.records.count', 'Location.count']) do
       VCR.use_cassette('user record becomes primo') do
@@ -297,7 +300,7 @@ class RecordsControllerTest < ActionController::TestCase
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
     get :show, format: "bibtex", id: @tmp_user_record.id
-    assert_response :success  
+    assert_response :success
     assert_nil response.headers['X-CSRF-Token']
   end
 
@@ -343,7 +346,7 @@ class RecordsControllerTest < ActionController::TestCase
   #   get :show, id: @tmp_user_record.id
   #   assert_response :not_acceptable
   # end
-  # 
+  #
   # test "disallowed formats show user record" do
   #   UserSession.create(@user)
   #   get :show, format: "html", id: @user_record.id
@@ -374,7 +377,7 @@ class RecordsControllerTest < ActionController::TestCase
 
   test "should show by external system existing tmp user record CORS json" do
     session[:tmp_user] = @tmp_user
-    request.env['HTTP_ORIGIN']='https://example.com'
+    request.env['HTTP_ORIGIN'] = "https://#{Eshelf::EXAMPLE_ORIGIN}"
     get :from_external_system, format: "json", external_system: @tmp_user_record.external_system, external_id: @tmp_user_record.external_id
     assert_response :success
     assert_not_nil response.headers['X-CSRF-Token']
@@ -382,7 +385,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should show by external system new tmp user record CORS json" do
-    request.env['HTTP_ORIGIN']='https://example.com'
+    request.env['HTTP_ORIGIN'] = "https://#{Eshelf::EXAMPLE_ORIGIN}"
     get :from_external_system, format: "json", external_system: 'primo'
     assert_response :success
     assert_not_nil response.headers['X-CSRF-Token']
@@ -390,7 +393,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should show by external system user record CORS json" do
-    request.env['HTTP_ORIGIN']='https://example.com'
+    request.env['HTTP_ORIGIN'] = "https://#{Eshelf::EXAMPLE_ORIGIN}"
     UserSession.create(@user)
     get :from_external_system, format: "json", external_system: @user_record.external_system, external_id: @user_record.external_id
     assert_response :success
@@ -432,7 +435,7 @@ class RecordsControllerTest < ActionController::TestCase
     session[:tmp_user] = @tmp_user
     assert_difference(['@tmp_user.records.count'], -1) do
       VCR.use_cassette('tmp user record becomes primo') do
-        delete :destroy, format: "json", record: { 
+        delete :destroy, format: "json", record: {
           external_id: @tmp_user_record.external_id, external_system: @tmp_user_record.external_system }
       end
     end
@@ -455,11 +458,11 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should destroy existing tmp user record CORS json" do
-    request.env['HTTP_ORIGIN']='https://example.com'
+    request.env['HTTP_ORIGIN'] = "https://#{Eshelf::EXAMPLE_ORIGIN}"
     session[:tmp_user] = @tmp_user
     assert_difference(['@tmp_user.records.count'], -1) do
       VCR.use_cassette('tmp user record becomes primo') do
-        delete :destroy, format: "json", record: { 
+        delete :destroy, format: "json", record: {
           external_id: @tmp_user_record.external_id, external_system: @tmp_user_record.external_system }
       end
     end
@@ -470,7 +473,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should destroy user record CORS json" do
-    request.env['HTTP_ORIGIN']='http://example.com'
+    request.env['HTTP_ORIGIN'] = "http://#{Eshelf::EXAMPLE_ORIGIN}"
     UserSession.create(@user)
     assert_difference(['@user.records.count'], -1) do
       VCR.use_cassette('user record becomes primo') do

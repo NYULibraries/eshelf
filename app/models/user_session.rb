@@ -1,6 +1,6 @@
 class UserSession < Authlogic::Session::Base
-  pds_url Settings.pds.login_url
-  redirect_logout_url Settings.pds.logout_url
+  pds_url (ENV['PDS_URL'] || 'https://login.library.nyu.edu')
+  redirect_logout_url 'http://bobcat.library.nyu.edu'
   calling_system "eshelf"
   institution_param_key "institution"
 
