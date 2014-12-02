@@ -2,7 +2,8 @@ require 'test_helper'
 
 class UserSessionsControllerTest < ActionController::TestCase
   setup do
-    @user = FactoryGirl.create(:user)
+    @user = FactoryGirl.build(:user)
+    @user.save_without_session_maintenance
     @tmp_user = FactoryGirl.create(:tmp_user)
     @user_record = FactoryGirl.build(:user_primo_record1, user: @user)
     @tmp_user_record = FactoryGirl.build(:tmp_user_primo_record1, tmp_user: @tmp_user)
