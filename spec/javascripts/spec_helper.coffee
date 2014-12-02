@@ -29,3 +29,11 @@
 # You can require your own javascript files here. By default this will include everything in application, however you
 # may get better load performance if you require the specific files that are being used in the spec that tests them.
 #= require application
+# Write ajax errors to the console
+$(document).ajaxError(
+  (event, jqxhr, settings, exception) ->
+    console.log "Ajax Error:"
+    console.log event
+    console.log jqxhr
+    console.log exception
+)
