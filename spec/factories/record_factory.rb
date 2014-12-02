@@ -81,7 +81,7 @@ FactoryGirl.define do
     end
 
     trait :travels_with_my_aunt_id do
-      external_id 'nyu_aleph000980206'
+      external_id 'nyu_aleph000570570'
     end
 
     trait :with_creator do
@@ -677,9 +677,9 @@ FactoryGirl.define do
     factory :primo_record_with_contributor, traits: [:primo, :with_contributor]
     factory :primo_record_without_author, traits: [:primo, :without_author]
     factory :user_record, traits: [:user_record, :external]
-    factory :user_primo_record1, traits: [:user_record, :primo, :virtual_inequality_id]
-    factory :user_primo_record2, traits: [:user_record, :primo, :travels_with_my_aunt_id]
-    factory :user_xerxes_record1, traits: [:user_record, :xerxes, :a_place_for_hemingway]
+    factory :user_primo_record1, traits: [:virtual_inequality_id, :primo, :user_record]
+    factory :user_primo_record2, traits: [:travels_with_my_aunt_id, :primo, :user_record]
+    factory :user_xerxes_record1, traits: [:a_place_for_hemingway, :xerxes, :user_record]
     factory :tmp_user_record, traits: [:tmp_user_record, :external]
     factory :tmp_user_primo_record1, traits: [:tmp_user_record, :primo, :virtual_inequality_id]
     factory :tmp_user_primo_record2, traits: [:tmp_user_record, :primo, :travels_with_my_aunt_id]
