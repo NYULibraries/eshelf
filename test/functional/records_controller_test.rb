@@ -118,7 +118,7 @@ class RecordsControllerTest < ActionController::TestCase
     assert_nil response.headers['X-CSRF-Token']
     assert_not_nil assigns(:records)
     assert_not_empty assigns(:records)
-    assert_select ".nyu-container .results .result", 3
+    assert_select ".nyu-container .results .result", 2
   end
 
   test "should get user records index" do
@@ -128,7 +128,7 @@ class RecordsControllerTest < ActionController::TestCase
     assert_nil response.headers['X-CSRF-Token']
     assert_not_nil assigns(:records)
     assert_not_empty assigns(:records)
-    assert_select ".nyu-container .results .result", 4
+    assert_select ".nyu-container .results .result", 2
   end
 
   test "should get new tmp user records index html" do
@@ -149,7 +149,7 @@ class RecordsControllerTest < ActionController::TestCase
     assert_nil response.headers['X-CSRF-Token']
     assert_not_nil assigns(:records)
     assert_not_empty assigns(:records)
-    assert_select ".nyu-container .results .result", 3
+    assert_select ".nyu-container .results .result", 2
   end
 
   test "should get user records index html" do
@@ -159,7 +159,7 @@ class RecordsControllerTest < ActionController::TestCase
     assert_nil response.headers['X-CSRF-Token']
     assert_not_nil assigns(:records)
     assert_not_empty assigns(:records)
-    assert_select ".nyu-container .results .result", 4
+    assert_select ".nyu-container .results .result", 2
   end
 
   test "should get new tmp user records index json" do
