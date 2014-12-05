@@ -768,8 +768,8 @@ class RecordsControllerTest < ActionController::TestCase
       elements.each do |element|
         assert_select element, "li" do |records_html|
           assert_equal @user.records.size, records_html.size
-          assert_first_brief_print_record(records_html.first, @user.records.where(external_id: "nyu_aleph000570570").first)
-          assert_last_brief_print_record(records_html.last, @user.records.where(external_id: "nyu_aleph000980206").first)
+          assert_travels_with_my_aunt(records_html.first, @user.records.where(external_id: "nyu_aleph000570570").first)
+          assert_virtual_inequality(records_html.last, @user.records.where(external_id: "nyu_aleph000980206").first)
         end
       end
     end
@@ -805,14 +805,14 @@ class RecordsControllerTest < ActionController::TestCase
     assert_nil response.headers['X-CSRF-Token']
   end
 
-  def assert_first_brief_print_record(element, record)
+  def assert_travels_with_my_aunt(element, record)
     assert_equal("<li>\n      "+
       "<p><strong>Travels with my aunt [videorecording] (video)</strong></p>"+
       "<p>Locations: NYU Bobst Avery Fisher Center Main Collection</p>"+
       "<p>#{record_getit_url(record)}</p>\n    </li>", element.to_s)
   end
 
-  def assert_last_brief_print_record(element, record)
+  def assert_virtual_inequality(element, record)
     assert_equal("<li>\n      "+
       "<p><strong>Virtual inequality : beyond the digital divide (book)</strong></p>"+
       "<p><div>Locations:</div>"+
