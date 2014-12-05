@@ -15,9 +15,10 @@ class RecordsControllerTest < ActionController::TestCase
     @primo_records =
       [@user_record, @user_record2, @tmp_user_record, @tmp_user_record2]
     VCR.use_cassette('record becomes primo') do
-      @primo_records.each do |primo_record|
-        primo_record.becomes_external_system.save!
-      end
+      (@user_record = @user_record.becomes_external_system).save!
+      (@user_record2 = @user_record2.becomes_external_system).save!
+      (@tmp_user_record = @tmp_user_record.becomes_external_system).save!
+      (@tmp_user_record2 = @tmp_user_record2.becomes_external_system).save!
     end
     activate_authlogic
     session[:tmp_user] = nil
