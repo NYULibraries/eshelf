@@ -14,7 +14,7 @@ class RecordsControllerTest < ActionController::TestCase
       FactoryGirl.build(:tmp_user_primo_record2, tmp_user: @tmp_user)
     @primo_records =
       [@user_record, @user_record2, @tmp_user_record, @tmp_user_record2]
-    VCR.use_cassette('record becomes primo', :record => :new_episodes) do
+    VCR.use_cassette('record becomes primo') do
       @primo_records.each do |primo_record|
         primo_record.becomes_external_system.save!
       end
