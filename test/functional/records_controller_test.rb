@@ -768,8 +768,8 @@ class RecordsControllerTest < ActionController::TestCase
       elements.each do |element|
         assert_select element, "li" do |records_html|
           assert_equal @user.records.size, records_html.size
-          assert_travels_with_my_aunt(records_html.first, @user.records.where(external_id: "nyu_aleph000570570").first)
-          assert_virtual_inequality(records_html.last, @user.records.where(external_id: "nyu_aleph000980206").first)
+          assert_virtual_inequality(records_html.first, @user.records.where(external_id: "nyu_aleph000980206").first)
+          assert_travels_with_my_aunt(records_html.last, @user.records.where(external_id: "nyu_aleph000570570").first)
         end
       end
     end
