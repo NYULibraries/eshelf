@@ -56,4 +56,28 @@ describe Record do
       end
     end
   end
+
+  context 'when initialized without an external system' do
+    let(:external_system) { nil }
+
+    context 'and with a user' do
+      before { record.user = user }
+      it { is_expected.to be_valid }
+      it 'should get the external system from the class name upon validation' do
+        expect(record.external_system).to eq external_system
+        record.valid?
+        expect(record.external_system).to eq 'record'
+      end
+    end
+
+    context 'and with a temporary user' do
+      before { record.tmp_user = tmp_user }
+      it { is_expected.to be_valid }
+      it 'should get the external system from the class name upon validation' do
+        expect(record.external_system).to eq external_system
+        record.valid?
+        expect(record.external_system).to eq 'record'
+      end
+    end
+  end
 end
