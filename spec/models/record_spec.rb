@@ -109,6 +109,20 @@ describe Record do
     end
   end
 
+  context 'when initialized without a url' do
+    let(:url) { nil }
+
+    context 'and with a user' do
+      before { record.user = user }
+      it { is_expected.not_to be_valid }
+    end
+
+    context 'and with a temporary user' do
+      before { record.tmp_user = tmp_user }
+      it { is_expected.not_to be_valid }
+    end
+  end
+
   context 'when initialized without a format' do
     let(:format) { nil }
 
