@@ -94,4 +94,18 @@ describe Record do
       it { is_expected.not_to be_valid }
     end
   end
+
+  context 'when initialized without a title' do
+    let(:title) { nil }
+
+    context 'and with a user' do
+      before { record.user = user }
+      it { is_expected.not_to be_valid }
+    end
+
+    context 'and with a temporary user' do
+      before { record.tmp_user = tmp_user }
+      it { is_expected.not_to be_valid }
+    end
+  end
 end
