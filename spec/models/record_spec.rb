@@ -30,6 +30,7 @@ describe Record do
 
     it { is_expected.to be_a(Record) }
     it { is_expected.to be_a_new(Record) }
+    it { is_expected.to be_taggable }
 
     context 'but without a user or a temporary user' do
       it { is_expected.not_to be_valid }

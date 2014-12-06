@@ -17,6 +17,8 @@ class Record < ActiveRecord::Base
   acts_as_citable
   # Records act as taggable
   acts_as_taggable
+  # Alias #is_taggable? with #taggable? for convenience
+  alias_method :taggable?, :is_taggable?
   # Validate presence of external_system, external_id, title, url, format, 
   # data and title sort
   validates :external_system, :external_id, :title, :url, :format, 
