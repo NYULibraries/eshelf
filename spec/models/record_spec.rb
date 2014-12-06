@@ -150,4 +150,30 @@ describe Record do
       it { is_expected.not_to be_valid }
     end
   end
+
+  context 'when initialized without a sortable title' do
+    let(:title_sort) { nil }
+
+    context 'and with a user' do
+      before { record.user = user }
+      it { is_expected.to be_valid }
+
+      it 'should get the sortable title from the title name upon validation' do
+        expect(record.title_sort).to eq title_sort
+        record.valid?
+        expect(record.title_sort).to eq title
+      end
+    end
+
+    context 'and with a temporary user' do
+      before { record.tmp_user = tmp_user }
+      it { is_expected.to be_valid }
+
+      it 'should get the sortable title from the title name upon validation' do
+        expect(record.title_sort).to eq title_sort
+        record.valid?
+        expect(record.title_sort).to eq title
+      end
+    end
+  end
 end
