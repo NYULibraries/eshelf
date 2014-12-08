@@ -6,8 +6,8 @@ class RecordsHelperTest < ActionView::TestCase
   setup do
     # Need to set the request where the sorted gem expects it
     @request ||= @controller.request
-    @user_record = records(:user_record)
-    @tmp_user_record = records(:tmp_user_record)
+    @user_record = FactoryGirl.build(:user_record)
+    @tmp_user_record = FactoryGirl.build(:tmp_user_record)
   end
 
   test "should return an array of printable records" do

@@ -3,7 +3,7 @@ require 'test_helper'
 
 class PrimoTest < ActiveSupport::TestCase
   setup do
-    @record = records(:user_primo_record1)
+    @record = FactoryGirl.build(:user_primo_record1)
   end
 
   test "new nokogiri xml document" do
@@ -23,7 +23,7 @@ class PrimoTest < ActiveSupport::TestCase
     assert_equal("Mossberger, Karen; Tolbert, Caroline J; Stansbury, Mary, 1957-", @record.author)
     assert_equal("Virtual inequality : beyond the digital divide /", @record.title_sort)
     assert_equal("book", @record.content_type)
-    assert_equal("rft.ulr_ver=Z39.88-2004&rft.ctx_ver=Z39.88-2004&rft.rfr_id=info:sid/primo.exlibrisgroup.com:primo-nyu_aleph000980206&rft_val_fmlt=info:ofi/fmt:kev:mtx:book&rft.genre=book&rft.au=Karen+Mossberger&rft.contributor=Mary+Stansbury+1957-&rft.contributor=Caroline+J+Tolbert&rft.publisher=Georgetown+University+Press&rft.place=Washington%2C+D.C.&rft.tpages=192&rft_id=urn:isbn:0878409998&rft.isbn=0878409998&rft.btitle=Virtual+inequality+%3A+beyond+the+digital+divide&rft.date=2003", 
+    assert_equal("rft.ulr_ver=Z39.88-2004&rft.ctx_ver=Z39.88-2004&rft.rfr_id=info:sid/primo.exlibrisgroup.com:primo-nyu_aleph000980206&rft_val_fmlt=info:ofi/fmt:kev:mtx:book&rft.genre=book&rft.au=Karen+Mossberger&rft.contributor=Mary+Stansbury+1957-&rft.contributor=Caroline+J+Tolbert&rft.publisher=Georgetown+University+Press&rft.place=Washington%2C+D.C.&rft.tpages=192&rft_id=urn:isbn:0878409998&rft.isbn=0878409998&rft.btitle=Virtual+inequality+%3A+beyond+the+digital+divide&rft.date=2003",
       @record.url)
   end
 
@@ -44,13 +44,13 @@ class PrimoTest < ActiveSupport::TestCase
       @record.becomes_external_system.save
     end
     assert_equal 2, @record.locations.size, "Unexpected locations size"
-    assert_equal "NYU Bobst Main Collection", 
+    assert_equal "NYU Bobst Main Collection",
       @record.locations.first.collection, "Unexpected first location collection"
-    assert_equal "(HN49.I56 M67 2003 )", @record.locations.first.call_number  , 
+    assert_equal "(HN49.I56 M67 2003 )", @record.locations.first.call_number  ,
         "Unexpected first location call number"
-    assert_equal "New School Fogelman Library Main Collection", 
+    assert_equal "New School Fogelman Library Main Collection",
       @record.locations.last.collection, "Unexpected last location collection"
-    assert_equal "(HN49.I56 M67 2003 )", @record.locations.last.call_number, 
+    assert_equal "(HN49.I56 M67 2003 )", @record.locations.last.call_number,
       "Unexpected last location call number"
   end
 

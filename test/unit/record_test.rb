@@ -2,8 +2,8 @@ require 'test_helper'
 
 class RecordTest < ActiveSupport::TestCase
   setup do
-    @user_record = records(:user_record)
-    @tmp_user_record = records(:tmp_user_record)
+    @user_record = FactoryGirl.build(:user_record)
+    @tmp_user_record = FactoryGirl.build(:tmp_user_record)
   end
 
   test "user record" do
@@ -18,13 +18,13 @@ class RecordTest < ActiveSupport::TestCase
   end
 
   test "tmp user record" do
-    assert_equal("external2", @tmp_user_record.external_id)
-    assert_equal("external_system2", @tmp_user_record.external_system)
-    assert_equal("format2", @tmp_user_record.format)
-    assert_equal("title 2", @tmp_user_record.title)
-    assert_equal("author 2", @tmp_user_record.author)
-    assert_equal("http://example.com/2", @tmp_user_record.url)
-    assert_equal("title sort 2", @tmp_user_record.title_sort)
+    assert_equal("external1", @tmp_user_record.external_id)
+    assert_equal("external_system1", @tmp_user_record.external_system)
+    assert_equal("format1", @tmp_user_record.format)
+    assert_equal("title 1", @tmp_user_record.title)
+    assert_equal("author 1", @tmp_user_record.author)
+    assert_equal("http://example.com/1", @tmp_user_record.url)
+    assert_equal("title sort 1", @tmp_user_record.title_sort)
   end
 
   test "mass assignment error" do

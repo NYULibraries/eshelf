@@ -2,11 +2,13 @@ require 'test_helper'
 
 class RecordsMailerTest < ActionMailer::TestCase
   setup do
-    @user = users(:user)
-    @records = records(:user_primo_record1, :user_primo_record2)
+    @user = FactoryGirl.build(:user)
+    @user.save_without_session_maintenance
+    @records = [FactoryGirl.build(:user_primo_record1, user: @user)]
+    @records << FactoryGirl.build(:user_primo_record2, user: @user)
     VCR.use_cassette('record becomes primo', :record => :new_episodes) do
       @records.each do |record|
-        record.becomes_external_system.save
+        record.becomes_external_system.save!
       end
     end
     @alternative_email = "test@library.edu"

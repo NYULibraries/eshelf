@@ -3,19 +3,24 @@ require 'test_helper'
 class RecordsControllerTest < ActionController::TestCase
 
   setup do
-    activate_authlogic
-    @user = users(:user)
-    @tmp_user = tmp_users(:tmp_user)
-    @user_record = records(:user_primo_record1)
-    @user_record2 = records(:user_primo_record2)
-    @tmp_user_record = records(:tmp_user_primo_record1)
-    @primo_records = records(:user_primo_record1, :user_primo_record2,
-      :tmp_user_primo_record1, :tmp_user_primo_record2)
-    VCR.use_cassette('record becomes primo', :record => :new_episodes) do
-      @primo_records.each do |primo_record|
-        primo_record.becomes_external_system.save
-      end
+    @user = FactoryGirl.build(:user)
+    @user.save_without_session_maintenance
+    @tmp_user = FactoryGirl.create(:tmp_user)
+    @user_record = FactoryGirl.build(:user_primo_record1, user: @user)
+    @user_record2 = FactoryGirl.build(:user_primo_record2, user: @user)
+    @tmp_user_record =
+      FactoryGirl.build(:tmp_user_primo_record1, tmp_user: @tmp_user)
+    @tmp_user_record2 =
+      FactoryGirl.build(:tmp_user_primo_record2, tmp_user: @tmp_user)
+    @primo_records =
+      [@user_record, @user_record2, @tmp_user_record, @tmp_user_record2]
+    VCR.use_cassette('record becomes primo') do
+      (@user_record = @user_record.becomes_external_system).save!
+      (@user_record2 = @user_record2.becomes_external_system).save!
+      (@tmp_user_record = @tmp_user_record.becomes_external_system).save!
+      (@tmp_user_record2 = @tmp_user_record2.becomes_external_system).save!
     end
+    activate_authlogic
     session[:tmp_user] = nil
     request.env['HTTP_ORIGIN'] = nil
     # Pretend we've already checked PDS/Shibboleth for the session
@@ -114,7 +119,7 @@ class RecordsControllerTest < ActionController::TestCase
     assert_nil response.headers['X-CSRF-Token']
     assert_not_nil assigns(:records)
     assert_not_empty assigns(:records)
-    assert_select ".nyu-container .results .result", 3
+    assert_select ".nyu-container .results .result", 2
   end
 
   test "should get user records index" do
@@ -124,7 +129,7 @@ class RecordsControllerTest < ActionController::TestCase
     assert_nil response.headers['X-CSRF-Token']
     assert_not_nil assigns(:records)
     assert_not_empty assigns(:records)
-    assert_select ".nyu-container .results .result", 4
+    assert_select ".nyu-container .results .result", 2
   end
 
   test "should get new tmp user records index html" do
@@ -145,7 +150,7 @@ class RecordsControllerTest < ActionController::TestCase
     assert_nil response.headers['X-CSRF-Token']
     assert_not_nil assigns(:records)
     assert_not_empty assigns(:records)
-    assert_select ".nyu-container .results .result", 3
+    assert_select ".nyu-container .results .result", 2
   end
 
   test "should get user records index html" do
@@ -155,7 +160,7 @@ class RecordsControllerTest < ActionController::TestCase
     assert_nil response.headers['X-CSRF-Token']
     assert_not_nil assigns(:records)
     assert_not_empty assigns(:records)
-    assert_select ".nyu-container .results .result", 4
+    assert_select ".nyu-container .results .result", 2
   end
 
   test "should get new tmp user records index json" do
@@ -764,8 +769,18 @@ class RecordsControllerTest < ActionController::TestCase
       elements.each do |element|
         assert_select element, "li" do |records_html|
           assert_equal @user.records.size, records_html.size
-          assert_first_brief_print_record(records_html.first, @user.records.where(external_id: "nyu_aleph000570570").first)
-          assert_last_brief_print_record(records_html.last, @user.records.where(external_id: "nyu_aleph000980206").first)
+          travels_with_my_aunt_html = begin
+            records_html.find do |record_html|
+              record_html.match /Travels with my aunt/
+            end
+          end
+          virtual_inequality_html = begin
+            records_html.find do |record_html|
+              record_html.match /Virtual inequality/
+            end
+          end
+          assert_virtual_inequality(virtual_inequality_html, @user.records.where(external_id: "nyu_aleph000980206").first)
+          assert_travels_with_my_aunt(travels_with_my_aunt_html, @user.records.where(external_id: "nyu_aleph000570570").first)
         end
       end
     end
@@ -801,14 +816,14 @@ class RecordsControllerTest < ActionController::TestCase
     assert_nil response.headers['X-CSRF-Token']
   end
 
-  def assert_first_brief_print_record(element, record)
+  def assert_travels_with_my_aunt(element, record)
     assert_equal("<li>\n      "+
       "<p><strong>Travels with my aunt [videorecording] (video)</strong></p>"+
       "<p>Locations: NYU Bobst Avery Fisher Center Main Collection</p>"+
       "<p>#{record_getit_url(record)}</p>\n    </li>", element.to_s)
   end
 
-  def assert_last_brief_print_record(element, record)
+  def assert_virtual_inequality(element, record)
     assert_equal("<li>\n      "+
       "<p><strong>Virtual inequality : beyond the digital divide (book)</strong></p>"+
       "<p><div>Locations:</div>"+

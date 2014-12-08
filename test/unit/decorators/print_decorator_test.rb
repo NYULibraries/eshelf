@@ -3,7 +3,7 @@ require 'test_helper'
 
 class PrintDecoratorTest < ActiveSupport::TestCase
   setup do
-    @record = records(:user_primo_record1)
+    @record = FactoryGirl.build(:user_primo_record1)
     VCR.use_cassette('record becomes primo') do
       @record.becomes_external_system.save
     end
@@ -32,15 +32,15 @@ class PrintDecoratorTest < ActiveSupport::TestCase
   test "medium print attributes" do
     print_record = RecordDecorator::PrintDecorator.new(@medium_citation_record)
     assert_equal ["title", "locations", "author", "publisher", "city_of_publication",
-      "date_of_publication", "journal_title", "url"], print_record.citation_attributes, 
+      "date_of_publication", "journal_title", "url"], print_record.citation_attributes,
         "Unexpected medium attributes"
   end
 
   test "full print attributes" do
     print_record = RecordDecorator::PrintDecorator.new(@full_citation_record)
     assert_equal ["title", "locations", "author", "publisher", "city_of_publication",
-      "date_of_publication", "journal_title", "subjects", "issn", "eissn", "isbn", 
-        "related_titles", "language", "description", "notes", "url"], 
+      "date_of_publication", "journal_title", "subjects", "issn", "eissn", "isbn",
+        "related_titles", "language", "description", "notes", "url"],
           print_record.citation_attributes, "Unexpected full attributes"
   end
 end

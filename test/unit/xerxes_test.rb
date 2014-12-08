@@ -3,7 +3,7 @@ require 'test_helper'
 
 class XerxesTest < ActiveSupport::TestCase
   setup do
-    @record = records(:user_xerxes_record1)
+    @record = FactoryGirl.build(:user_xerxes_record1)
   end
 
   test "new nokogiri xml document" do
@@ -27,9 +27,9 @@ class XerxesTest < ActiveSupport::TestCase
   test "locations" do
     assert @record.becomes_external_system.save
     assert_equal 1, @record.locations.size, "Unexpected locations size"
-    assert_nil @record.locations.first.collection, 
+    assert_nil @record.locations.first.collection,
       "Unexpected first location collection"
-    assert_equal "(Dummy Call Number)", 
+    assert_equal "(Dummy Call Number)",
       @record.locations.first.call_number, "Unexpected first locations call number"
   end
 
