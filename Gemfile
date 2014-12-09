@@ -37,6 +37,7 @@ group :test do
   gem 'vcr', '~> 2.9.0'
   gem 'webmock', '~> 1.20.0'
   gem 'cucumber-rails', '~> 1.4.2', require: false
+  gem 'database_cleaner', '~> 1.3.0'
 end
 
 # NYU customization gems
