@@ -36,6 +36,7 @@ group :test do
   gem 'coveralls', '~> 0.7.0', require: false
   gem 'vcr', '~> 2.9.0'
   gem 'webmock', '~> 1.20.0'
+  gem 'cucumber-rails', '~> 1.4.2', require: false
 end
 
 # NYU customization gems
