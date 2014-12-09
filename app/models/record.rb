@@ -17,9 +17,11 @@ class Record < ActiveRecord::Base
   acts_as_citable
   # Records act as taggable
   acts_as_taggable
-  # Validate presence of external_system, external_id, title, url, format, 
+  # Alias #is_taggable? with #taggable? for convenience
+  alias_method :taggable?, :is_taggable?
+  # Validate presence of external_system, external_id, title, url, format,
   # data and title sort
-  validates :external_system, :external_id, :title, :url, :format, 
+  validates :external_system, :external_id, :title, :url, :format,
     :data, :title_sort, presence: true
   # Validate presence of either a user or a tmp user
   validates :user_id, :if => Proc.new { tmp_user_id.blank? }, presence: true
@@ -31,7 +33,7 @@ class Record < ActiveRecord::Base
   validates :external_id, :unless => Proc.new { tmp_user_id.blank? },
     uniqueness: { scope: [:tmp_user_id, :external_system] }
   # Should we validate URLs?
-  # We're not actually storing URLs in DB, instead 
+  # We're not actually storing URLs in DB, instead
   # we're storing OpenURLs (Context Objects).
   # Could validate those, but probably not necessary.
   # validates_format_of :url, :with => some OpenURL validation
@@ -68,7 +70,7 @@ class Record < ActiveRecord::Base
   # Returns an instance of the record as an external system model,
   # e.g. Primo
   def becomes_external_system
-    (external_system.capitalize.safe_constantize) ? 
+    (external_system.capitalize.safe_constantize) ?
       becomes(external_system.capitalize.safe_constantize) : self
   end
 end
