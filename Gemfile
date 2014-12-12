@@ -44,7 +44,7 @@ end
 # Need to include exlibris-primo before citero
 # so we use the nokogiri Xerces-J jar.
 gem 'nokogiri', '~>1.6.0'
-gem "exlibris-nyu", github: 'NYULibraries/exlibris-nyu', branch: 'development'
+gem "exlibris-nyu", github: 'NYULibraries/exlibris-nyu', tag: 'v2.2.0'
 gem 'authpds-nyu', github: 'NYULibraries/authpds-nyu', tag: 'v2.0.1'
 gem 'acts_as_citable', '~> 2.0.0'
 gem 'ex_cite', '~> 1.3.0'
