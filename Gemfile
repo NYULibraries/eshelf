@@ -1,21 +1,50 @@
 source "https://rubygems.org"
-gem 'rake', '~> 10.1'
+
+gem 'rails', '~> 4.1.0'
+
+# Middleware for jruby
+gem 'jruby-rack', '~> 1.1.13'
+
 # Add CORS support
 gem 'rack-cors', '~>0.2.0', require: 'rack/cors'
-gem 'rails', '~> 3.2.16'
-gem 'json', '~> 1.8.0'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.6'
-  gem 'coffee-rails', '~> 3.2.2'
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyrhino', '~> 2.0.0'
-  gem 'uglifier', '~> 2.5.0'
-  gem 'compass-rails', '~> 1.0.3'
-  gem 'nyulibraries-assets', github: 'NYULibraries/nyulibraries-assets', tag: 'v2.0.1'
-end
+# Use MySQL
+gem 'activerecord-jdbcmysql-adapter', '~> 1.3.0'
+
+# Use SCSS for stylesheets
+gem 'sass-rails', '>= 5.0.0.beta1'
+
+# Use Uglifier as compressor for JavaScript assets
+gem 'uglifier', '~> 2.5.0'
+
+# Use CoffeeScript for .js.coffee assets and views
+gem 'coffee-rails', '~> 4.1.0'
+
+# Use jQuery as the JavaScript library
+gem 'jquery-rails', '~> 3.1.0'
+
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+gem 'therubyrhino', '~> 2.0.0'
+
+# Use the Compass CSS framework for sprites, etc.
+gem 'compass-rails', '~> 2.0.0'
+
+# Use modernizr to detect CORS availability
+gem 'modernizr-rails', '~> 2.7.0'
+
+# Use mustache for templating
+# Fix to 0.99.4 cuz 0.99.5 broke my shit.
+gem 'mustache', '0.99.4'
+gem 'mustache-rails', github: 'josh/mustache-rails', tag: 'v0.2.3', require: 'mustache/railtie'
+
+# Use the NYU Libraries assets gem for shared NYU Libraries assets
+gem 'nyulibraries-assets', github: 'NYULibraries/nyulibraries-assets', tag: 'v4.2.0'
+
+# Deploy the application with Formaggio deploy recipes
+gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.3.0'
+
+# Figs for configuration
+gem 'figs', '~> 2.0.2'
 
 # Development gems
 group :development do
@@ -43,34 +72,13 @@ end
 # NYU customization gems
 # Need to include exlibris-primo before citero
 # so we use the nokogiri Xerces-J jar.
-gem 'nokogiri', '~>1.6.0'
 gem "exlibris-nyu", github: 'NYULibraries/exlibris-nyu', tag: 'v2.2.0'
 gem 'authpds-nyu', github: 'NYULibraries/authpds-nyu', tag: 'v2.0.1'
-gem 'acts_as_citable', '~> 2.0.0'
-gem 'ex_cite', '~> 1.3.0'
-
-# Middleware for jruby
-gem 'jruby-rack', '~> 1.1.13'
-
-# Use MySQL
-gem 'activerecord-jdbcmysql-adapter', '~> 1.3.0'
-
-# Use jquery
-gem 'jquery-rails', '~> 3.0.0'
-
-# Use modernizr
-gem 'modernizr-rails', '~> 2.7.0'
-
-# Use mustache
-# Fix to 0.99.4 cuz 0.99.5 broke my shit.
-gem 'mustache', '0.99.4'
-gem 'mustache-rails', github: 'josh/mustache-rails', require: 'mustache/railtie', tag: 'v0.2.3'
-
-gem 'figs', '~> 2.0.2'
-gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.3.0'
+gem 'acts_as_citable', '~> 3.0.0-alpha'
+gem 'ex_cite', '~> 2.0.0-alpha.1'
 
 # Use puma as the app server
-gem 'puma', '~> 2.9.0'
+gem 'puma', '~> 2.10.0'
 
 # Dalli for caching with memcached
 gem 'dalli', '~> 2.7.0'
