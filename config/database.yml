@@ -39,3 +39,6 @@ old_eshelf:
   password: <%= ENV['OLD_ESHELF_DB_PASSWORD'] %>
   database: <%= ENV['OLD_ESHELF_DB_DATABASE'] %>
 <% end %>
+
+cucumber:
+  <<: *test
