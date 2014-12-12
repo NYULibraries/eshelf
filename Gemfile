@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-gem 'rake', '~> 10.1.0'
+gem 'rake', '~> 10.1'
 # Add CORS support
 gem 'rack-cors', '~>0.2.0', require: 'rack/cors'
 gem 'rails', '~> 3.2.16'
