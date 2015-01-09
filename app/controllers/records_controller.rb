@@ -36,7 +36,7 @@ class RecordsController < ApplicationController
     # Filter by the specified content type if given
     @records = @records.where(content_type: params[:content_type]).scoped if params[:content_type]
     # Filter by the specified tag if given
-    @records = @records.tagged_with(double_escape_quotes(params[:tag])).scoped if current_user and params[:tag]
+    @records = @records.tagged_with(double_escape_quotes(params[:tag])).scoped if current_user && params[:tag]
     # Get the selected id(s) if given
     @records = @records.where(id: params[:id]).scoped if params[:id]
     # Get the relevant page unless all is specified
@@ -54,8 +54,8 @@ class RecordsController < ApplicationController
   # Get the records by external system and external id(s).
   # TODO: probably unnecessary and can be merged with index.
   def from_external_system
-    @records = user_records.where(external_system: params[:external_system]).scoped
-    @records = @records.where(external_id: params[:external_id]).scoped if params[:external_id]
+    @records = user_records.where(external_system: params[:external_system])
+    @records = @records.where(external_id: params[:external_id]) if params[:external_id]
     # Get the relevant page unless all is specified
     @records = (params[:per].eql? "all") ?
       @records.page(1).per(user_records.count) : @records.page(params[:page]).per(params[:per])
@@ -86,9 +86,9 @@ class RecordsController < ApplicationController
   # Routed from both member and collection calls
   def destroy
     @records = user_records.where(id: params[:id]).destroy_all if params[:id]
-    if @records.blank? and params[:record]
+    if @records.blank? && params[:record]
       @records = [params[:record]].flatten.collect { |record|
-        next unless (record[:external_system] and record[:external_id])
+        next unless (record[:external_system] && record[:external_id])
         user_records.where(external_system: record[:external_system], external_id: record[:external_id]).destroy_all
       }.compact.flatten
     end
@@ -107,7 +107,7 @@ class RecordsController < ApplicationController
 
   # Create (send) a new email
   def create_email
-    head :bad_request and return unless @email_format = whitelist_email_format(params[:email_format])
+    head :bad_request && return unless @email_format = whitelist_email_format(params[:email_format])
     @records = user_records.find(params[:id])
     RecordsMailer.records_email(user, @records, @email_format, params[:to_address]).deliver
     flash[:notice] = t('record.flash.actions.create_email.notice')
@@ -116,7 +116,7 @@ class RecordsController < ApplicationController
 
   # Display a print friendly list of records
   def print
-    head :bad_request and return unless @print_format = whitelist_print_format(params[:print_format])
+    head :bad_request && return unless @print_format = whitelist_print_format(params[:print_format])
     # Since we take id's from collection and member routes,
     # we force the id param to be an array (collection style)
     @records = user_records.find((params[:id].is_a? Array) ? params[:id] : [params[:id]])
@@ -126,7 +126,7 @@ class RecordsController < ApplicationController
   # Redirects to the record's GetIt url
   def getit
     @record = user_records.find(params[:id])
-    head :bad_request and return if @record.nil?
+    head :bad_request && return if @record.nil?
     redirect_to current_primary_institution.getit_url + @record.url
   end
 
@@ -134,9 +134,9 @@ class RecordsController < ApplicationController
   # that make json requests to approved API actions.
   def respond_with_csrf_header
     # Only return the authenticity token to approved origins.
-    return unless request.headers['HTTP_ORIGIN'] and whitelisted_origins.include? request.headers['HTTP_ORIGIN'].gsub(/https?:\/\//, '')
+    return unless request.headers['HTTP_ORIGIN'] && whitelisted_origins.include? request.headers['HTTP_ORIGIN'].gsub(/https?:\/\//, '')
     # Only return the authenticity token for JSON requests to approved API actions
-    if(API_ACTIONS.include? action_name and formats.include? :json)
+    if(API_ACTIONS.include? action_name && formats.include? :json)
       response.headers['X-CSRF-Token'] = form_authenticity_token
     end
   end
