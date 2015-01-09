@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
 
   # Returns an ActiveRecord relation of the user's record
   def user_records
-    @user_records ||= user.records.sorted(current_sort).scoped
+    @user_records ||= user.records.sorted(current_sort)
   end
   helper_method :user_records
 
