@@ -38,11 +38,11 @@ class RecordsController < ApplicationController
     # Filter by the specified tag if given
     @records = @records.tagged_with(double_escape_quotes(params[:tag])) if current_user && params[:tag]
     # Get the selected id(s) if given
-    @records = @records.where(id: params[:id]).scoped if params[:id]
+    @records = @records.where(id: params[:id]) if params[:id]
     # Get the relevant page unless all is specified
     @records = (params[:per].eql? "all") ?
       @records.page(1).per(user_records.count) : @records.page(params[:page]).per(params[:per])
-    respond_with(@records.scoped) unless performed?
+    respond_with(@records) unless performed?
   end
 
   # Show the record based on id
@@ -134,9 +134,9 @@ class RecordsController < ApplicationController
   # that make json requests to approved API actions.
   def respond_with_csrf_header
     # Only return the authenticity token to approved origins.
-    return unless request.headers['HTTP_ORIGIN'] && whitelisted_origins.include? request.headers['HTTP_ORIGIN'].gsub(/https?:\/\//, '')
+    return unless request.headers['HTTP_ORIGIN'] && whitelisted_origins.include?(request.headers['HTTP_ORIGIN'].gsub(/https?:\/\//, ''))
     # Only return the authenticity token for JSON requests to approved API actions
-    if(API_ACTIONS.include? action_name && formats.include? :json)
+    if(API_ACTIONS.include? action_name && formats.include?(:json))
       response.headers['X-CSRF-Token'] = form_authenticity_token
     end
   end
@@ -158,6 +158,7 @@ class RecordsController < ApplicationController
     params.require(:record).permit :external_system, :external_id, :format,
       :data, :title, :author, :url, :title_sort, :content_type
   end
+  private :record_params
 
   # Whitelisted CORS origins
   def whitelisted_origins
