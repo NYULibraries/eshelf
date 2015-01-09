@@ -34,9 +34,9 @@ class RecordsController < ApplicationController
     # Get the user's records
     @records = user_records
     # Filter by the specified content type if given
-    @records = @records.where(content_type: params[:content_type]).scoped if params[:content_type]
+    @records = @records.where(content_type: params[:content_type]) if params[:content_type]
     # Filter by the specified tag if given
-    @records = @records.tagged_with(double_escape_quotes(params[:tag])).scoped if current_user && params[:tag]
+    @records = @records.tagged_with(double_escape_quotes(params[:tag])) if current_user && params[:tag]
     # Get the selected id(s) if given
     @records = @records.where(id: params[:id]).scoped if params[:id]
     # Get the relevant page unless all is specified
