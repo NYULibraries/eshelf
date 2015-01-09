@@ -1,8 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :crypted_password, :current_login_at, :current_login_ip, 
-    :email, :firstname, :lastname, :last_login_at, :last_login_ip, :last_request_at, 
-      :login_count, :mobile_phone, :password_salt, :persistence_token, 
-        :refreshed_at, :session_id, :username
+
   # Used to store arbitrary values, will be deprecated in 1.0.0
   # release of authpds
   serialize :user_attributes
@@ -47,7 +44,7 @@ class User < ActiveRecord::Base
         next if old_value.nil?
         record.send "#{attribute}=".to_sym, old_value.encode("UTF-8") if record.send(attribute).blank?
       end
-      # Set the attributes from the external system again, in case there was a problem the first 
+      # Set the attributes from the external system again, in case there was a problem the first
       # time around, e.g. bad dedup id for Primo.
       record.set_attributes_from_external_system
       record.created_at = old_record.created_at
