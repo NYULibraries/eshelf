@@ -75,7 +75,7 @@ end
 gem "exlibris-nyu", github: 'NYULibraries/exlibris-nyu', tag: 'v2.2.0'
 gem 'authpds-nyu', github: 'NYULibraries/authpds-nyu', tag: 'v2.0.1'
 gem 'acts_as_citable', '~> 3.0.0-alpha'
-gem 'ex_cite', '~> 2.0.0-alpha.1'
+gem 'ex_cite', '~> 2.0.0-alpha.1', require: 'ex_cite/engine'
 
 # Use puma as the app server
 gem 'puma', '~> 2.10.0'
