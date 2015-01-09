@@ -27,15 +27,6 @@ class RecordTest < ActiveSupport::TestCase
     assert_equal("title sort 1", @tmp_user_record.title_sort)
   end
 
-  test "mass assignment error" do
-    assert_raise(ActiveModel::MassAssignmentSecurity::Error) {
-      @user_record.update_attributes!(user_id: 1)
-    }
-    assert_raise(ActiveModel::MassAssignmentSecurity::Error) {
-      @user_record.update_attributes!(tmp_user_id: 1)
-    }
-  end
-
   test "becomes external system returns self" do
     external_system = @user_record.becomes_external_system
     assert(@user_record == external_system)
