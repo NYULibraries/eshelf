@@ -1,8 +1,8 @@
 @media (max-width: 979px) and (min-width: 767px) {
   .sidebar {
-      font-size: $baseFontSize * 0.95;
+      font-size: $font-size-base * 0.95;
       h2.workspace {
-        font-size: $baseFontSize;
+        font-size: $font-size-base;
       }
   }
 }
