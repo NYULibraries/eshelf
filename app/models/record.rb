@@ -1,10 +1,7 @@
 class Record < ActiveRecord::Base
-  # Don't allow the user_id or tmp_user_id to be set from user input
-  attr_accessible :external_system, :external_id, :format, :data,
-    :title, :author, :url, :title_sort, :content_type
   belongs_to :user
   belongs_to :tmp_user
-  has_many :locations, dependent: :destroy
+  has_many :locations, :dependent => :destroy
   paginates_per 10
   # Subclasses are defined by their external system
   inheritance_column= :external_system

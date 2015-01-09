@@ -69,7 +69,7 @@ class RecordsController < ApplicationController
     # Create a new record from the params and make it become
     # an external system (e.g. Primo) object if possible
     # in order to kick off callbacks
-    @record = user.records.new(params[:record]).becomes_external_system
+    @record = user.records.new(record_params).becomes_external_system
     flash[:notice] = t('record.flash.actions.create.notice') if @record.save!
     # Need to specify location due to external system inheritance
     respond_with(@record, location: record_url(@record))
@@ -153,6 +153,11 @@ class RecordsController < ApplicationController
     WHITELISTED_PRINT_FORMATS.find{ |format| format == candidate }
   end
   private :whitelist_print_format
+
+  def record_params
+    params.require(:record).permit :external_system, :external_id, :format,
+      :data, :title, :author, :url, :title_sort, :content_type
+  end
 
   # Whitelisted CORS origins
   def whitelisted_origins
