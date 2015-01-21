@@ -31,7 +31,7 @@ module Eshelf
     whitelisted_origins = Rails.env.test? ?
       Eshelf::EXAMPLE_ORIGIN : (Figs.env['ESHELF_ORIGINS'] || [])
 
-    config.middleware.use Rack::Cors do
+    config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins *whitelisted_origins
         resource %r{/records/from/\w+.json(\?.*)?}, headers: :any, methods: [:get], expose: 'X-CSRF-Token'
