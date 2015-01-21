@@ -37,5 +37,8 @@ module Eshelf
         resource '/records.json', headers: :any, methods: [:post, :delete], expose: 'X-CSRF-Token'
       end
     end
+
+    # Default Mailer Host
+    config.action_mailer.default_url_options = { host: 'eshelf.library.nyu.edu' }
   end
 end
