@@ -39,6 +39,6 @@ module Eshelf
     end
 
     # Default Mailer Host
-    config.action_mailer.default_url_options = { host: 'eshelf.library.nyu.edu' }
+    config.action_mailer.default_url_options = {host: 'https://eshelf.library.nyu.edu'}
   end
 end
