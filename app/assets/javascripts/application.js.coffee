@@ -1,4 +1,4 @@
 #= require modernizr
 #= require eshelf
-#= require bootstrap-modal.js
+#= require bootstrap/modal
 #= require_tree ./application
