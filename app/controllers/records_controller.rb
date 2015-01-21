@@ -107,7 +107,7 @@ class RecordsController < ApplicationController
 
   # Create (send) a new email
   def create_email
-    head :bad_request && return unless @email_format = whitelist_email_format(params[:email_format])
+    head :bad_request and return unless @email_format = whitelist_email_format(params[:email_format])
     @records = user_records.find(params[:id])
     RecordsMailer.records_email(user, @records, @email_format, params[:to_address]).deliver
     flash[:notice] = t('record.flash.actions.create_email.notice')
@@ -116,7 +116,7 @@ class RecordsController < ApplicationController
 
   # Display a print friendly list of records
   def print
-    head :bad_request && return unless @print_format = whitelist_print_format(params[:print_format])
+    head :bad_request and return unless @print_format = whitelist_print_format(params[:print_format])
     # Since we take id's from collection and member routes,
     # we force the id param to be an array (collection style)
     @records = user_records.find((params[:id].is_a? Array) ? params[:id] : [params[:id]])
@@ -126,7 +126,7 @@ class RecordsController < ApplicationController
   # Redirects to the record's GetIt url
   def getit
     @record = user_records.find(params[:id])
-    head :bad_request && return if @record.nil?
+    head :bad_request and return if @record.nil?
     redirect_to current_primary_institution.getit_url + @record.url
   end
 
