@@ -1,6 +1,5 @@
 class Location < ActiveRecord::Base
   belongs_to :record
-  attr_accessible :call_number, :collection
 
   # Validate presence of either a call number or a collection
   validates :call_number, presence: true, :if => Proc.new { collection.blank? }
