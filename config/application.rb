@@ -27,8 +27,9 @@ module Eshelf
     # config.i18n.default_locale = :de
 
     # Cross Origin Request support
-    whitelisted_origins = ENV.has_key?('ESHELF_ORIGINS') ?
-      Figs.env['ESHELF_ORIGINS'] : Eshelf::EXAMPLE_ORIGIN
+    # Set to a dummy value for tests
+    whitelisted_origins = Rails.env.test? ?
+      Eshelf::EXAMPLE_ORIGIN : (Figs.env['ESHELF_ORIGINS'] || [])
 
     config.middleware.use Rack::Cors do
       allow do
