@@ -41,7 +41,7 @@ gem 'mustache-rails', github: 'josh/mustache-rails', tag: 'v0.2.3', require: 'mu
 gem 'nyulibraries-assets', github: 'NYULibraries/nyulibraries-assets', tag: 'v4.2.0'
 
 # Deploy the application with Formaggio deploy recipes
-gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.4.0'
+gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.4.1'
 
 # Figs for configuration
 gem 'figs', '~> 2.0.2'
