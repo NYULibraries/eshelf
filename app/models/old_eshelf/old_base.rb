@@ -1,6 +1,5 @@
 module OldEshelf
   class OldBase < ActiveRecord::Base
-    attr_accessible
 
     # Was an old eshelf connection set in database.yml?
     def self.connection_configured?
