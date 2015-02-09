@@ -25,7 +25,7 @@ class UsersControllerTest < ActionController::TestCase
     get :tags
     assert_response :success
     # Should not have pagination
-    assert_select "nav.pagination", 0
+    assert_select "nav ul.pagination", 0
     # Should have a single tag in the list.
     assert_select "ul.tags-list" do |elements|
       elements.each do |element|
@@ -43,7 +43,7 @@ class UsersControllerTest < ActionController::TestCase
     get :tags
     assert_response :success
     # Should have pagination
-    assert_select("nav.pagination") do |elements|
+    assert_select("nav ul.pagination") do |elements|
       assert_equal(1, elements.size, "Should have only 1 pagination element")
       elements.each do |element|
         assert_select element, "li.page.current > span", { count: 1, text: "1" }
@@ -69,7 +69,7 @@ class UsersControllerTest < ActionController::TestCase
     get :tags, page: 2
     assert_response :success
     # Should have pagination
-    assert_select("nav.pagination") do |elements|
+    assert_select("nav ul.pagination") do |elements|
       assert_equal(1, elements.size, "Should have only 1 pagination element")
       elements.each do |element|
         assert_select element, "li.first > a", { count: 1, text: "&laquo; First", href: "users/tags?page=1" }

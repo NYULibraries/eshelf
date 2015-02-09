@@ -1,6 +1,5 @@
 module OldEshelf
   class OldBase < ActiveRecord::Base
-    attr_accessible
 
     # Was an old eshelf connection set in database.yml?
     def self.connection_configured?
@@ -9,12 +8,12 @@ module OldEshelf
     end
 
     self.establish_connection :old_eshelf if self.connection_configured?
-    # ActiveRecord likes it when we tell it this is an abstract class only. 
+    # ActiveRecord likes it when we tell it this is an abstract class only.
     self.abstract_class = true
 
     # Just to be safe
     def read_only?
-      true 
+      true
     end
   end
 end

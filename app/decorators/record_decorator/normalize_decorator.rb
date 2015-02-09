@@ -1,5 +1,5 @@
 module RecordDecorator
-  # Record decorated with normalized values from the 
+  # Record decorated with normalized values from the
   # record's Citation Standard Format (CSF)
   #
   # Author::    scotdalton

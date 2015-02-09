@@ -56,7 +56,7 @@ class NormalizeDecoratorTest < ActiveSupport::TestCase
   end
 
   test "normalize journal title" do
-    assert_nil @normalized_record.journal_title, "Unexpected journal title"
+    assert @normalized_record.journal_title.blank?, "Unexpected journal title"
   end
 
   test "normalize subjects" do
@@ -64,11 +64,11 @@ class NormalizeDecoratorTest < ActiveSupport::TestCase
   end
 
   test "normalize issn" do
-    assert_nil @normalized_record.issn, "Unexpected issn"
+    assert @normalized_record.issn.blank?, "Unexpected issn"
   end
 
   test "normalize eissn" do
-    assert_nil @normalized_record.eissn, "Unexpected eissn"
+    assert @normalized_record.eissn.blank?, "Unexpected eissn"
   end
 
   test "normalize isbn" do
@@ -76,7 +76,7 @@ class NormalizeDecoratorTest < ActiveSupport::TestCase
   end
 
   test "normalize related titles" do
-    assert_nil @normalized_record.related_titles, "Unexpected related titles"
+    assert @normalized_record.related_titles.blank?, "Unexpected related titles"
   end
 
   test "normalize language" do
@@ -88,6 +88,6 @@ class NormalizeDecoratorTest < ActiveSupport::TestCase
   end
 
   test "normalize notes" do
-    assert_nil @normalized_record.notes, "Unexpected notes"
+    assert @normalized_record.notes.blank?, "Unexpected notes"
   end
 end

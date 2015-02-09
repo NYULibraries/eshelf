@@ -34,15 +34,15 @@ class RecordsController < ApplicationController
     # Get the user's records
     @records = user_records
     # Filter by the specified content type if given
-    @records = @records.where(content_type: params[:content_type]).scoped if params[:content_type]
+    @records = @records.where(content_type: params[:content_type]) if params[:content_type]
     # Filter by the specified tag if given
-    @records = @records.tagged_with(double_escape_quotes(params[:tag])).scoped if current_user and params[:tag]
+    @records = @records.tagged_with(double_escape_quotes(params[:tag])) if current_user && params[:tag]
     # Get the selected id(s) if given
-    @records = @records.where(id: params[:id]).scoped if params[:id]
+    @records = @records.where(id: params[:id]) if params[:id]
     # Get the relevant page unless all is specified
     @records = (params[:per].eql? "all") ?
       @records.page(1).per(user_records.count) : @records.page(params[:page]).per(params[:per])
-    respond_with(@records.scoped) unless performed?
+    respond_with(@records) unless performed?
   end
 
   # Show the record based on id
@@ -54,8 +54,8 @@ class RecordsController < ApplicationController
   # Get the records by external system and external id(s).
   # TODO: probably unnecessary and can be merged with index.
   def from_external_system
-    @records = user_records.where(external_system: params[:external_system]).scoped
-    @records = @records.where(external_id: params[:external_id]).scoped if params[:external_id]
+    @records = user_records.where(external_system: params[:external_system])
+    @records = @records.where(external_id: params[:external_id]) if params[:external_id]
     # Get the relevant page unless all is specified
     @records = (params[:per].eql? "all") ?
       @records.page(1).per(user_records.count) : @records.page(params[:page]).per(params[:per])
@@ -69,7 +69,7 @@ class RecordsController < ApplicationController
     # Create a new record from the params and make it become
     # an external system (e.g. Primo) object if possible
     # in order to kick off callbacks
-    @record = user.records.new(params[:record]).becomes_external_system
+    @record = user.records.new(record_params).becomes_external_system
     flash[:notice] = t('record.flash.actions.create.notice') if @record.save!
     # Need to specify location due to external system inheritance
     respond_with(@record, location: record_url(@record))
@@ -86,9 +86,9 @@ class RecordsController < ApplicationController
   # Routed from both member and collection calls
   def destroy
     @records = user_records.where(id: params[:id]).destroy_all if params[:id]
-    if @records.blank? and params[:record]
+    if @records.blank? && params[:record]
       @records = [params[:record]].flatten.collect { |record|
-        next unless (record[:external_system] and record[:external_id])
+        next unless (record[:external_system] && record[:external_id])
         user_records.where(external_system: record[:external_system], external_id: record[:external_id]).destroy_all
       }.compact.flatten
     end
@@ -134,9 +134,9 @@ class RecordsController < ApplicationController
   # that make json requests to approved API actions.
   def respond_with_csrf_header
     # Only return the authenticity token to approved origins.
-    return unless request.headers['HTTP_ORIGIN'] and whitelisted_origins.include? request.headers['HTTP_ORIGIN'].gsub(/https?:\/\//, '')
+    return unless request.headers['HTTP_ORIGIN'] && whitelisted_origins.include?(request.headers['HTTP_ORIGIN'].gsub(/https?:\/\//, ''))
     # Only return the authenticity token for JSON requests to approved API actions
-    if(API_ACTIONS.include? action_name and formats.include? :json)
+    if(API_ACTIONS.include? action_name && formats.include?(:json))
       response.headers['X-CSRF-Token'] = form_authenticity_token
     end
   end
@@ -153,6 +153,12 @@ class RecordsController < ApplicationController
     WHITELISTED_PRINT_FORMATS.find{ |format| format == candidate }
   end
   private :whitelist_print_format
+
+  def record_params
+    params.require(:record).permit :external_system, :external_id, :format,
+      :data, :title, :author, :url, :title_sort, :content_type
+  end
+  private :record_params
 
   # Whitelisted CORS origins
   def whitelisted_origins

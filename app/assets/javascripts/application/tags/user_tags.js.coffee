@@ -19,9 +19,9 @@ class UserTags
     @form.submit (event)-> false
     # and attach a typeahead
     @input.typeahead
-      source: (query, process) -> userTags.filter(query)
       minLength: 0
-      items: 20
+    ,
+      source: (query, process) -> userTags.filter(query)
     # and attach a handler to the keyup event to handle
     # a cleared input field
     # http://stackoverflow.com/questions/4403444/jquery-how-to-trigger-an-event-when-the-user-clear-a-textbox
