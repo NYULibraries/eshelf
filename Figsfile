@@ -4,4 +4,3 @@ method: git
 locations:
 - common
 - eshelf.yml
-- exlibris-nyu.yml
