@@ -1,6 +1,6 @@
 # E-Shelf
 
-[![Build Status](https://travis-ci.org/NYULibraries/eshelf.png?branch=master)](https://travis-ci.org/NYULibraries/eshelf)
+[![Build Status](https://travis-ci.org/NYULibraries/eshelf.svg?branch=master)](https://travis-ci.org/NYULibraries/eshelf)
 [![Dependency Status](https://gemnasium.com/NYULibraries/eshelf.png)](https://gemnasium.com/NYULibraries/eshelf)
 [![Code Climate](https://codeclimate.com/github/NYULibraries/eshelf.png)](https://codeclimate.com/github/NYULibraries/eshelf)
 [![Coverage Status](https://coveralls.io/repos/NYULibraries/eshelf/badge.png?branch=master)](https://coveralls.io/r/NYULibraries/eshelf)
