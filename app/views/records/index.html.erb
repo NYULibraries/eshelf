@@ -2,7 +2,7 @@
 <div class="results">
   <p><%= page_entries_info @records %></p>
   <%= paginate @records, :theme => "bootstrap" %>
-  <div id="select_something" class="alert alert-error fade in hide">
+  <div id="select_something" class="alert alert-danger fade in" style="display:none;">
     <a href="#" class="close" data-hide="alert">&times;</a>
     <%= content_tag :div, t('record.select.something') %>
   </div>
