@@ -6,7 +6,7 @@ module RecordsHelper
 
   # Returns a set of printable records
   def printable_records(records, print_format)
-    @printable_records ||= 
+    @printable_records ||=
       records.collect{ |record| printable_record(record, print_format) }
   end
 
@@ -31,8 +31,8 @@ module RecordsHelper
   # Returns an Array of email options as HTML links
   def email_options
     email_options_collection.collect do |email_format|
-      link_to(email_format[0], new_email_records_path(email_format[1].to_sym), 
-        {class: "email", data: {toggle: "modal", target: "#modal"}})
+      link_to(email_format[0], new_email_records_path(email_format[1].to_sym),
+        {class: "email launch_modal", data: {toggle: "modal", target: "#modal"}})
     end
   end
 
@@ -51,7 +51,7 @@ module RecordsHelper
   # Returns an Array of print options as HTML links
   def print_options
     RecordsController::WHITELISTED_PRINT_FORMATS.collect do |print_format|
-      link_to(t("record.collection.print.options.#{print_format}"), 
+      link_to(t("record.collection.print.options.#{print_format}"),
         print_records_path(print_format.to_sym), class: :print, target: :_blank)
     end
   end

@@ -46,6 +46,9 @@ gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.4.2'
 # Figs for configuration
 gem 'figs', '~> 2.0.2'
 
+# Font awesome for icons
+gem 'font-awesome-rails', '~> 4.2.0'
+
 # Development gems
 group :development do
   gem 'ruby-debug', '~> 0.10.4'

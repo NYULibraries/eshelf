@@ -1,3 +1,5 @@
+@import 'font-awesome';
+
 #aleph_account {
   width: 100%;
   height: 100%;
@@ -66,4 +68,12 @@ input#select {
 
 .tag_list {
   padding-right: 1em;
+}
+
+#email_records {
+  margin: 1em;
+}
+
+label[for='to_address'] {
+  margin-left: 0 !important;
 }
