@@ -34,17 +34,6 @@ GIT
       rvm-capistrano (~> 1.5)
 
 GIT
-  remote: git://github.com/NYULibraries/nyulibraries-assets.git
-  revision: 36704b3917bbcab4a8622c230fdf29c476e47fcc
-  tag: v4.2.1
-  specs:
-    nyulibraries-assets (4.2.1)
-      bootstrap-sass (~> 3.2.0.2)
-      compass (~> 1.0.1)
-      font-awesome-rails (~> 4.2.0.0)
-      institutions (~> 0.1.3)
-
-GIT
   remote: git://github.com/josh/mustache-rails.git
   revision: d219b298ddc94ca0c4b749125a803f74157ddd03
   tag: v0.2.3
@@ -52,6 +41,15 @@ GIT
     mustache-rails (0.2.3)
       actionpack (>= 3.1)
       mustache (~> 0.99.4)
+
+PATH
+  remote: /apps/nyulibraries-assets
+  specs:
+    nyulibraries-assets (4.4.0)
+      bootstrap-sass (~> 3.2.0.2)
+      compass (~> 1.0.1)
+      font-awesome-rails (~> 4.2.0.0)
+      institutions (~> 0.1.3)
 
 GEM
   remote: https://rubygems.org/

@@ -67,7 +67,7 @@ describe "TagControl", ->
 
     it "should be an HTML anchor tag", ->
       expect(tagControl.html()).toEqual(
-        "<a href=\"#\" class=\"muted btn btn-mini\" style=\"display: none; \">"+
+        "<a href=\"#\" class=\"muted\" style=\"display: none; \">"+
           "<i class=\"icons-famfamfam-add\"></i><span>add</span></a>")
 
 describe "AddControl", ->
@@ -135,7 +135,7 @@ describe "AddControl", ->
 
     it "should be an HTML anchor tag", ->
       expect(addControl.html()).toEqual(
-        "<a href=\"#\" class=\"muted btn btn-mini\" style=\"display: none; \">"+
+        "<a href=\"#\" class=\"muted\" style=\"display: none; \">"+
           "<i class=\"icons-famfamfam-add\"></i><span>add</span></a>")
 
 describe "EditControl", ->
@@ -203,7 +203,7 @@ describe "EditControl", ->
 
     it "should be an HTML anchor tag", ->
       expect(editControl.html()).toEqual(
-        "<a href=\"#\" class=\"muted btn btn-mini\" style=\"display: none; \">"+
+        "<a href=\"#\" class=\"muted\" style=\"display: none; \">"+
           "<i class=\"icons-famfamfam-pencil_add\"></i><span>edit</span></a>")
 
 describe "SaveControl", ->
@@ -271,7 +271,7 @@ describe "SaveControl", ->
 
     it "should be an HTML anchor tag", ->
       expect(saveControl.html()).toEqual(
-        "<a href=\"#\" class=\"muted btn btn-mini\" style=\"display: none; \">"+
+        "<a href=\"#\" class=\"muted\" style=\"display: none; \">"+
           "<i class=\"icons-famfamfam-disk\"></i><span>save</span></a>")
 
 describe "ControlSet", ->
@@ -356,9 +356,9 @@ describe "ControlSet", ->
 
     it "should be an HTML span with 3 control anchors", ->
       expect(controlSet.html()).toEqual "<span class=\"controls\">" +
-        "<a href=\"#\" class=\"muted btn btn-mini\" style=\"display: none; \">"+
+        "<a href=\"#\" class=\"muted\" style=\"display: none; \">"+
           "<i class=\"icons-famfamfam-add\"></i><span>add</span></a>" +
-        "<a href=\"#\" class=\"muted btn btn-mini\" style=\"display: none; \">"+
+        "<a href=\"#\" class=\"muted\" style=\"display: none; \">"+
           "<i class=\"icons-famfamfam-pencil_add\"></i><span>edit</span></a>" +
-        "<a href=\"#\" class=\"muted btn btn-mini\" style=\"display: none; \">"+
+        "<a href=\"#\" class=\"muted\" style=\"display: none; \">"+
           "<i class=\"icons-famfamfam-disk\"></i><span>save</span></a></span>"

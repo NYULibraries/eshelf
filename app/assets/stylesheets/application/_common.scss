@@ -44,7 +44,7 @@ input#select {
 }
 
 #user_tags {
-  height: 30em;
+  // height: 30em;
   overflow-x: auto;
   overflow-y: scroll;
   position: relative;
@@ -76,4 +76,18 @@ input#select {
 
 label[for='to_address'] {
   margin-left: 0 !important;
+}
+
+div.entree, div.appetizer {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+#shelf h3 {
+  border-top: 1px solid #ccc;
+  padding-top: 2em;
+}
+
+div.entree {
+  padding-left: 1em;
 }

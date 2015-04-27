@@ -1,5 +1,7 @@
-<label class="checkbox inline">
-  <%= check_box_tag("id[]", record.id, false, class: "js") %>
-  <%= content_tag :strong, "#{record_idx}.", class: "pull-left" %>
-</label>
+<div>
+   <label>
+       <%= content_tag :strong, "#{record_idx}." %>
+       <%= check_box_tag("id[]", record.id, false, class: "js") %>
+   </label>
+ </div>
 <%= content_type_tag(record.content_type) %>

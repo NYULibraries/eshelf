@@ -13,7 +13,7 @@ class TagControl
 
   # TagControl as a jQuery Object
   jQuery: () ->
-    @_jQuery ||= $("<a/>").attr("href", "#").addClass("muted btn btn-mini").
+    @_jQuery ||= $("<a/>").attr("href", "#").addClass("muted").
       append($("<span/>").text(@text)).prepend($("<i/>").addClass(@iconClass)).
         on("click", @click)
 
