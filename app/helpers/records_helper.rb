@@ -32,7 +32,7 @@ module RecordsHelper
   def email_options
     email_options_collection.collect do |email_format|
       link_to(email_format[0], new_email_records_path(email_format[1].to_sym),
-        {class: "email launch_modal", data: {toggle: "modal", target: "#modal"}})
+        {class: "email", data: {toggle: "modal", target: "#modal"}})
     end
   end
 
