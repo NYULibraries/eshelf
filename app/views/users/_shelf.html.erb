@@ -1,5 +1,7 @@
 <%= sidebar_section("shelf", eshelf_header) do %>
   <%= render 'users/shelf/links', :user => user %>
   <%= render 'users/shelf/content_types', :user => user if params[:controller].eql? "records" %>
-  <%= render 'users/shelf/tags', :user => user if params[:controller].eql? "records" %>
+  <div id="shelf_user_tags">
+    <%= render 'users/shelf/tags', :user => user if params[:controller].eql? "records" %>
+  </div>
 <% end %>

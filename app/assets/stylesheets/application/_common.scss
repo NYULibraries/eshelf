@@ -74,18 +74,19 @@ input#select {
   margin: 1em;
 }
 
+#shelf h3 {
+  border-top: 1px solid #ccc;
+  padding-top: 2em;
+}
+
 label[for='to_address'] {
   margin-left: 0 !important;
 }
 
+// Overrides
 div.entree, div.appetizer {
   margin-left: 0;
   padding-left: 0;
-}
-
-#shelf h3 {
-  border-top: 1px solid #ccc;
-  padding-top: 2em;
 }
 
 div.entree {
