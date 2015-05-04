@@ -10,5 +10,7 @@ Rails.application.config.assets.precompile += %w(
   print.js
   records.js
   nyulibraries/nyu/header.png
+  nyulibraries/nyuad/header.png
+  nyulibraries/nyush/shanghai.png 
   magnifier.png
 )
