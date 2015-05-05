@@ -136,7 +136,7 @@ class RecordsController < ApplicationController
     # Only return the authenticity token to approved origins.
     return unless request.headers['HTTP_ORIGIN'] && whitelisted_origins.include?(request.headers['HTTP_ORIGIN'].gsub(/https?:\/\//, ''))
     # Only return the authenticity token for JSON requests to approved API actions
-    if(API_ACTIONS.include? action_name && formats.include?(:json))
+    if(API_ACTIONS.include?(action_name) && formats.include?(:json))
       response.headers['X-CSRF-Token'] = form_authenticity_token
     end
   end
