@@ -15,10 +15,10 @@ Rails.application.routes.draw do
     get 'email/new' => 'records#new_email', :on => :member, :as => :new_email
     post 'email' => 'records#create_email', :on => :collection, :as => :email
     get 'from/:external_system(/:per)' => 'records#from_external_system', :on => :collection
-    # delete 'destroy', :on => :collection, :as => ''
     get 'getit' => 'records#getit', :on => :member, :as => :getit
   end
-  delete 'records(/:id(.:format))' => 'records#destroy'
+  delete 'records' => 'records#destroy', :as => :destroy_records
+  delete 'records.json' => 'records#destroy'
 
   get 'login' => 'user_sessions#new', :as => :login
   get 'logout' => 'user_sessions#destroy', :as => :logout
