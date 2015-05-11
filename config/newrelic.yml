@@ -220,3 +220,7 @@ production:
 staging:
   <<: *default_settings
   monitor_mode: false
+
+qa:
+  <<: *default_settings
+  monitor_mode: false
