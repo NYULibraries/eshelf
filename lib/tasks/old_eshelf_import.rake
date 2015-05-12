@@ -13,11 +13,11 @@ namespace :nyu do
         users << User.first_or_initialize_from_old_user(old_user)
       end
       User.import users
+      puts "[SUCCESS] #{users.count} users imported."
     end
 
     desc "Import records from the old eshelf to the new"
     task :import_records => :environment do |task,args|
-      puts "[INFO] Ignore the Java errors..."
       records = []
       OldEshelf::OldUser.accessed_this_year.each do |old_user|
         # Don't do anything if there are no old records to import
@@ -29,16 +29,18 @@ namespace :nyu do
       records.flatten!
       Record.record_timestamps = false
       begin
-        Record.import records, validate: false
+        # Perform a basic update on duplicate key found
+        Record.import records, validate: false, on_duplicate_key_update: [:title, :title_sort, :author, :url]
         # Create locations once we have the records
         # NOTE: This sucks. Sorry.
         Record.all.each do |record|
           record.becomes_external_system.create_locations_from_external_system
         end
+        puts "[SUCCESS] #{records.count} records imported."
       rescue => e
         error = /ActiveRecord::JDBCError: com\.mysql\.jdbc\.(.+?): (.+?): INSERT INTO/.match(e.message)
         unless error.captures.blank?
-          puts "[ERROR] #{error.captures.first}: #{error.captures.last}"
+          raise Exception, "#{error.captures.first}: #{error.captures.last}"
         end
       end
 
@@ -53,6 +55,7 @@ namespace :nyu do
         next unless user
         user.tag_records_from_old_user(old_user)
       end
+      puts "[SUCCESS] Finishes importing tags."
     end
   end
 end
