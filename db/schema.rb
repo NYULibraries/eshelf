@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141117101107) do
+ActiveRecord::Schema.define(version: 20150512155740) do
 
   create_table "locations", force: true do |t|
     t.integer  "record_id",   null: false
@@ -26,12 +26,12 @@ ActiveRecord::Schema.define(version: 20141117101107) do
     t.string   "external_system",                    null: false
     t.integer  "user_id"
     t.integer  "tmp_user_id"
-    t.string   "title",                              null: false
-    t.string   "author"
+    t.text     "title",                              null: false
+    t.text     "author"
     t.string   "format",                             null: false
     t.text     "url",                                null: false
     t.text     "data",            limit: 2147483647, null: false
-    t.string   "title_sort",                         null: false
+    t.text     "title_sort",                         null: false
     t.string   "content_type"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
