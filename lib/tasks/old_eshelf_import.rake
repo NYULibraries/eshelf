@@ -1,6 +1,6 @@
 namespace :nyu do
   namespace :old_eshelf do
-    require 'activerecord-import'        
+    require 'activerecord-import'
     desc "Import users, records and tags from the old eshelf to the new"
     task :import => [:import_users, :import_records, :import_tags]
 
@@ -17,6 +17,7 @@ namespace :nyu do
 
     desc "Import records from the old eshelf to the new"
     task :import_records => :environment do |task,args|
+      puts "[INFO] Ignore the Java errors..."
       records = []
       OldEshelf::OldUser.accessed_this_year.each do |old_user|
         # Don't do anything if there are no old records to import
@@ -27,12 +28,20 @@ namespace :nyu do
       end
       records.flatten!
       Record.record_timestamps = false
-      Record.import records, validate: false
-      # Create locations once we have the records
-      # NOTE: This sucks. Sorry.
-      Record.all.each do |record|
-        record.becomes_external_system.create_locations_from_external_system
+      begin
+        Record.import records, validate: false
+        # Create locations once we have the records
+        # NOTE: This sucks. Sorry.
+        Record.all.each do |record|
+          record.becomes_external_system.create_locations_from_external_system
+        end
+      rescue => e
+        error = /ActiveRecord::JDBCError: com\.mysql\.jdbc\.(.+?): (.+?): INSERT INTO/.match(e.message)
+        unless error.captures.blank?
+          puts "[ERROR] #{error.captures.first}: #{error.captures.last}"
+        end
       end
+
     end
 
     desc "Import tags from the old eshelf to the new"
