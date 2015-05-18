@@ -23,10 +23,14 @@ module OldEshelf
       # Sometimes the key is a string and sometimes a symbol.
       # Check for both.
       (self.record_attributes["raw_xml"] || self.record_attributes[:raw_xml])
+    rescue Psych::SyntaxError => e
+      log = Logger.new(STDOUT)
+      log.error("[ID=#{self.id}] Record raw_xml failed to load: #{e}")
+      log.error("...Continuing...")
     end
 
     def old_tag_list
-      OldTag.find(old_taggings.collect{|old_tagging| old_tagging.tag_id}).collect{|old_tag| 
+      OldTag.find(old_taggings.collect{|old_tagging| old_tagging.tag_id}).collect{|old_tag|
         old_tag.name }.join(", ")
     end
   end
