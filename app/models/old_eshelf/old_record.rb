@@ -27,6 +27,7 @@ module OldEshelf
       log = Logger.new(STDOUT)
       log.info("[ID=#{self.id}] Record raw_xml failed to load: #{e}")
       log.info("...Continuing...")
+      return ""
     end
 
     def old_tag_list
