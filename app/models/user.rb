@@ -23,7 +23,8 @@ class User < ActiveRecord::Base
     user = User.where(username: old_user.username).first_or_initialize
     # Only keep some old user data
     [:email, :firstname, :lastname].each do |attribute|
-      user.send "#{attribute}=".to_sym, old_user.send("old_#{attribute}".to_sym)
+      old_value = old_user.send("old_#{attribute}".to_sym)
+      user.send "#{attribute}=".to_sym, old_value
     end
     user
   end

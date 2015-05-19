@@ -6,7 +6,7 @@ module OldEshelf
     scope :accessed_last_year, lambda{ where("updated_at > ?", 2.year.ago) }
     scope :with_records, -> { joins(:old_records).select("DISTINCT(users.id), users.*") }
     def old_email; email end
-    def old_firstname; firstname end
-    def old_lastname; lastname end
+    def old_firstname; firstname || "" end
+    def old_lastname; lastname || "" end
   end
 end
