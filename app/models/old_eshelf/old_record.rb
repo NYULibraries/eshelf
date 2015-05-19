@@ -24,9 +24,8 @@ module OldEshelf
       # Check for both.
       (self.record_attributes["raw_xml"] || self.record_attributes[:raw_xml])
     rescue Psych::SyntaxError => e
-      log = Logger.new(STDOUT)
+      log = Logger.new(Rails.root.join('log','old_eshelf_load_error.log'))
       log.info("[ID=#{self.id}] Record raw_xml failed to load: #{e}")
-      log.info("...Continuing...")
       return ""
     end
 

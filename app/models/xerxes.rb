@@ -7,13 +7,19 @@ class Xerxes < Record
       self.title = normalized_str :normalizedTitle if title.blank?
       self.author = normalized_str :author if author.blank?
       self.content_type = normalized_str :content_type if content_type.blank?
-      self.url = "#{to_openurl}" if url.blank?
+      begin
+        self.url = "#{to_openurl}" if url.blank?
+      rescue => e
+        log = Logger.new(Rails.root.join('log','old_eshelf_load_error.log'))
+        log.info("[ID=#{self.id}] Record to_openurl failed to load: #{e}")
+        self.url = "http://getit.library.nyu.edu"
+      end
     end
   end
 
   # Return locations array for Xerxes
   def xerxes_locations
-    @xerxes_locations ||= normalized(:callNumber).collect do |node| 
+    @xerxes_locations ||= normalized(:callNumber).collect do |node|
       { call_number: node }
     end
   end
