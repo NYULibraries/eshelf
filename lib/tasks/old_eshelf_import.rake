@@ -7,7 +7,8 @@ namespace :nyu do
     desc "Import users from the old eshelf to the new"
     task :import_users => :environment do |task,args|
       users = []
-      OldEshelf::OldUser.accessed_this_year.each do |old_user|
+      old_users = OldEshelf::OldUser.accessed_this_year.reject(&:expired?)
+      old_users.each do |old_user|
         # Don't do anything if there are no old records to import
         next if old_user.old_records.empty?
         users << User.first_or_initialize_from_old_user(old_user)
@@ -19,7 +20,8 @@ namespace :nyu do
     desc "Import records from the old eshelf to the new"
     task :import_records => :environment do |task,args|
       records = []
-      OldEshelf::OldUser.accessed_this_year.each do |old_user|
+      old_users = OldEshelf::OldUser.accessed_this_year.reject(&:expired?)
+      old_users.each do |old_user|
         # Don't do anything if there are no old records to import
         next if old_user.old_records.empty?
         user = User.find_by_username(old_user.username)
@@ -40,7 +42,7 @@ namespace :nyu do
       rescue => e
         error = /ActiveRecord::JDBCError: com\.mysql\.jdbc\.(.+?): (.+?): INSERT INTO/.match(e.message)
         unless error.captures.blank?
-          raise Exception, "#{error.captures.first}: #{error.captures.last}"
+          raise Exception, "#{e}\n[ActiveRecord::JDBCError] #{error.captures.first}: #{error.captures.last}"
         end
       end
 
@@ -48,7 +50,8 @@ namespace :nyu do
 
     desc "Import tags from the old eshelf to the new"
     task :import_tags => :environment do |task,args|
-      OldEshelf::OldUser.accessed_this_year.each do |old_user|
+      old_users = OldEshelf::OldUser.accessed_this_year.reject(&:expired?)
+      old_users.each do |old_user|
         # Don't do anything if there are no old records to import
         next if old_user.old_records.empty?
         user = User.find_by_username(old_user.username)
