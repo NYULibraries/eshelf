@@ -12,7 +12,7 @@ namespace :nyu do
         next if old_user.old_records.empty?
         users << User.first_or_initialize_from_old_user(old_user)
       end
-      User.import users
+      User.import users, validate: false
       puts "[SUCCESS] #{users.count} users imported."
     end
 
