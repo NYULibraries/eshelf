@@ -25,8 +25,8 @@ module OldEshelf
       (self.record_attributes["raw_xml"] || self.record_attributes[:raw_xml])
     rescue Psych::SyntaxError => e
       log = Logger.new(STDOUT)
-      log.error("[ID=#{self.id}] Record raw_xml failed to load: #{e}")
-      log.error("...Continuing...")
+      log.info("[ID=#{self.id}] Record raw_xml failed to load: #{e}")
+      log.info("...Continuing...")
     end
 
     def old_tag_list
