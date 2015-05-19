@@ -5,11 +5,6 @@ namespace :nyu do
     task :import => [:import_users, :import_records, :import_tags]
 
     desc "Import users from the old eshelf to the new"
-    task :count_old_users => :environment do |task,args|
-      puts "[SUCCESS] #{old_users.count} Old users to import."
-    end
-
-    desc "Import users from the old eshelf to the new"
     task :import_users => :environment do |task,args|
       users = []
       old_users.each do |old_user|
@@ -67,8 +62,7 @@ end
 
 def old_users
   @old_users ||= cache.fetch('old_users') do
-    # OldEshelf::OldUser.accessed_this_year.reject(&:expired?)
-    OldEshelf::OldUser.all.reject(&:expired?)
+    OldEshelf::OldUser.with_records
   end
 end
 

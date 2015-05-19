@@ -10,9 +10,7 @@ class Xerxes < Record
       begin
         self.url = "#{to_openurl}" if url.blank?
       rescue => e
-        log = Logger.new(Rails.root.join('log','old_eshelf_load_error.log'))
-        log.info("[ID=#{self.id}] Record to_openurl failed to load: #{e}")
-        self.url = "http://getit.library.nyu.edu"
+        self.url = "http://dev.getit.library.nyu.edu"
       end
     end
   end
