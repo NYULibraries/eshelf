@@ -53,7 +53,6 @@ gem 'font-awesome-rails', '~> 4.2.0'
 # Development gems
 group :development do
   gem 'ruby-debug', '~> 0.10.4'
-  gem 'pry', '~> 0.10.0'
 end
 
 # Development and testing gems
@@ -101,3 +100,5 @@ gem 'acts-as-taggable-on', '~> 3.4.0'
 
 # Convert old records with activerecord-import
 gem 'activerecord-import', '~> 0.6.0'
+
+gem 'pry', '~> 0.10.0'
