@@ -5,9 +5,13 @@ namespace :nyu do
     task :import => [:import_users, :import_records, :import_tags]
 
     desc "Import users from the old eshelf to the new"
+    task :count_old_users => :environment do |task,args|
+      puts "[SUCCESS] #{old_users.count} Old users to import."
+    end
+
+    desc "Import users from the old eshelf to the new"
     task :import_users => :environment do |task,args|
       users = []
-      old_users = OldEshelf::OldUser.accessed_this_year.reject(&:expired?)
       old_users.each do |old_user|
         # Don't do anything if there are no old records to import
         next if old_user.old_records.empty?
@@ -20,7 +24,6 @@ namespace :nyu do
     desc "Import records from the old eshelf to the new"
     task :import_records => :environment do |task,args|
       records = []
-      old_users = OldEshelf::OldUser.accessed_this_year.reject(&:expired?)
       old_users.each do |old_user|
         # Don't do anything if there are no old records to import
         next if old_user.old_records.empty?
@@ -50,7 +53,6 @@ namespace :nyu do
 
     desc "Import tags from the old eshelf to the new"
     task :import_tags => :environment do |task,args|
-      old_users = OldEshelf::OldUser.accessed_this_year.reject(&:expired?)
       old_users.each do |old_user|
         # Don't do anything if there are no old records to import
         next if old_user.old_records.empty?
@@ -61,4 +63,15 @@ namespace :nyu do
       puts "[SUCCESS] Finishes importing tags."
     end
   end
+end
+
+def old_users
+  @old_users ||= cache.fetch('old_users') do
+    # OldEshelf::OldUser.accessed_this_year.reject(&:expired?)
+    OldEshelf::OldUser.all.reject(&:expired?)
+  end
+end
+
+def cache
+  @cache ||= ActiveSupport::Cache::MemoryStore.new(expires_in: 24.hours)
 end
