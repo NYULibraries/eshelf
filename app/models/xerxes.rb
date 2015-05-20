@@ -34,7 +34,11 @@ class Xerxes < Record
   # Leverage the fact that Records "act as citable" and get the normalized
   # version of the given attribute
   def normalized(attribute)
-    @normalized ||= csf
-    (@normalized.respond_to?(attribute)) ? @normalized.send(attribute) : []
+    begin
+      @normalized ||= csf
+      (@normalized.respond_to?(attribute)) ? @normalized.send(attribute) : []
+    rescue => e
+      []
+    end
   end
 end
