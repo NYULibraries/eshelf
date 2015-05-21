@@ -31,6 +31,10 @@ namespace :nyu do
       begin
         # Perform a basic update on duplicate key found
         Record.import records, validate: false, on_duplicate_key_update: [:title, :title_sort, :author, :url]
+        @citero = Citero
+        Record.all.each do |record|
+          record.url = @citero.map(record.data).send("from_#{record.format}").to_openurl
+        end
         # Create locations once we have the records
         # NOTE: This sucks. Sorry.
         Record.all.each do |record|

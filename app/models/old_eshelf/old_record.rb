@@ -3,7 +3,7 @@ module OldEshelf
     self.table_name = "records"
     belongs_to :old_user, foreign_key: 'user_id'
     has_many :old_taggings, foreign_key: 'taggable_id'
-    serialize :record_attributes
+    # serialize :record_attributes
 
     # Old mappings
     def old_title; title end
@@ -22,7 +22,8 @@ module OldEshelf
     def old_data
       # Sometimes the key is a string and sometimes a symbol.
       # Check for both.
-      (self.record_attributes["raw_xml"] || self.record_attributes[:raw_xml])
+      # (self.record_attributes["raw_xml"] || self.record_attributes[:raw_xml])
+      self.record_attributes.match(/raw_xml: \|(\s+)(.*)?\n\n/m).captures[1]
     rescue Psych::SyntaxError => e
       log = Logger.new(Rails.root.join('log','old_eshelf_load_error.log'))
       log.info("[ID=#{self.id}] Record raw_xml failed to load: #{e}")

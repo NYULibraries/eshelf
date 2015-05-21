@@ -9,11 +9,7 @@ class Primo < Record
       self.title_sort = primo_record.sort_title if title_sort.blank?
       self.content_type = primo_record.display_type if content_type.blank?
       self.author = primo_authors.join("; ") if author.blank?
-      begin
-        self.url = "#{to_openurl}" if url.blank?
-      rescue => e
-        self.url = "http://dev.getit.library.nyu.edu"
-      end
+      self.url = "#{to_openurl}" if url.blank?
     end
   end
 

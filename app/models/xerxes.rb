@@ -7,11 +7,7 @@ class Xerxes < Record
       self.title = normalized_str :normalizedTitle if title.blank?
       self.author = normalized_str :author if author.blank?
       self.content_type = normalized_str :content_type if content_type.blank?
-      begin
-        self.url = "#{to_openurl}" if url.blank?
-      rescue => e
-        self.url = "http://dev.getit.library.nyu.edu"
-      end
+      self.url = "#{to_openurl}" if url.blank?
     end
   end
 
@@ -34,11 +30,7 @@ class Xerxes < Record
   # Leverage the fact that Records "act as citable" and get the normalized
   # version of the given attribute
   def normalized(attribute)
-    begin
-      @normalized ||= csf
-      (@normalized.respond_to?(attribute)) ? @normalized.send(attribute) : []
-    rescue => e
-      []
-    end
+    @normalized ||= csf
+    (@normalized.respond_to?(attribute)) ? @normalized.send(attribute) : []
   end
 end
