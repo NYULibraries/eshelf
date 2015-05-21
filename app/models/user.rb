@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
       # Create and update from source if appropriate
       record = records.new(external_system: old_record.external_system, external_id: old_record.external_id).becomes_external_system
       # Set the attributes from the external system
-      # attributes = record.set_attributes_from_external_system rescue nil
+      # record.set_attributes_from_external_system
       # Only keep some old record data
       # but don't override
       [:format, :data, :title, :author, :title_sort, :content_type].each do |attribute|
@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
       end
       # Set the attributes from the external system again, in case there was a problem the first
       # time around, e.g. bad dedup id for Primo.
-      # attributes = record.set_attributes_from_external_system rescue nil
+      # record.set_attributes_from_external_system
       record.created_at = old_record.created_at
       record.updated_at = Time.now
     end

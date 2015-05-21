@@ -31,14 +31,22 @@ namespace :nyu do
       begin
         # Perform a basic update on duplicate key found
         Record.import records, validate: false, on_duplicate_key_update: [:title, :title_sort, :author, :url]
+        # Set citero object out here so we can reuse it for all the records
         @citero = Citero
-        Record.all.each do |record|
-          record.url = @citero.map(record.data).send("from_#{record.format}").to_openurl
-        end
         # Create locations once we have the records
+        # Set openurl from citero after loading them into database
         # NOTE: This sucks. Sorry.
         Record.all.each do |record|
+          record.url = @citero.map(record.data).send("from_#{record.format}").to_openurl
+          normalized = @citero.map(record.data).send("from_#{record.format}").csf
+          if record.format == "xerxes_xml"
+            [:title, :author, :content_type].each do |field|
+              normalized_field = (normalized.respond_to?(field)) ? normalized.send(field).join("; ") : record.send(field)
+              record.send("#{field}=", normalized_field)
+            end
+          end
           record.becomes_external_system.create_locations_from_external_system
+          record.save!
         end
         puts "[SUCCESS] #{records.count} records imported."
       rescue => e
