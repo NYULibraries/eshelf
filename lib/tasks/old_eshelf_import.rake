@@ -18,24 +18,30 @@ namespace :nyu do
 
     desc "Import records from the old eshelf to the new"
     task :import_records => :environment do |task,args|
-      records = []
-      old_users.each do |old_user|
-        # Don't do anything if there are no old records to import
-        next if old_user.old_records.empty?
-        user = User.find_by_username(old_user.username)
-        next unless user
-        records << user.initialize_records_from_old_user(old_user)
-      end
-      records.flatten!
-      Record.record_timestamps = false
-      begin
-        count = 0
-        # Perform a basic update on duplicate key found
-        records.each_slice(2000) do |record|
-          Record.import records, validate: false, on_duplicate_key_update: [:title, :title_sort, :author, :url]
-          puts "#{count+2000} records loaded..."
+
+      old_users.find_in_batches(50) do |old_user_group|
+        records = []
+        old_user_group.each do |old_user|
+          # Don't do anything if there are no old records to import
+          next if old_user.old_records.empty?
+          user = User.find_by_username(old_user.username)
+          next unless user
+          records << user.initialize_records_from_old_user(old_user)
         end
+        records.flatten!
+        Record.record_timestamps = false
+        Record.import records, validate: false, on_duplicate_key_update: [:title, :title_sort, :author, :url]
         puts "[SUCCESS] #{records.count} records imported."
+      end
+
+      begin
+        # count = 0
+        # # Perform a basic update on duplicate key found
+        # records.each_slice(2000) do |record|
+        #   Record.import records, validate: false, on_duplicate_key_update: [:title, :title_sort, :author, :url]
+        #   puts "#{count+2000} records loaded..."
+        # end
+        # puts "[SUCCESS] #{records.count} records imported."
         # Set citero object out here so we can reuse it for all the records
         # @citero = Citero
         # # Create locations once we have the records
