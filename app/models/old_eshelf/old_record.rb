@@ -10,6 +10,7 @@ module OldEshelf
     def old_author; author end
     def old_title_sort; title_sort end
     def old_content_type; attributes["format"] end
+    def old_url; url || "" end
 
     def old_format
       case self.external_system

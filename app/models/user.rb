@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
       # record.set_attributes_from_external_system
       # Only keep some old record data
       # but don't override
-      [:format, :data, :title, :author, :title_sort, :content_type].each do |attribute|
+      [:format, :data, :title, :author, :title_sort, :content_type, :url].each do |attribute|
         old_value = old_record.send("old_#{attribute}".to_sym)
         next if old_value.nil?
         record.send "#{attribute}=".to_sym, old_value.encode("UTF-8") if record.send(attribute).blank?
