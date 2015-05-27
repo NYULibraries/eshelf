@@ -29,8 +29,12 @@ namespace :nyu do
       records.flatten!
       Record.record_timestamps = false
       begin
+        count = 0
         # Perform a basic update on duplicate key found
-        Record.import records, validate: false, on_duplicate_key_update: [:title, :title_sort, :author, :url]
+        records.each_slice(2000) do |record|
+          Record.import records, validate: false, on_duplicate_key_update: [:title, :title_sort, :author, :url]
+          puts "#{count+2000} records loaded..."
+        end
         puts "[SUCCESS] #{records.count} records imported."
         # Set citero object out here so we can reuse it for all the records
         # @citero = Citero
