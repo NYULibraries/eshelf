@@ -49,7 +49,12 @@ namespace :nyu do
             record.send("#{field}=", normalized_field)
           end
         end
-        record.becomes_external_system.create_locations_from_external_system
+        begin
+          record.becomes_external_system.create_locations_from_external_system
+        rescue => e
+          @log = Logger.new(Rails.root.join('log','old_eshelf_user_error.log'))
+          @log.info("[ID=#{record.id}] Could not create locations.")
+        end
         record.save!
       end
       puts "[SUCCESS] #{records.count} records updated."
