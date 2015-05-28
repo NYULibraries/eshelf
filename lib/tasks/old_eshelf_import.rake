@@ -45,7 +45,7 @@ namespace :nyu do
         normalized = @citero.map(record.data).send("from_#{record.format}").csf
         if record.format == "xerxes_xml"
           [:title, :author, :content_type].each do |field|
-            normalized_field = (normalized.respond_to?(field)) ? normalized.send(field).join("; ") : record.send(field)
+            normalized_field = (normalized.respond_to?(field) && normalized.send(field).present?) ? normalized.send(field).join("; ") : record.send(field)
             record.send("#{field}=", normalized_field)
           end
         end
@@ -55,7 +55,7 @@ namespace :nyu do
           @log = Logger.new(Rails.root.join('log','old_eshelf_user_error.log'))
           @log.info("[ID=#{record.id}] Could not create locations.")
         end
-        record.save!
+        record.save! validate: false
       end
       puts "[SUCCESS] #{records.count} records updated."
     end
