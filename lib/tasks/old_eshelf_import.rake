@@ -2,7 +2,7 @@ namespace :nyu do
   namespace :old_eshelf do
     require 'activerecord-import'
     desc "Import users, records and tags from the old eshelf to the new"
-    task :import => [:import_users, :import_records, :import_tags]
+    task :import => [:import_users, :import_records, :update_imported_records, :import_tags]
 
     desc "Import users from the old eshelf to the new"
     task :import_users => :environment do |task,args|
@@ -18,45 +18,60 @@ namespace :nyu do
 
     desc "Import records from the old eshelf to the new"
     task :import_records => :environment do |task,args|
-
-      old_users.find_in_batches(batch_size: 100) do |old_user_group|
-        records = []
-        old_user_group.each do |old_user|
-          # Don't do anything if there are no old records to import
-          next if old_user.old_records.empty?
-          user = User.find_by_username(old_user.username)
-          next unless user
-          records << user.initialize_records_from_old_user(old_user)
-        end
-
-        records.flatten!
-        Record.record_timestamps = false
-        Record.import records, validate: false, on_duplicate_key_update: [:title, :title_sort, :author, :url]
-        puts "[SUCCESS] #{records.count} records imported."
-      end
-
-      # Set citero object out here so we can reuse it for all the records
-      @citero = Citero
-      # Create locations once we have the records
-      # Set openurl from citero after loading them into database
-      # NOTE: This sucks. Sorry.
-      Record.find_each(batch_size: 100) do |record|
-        record.url = @citero.map(record.data).send("from_#{record.format}").to_openurl
-        normalized = @citero.map(record.data).send("from_#{record.format}").csf
-        if record.format == "xerxes_xml"
-          [:title, :author, :content_type].each do |field|
-            normalized_field = (normalized.respond_to?(field) && normalized.send(field).present?) ? normalized.send(field).join("; ") : record.send(field)
-            record.send("#{field}=", normalized_field)
+      # Keep the logger quiet during this or it will run out of space
+      ActiveRecord::Base.logger.silence do
+        old_users.find_in_batches(batch_size: 100) do |old_user_group|
+          records = []
+          old_user_group.each do |old_user|
+            # Don't do anything if there are no old records to import
+            next if old_user.old_records.empty?
+            user = User.find_by_username(old_user.username)
+            next unless user
+            records << user.initialize_records_from_old_user(old_user)
           end
+
+          records.flatten!
+          Record.record_timestamps = false
+          Record.import records, validate: false, on_duplicate_key_update: [:title, :title_sort, :author, :url]
+          puts "[SUCCESS] #{records.count} records imported."
         end
-        begin
-          record.becomes_external_system.create_locations_from_external_system
-        rescue => e
-          log.info("[ID=#{record.id}] Could not create locations.")
-        end
-        record.save! validate: false
       end
-      puts "[SUCCESS] #{records.count} records updated."
+    end
+
+    desc "Update imported records with info normalized from citero"
+    task :update_imported_records => :environment do |task,args|
+      ActiveRecord::Base.logger.silence do
+        # Set citero object out here so we can reuse it for all the records
+        @citero = Citero
+        # Create locations once we have the records
+        # Set openurl from citero after loading them into database
+        # NOTE: This sucks. Sorry.
+        locations = records = 0
+        Record.find_each(batch_size: 100) do |record|
+          record.url = @citero.map(record.data).send("from_#{record.format}").to_openurl
+          normalized = @citero.map(record.data).send("from_#{record.format}").csf
+          if record.format == "xerxes_xml"
+            [:title, :author, :content_type].each do |field|
+              normalized_field = (normalized.respond_to?(field) && normalized.send(field).present?) ? normalized.send(field).join("; ") : record.send(field)
+              record.send("#{field}=", normalized_field)
+            end
+          end
+          begin
+            record.becomes_external_system.create_locations_from_external_system
+            locations++
+          rescue => e
+            if record.format == "xerxes_xml"
+              log.info("[XERXES; ID=#{record.id}] #{record.format} Could not create locations.")
+            elsif record.format == "primo"
+              log.info("[PRIMO; ID=#{record.id}] #{record.format} Could not create locations.")
+            end
+          end
+          record.save! validate: false
+          records++
+        end
+        puts "[SUCCESS] #{records.count} records updated."
+        puts "[SUCCESS] #{locations.count} locations added."
+      end
     end
 
     desc "Import tags from the old eshelf to the new"
