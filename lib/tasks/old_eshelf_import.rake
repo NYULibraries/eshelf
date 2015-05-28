@@ -58,7 +58,7 @@ namespace :nyu do
           end
           begin
             record.becomes_external_system.create_locations_from_external_system
-            locations++
+            locations += 1
           rescue => e
             if record.format == "xerxes_xml"
               log.info("[XERXES; ID=#{record.id}] #{record.format} Could not create locations.")
@@ -67,7 +67,7 @@ namespace :nyu do
             end
           end
           record.save! validate: false
-          records++
+          records += 1
         end
         puts "[SUCCESS] #{records.count} records updated."
         puts "[SUCCESS] #{locations.count} locations added."
