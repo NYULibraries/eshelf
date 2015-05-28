@@ -52,8 +52,7 @@ namespace :nyu do
         begin
           record.becomes_external_system.create_locations_from_external_system
         rescue => e
-          @log = Logger.new(Rails.root.join('log','old_eshelf_user_error.log'))
-          @log.info("[ID=#{record.id}] Could not create locations.")
+          log.info("[ID=#{record.id}] Could not create locations.")
         end
         record.save! validate: false
       end
@@ -78,6 +77,10 @@ def old_users
   @old_users ||= cache.fetch('old_users') do
     OldEshelf::OldUser.with_records
   end
+end
+
+def log
+  @log ||= Logger.new(Rails.root.join('log','old_eshelf_locations_error.log'))
 end
 
 def cache
