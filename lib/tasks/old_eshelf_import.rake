@@ -78,8 +78,8 @@ namespace :nyu do
           record.save! validate: false
           records += 1
         end
-        puts "[SUCCESS] #{records.count} records updated."
-        puts "[SUCCESS] #{locations.count} locations added."
+        puts "[SUCCESS] #{records} records updated."
+        puts "[SUCCESS] #{locations} locations added."
       end
     end
 
