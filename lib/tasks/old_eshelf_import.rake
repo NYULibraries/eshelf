@@ -48,18 +48,23 @@ namespace :nyu do
         # NOTE: This sucks. Sorry.
         locations = records = 0
         Record.find_each(batch_size: 100) do |record|
-          record.url = @citero.map(record.data).send("from_#{record.format}").to_openurl
-          if record.format == "xerxes_xml"
-            begin
+          begin
+            record.url = @citero.map(record.data).send("from_#{record.format}").to_openurl
+            if record.format == "xerxes_xml"
               normalized = @citero.map(record.data).send("from_#{record.format}").csf
               [:title, :author, :content_type].each do |field|
                 normalized_field = (normalized.respond_to?(field) && normalized.send(field).present?) ? normalized.send(field).join("; ") : record.send(field)
                 record.send("#{field}=", normalized_field)
               end
-            rescue => e
-              log.info("[XERXES; ID=#{record.id}] Could not load record from CSF: #{e}")
+            end
+          rescue => e
+            if record.format == "xerxes_xml"
+              log.info("[XERXES; ID=#{record.id}] #{record.format} Could not load record from CSF: #{e}")
+            elsif record.format == "primo"
+              log.info("[PRIMO; ID=#{record.id}] #{record.format} Could not load record from CSF: #{e}")
             end
           end
+
           begin
             record.becomes_external_system.create_locations_from_external_system
             locations += 1
