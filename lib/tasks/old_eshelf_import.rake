@@ -49,11 +49,15 @@ namespace :nyu do
         locations = records = 0
         Record.find_each(batch_size: 100) do |record|
           record.url = @citero.map(record.data).send("from_#{record.format}").to_openurl
-          normalized = @citero.map(record.data).send("from_#{record.format}").csf
           if record.format == "xerxes_xml"
-            [:title, :author, :content_type].each do |field|
-              normalized_field = (normalized.respond_to?(field) && normalized.send(field).present?) ? normalized.send(field).join("; ") : record.send(field)
-              record.send("#{field}=", normalized_field)
+            begin
+              normalized = @citero.map(record.data).send("from_#{record.format}").csf
+              [:title, :author, :content_type].each do |field|
+                normalized_field = (normalized.respond_to?(field) && normalized.send(field).present?) ? normalized.send(field).join("; ") : record.send(field)
+                record.send("#{field}=", normalized_field)
+              end
+            rescue => e
+              log.info("[XERXES; ID=#{record.id}] Could not load record from CSF: #{e}")
             end
           end
           begin
@@ -95,7 +99,7 @@ def old_users
 end
 
 def log
-  @log ||= Logger.new(Rails.root.join('log','old_eshelf_locations_error.log'))
+  @log ||= Logger.new(Rails.root.join('log','old_eshelf_cron_error.log'))
 end
 
 def cache

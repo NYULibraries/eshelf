@@ -24,10 +24,7 @@ module OldEshelf
       # Sometimes the key is a string and sometimes a symbol.
       # Check for both.
       (self.record_attributes["raw_xml"] || self.record_attributes[:raw_xml])
-      # raw_xml = self.record_attributes.match(/raw_xml: \|(\s+)(.*)?\n\n/m)
-      # return (raw_xml.captures.present?) ? raw_xml.captures[1] : ""
     rescue => e
-      log = Logger.new(Rails.root.join('log','old_eshelf_load_error.log'))
       log.info("[ID=#{self.id}] Record raw_xml failed to load: #{e}")
       return ""
     end
@@ -35,6 +32,10 @@ module OldEshelf
     def old_tag_list
       OldTag.find(old_taggings.collect{|old_tagging| old_tagging.tag_id}).collect{|old_tag|
         old_tag.name }.join(", ")
+    end
+
+    def log
+      @log ||= Logger.new(Rails.root.join('log','old_eshelf_record_error.log'))
     end
   end
 end
