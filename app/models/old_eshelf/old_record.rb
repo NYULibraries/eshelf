@@ -3,7 +3,7 @@ module OldEshelf
     self.table_name = "records"
     belongs_to :old_user, foreign_key: 'user_id'
     has_many :old_taggings, foreign_key: 'taggable_id'
-    # serialize :record_attributes
+    serialize :record_attributes
 
     # Old mappings
     def old_title; title end
