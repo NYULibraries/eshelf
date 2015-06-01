@@ -60,7 +60,7 @@ namespace :nyu do
           rescue => e
             if record.format == "xerxes_xml"
               log.info("[XERXES; ID=#{record.id}] #{record.format} Could not load record from CSF: #{e}")
-            elsif record.format == "primo"
+            elsif record.format == "pnx"
               log.info("[PRIMO; ID=#{record.id}] #{record.format} Could not load record from CSF: #{e}")
             end
           end
@@ -71,7 +71,7 @@ namespace :nyu do
           rescue => e
             if record.format == "xerxes_xml"
               log.info("[XERXES; ID=#{record.id}] #{record.format} Could not create locations.")
-            elsif record.format == "primo"
+            elsif record.format == "pnx"
               log.info("[PRIMO; ID=#{record.id}] #{record.format} Could not create locations.")
             end
           end
