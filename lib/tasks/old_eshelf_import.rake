@@ -32,7 +32,7 @@ namespace :nyu do
 
           records.flatten!
           Record.record_timestamps = false
-          Record.import records, validate: false, on_duplicate_key_update: [:title, :title_sort, :author, :url]
+          Record.import records, validate: false, on_duplicate_key_update: [:title, :title_sort, :author, :url, :data]
           puts "[SUCCESS] #{records.count} records imported."
         end
       end
