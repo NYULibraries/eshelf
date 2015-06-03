@@ -12,7 +12,7 @@ gem 'rack-cors', '~>0.2.0', require: 'rack/cors'
 gem 'activerecord-jdbcmysql-adapter', '~> 1.3.0'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '>= 5.0.0.beta1'
+gem 'sass-rails', '5.0.0.beta1'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '~> 2.5.0'
