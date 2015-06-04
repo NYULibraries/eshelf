@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
       [:format, :data, :title, :author, :title_sort, :content_type, :url].each do |attribute|
         old_value = old_record.send("old_#{attribute}".to_sym)
         next if old_value.nil?
-        record.send "#{attribute}=".to_sym, old_value.encode("UTF-8") if record.send(attribute).blank?
+        record.send "#{attribute}=".to_sym, old_value.force_encoding("UTF-8") if record.send(attribute).blank?
       end
       # Set the attributes from the external system again, in case there was a problem the first
       # time around, e.g. bad dedup id for Primo.
