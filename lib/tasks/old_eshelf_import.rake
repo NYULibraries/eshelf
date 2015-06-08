@@ -94,7 +94,7 @@ namespace :nyu do
           next unless user
           user.tag_records_from_old_user(old_user)
         end
-        puts "[SUCCESS] Tags imported for #{batch_size} users."
+        puts "[SUCCESS] Tags imported for #{BATCH_SIZE} users."
       end
     end
   end
