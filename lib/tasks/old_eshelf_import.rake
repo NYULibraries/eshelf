@@ -1,3 +1,4 @@
+BATCH_SIZE = 100
 namespace :nyu do
   namespace :old_eshelf do
     require 'activerecord-import'
@@ -20,7 +21,7 @@ namespace :nyu do
     task :import_records => :environment do |task,args|
       # Keep the logger quiet during this or it will run out of space
       ActiveRecord::Base.logger.silence do
-        old_users.find_in_batches(batch_size: 100) do |old_user_group|
+        old_users.find_in_batches(batch_size: BATCH_SIZE) do |old_user_group|
           records = []
           old_user_group.each do |old_user|
             # Don't do anything if there are no old records to import
@@ -47,7 +48,7 @@ namespace :nyu do
         # Set openurl from citero after loading them into database
         # NOTE: This sucks. Sorry.
         locations = records = 0
-        Record.find_each(batch_size: 100) do |record|
+        Record.find_each(batch_size: BATCH_SIZE) do |record|
           begin
             record.url = @citero.map(record.data).send("from_#{record.format}").to_openurl
             if record.format == "xerxes_xml"
@@ -85,14 +86,16 @@ namespace :nyu do
 
     desc "Import tags from the old eshelf to the new"
     task :import_tags => :environment do |task,args|
-      old_users.each do |old_user|
-        # Don't do anything if there are no old records to import
-        next if old_user.old_records.empty?
-        user = User.find_by_username(old_user.username)
-        next unless user
-        user.tag_records_from_old_user(old_user)
+      old_users.find_in_batches(batch_size: BATCH_SIZE) do |old_user_group|
+        old_user_group.each do |old_user|
+          # Don't do anything if there are no old records to import
+          next if old_user.old_records.empty?
+          user = User.find_by_username(old_user.username)
+          next unless user
+          user.tag_records_from_old_user(old_user)
+        end
+        puts "[SUCCESS] Tags imported for #{batch_size} users."
       end
-      puts "[SUCCESS] Finishes importing tags."
     end
   end
 end
