@@ -17,14 +17,14 @@ class UserSessionsController < ApplicationController
         # Needs further investigation.
         # Basically, ActiveRecords insists on making this an
         # insert even though a simple key switch would do.
-        record.id = nil
+        # record.id = nil
         record.tmp_user = nil
       end
-      current_user.records.reload<< tmp_user_records
+      current_user.records.reload << tmp_user_records
       current_user.save!
       # Get rid of the tmp user for the session
       session.delete(:tmp_user)
-      # Reload from the DB, so we don't destroy the 
+      # Reload from the DB, so we don't destroy the
       # records we just saved.
       tmp_user.records.reload
       # Sweep the leg
