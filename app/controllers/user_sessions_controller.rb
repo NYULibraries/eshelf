@@ -13,9 +13,10 @@ class UserSessionsController < ApplicationController
         # Don't duplicate them if the current user already saved these records
         unless current_user.records.where(external_system: record.external_system, external_id: record.external_id).present?
           # But reassign them to this current user from the tmp user
-          record.tmp_user = nil
-          record.user = current_user
-          record.save!
+          existing_record = Record.find(record.id)
+          existing_record.tmp_user = nil
+          existing_record.user = current_user
+          existing_record.save!
         end
       end
       # Get rid of the tmp user for the session
