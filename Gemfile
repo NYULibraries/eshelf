@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'rails', '~> 4.1.0'
+gem 'rails', '~> 4.1.11'
 
 # Middleware for jruby
 gem 'jruby-rack', '~> 1.1.13'

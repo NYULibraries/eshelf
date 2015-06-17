@@ -449,7 +449,7 @@ DEPENDENCIES
   pry (~> 0.10.0)
   puma (~> 2.10.0)
   rack-cors (~> 0.2.0)
-  rails (~> 4.1.0)
+  rails (~> 4.1.11)
   rspec-rails (~> 3.1.0)
   ruby-debug (~> 0.10.4)
   sass-rails (= 5.0.0.beta1)
