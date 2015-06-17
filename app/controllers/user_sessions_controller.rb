@@ -17,7 +17,7 @@ class UserSessionsController < ApplicationController
         # Needs further investigation.
         # Basically, ActiveRecords insists on making this an
         # insert even though a simple key switch would do.
-        # record.id = nil
+        record.id = nil
         record.tmp_user = nil
       end
       current_user.records.reload << tmp_user_records
