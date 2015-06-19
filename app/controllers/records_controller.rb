@@ -125,7 +125,7 @@ class RecordsController < ApplicationController
 
   # Redirects to the record's GetIt url
   def getit
-    @record = user_records.find(params[:id])
+    @record = Record.find(params[:id])
     head :bad_request and return if @record.nil?
     redirect_to current_primary_institution.getit_url + @record.url
   end
