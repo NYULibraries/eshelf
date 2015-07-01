@@ -7,6 +7,6 @@ class UserSession < Authlogic::Session::Base
   # If this is a JSON request, don't attempt SSO.
   # Otherwise, defer to super.
   def attempt_sso?
-    (controller.request.format.json?) ? false : super
+    (controller.request.format.json? || controller.action_name == 'account') ? false : super
   end
 end
