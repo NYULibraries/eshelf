@@ -20,5 +20,11 @@ Rails.application.routes.draw do
   delete 'records' => 'records#destroy', :as => :destroy_records
   delete 'records.json' => 'records#destroy'
 
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_scope :user do
+    get 'logout', to: 'devise/sessions#destroy', as: :logout
+    get 'login', to: redirect("#{Rails.application.config.relative_url_root}/users/auth/nyulibraries"), as: :login
+  end
+
   root 'records#index'
 end
