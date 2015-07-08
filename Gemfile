@@ -70,6 +70,7 @@ group :test do
   gem 'webmock', '~> 1.20.0'
   gem 'cucumber-rails', '~> 1.4.2', require: false
   gem 'database_cleaner', '~> 1.3.0'
+  gem 'rspec-mocks'
 end
 
 # NYU customization gems

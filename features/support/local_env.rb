@@ -13,3 +13,5 @@ Dir[Rails.root.join("features/support/helpers/**/*.rb")].each do |helper|
     Cucumber::Rails::World.send(:include, helper_name.constantize)
   end
 end
+
+require 'cucumber/rspec/doubles'
