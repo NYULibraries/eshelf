@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150708182553) do
+ActiveRecord::Schema.define(version: 20150708183932) do
 
   create_table "locations", force: true do |t|
     t.integer  "record_id",   null: false
@@ -66,16 +66,25 @@ ActiveRecord::Schema.define(version: 20150708182553) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "username",                           null: false
-    t.string   "email",                              null: false
-    t.string   "firstname",                          null: false
-    t.string   "lastname",                           null: false
-    t.text     "user_attributes", limit: 2147483647
+    t.string   "username",                        null: false
+    t.string   "email",                           null: false
+    t.string   "firstname",                       null: false
+    t.string   "lastname",                        null: false
     t.datetime "refreshed_at"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "sign_in_count",      default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "provider",           default: "", null: false
+    t.string   "aleph_id"
+    t.string   "institution_code"
+    t.string   "patron_status"
   end
 
+  add_index "users", ["username", "provider"], name: "index_users_on_username_and_provider", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end
