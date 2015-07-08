@@ -1,8 +1,4 @@
 module ApplicationHelper
-  # Include institution url helpers,
-  # specifically #url_for to include
-  # the institution in link_to URLs
-  include Authpds::Helpers::Institution::UrlHelper
 
   # ILL URL for the current institution
   def ill_url

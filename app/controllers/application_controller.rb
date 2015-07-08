@@ -6,8 +6,7 @@
 class ApplicationController < ActionController::Base
   before_filter :set_wayfinder
   protect_from_forgery
-  require 'authpds'
-  include Authpds::Controllers::AuthpdsController
+
   layout Proc.new { |controller| (controller.request.xhr?) ? false : "eshelf" }
 
   # For dev purposes
