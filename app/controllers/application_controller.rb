@@ -4,6 +4,7 @@
 # Copyright:: Copyright (c) 2013 New York University
 # License::   Distributes under the same terms as Ruby
 class ApplicationController < ActionController::Base
+  include Nyulibraries::Assets::InstitutionsHelper
   before_filter :set_wayfinder
   protect_from_forgery
 
@@ -27,6 +28,14 @@ class ApplicationController < ActionController::Base
       ENV['SSO_LOGOUT_URL']
     else
       super(resource_or_scope)
+    end
+  end
+
+  prepend_before_filter :passive_login
+  def passive_login
+    if !cookies[:_check_passive_login]
+      cookies[:_check_passive_login] = true
+      redirect_to passive_login_url
     end
   end
 
@@ -69,4 +78,18 @@ class ApplicationController < ActionController::Base
     @current_sort ||= (params[:sort]||"created_at_desc")
   end
   helper_method :current_sort
+
+ private
+
+  def passive_login_url
+    "#{ENV['PASSIVE_LOGIN_URL']}?client_id=#{ENV['APP_ID']}&return_uri=#{request_url_escaped}&login_path=#{login_path_escaped}"
+  end
+
+  def request_url_escaped
+    CGI::escape(request.url)
+  end
+
+  def login_path_escaped
+    CGI::escape("#{Rails.application.config.action_controller.relative_url_root}/login")
+  end
 end
