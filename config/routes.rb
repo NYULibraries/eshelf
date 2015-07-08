@@ -20,9 +20,5 @@ Rails.application.routes.draw do
   delete 'records' => 'records#destroy', :as => :destroy_records
   delete 'records.json' => 'records#destroy'
 
-  get 'login' => 'user_sessions#new', :as => :login
-  get 'logout' => 'user_sessions#destroy', :as => :logout
-  get 'validate' => 'user_sessions#validate', :as => :validate
-
   root 'records#index'
 end
