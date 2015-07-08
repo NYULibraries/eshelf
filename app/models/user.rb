@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  devise :omniauthable, omniauth_providers: [:nyulibraries]
 
   has_many :records, :dependent => :destroy
   # Users act as taggers
