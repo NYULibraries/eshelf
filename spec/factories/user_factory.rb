@@ -6,9 +6,9 @@ FactoryGirl.define do
     firstname 'Dev'
     lastname 'Eloper'
     trait :nyu_aleph_attributes do
-      aleph_id: (ENV['BOR_ID'] || 'BOR_ID')
-      institution_code: 'NYU'
-      patron_status: '51'
+      aleph_id (ENV['BOR_ID'] || 'BOR_ID')
+      institution_code 'NYU'
+      patron_status '51'
     end
   end
 end
