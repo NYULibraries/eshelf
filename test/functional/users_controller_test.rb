@@ -6,13 +6,13 @@ class UsersControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   setup do
-    @user = FactoryGirl.build(:user)
-    @user.save_without_session_maintenance
+    @user = FactoryGirl.create(:user)
     @user_record = FactoryGirl.build(:user_primo_record1, user: @user)
     VCR.use_cassette('record becomes primo') do
       (@user_record = @user_record.becomes_external_system).save!
     end
     @request.env["devise.mapping"] = Devise.mappings[:user]
+    @request.cookies[:_check_passive_login] = true
   end
 
   test "should get account" do

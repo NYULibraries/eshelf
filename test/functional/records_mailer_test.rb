@@ -2,8 +2,7 @@ require 'test_helper'
 
 class RecordsMailerTest < ActionMailer::TestCase
   setup do
-    @user = FactoryGirl.build(:user)
-    @user.save_without_session_maintenance
+    @user = FactoryGirl.create(:user)
     @records = [FactoryGirl.build(:user_primo_record1, user: @user)]
     @records << FactoryGirl.build(:user_primo_record2, user: @user)
     VCR.use_cassette('record becomes primo', :record => :new_episodes) do
@@ -12,6 +11,7 @@ class RecordsMailerTest < ActionMailer::TestCase
       end
     end
     @alternative_email = "test@library.edu"
+    # @controller.cookies[:_check_passive_login] = true
   end
 
   def test_email_not_whitelisted_format

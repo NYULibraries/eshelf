@@ -5,8 +5,7 @@ class RecordsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   setup do
-    @user = FactoryGirl.build(:user)
-    @user.save_without_session_maintenance
+    @user = FactoryGirl.create(:user)
     @tmp_user = FactoryGirl.create(:tmp_user)
     @user_record = FactoryGirl.build(:user_primo_record1, user: @user)
     @user_record2 = FactoryGirl.build(:user_primo_record2, user: @user)
@@ -26,6 +25,7 @@ class RecordsControllerTest < ActionController::TestCase
     request.env['HTTP_ORIGIN'] = nil
     # Setup dummy Devise user
     @request.env["devise.mapping"] = Devise.mappings[:user]
+    @request.cookies[:_check_passive_login] = true
     # Example origin should be set up in the application config
    end
 
