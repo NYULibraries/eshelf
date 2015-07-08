@@ -2,6 +2,9 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
+
+  include Devise::TestHelpers
+
   setup do
     @user = FactoryGirl.build(:user)
     @user.save_without_session_maintenance
@@ -9,18 +12,18 @@ class UsersControllerTest < ActionController::TestCase
     VCR.use_cassette('record becomes primo') do
       (@user_record = @user_record.becomes_external_system).save!
     end
-    activate_authlogic
+    @request.env["devise.mapping"] = Devise.mappings[:user]
   end
 
   test "should get account" do
-    UserSession.create(@user)
+    sign_in @user
     get :account
     assert_response :success
     assert_select "iframe", 1
   end
 
   test "should get tags" do
-    UserSession.create(@user)
+    sign_in @user
     @user.tag(@user_record, with: "tag one", on: :tags)
     get :tags
     assert_response :success
@@ -35,7 +38,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should get 20 of 21 tags" do
-    UserSession.create(@user)
+    sign_in @user
     tags = %w{ tag1 tag2 tag3 tag4 tag5 tag6 tag7 tag8 tag9 tag10 tag11 tag12
       tag13 tag14 tag15 tag16 tag17 tag18 tag19 tag20 tag21 }.join(",")
     @user.tag(@user_record, with: tags, on: :tags)
@@ -61,7 +64,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should only get the last 1 of 21 tags" do
-    UserSession.create(@user)
+    sign_in @user
     tags = %w{ tag1 tag2 tag3 tag4 tag5 tag6 tag7 tag8 tag9 tag10 tag11 tag12
       tag13 tag14 tag15 tag16 tag17 tag18 tag19 tag20 tag21 }.join(",")
     @user.tag(@user_record, with: tags, on: :tags)

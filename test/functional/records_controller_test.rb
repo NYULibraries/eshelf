@@ -2,6 +2,8 @@ require 'test_helper'
 
 class RecordsControllerTest < ActionController::TestCase
 
+  include Devise::TestHelpers
+
   setup do
     @user = FactoryGirl.build(:user)
     @user.save_without_session_maintenance
@@ -20,18 +22,15 @@ class RecordsControllerTest < ActionController::TestCase
       (@tmp_user_record = @tmp_user_record.becomes_external_system).save!
       (@tmp_user_record2 = @tmp_user_record2.becomes_external_system).save!
     end
-    activate_authlogic
     session[:tmp_user] = nil
     request.env['HTTP_ORIGIN'] = nil
-    # Pretend we've already checked PDS/Shibboleth for the session
-    # and we have a session
-    @controller.session[:attempted_sso] = true
-    @controller.session[:session_id] = "FakeSessionID"
+    # Setup dummy Devise user
+    @request.env["devise.mapping"] = Devise.mappings[:user]
     # Example origin should be set up in the application config
    end
 
   test "should have title of BobCat" do
-    UserSession.create(@user)
+    sign_in @user
     get :index
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
@@ -39,7 +38,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should not have back to search results" do
-    UserSession.create(@user)
+    sign_in @user
     get :index
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
@@ -52,7 +51,7 @@ class RecordsControllerTest < ActionController::TestCase
       "dscnt=0&vl(378633853UI1)=all_items&tab=all&dstmp=1366313551347&srt=rank&ct=search&mode=Basic&dum=true&"+
         "vl(212921975UI0)=any&indx=1&vl(1UIStartWith0)=contains&vl(freeText0)=digital+divide&vid=NYU&fn=search"
     session[:referer] = bobcat_search_results
-    UserSession.create(@user)
+    sign_in @user
     get :index
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
@@ -61,7 +60,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should show records controls" do
-    UserSession.create(@user)
+    sign_in @user
     get :index
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
@@ -69,7 +68,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should show records record path with delete method" do
-    UserSession.create(@user)
+    sign_in @user
     get :index
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
@@ -78,7 +77,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should show user tag search and tags link only when there are tags" do
-    UserSession.create(@user)
+    sign_in @user
     get :index
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
@@ -122,7 +121,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should get user records index" do
-    UserSession.create(@user)
+    sign_in @user
     get :index
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
@@ -153,7 +152,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should get user records index html" do
-    UserSession.create(@user)
+    sign_in @user
     get :index, format: "html"
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
@@ -180,7 +179,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should get user records index json" do
-    UserSession.create(@user)
+    sign_in @user
     get :index, format: "json"
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
@@ -208,7 +207,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should get user records index xml" do
-    UserSession.create(@user)
+    sign_in @user
     get :index, format: "xml"
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
@@ -240,7 +239,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should create user record json" do
-    UserSession.create(@user)
+    sign_in @user
     assert_difference(['@user.records.count', 'Location.count']) do
       VCR.use_cassette('user record becomes primo') do
         post :create, format: "json", record: { external_id: "nyu_aleph001044111", external_system: "primo" }
@@ -283,7 +282,7 @@ class RecordsControllerTest < ActionController::TestCase
   test "should create user record CORS json" do
     skip 'until we figure out functional testing with Rack'
     request.env['HTTP_ORIGIN'] = "http://#{Eshelf::EXAMPLE_ORIGIN}"
-    UserSession.create(@user)
+    sign_in @user
     assert_difference(['@user.records.count', 'Location.count']) do
       VCR.use_cassette('user record becomes primo') do
         post :create, format: "json", record: { external_id: "nyu_aleph001044111", external_system: "primo" }
@@ -312,7 +311,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should show user record" do
-    UserSession.create(@user)
+    sign_in @user
     get :show, format: "json", id: @user_record.id
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
@@ -328,7 +327,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should update user record with tag" do
-    UserSession.create(@user)
+    sign_in @user
     assert_difference(['ActsAsTaggableOn::Tag.count', 'ActsAsTaggableOn::Tagging.count']) do
       put :update, format: "html", id: @user_record.id, record: { tag_list: "new tag" }
       assert_response :found
@@ -355,7 +354,7 @@ class RecordsControllerTest < ActionController::TestCase
   # end
   #
   # test "disallowed formats show user record" do
-  #   UserSession.create(@user)
+  #   sign_in @user
   #   get :show, format: "html", id: @user_record.id
   #   assert_response :not_acceptable
   #   get :show, id: @user_record.id
@@ -373,7 +372,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should show by external system user record" do
-    UserSession.create(@user)
+    sign_in @user
     get :from_external_system, format: "json", external_system: @user_record.external_system, external_id: @user_record.external_id
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
@@ -404,7 +403,7 @@ class RecordsControllerTest < ActionController::TestCase
   test "should show by external system user record CORS json" do
     skip 'until we figure out functional testing with Rack'
     request.env['HTTP_ORIGIN'] = "https://#{Eshelf::EXAMPLE_ORIGIN}"
-    UserSession.create(@user)
+    sign_in @user
     get :from_external_system, format: "json", external_system: @user_record.external_system, external_id: @user_record.external_id
     assert_response :success
     assert_not_nil response.headers['X-CSRF-Token']
@@ -422,7 +421,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should destroy user record" do
-    UserSession.create(@user)
+    sign_in @user
     assert_difference('@user.records.count', -1) do
       delete :destroy, id: @user_record
     end
@@ -432,7 +431,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should destroy multiple user record" do
-    UserSession.create(@user)
+    sign_in @user
     assert_difference('@user.records.count', -2) do
       delete :destroy, id: [@user_record, @user_record2]
     end
@@ -457,7 +456,7 @@ class RecordsControllerTest < ActionController::TestCase
 
   test "should destroy user record json" do
     skip 'until we figure out how to properly route collection deletions'
-    UserSession.create(@user)
+    sign_in @user
     assert_difference(['@user.records.count'], -1) do
       VCR.use_cassette('user record becomes primo') do
         delete :destroy, format: "json", record: {
@@ -488,7 +487,7 @@ class RecordsControllerTest < ActionController::TestCase
   test "should destroy user record CORS json" do
     skip 'until we figure out functional testing with Rack'
     request.env['HTTP_ORIGIN'] = "http://#{Eshelf::EXAMPLE_ORIGIN}"
-    UserSession.create(@user)
+    sign_in @user
     assert_difference(['@user.records.count'], -1) do
       VCR.use_cassette('user record becomes primo') do
         delete :destroy, format: "json", record: {
@@ -502,7 +501,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should return bad request for non whitelisted email format" do
-    UserSession.create(@user)
+    sign_in @user
     get :create_email, email_format: "bad_format", id: @user.records.collect{|record| record.id}
     assert_response :bad_request
   end
@@ -605,7 +604,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should get records member new email form for existing user" do
-    UserSession.create(@user)
+    sign_in @user
     get :new_email, id: @user_record.id
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
@@ -628,7 +627,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should get records collection new email form for existing user" do
-    UserSession.create(@user)
+    sign_in @user
     get :new_email, id: @user.records.collect{|record| record.id}
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
@@ -651,7 +650,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should get records collection new brief email form for existing user" do
-    UserSession.create(@user)
+    sign_in @user
     get :new_email, email_format: "brief", id: @user.records.collect{|record| record.id}
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
@@ -668,7 +667,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should get records collection new medium email form for existing user" do
-    UserSession.create(@user)
+    sign_in @user
     get :new_email, email_format: "medium", id: @user.records.collect{|record| record.id}
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
@@ -685,7 +684,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should get records collection new full email form for existing user" do
-    UserSession.create(@user)
+    sign_in @user
     get :new_email, email_format: "full", id: @user.records.collect{|record| record.id}
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
@@ -709,14 +708,14 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should send records collection full email for existing user" do
-    UserSession.create(@user)
+    sign_in @user
     post :create_email, to_address: @user.email, email_format: "full", id: @user.records.collect{|record| record.id}
     assert_redirected_to records_path
     assert_nil response.headers['X-CSRF-Token']
   end
 
   test "should return bad request for non whitelisted print format" do
-    UserSession.create(@user)
+    sign_in @user
     get :print, print_format: "bad_format", id: @user.records.collect{|record| record.id}
     assert_response :bad_request
     assert_nil response.headers['X-CSRF-Token']
@@ -751,7 +750,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should have title of BobCat Records" do
-    UserSession.create(@user)
+    sign_in @user
     get :print, print_format: "full", id: @user_record.id
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
@@ -759,7 +758,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should get records member full print for existing user" do
-    UserSession.create(@user)
+    sign_in @user
     get :print, print_format: "full", id: @user_record.id
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
@@ -767,7 +766,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should get records collection brief print for existing user" do
-    UserSession.create(@user)
+    sign_in @user
     get :print, print_format: "brief", id: @user.records.collect{|record| record.id}
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
@@ -796,7 +795,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should get records collection medium print for existing user" do
-    UserSession.create(@user)
+    sign_in @user
     get :print, print_format: "medium", id: @user.records.collect{|record| record.id}
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
@@ -804,7 +803,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should get records collection full print for existing user" do
-    UserSession.create(@user)
+    sign_in @user
     get :print, print_format: "full", id: @user.records.collect{|record| record.id}
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
@@ -819,7 +818,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should redirect to record url for existing user" do
-    UserSession.create(@user)
+    sign_in @user
     get :getit, id: @user_record.id
     assert_redirected_to "https://getit.library.nyu.edu/nyu/resolve?#{@user_record.url}"
     assert_nil response.headers['X-CSRF-Token']
