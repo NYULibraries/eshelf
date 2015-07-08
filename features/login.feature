@@ -1,3 +1,4 @@
+@omniauth_test
 Feature: Log in/out links
   In order to easily log in
   As a user
