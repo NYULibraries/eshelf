@@ -86,10 +86,15 @@ class ApplicationController < ActionController::Base
   end
 
   def request_url_escaped
-    CGI::escape(request.url)
+    CGI::escape(ensure_ssl(request.url))
   end
 
   def login_path_escaped
-    CGI::escape("#{Rails.application.config.action_controller.relative_url_root}/login")
+    # Force the HTTPS version of this url because doorkeeper requires it
+    CGI::escape("#{ensure_ssl(Rails.application.config.action_controller.relative_url_root)}/login")
+  end
+
+  def ensure_ssl(url)
+    url.gsub('http:','https:') rescue nil
   end
 end

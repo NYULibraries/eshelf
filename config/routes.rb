@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   devise_scope :user do
     get 'logout', to: 'devise/sessions#destroy', as: :logout
-    get 'login', to: redirect("#{Rails.application.config.relative_url_root}/users/auth/nyulibraries"), as: :login
+    # Force the HTTPS version of this url because doorkeeper requires it
+    get 'login', to: redirect("#{Rails.application.config.relative_url_root.gsub('http:','https:') rescue nil}/users/auth/nyulibraries"), as: :login
   end
 
   root 'records#index'
