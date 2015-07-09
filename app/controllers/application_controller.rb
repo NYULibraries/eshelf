@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
 
   layout Proc.new { |controller| (controller.request.xhr?) ? false : "eshelf" }
 
+  force_ssl if: :ssl_configured?
+
   # For dev purposes
   def current_user_dev
     @current_user_dev ||= User.find_by_username("hero123")
@@ -96,5 +98,9 @@ class ApplicationController < ActionController::Base
 
   def ensure_ssl(url)
     url.gsub('http:','https:') rescue nil
+  end
+
+  def ssl_configured?
+    !Rails.env.development?
   end
 end
