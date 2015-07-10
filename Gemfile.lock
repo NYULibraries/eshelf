@@ -10,8 +10,8 @@ GIT
 
 GIT
   remote: git://github.com/NYULibraries/formaggio.git
-  revision: 645de8c59def833c2717000a7ca4ed5b9c709376
-  tag: v1.4.2
+  revision: ec2ec8fb1ea89eae202b8e252a44ddf84a31af21
+  branch: feature/add_ssl_puma
   specs:
     formaggio (1.4.2)
       cap_git_tools (~> 0.9)
