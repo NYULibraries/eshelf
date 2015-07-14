@@ -11,6 +11,9 @@ gem 'rack-cors', '~>0.2.0', require: 'rack/cors'
 # Use MySQL
 gem 'activerecord-jdbcmysql-adapter', '~> 1.3.0'
 
+# Use Java openssl library
+gem 'jruby-openssl', '~> 0.9.7-java'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '5.0.0.beta1'
 
