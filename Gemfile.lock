@@ -293,7 +293,7 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
       spoon (~> 0.0)
-    puma (2.10.2-java)
+    puma (2.11.3-java)
       rack (>= 1.1, < 2.0)
     rack (1.5.5)
     rack-cors (0.2.9)
@@ -459,7 +459,7 @@ DEPENDENCIES
   nyulibraries-assets!
   omniauth-nyulibraries!
   pry (~> 0.10.0)
-  puma (~> 2.10.0)
+  puma (~> 2.11.3)
   rack-cors (~> 0.2.0)
   rails (~> 4.1.11)
   rspec-mocks
