@@ -10,10 +10,10 @@ GIT
 
 GIT
   remote: git://github.com/NYULibraries/formaggio.git
-  revision: 22c2f0e03e805dc6ba838b68ed118e803d31d660
-  branch: feature/add_ssl_puma
+  revision: 77ed718cef376f70b72a0924eefa5136ef511863
+  tag: v1.5.0
   specs:
-    formaggio (1.4.2)
+    formaggio (1.5.0)
       cap_git_tools (~> 0.9)
       capistrano (~> 2.15)
       figs (~> 2.0)
@@ -105,7 +105,7 @@ GEM
     builder (3.2.2)
     cap_git_tools (0.9.1)
       capistrano (~> 2.0)
-    capistrano (2.15.5)
+    capistrano (2.15.6)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
