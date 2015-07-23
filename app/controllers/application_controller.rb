@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  prepend_before_filter :passive_login, unless: -> { Rails.env.development? }
+  prepend_before_filter :passive_login, unless: -> { action_name == 'account' || Rails.env.development? }
   def passive_login
     if !cookies[:_check_passive_login]
       cookies[:_check_passive_login] = true
