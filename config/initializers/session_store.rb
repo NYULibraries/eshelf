@@ -1,3 +1,3 @@
 # Be sure to restart your server when you modify this file.
 
-Rails.application.config.session_store ActionDispatch::Session::CacheStore, :expire_after => 1.day, domain: :all
+Rails.application.config.session_store ActionDispatch::Session::CacheStore, :expire_after => 1.day, domain: ENV['LOGIN_COOKIE_COMAIN']

@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if cookies[:_eshelf_passthru] && ENV['PASSTHRU_LOGIN_URL']
+    if cookies[:_nyulibraries_eshelf_passthru] && ENV['PASSTHRU_LOGIN_URL']
       ENV['PASSTHRU_LOGIN_URL']
     else
       super(resource)
