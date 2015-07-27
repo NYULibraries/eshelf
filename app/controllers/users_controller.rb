@@ -13,11 +13,7 @@ class UsersController < ApplicationController
   # Display the Aleph account for the current user.
   def account
     return if performed?
-    if current_user.blank?
-      redirect_to(login_url({ institution: current_primary_institution.code, return_url: request.url })) and return
-    else
-      respond_with(current_user)
-    end
+    redirect_to "#{Exlibris::Aleph.config.base_url}/F?func=bor-info"
   end
 
   # Display the tags for the current user.
