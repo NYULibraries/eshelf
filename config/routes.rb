@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   delete 'records' => 'records#destroy', :as => :destroy_records
   delete 'records.json' => 'records#destroy'
 
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   devise_scope :user do
     get 'logout', to: 'devise/sessions#destroy', as: :logout
     # Force the HTTPS version of this url because doorkeeper requires it

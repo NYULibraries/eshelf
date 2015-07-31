@@ -32,6 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
+    records_session_maintenance
     if cookies[:_nyulibraries_eshelf_passthru] && ENV['PASSTHRU_LOGIN_URL']
       ENV['PASSTHRU_LOGIN_URL']
     else
@@ -88,6 +89,31 @@ class ApplicationController < ActionController::Base
   helper_method :current_sort
 
  private
+
+  # Save temporary records to the current user
+  # Intended to be called after validate on login
+  def records_session_maintenance
+   if (current_user and session[:tmp_user])
+     # Find all the tmp_users records
+     tmp_user.records.each do |record|
+       # Don't duplicate them if the current user already saved these records
+       unless current_user.records.where(external_system: record.external_system, external_id: record.external_id).present?
+         # But reassign them to this current user from the tmp user
+         existing_record = Record.find(record.id)
+         existing_record.tmp_user = nil
+         existing_record.user = current_user
+         existing_record.save!
+       end
+     end
+     # Get rid of the tmp user for the session
+     session.delete(:tmp_user)
+     # Reload from the DB, so we don't destroy the
+     # records we just saved.
+     tmp_user.records.reload
+     # Sweep the leg
+     tmp_user.destroy
+   end
+  end
 
   def passive_login_url
     "#{ENV['PASSIVE_LOGIN_URL']}?client_id=#{ENV['APP_ID']}&return_uri=#{request_url_escaped}&login_path=#{login_path_escaped}"
