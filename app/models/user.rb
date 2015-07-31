@@ -1,17 +1,7 @@
 class User < ActiveRecord::Base
+  devise :omniauthable, omniauth_providers: [:nyulibraries]
 
-  # Used to store arbitrary values, will be deprecated in 1.0.0
-  # release of authpds
-  serialize :user_attributes
   has_many :records, :dependent => :destroy
-  # User is the Authlogic acts_as_authentic model
-  # For more information see https://github.com/binarylogic/authlogic
-  acts_as_authentic do |c|
-    c.validations_scope = :username
-    c.validate_password_field = false
-    c.require_password_confirmation = false
-    c.disable_perishable_token_maintenance = true
-  end
   # Users act as taggers
   acts_as_tagger
 

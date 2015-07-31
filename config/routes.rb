@@ -20,9 +20,12 @@ Rails.application.routes.draw do
   delete 'records' => 'records#destroy', :as => :destroy_records
   delete 'records.json' => 'records#destroy'
 
-  get 'login' => 'user_sessions#new', :as => :login
-  get 'logout' => 'user_sessions#destroy', :as => :logout
-  get 'validate' => 'user_sessions#validate', :as => :validate
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_scope :user do
+    get 'logout', to: 'devise/sessions#destroy', as: :logout
+    # Force the HTTPS version of this url because doorkeeper requires it
+    get 'login', to: redirect("#{Rails.application.config.relative_url_root}/users/auth/nyulibraries"), as: :login
+  end
 
   root 'records#index'
 end
