@@ -11,6 +11,9 @@ gem 'rack-cors', '~>0.2.0', require: 'rack/cors'
 # Use MySQL
 gem 'activerecord-jdbcmysql-adapter', '~> 1.3.0'
 
+# Use Java openssl library
+gem 'jruby-openssl', '~> 0.9.7-java'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '5.0.0.beta1'
 
@@ -42,7 +45,7 @@ gem 'nyulibraries-assets', github: 'NYULibraries/nyulibraries-assets', tag: 'v4.
 # gem 'nyulibraries-assets', path: '/apps/nyulibraries-assets'
 
 # Deploy the application with Formaggio deploy recipes
-gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.4.2'
+gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.5.0'
 
 # Figs for configuration
 gem 'figs', '~> 2.0.2'
@@ -80,8 +83,9 @@ gem 'authpds-nyu', github: 'NYULibraries/authpds-nyu', tag: 'v2.0.1'
 gem 'acts_as_citable', '~> 3.0.0-alpha'
 gem 'ex_cite', '~> 2.0.0-alpha.1', require: 'ex_cite/engine'
 
+
 # Use puma as the app server
-gem 'puma', '~> 2.10.0'
+gem 'puma', '~> 2.11.3'
 
 # Dalli for caching with memcached
 gem 'dalli', '~> 2.7.0'
