@@ -24,8 +24,8 @@ class ApplicationController < ActionController::Base
   # After signing out from the local application,
   # redirect to the logout path for the Login app
   def after_sign_out_path_for(resource_or_scope)
-    if ENV['SSO_LOGOUT_URL'].present?
-      ENV['SSO_LOGOUT_URL']
+    if ENV['SSO_LOGOUT_PATH'].present?
+      "#{ENV['LOGIN_URL']}#{ENV['SSO_LOGOUT_PATH']}"
     else
       super(resource_or_scope)
     end
@@ -33,8 +33,8 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     records_session_maintenance
-    if cookies[:_nyulibraries_eshelf_passthru] && ENV['PASSTHRU_LOGIN_URL']
-      ENV['PASSTHRU_LOGIN_URL']
+    if cookies[:_nyulibraries_eshelf_passthru] && ENV['PASSTHRU_LOGIN_PATH']
+      "#{ENV['LOGIN_URL']}#{ENV['PASSTHRU_LOGIN_PATH']}"
     else
       super(resource)
     end
@@ -116,7 +116,7 @@ class ApplicationController < ActionController::Base
   end
 
   def passive_login_url
-    "#{ENV['PASSIVE_LOGIN_URL']}?client_id=#{ENV['APP_ID']}&return_uri=#{request_url_escaped}&login_path=#{login_path_escaped}"
+    "#{ENV['LOGIN_URL']}#{ENV['PASSIVE_LOGIN_PATH']}?client_id=#{ENV['APP_ID']}&return_uri=#{request_url_escaped}&login_path=#{login_path_escaped}"
   end
 
   def request_url_escaped
