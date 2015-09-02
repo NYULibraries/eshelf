@@ -83,7 +83,7 @@ gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.2.0'
 gem 'acts_as_citable', '~> 3.0.0-alpha'
 gem 'ex_cite', '~> 2.0.0-alpha.1', require: 'ex_cite/engine'
 
-gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries',  tag: 'v1.1.2'
+gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', branch: 'feature/configurable_oauth_host' #tag: 'v1.1.2'
 gem 'devise', '~> 3.4.1'
 
 # Use puma as the app server
