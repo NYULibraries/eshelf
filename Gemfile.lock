@@ -46,8 +46,8 @@ GIT
 
 GIT
   remote: git://github.com/NYULibraries/omniauth-nyulibraries.git
-  revision: e843780f8c4daff6dbfde424197cf74a89fab545
-  branch: feature/configurable_oauth_host
+  revision: 352bd2c76350483667c603c1a7e63735e4a283b8
+  tag: v2.0.0
   specs:
     omniauth-nyulibraries (1.1.0)
       omniauth-oauth2 (~> 1.2.0)
