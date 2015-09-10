@@ -1,2 +1,3 @@
 set :rails_env, "qa"
-set :branch, "master"
+set :branch, "qa"
+set(:puma_ssl_enabled, true)

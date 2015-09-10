@@ -73,16 +73,18 @@ group :test do
   gem 'webmock', '~> 1.20.0'
   gem 'cucumber-rails', '~> 1.4.2', require: false
   gem 'database_cleaner', '~> 1.3.0'
+  gem 'rspec-mocks'
 end
 
 # NYU customization gems
 # Need to include exlibris-primo before citero
 # so we use the nokogiri Xerces-J jar.
-gem "exlibris-nyu", github: 'NYULibraries/exlibris-nyu', tag: 'v2.2.0'
-gem 'authpds-nyu', github: 'NYULibraries/authpds-nyu', tag: 'v2.0.1'
+gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.2.0'
 gem 'acts_as_citable', '~> 3.0.0-alpha'
 gem 'ex_cite', '~> 2.0.0-alpha.1', require: 'ex_cite/engine'
 
+gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.0.0'
+gem 'devise', '~> 3.4.1'
 
 # Use puma as the app server
 gem 'puma', '~> 2.11.3'
