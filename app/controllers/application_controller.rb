@@ -40,14 +40,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  prepend_before_filter :passive_login, unless: -> { ignore_passive_login? }
-  def passive_login
-    if !cookies[:_check_passive_login]
-      cookies[:_check_passive_login] = true
-      redirect_to passive_login_url
-    end
-  end
-
   # Returns the session's TmpUser
   # Sets the sessions' TmpUser if necessary.
   def tmp_user
@@ -115,10 +107,6 @@ class ApplicationController < ActionController::Base
    end
   end
 
-  def passive_login_url
-    "#{ENV['LOGIN_URL']}#{ENV['PASSIVE_LOGIN_PATH']}?client_id=#{ENV['APP_ID']}&return_uri=#{request_url_escaped}&login_path=#{login_path_escaped}"
-  end
-
   def request_url_escaped
     CGI::escape(ensure_ssl(request.url))
   end
@@ -130,17 +118,5 @@ class ApplicationController < ActionController::Base
 
   def ensure_ssl(url)
     url.gsub('http:','https:') rescue nil
-  end
-
-  # Attempt to perform passive login except in the following cases:
-  # 1- If user is already signed in- this is only relevant for eshelf because
-  #    Login will redirect and login to eshelf automatically
-  # 2- If action is /account - in this case the application forces
-  #    you to login so there is not need for passive
-  # 3- If _nyulibraries_eshelf_passthru cookie is set we are on passthru phase
-  #    and shouldn't have to check for passive login
-  # 4- Ignore for development as well- makes testing easier
-  def ignore_passive_login?
-    (user_signed_in? || action_name == 'account' || cookies[:_nyulibraries_eshelf_passthru] || Rails.env.development?)
   end
 end

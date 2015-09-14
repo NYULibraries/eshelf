@@ -25,7 +25,6 @@ class RecordsControllerTest < ActionController::TestCase
     request.env['HTTP_ORIGIN'] = nil
     # Setup dummy Devise user
     @request.env["devise.mapping"] = Devise.mappings[:user]
-    @request.cookies[:_check_passive_login] = true
     # Example origin should be set up in the application config
    end
 
