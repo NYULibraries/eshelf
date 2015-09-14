@@ -11,7 +11,6 @@ class RecordsMailerTest < ActionMailer::TestCase
       end
     end
     @alternative_email = "test@library.edu"
-    # @controller.cookies[:_check_passive_login] = true
   end
 
   def test_email_not_whitelisted_format
