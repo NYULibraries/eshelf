@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  prepend_before_filter :passive_login
+  prepend_before_filter :passive_login, unless: -> { ignore_passive_login? }
   def passive_login
     if !cookies[:_check_passive_login]
       cookies[:_check_passive_login] = true
@@ -123,11 +123,6 @@ class ApplicationController < ActionController::Base
     CGI::escape(ensure_ssl(request.url))
   end
 
-  def login_path_escaped
-    # Force the HTTPS version of this url because doorkeeper requires it
-    CGI::escape("#{ensure_ssl(Rails.application.config.action_controller.relative_url_root)}/login")
-  end
-
   def ensure_ssl(url)
     url.gsub('http:','https:') rescue nil
   end
@@ -141,6 +136,6 @@ class ApplicationController < ActionController::Base
   #    and shouldn't have to check for passive login
   # 4- Ignore for development as well- makes testing easier
   def ignore_passive_login?
-    (user_signed_in? || action_name == 'account' || cookies[:_nyulibraries_eshelf_passthru] || Rails.env.development?)
+    (user_signed_in? || action_name == 'account' || cookies[:_nyulibraries_eshelf_passthru])
   end
 end
