@@ -40,6 +40,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  prepend_before_filter :passive_login
+  def passive_login
+    if !cookies[:_check_passive_login]
+      cookies[:_check_passive_login] = true
+      redirect_to passive_login_url
+    end
+  end
+
   # Returns the session's TmpUser
   # Sets the sessions' TmpUser if necessary.
   def tmp_user
@@ -105,6 +113,10 @@ class ApplicationController < ActionController::Base
      # Sweep the leg
      tmp_user.destroy
    end
+  end
+
+  def passive_login_url
+    "#{ENV['LOGIN_URL']}#{ENV['PASSIVE_LOGIN_PATH']}?client_id=#{ENV['APP_ID']}&return_uri=#{request_url_escaped}"
   end
 
   def request_url_escaped
