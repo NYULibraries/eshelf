@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
     if cookies[:_nyulibraries_eshelf_passthru] && ENV['PASSTHRU_LOGIN_PATH']
       "#{ENV['LOGIN_URL']}#{ENV['PASSTHRU_LOGIN_PATH']}"
     else
-      request.env['omniauth.origin'] || stored_location_for(resource) || root_path
+      stored_location_for(resource) || request.env['omniauth.origin'] || root_path
     end
   end
 
