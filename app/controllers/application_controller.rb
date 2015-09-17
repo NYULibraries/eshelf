@@ -24,8 +24,8 @@ class ApplicationController < ActionController::Base
   # After signing out from the local application,
   # redirect to the logout path for the Login app
   def after_sign_out_path_for(resource_or_scope)
-    if ENV['SSO_LOGOUT_PATH'].present?
-      "#{ENV['LOGIN_URL']}#{ENV['SSO_LOGOUT_PATH']}"
+    if logout_path.present?
+      logout_path
     else
       super(resource_or_scope)
     end
@@ -113,6 +113,12 @@ class ApplicationController < ActionController::Base
      # Sweep the leg
      tmp_user.destroy
    end
+  end
+
+  def logout_path
+    if ENV['LOGIN_URL'].present? && ENV['SSO_LOGOUT_PATH'].present?
+      "#{ENV['LOGIN_URL']}#{ENV['SSO_LOGOUT_PATH']}"
+    end
   end
 
   def passive_login_url
