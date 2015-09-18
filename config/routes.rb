@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'logout', to: 'devise/sessions#destroy', as: :logout
     # Force the HTTPS version of this url because doorkeeper requires it
-    get 'login', to: redirect("#{Rails.application.config.relative_url_root}/users/auth/nyulibraries"), as: :login
+    get 'login', to: redirect { |params, request| "#{Rails.application.config.relative_url_root}/users/auth/nyulibraries?#{request.query_string}" }, as: :login
   end
 
   root 'records#index'
