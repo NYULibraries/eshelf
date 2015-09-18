@@ -40,8 +40,12 @@ class RecordsController < ApplicationController
     # Get the selected id(s) if given
     @records = @records.where(id: params[:id]) if params[:id]
     # Get the relevant page unless all is specified
-    @records = (params[:per].eql? "all") ?
-      @records.page(1).per(user_records.count) : @records.page(params[:page]).per(params[:per])
+    if ["ris","bibtex"].include? params[:format]
+      @records = @records.page(1).per(params[:id].count)
+    else
+      @records = (params[:per].eql? "all") ?
+        @records.page(1).per(user_records.count) : @records.page(params[:page]).per(params[:per])
+    end
     respond_with(@records) unless performed?
   end
 
