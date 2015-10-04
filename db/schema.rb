@@ -66,13 +66,13 @@ ActiveRecord::Schema.define(version: 20151002172519) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "username",          null: false
-    t.string   "email",             null: false
-    t.string   "firstname",         null: false
-    t.string   "lastname",          null: false
+    t.string   "username",                        null: false
+    t.string   "email",                           null: false
+    t.string   "firstname"
+    t.string   "lastname"
     t.datetime "refreshed_at"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "mobile_phone"
     t.string   "crypted_password"
     t.string   "password_salt"
@@ -85,8 +85,18 @@ ActiveRecord::Schema.define(version: 20151002172519) do
     t.string   "last_login_ip"
     t.string   "current_login_ip"
     t.text     "user_attributes"
+    t.integer  "sign_in_count",      default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "provider",           default: "", null: false
+    t.string   "aleph_id"
+    t.string   "institution_code"
+    t.string   "patron_status"
   end
 
+  add_index "users", ["username", "provider"], name: "index_users_on_username_and_provider", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end
