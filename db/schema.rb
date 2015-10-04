@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150811164535) do
+ActiveRecord::Schema.define(version: 20151002172519) do
 
   create_table "locations", force: true do |t|
     t.integer  "record_id",   null: false
@@ -73,6 +73,18 @@ ActiveRecord::Schema.define(version: 20150811164535) do
     t.datetime "refreshed_at"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.string   "mobile_phone"
+    t.string   "crypted_password"
+    t.string   "password_salt"
+    t.string   "session_id"
+    t.string   "persistence_token"
+    t.integer  "login_count"
+    t.string   "last_request_at"
+    t.string   "current_login_at"
+    t.string   "last_login_at"
+    t.string   "last_login_ip"
+    t.string   "current_login_ip"
+    t.text     "user_attributes"
     t.integer  "sign_in_count",      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
