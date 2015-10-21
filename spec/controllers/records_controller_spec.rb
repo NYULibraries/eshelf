@@ -3,7 +3,7 @@ require 'rails_helper'
 describe RecordsController do
 
   let(:whitelisted_origins) do
-    ['https://ezproxy.library.edu','ezproxy.library.edu',]
+    ['https://ezproxy.library.edu','ezproxy.library.edu']
   end
 
   describe '#origin_is_whitelisted?' do
@@ -19,7 +19,7 @@ describe RecordsController do
       end
     end
     context 'when HTTP_ORIGIN is not whitelisted' do
-      before { @request.env['HTTP_ORIGIN'] = 'https://ezproxy.library.edu/https://evilproxy.library.edu/' }
+      before { @request.env['HTTP_ORIGIN'] = 'https://evilproxy.library.edu/https://ezproxy.library.edu' }
       it { is_expected.to be false }
     end
   end
