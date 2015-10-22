@@ -9,8 +9,7 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w(
   print.js
   records.js
-  nyulibraries/nyu/header.png
-  nyulibraries/nyuad/header.png
-  nyulibraries/nyush/shanghai.png 
-  magnifier.png
 )
+
+# All images
+Rails.application.config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
