@@ -138,7 +138,7 @@ class RecordsController < ApplicationController
   # that make json requests to approved API actions.
   def respond_with_csrf_header
     # Only return the authenticity token to approved origins.
-    return unless request.headers['HTTP_ORIGIN'] && whitelisted_origins.include?(request.headers['HTTP_ORIGIN'].gsub(/https?:\/\//, ''))
+    return unless request.headers['HTTP_ORIGIN'] && origin_is_whitelisted?
     # Only return the authenticity token for JSON requests to approved API actions
     if(API_ACTIONS.include?(action_name) && formats.include?(:json))
       response.headers['X-CSRF-Token'] = form_authenticity_token
@@ -167,5 +167,9 @@ class RecordsController < ApplicationController
   # Whitelisted CORS origins
   def whitelisted_origins
     @whitelisted_origins ||= (Figs.env['ESHELF_ORIGINS'] || [])
+  end
+
+  def origin_is_whitelisted?
+    whitelisted_origins.any? {|origin| request.headers['HTTP_ORIGIN'].gsub(/https?:\/\//, '').match(/^#{origin}(:(\d)+)?$/) }
   end
 end
