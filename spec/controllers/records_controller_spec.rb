@@ -3,7 +3,7 @@ require 'rails_helper'
 describe RecordsController do
 
   let(:whitelisted_origins) do
-    ['https://ezproxy.library.edu','ezproxy.library.edu']
+    ['https://ezproxy.library.edu','ezproxy.library.edu',/^http(s)?:\/\/ezproxy\.library\.edu:(\d+)$/]
   end
 
   describe '#origin_is_whitelisted?' do
