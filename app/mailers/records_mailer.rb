@@ -4,7 +4,7 @@
 # Copyright:: Copyright (c) 2013 New York University
 # License::   Distributes under the same terms as Ruby
 class RecordsMailer < ActionMailer::Base
-  default from: "BobCat e-Shelf <no-reply@library.nyu.edu>"
+  default from: "BobCat e-Shelf <lib-no-reply@nyu.edu>"
 
   # Sends an email with the selected records
   #   Usage: record_email(user, emailable_records, email_format[, to_address])
