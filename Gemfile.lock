@@ -129,7 +129,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
-    columnize (0.9.0)
     compass (1.0.3)
       chunky_png (~> 1.2)
       compass-core (~> 1.0.2)
@@ -345,10 +344,6 @@ GEM
       rspec-mocks (~> 3.1.0)
       rspec-support (~> 3.1.0)
     rspec-support (3.1.2)
-    ruby-debug (0.10.4)
-      columnize (>= 0.1)
-      ruby-debug-base (~> 0.10.4.0)
-    ruby-debug-base (0.10.4-java)
     rubyzip (1.1.7)
     rvm-capistrano (1.5.6)
       capistrano (~> 2.15.4)
@@ -464,7 +459,6 @@ DEPENDENCIES
   rails (~> 4.1.11)
   rspec-mocks
   rspec-rails (~> 3.1.0)
-  ruby-debug (~> 0.10.4)
   sass-rails (= 5.0.0.beta1)
   sorted (~> 1.0.0)
   teaspoon (~> 0.8.0)
@@ -474,4 +468,4 @@ DEPENDENCIES
   webmock (~> 1.20.0)
 
 BUNDLED WITH
-   1.10.5
+   1.10.6
