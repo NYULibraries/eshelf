@@ -45,18 +45,13 @@ gem 'nyulibraries-assets', github: 'NYULibraries/nyulibraries-assets', tag: 'v4.
 # gem 'nyulibraries-assets', path: '/apps/nyulibraries-assets'
 
 # Deploy the application with Formaggio deploy recipes
-gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.5.0'
+gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.5.2'
 
 # Figs for configuration
 gem 'figs', '~> 2.0.2'
 
 # Font awesome for icons
 gem 'font-awesome-rails', '~> 4.2.0'
-
-# Development gems
-group :development do
-  gem 'ruby-debug', '~> 0.10.4'
-end
 
 # Development and testing gems
 group :development, :test do
