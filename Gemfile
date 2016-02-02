@@ -79,7 +79,7 @@ gem 'acts_as_citable', '~> 3.0.0-alpha'
 gem 'ex_cite', '~> 2.1.0', require: 'ex_cite/engine'
 
 gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.0.0'
-gem 'devise', '~> 3.4.1'
+gem 'devise', '~> 3.5.4'
 
 # Use puma as the app server
 gem 'puma', '~> 2.11.3'
