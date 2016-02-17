@@ -78,4 +78,13 @@ class Record < ActiveRecord::Base
     (external_system.capitalize.safe_constantize) ?
       becomes(external_system.capitalize.safe_constantize) : self
   end
+
+  def rebuild_openurl!
+    self.url = "#{to_openurl}"
+    self.save!
+  end
+
+  def expired?
+    self.updated_at && (1.week.ago > self.updated_at)
+  end
 end
