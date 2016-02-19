@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     return if performed?
     if current_user.blank?
       store_location_for(:user, request.url)
-      redirect_to(login_url({ institution: current_primary_institution.code })) and return
+      redirect_to(login_url({ institution: current_primary_institution.code, origin: request.url })) and return
     else
       respond_with(current_user)
     end
