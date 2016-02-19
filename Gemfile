@@ -103,3 +103,4 @@ gem 'acts-as-taggable-on', '~> 3.4.0'
 gem 'activerecord-import', '~> 0.6.0'
 
 gem 'pry', '~> 0.10.0'
+gem 'pry-remote', '~> 0.1.8'
