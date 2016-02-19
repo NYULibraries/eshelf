@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   def current_user_dev
     @current_user_dev ||= User.find_by_username("hero123")
   end
-  alias :current_user :current_user_dev if Rails.env.development?
+  # alias :current_user :current_user_dev if Rails.env.development?
 
   # Alias new_session_path as login_path for default devise config
   def new_session_path(scope)
