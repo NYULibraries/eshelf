@@ -6,7 +6,7 @@ gem 'rails', '~> 4.1.14.1'
 gem 'jruby-rack', '~> 1.1.13'
 
 # Add CORS support
-gem 'rack-cors', '~>0.2.0', require: 'rack/cors'
+gem 'rack-cors', '~> 0.2.0', require: 'rack/cors'
 
 # Use MySQL
 gem 'activerecord-jdbcmysql-adapter', '~> 1.3.0'
