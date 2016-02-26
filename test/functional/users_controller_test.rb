@@ -12,6 +12,7 @@ class UsersControllerTest < ActionController::TestCase
       (@user_record = @user_record.becomes_external_system).save!
     end
     @request.env["devise.mapping"] = Devise.mappings[:user]
+    @request.cookies[:_pds_logged_in] = true
   end
 
   test "should get account" do

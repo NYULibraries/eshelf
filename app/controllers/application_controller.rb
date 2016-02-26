@@ -35,8 +35,8 @@ class ApplicationController < ActionController::Base
     records_session_maintenance
     if cookies[:_nyulibraries_eshelf_passthru] && ENV['PASSTHRU_LOGIN_PATH']
       "#{ENV['LOGIN_URL']}#{ENV['PASSTHRU_LOGIN_PATH']}"
-    elsif cookies[:return_to_account]
-      cookies[:return_to_account] = nil
+    elsif cookies[:_return_to_account]
+      cookies.delete(:_return_to_account)
       account_path
     else
       super(resource)
