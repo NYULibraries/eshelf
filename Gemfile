@@ -6,7 +6,7 @@ gem 'rails', '~> 4.1.14.1'
 gem 'jruby-rack', '~> 1.1.13'
 
 # Add CORS support
-gem 'rack-cors', '~>0.2.0', require: 'rack/cors'
+gem 'rack-cors', '~> 0.2.0', require: 'rack/cors'
 
 # Use MySQL
 gem 'activerecord-jdbcmysql-adapter', '~> 1.3.0'
@@ -55,8 +55,7 @@ gem 'font-awesome-rails', '~> 4.2.0'
 
 # Development and testing gems
 group :development, :test do
-  gem 'jasmine', '~> 1.3.0'
-  gem 'teaspoon', '~> 0.8.0'
+  gem 'teaspoon-jasmine', '~> 2.3.4'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'rspec-rails', '~> 3.1.0'
 end
