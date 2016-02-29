@@ -13,13 +13,17 @@ class UsersController < ApplicationController
   # Display the Aleph account for the current user.
   def account
     return if performed?
-    redirect_to "#{ENV['ALEPH_HTTPS_BASE_URL']}/F?func=bor-info"
-    # if current_user.blank?
-    #   cookies[:return_to_account] = true
-    #   redirect_to(login_url({ institution: current_primary_institution.code })) and return
-    # else
-    #   respond_with(current_user)
-    # end
+    # Log into PDS directly since that is required
+    # for the Aleph account option
+    if cookies[:_pds_logged_in].nil?
+      cookies[:_return_to_account] = true
+      cookies[:_pds_logged_in] = true
+      redirect_to pds_login and return
+    elsif !current_user.nil?
+      respond_with(current_user)
+    else
+      head :bad_request
+    end
   end
 
   # Display the tags for the current user.
@@ -29,4 +33,11 @@ class UsersController < ApplicationController
       page(params[:page]).per(20)
     respond_with(@tags)
   end
+
+  private
+
+  def pds_login
+    "#{ENV['PDS_URL']}/pds?func=load-login&institute=#{current_primary_institution.code}&calling_system=eshelf&url=#{CGI::escape(passive_login_url)}"
+  end
+
 end

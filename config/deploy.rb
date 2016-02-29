@@ -7,6 +7,6 @@ require 'formaggio/capistrano/server/puma'
 set :app_title, "eshelf"
 
 # Overriding defaults
-set :rvm_ruby_string, "jruby-1.7.22"
+set :rvm_ruby_string, "jruby-1.7.24"
 set :stages, ["staging", "qa", "production"]
 set :recipient, "lib-eshelf-admin@nyu.edu"
