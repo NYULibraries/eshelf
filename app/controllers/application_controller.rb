@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
       "#{ENV['LOGIN_URL']}#{ENV['PASSTHRU_LOGIN_PATH']}"
     elsif cookies[:_return_to_account]
       cookies.delete(:_return_to_account)
-      account_path
+      account_path({ institution: current_primary_institution.code })
     else
       super(resource)
     end
