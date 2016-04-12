@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     # for the Aleph account option
     if cookies[:_pds_logged_in].nil?
       cookies[:_return_to_account] = true
-      cookies[:_pds_logged_in] = true
+      cookies[:_pds_logged_in] = { value: true, httponly: true, domain: ENV['LOGIN_COOKIE_DOMAIN'] }
       redirect_to pds_login and return
     elsif !current_user.nil?
       respond_with(current_user)
