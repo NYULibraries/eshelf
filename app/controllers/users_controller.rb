@@ -15,10 +15,10 @@ class UsersController < ApplicationController
     return if performed?
     # Log into PDS directly since that is required
     # for the Aleph account option
-    if current_user.nil?
+    if current_user.nil? || !cookies["PDS_HANDLE"]
       cookies[:_return_to_account] = true
       redirect_to pds_login and return
-    elsif !current_user.nil?
+    elsif !current_user.nil? && cookies["PDS_HANDLE"]
       respond_with(current_user)
     else
       head :bad_request
