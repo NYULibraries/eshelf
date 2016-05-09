@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   mount ExCite::Engine, :at => '/', :as => :ex_cite
 
   get 'users/account', :as => :user_account
+  get 'users/account/show' => 'users#account_render', :as => :user_account_render
   get 'users/tags', :as => :user_tags
   get 'account' => 'users#account', :as => :account
 

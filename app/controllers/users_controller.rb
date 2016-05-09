@@ -11,19 +11,33 @@ class UsersController < ApplicationController
   respond_to :html
 
   # Display the Aleph account for the current user.
+  def account_render
+    unless current_user.nil?
+      respond_with(current_user) do |format|
+        format.html { render :account }
+      end
+    else
+      head :bad_request
+    end
+  end
+
   def account
     # Log into PDS directly since that is required
     # for the Aleph account option
-    if !cookies[:_pds_logged_in]
+    if !cookies[:_pds_logged_in].present?
       cookies[:_return_to_account] = true
       cookies[:_pds_logged_in] = true
       redirect_to pds_login
     elsif cookies[:_pds_logged_in]
-      cookies.delete(:_pds_logged_in, domain: "dev.eshelf.library.nyu.edu")
-      respond_with(current_user)
+      cookies.delete(:_pds_logged_in)
+      redirect_to user_account_render_path
     else
       head :bad_request
     end
+  end
+
+  def login_to_pds
+
   end
 
   # Display the tags for the current user.
