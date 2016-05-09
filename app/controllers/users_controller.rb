@@ -36,10 +36,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def login_to_pds
-
-  end
-
   # Display the tags for the current user.
   def tags
     return head :unauthorized unless current_user
