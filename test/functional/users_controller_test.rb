@@ -18,6 +18,14 @@ class UsersControllerTest < ActionController::TestCase
   test "should get account" do
     sign_in @user
     get :account
+    assert_response :redirect
+    assert_redirected_to user_account_render_url
+    assert_nil cookies["_pds_logged_in"]
+  end
+
+  test "should render account" do
+    sign_in @user
+    get :account_render
     assert_response :success
     assert_select "iframe", 1
   end
