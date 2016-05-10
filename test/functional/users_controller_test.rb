@@ -12,12 +12,20 @@ class UsersControllerTest < ActionController::TestCase
       (@user_record = @user_record.becomes_external_system).save!
     end
     @request.env["devise.mapping"] = Devise.mappings[:user]
-    @request.cookies["PDS_HANDLE"] = "1234"
+    @request.cookies["_pds_logged_in"] = true
   end
 
   test "should get account" do
     sign_in @user
     get :account
+    assert_response :redirect
+    assert_redirected_to user_account_render_url
+    assert_nil cookies["_pds_logged_in"]
+  end
+
+  test "should render account" do
+    sign_in @user
+    get :account_render
     assert_response :success
     assert_select "iframe", 1
   end
