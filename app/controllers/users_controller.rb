@@ -17,7 +17,7 @@ class UsersController < ApplicationController
         format.html { render :account }
       end
     else
-      head :bad_request
+      redirect_to user_account_path
     end
   end
 
