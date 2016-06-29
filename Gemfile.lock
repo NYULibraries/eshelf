@@ -262,7 +262,7 @@ GEM
       net-ssh (>= 2.6.5)
     netrc (0.10.3)
     newrelic_rpm (3.9.9.275)
-    nokogiri (1.6.7.2-java)
+    nokogiri (1.6.8-java)
     nori (2.6.0)
     oauth2 (1.1.0)
       faraday (>= 0.8, < 0.10)
@@ -454,4 +454,4 @@ DEPENDENCIES
   webmock (~> 1.20.0)
 
 BUNDLED WITH
-   1.11.2
+   1.12.5
