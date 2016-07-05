@@ -45,6 +45,13 @@ GIT
       institutions (~> 0.1.3)
 
 GIT
+  remote: git://github.com/NYULibraries/nyulibraries_errors.git
+  revision: c77c8c8a8699d5af7ceb2775fe6ac7aa81f6a5f5
+  tag: v1.0.0
+  specs:
+    nyulibraries_errors (1.0.0)
+
+GIT
   remote: git://github.com/NYULibraries/omniauth-nyulibraries.git
   revision: 7c208c53e18c8140aebff69c3ba0714309b1143f
   tag: v2.1.0
@@ -437,6 +444,7 @@ DEPENDENCIES
   mustache-rails!
   newrelic_rpm (~> 3.9.0)
   nyulibraries-assets!
+  nyulibraries_errors!
   omniauth-nyulibraries!
   pry (~> 0.10.0)
   pry-remote (~> 0.1.8)
