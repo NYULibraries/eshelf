@@ -778,12 +778,12 @@ class RecordsControllerTest < ActionController::TestCase
           assert_equal @user.records.size, records_html.size
           travels_with_my_aunt_html = begin
             records_html.find do |record_html|
-              record_html.match /Travels with my aunt/
+              record_html.text.match /Travels with my aunt/
             end
           end
           virtual_inequality_html = begin
             records_html.find do |record_html|
-              record_html.match /Virtual inequality/
+              record_html.text.match /Virtual inequality/
             end
           end
           assert_virtual_inequality(virtual_inequality_html, @user.records.where(external_id: "nyu_aleph000980206").first)
