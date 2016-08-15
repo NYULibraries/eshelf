@@ -831,11 +831,9 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   def assert_virtual_inequality(element, record)
-    assert_equal("<li>\n      "+
-      "<p><strong>Virtual inequality : beyond the digital divide (book)</strong></p>"+
-      "<p><div>Locations:</div>"+
-      "<div class=\"location\">NYU Bobst Main Collection (HN49.I56 M67 2003 )</div>"+
-      "<div class=\"location\">New School Fogelman Library Main Collection (HN49.I56 M67 2003 )</div></p>"+
-      "<p>#{record_getit_url(record)}</p>\n    </li>", element.to_s)
+    assert(element.to_s.include?("Virtual inequality : beyond the digital divide (book)"))
+    assert(element.to_s.include?("NYU Bobst Main Collection (HN49.I56 M67 2003 )"))
+    assert(element.to_s.include?("New School Fogelman Library Main Collection (HN49.I56 M67 2003 )"))
+    assert(element.to_s.include?("#{record_getit_url(record)}"))
   end
 end
