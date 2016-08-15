@@ -106,6 +106,4 @@ gem 'pry-remote', '~> 0.1.8'
 
 gem 'railties', '~> 4.2.7.1'
 
-gem 'rails-perftest', '~> 0.0.6'
-
 gem 'citero-renderers', github: "NYULibraries/citero-renderers", tag: "v1.0.0"
