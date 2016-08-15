@@ -113,7 +113,7 @@ class RecordsController < ApplicationController
   def create_email
     head :bad_request and return unless @email_format = whitelist_email_format(params[:email_format])
     @records = user_records.find(params[:id])
-    RecordsMailer.records_email(user, @records, @email_format, params[:to_address]).deliver
+    RecordsMailer.records_email(user, @records, @email_format, params[:to_address]).deliver_now
     flash[:notice] = t('record.flash.actions.create_email.notice')
     respond_with(@records, location: records_url)
   end
