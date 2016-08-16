@@ -778,12 +778,12 @@ class RecordsControllerTest < ActionController::TestCase
           assert_equal @user.records.size, records_html.size
           travels_with_my_aunt_html = begin
             records_html.find do |record_html|
-              record_html.match /Travels with my aunt/
+              record_html.text.match /Travels with my aunt/
             end
           end
           virtual_inequality_html = begin
             records_html.find do |record_html|
-              record_html.match /Virtual inequality/
+              record_html.text.match /Virtual inequality/
             end
           end
           assert_virtual_inequality(virtual_inequality_html, @user.records.where(external_id: "nyu_aleph000980206").first)
@@ -831,11 +831,9 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   def assert_virtual_inequality(element, record)
-    assert_equal("<li>\n      "+
-      "<p><strong>Virtual inequality : beyond the digital divide (book)</strong></p>"+
-      "<p><div>Locations:</div>"+
-      "<div class=\"location\">NYU Bobst Main Collection (HN49.I56 M67 2003 )</div>"+
-      "<div class=\"location\">New School Fogelman Library Main Collection (HN49.I56 M67 2003 )</div></p>"+
-      "<p>#{record_getit_url(record)}</p>\n    </li>", element.to_s)
+    assert(element.to_s.include?("Virtual inequality : beyond the digital divide (book)"))
+    assert(element.to_s.include?("NYU Bobst Main Collection (HN49.I56 M67 2003 )"))
+    assert(element.to_s.include?("New School Fogelman Library Main Collection (HN49.I56 M67 2003 )"))
+    assert(element.to_s.include?("#{record_getit_url(record)}"))
   end
 end

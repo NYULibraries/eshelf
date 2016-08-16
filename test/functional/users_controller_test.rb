@@ -59,8 +59,8 @@ class UsersControllerTest < ActionController::TestCase
       elements.each do |element|
         assert_select element, "li.page.current > span", { count: 1, text: "1" }
         assert_select element, "li.page > a", { count: 1, text: "2", href: "users/tags?page=2" }
-        assert_select element, "li.next > a", { count: 1, text: "Next &rsaquo;", href: "users/tags?page=2" }
-        assert_select element, "li.last > a", { count: 1, text: "Last &raquo;", href: "users/tags?page=2" }
+        assert_select element, "li.next > a", { count: 1, text: "Next ›", href: "users/tags?page=2" }
+        assert_select element, "li.last > a", { count: 1, text: "Last »", href: "users/tags?page=2" }
       end
     end
     # Should have 20 tags in the list.
@@ -83,8 +83,8 @@ class UsersControllerTest < ActionController::TestCase
     assert_select("nav ul.pagination") do |elements|
       assert_equal(1, elements.size, "Should have only 1 pagination element")
       elements.each do |element|
-        assert_select element, "li.first > a", { count: 1, text: "&laquo; First", href: "users/tags?page=1" }
-        assert_select element, "li.prev > a", { count: 1, text: "&lsaquo; Prev", href: "users/tags?page=1" }
+        assert_select element, "li.first > a", { count: 1, text: "« First", href: "users/tags?page=1" }
+        assert_select element, "li.prev > a", { count: 1, text: "‹ Prev", href: "users/tags?page=1" }
         assert_select element, "li.page > a", { count: 1, text: "1", href: "users/tags?page=1" }
         assert_select element, "li.page.current > span", { count: 1, text: "2" }
       end

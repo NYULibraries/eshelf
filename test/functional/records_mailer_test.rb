@@ -15,49 +15,49 @@ class RecordsMailerTest < ActionMailer::TestCase
 
   def test_email_not_whitelisted_format
     exception = assert_raise(ArgumentError) {
-      email = RecordsMailer.records_email(@user, @records, "not_whitelisted").deliver
+      email = RecordsMailer.records_email(@user, @records, "not_whitelisted").deliver_now
     }
     assert_equal "Unknown format", exception.message
   end
 
   def test_email_no_specified_email_brief
     # Send the email, then test that it got queued
-    email = RecordsMailer.records_email(@user, @records, "brief").deliver
+    email = RecordsMailer.records_email(@user, @records, "brief").deliver_now
     assert_subject_email(@user.email, email)
     assert_brief_email_body(email)
   end
 
   def test_email_specified_email_brief
     # Send the email, then test that it got queued
-    email = RecordsMailer.records_email(@user, @records, "brief", @alternative_email).deliver
+    email = RecordsMailer.records_email(@user, @records, "brief", @alternative_email).deliver_now
     assert_subject_email(@alternative_email, email)
     assert_brief_email_body(email)
   end
 
   def test_email_no_specified_email_medium
     # Send the email, then test that it got queued
-    email = RecordsMailer.records_email(@user, @records, "medium").deliver
+    email = RecordsMailer.records_email(@user, @records, "medium").deliver_now
     assert_subject_email(@user.email, email)
     # assert_match(/Welcome to example.com, #{user.name}/, email.encoded)
   end
 
   def test_email_specified_email_medium
     # Send the email, then test that it got queued
-    email = RecordsMailer.records_email(@user, @records, "medium", @alternative_email).deliver
+    email = RecordsMailer.records_email(@user, @records, "medium", @alternative_email).deliver_now
     assert_subject_email(@alternative_email, email)
     # assert_match(/Welcome to example.com, #{user.name}/, email.encoded)
   end
 
   def test_email_no_specified_email_full
     # Send the email, then test that it got queued
-    email = RecordsMailer.records_email(@user, @records, "full").deliver
+    email = RecordsMailer.records_email(@user, @records, "full").deliver_now
     assert_subject_email(@user.email, email)
     # assert_match(/Welcome to example.com, #{user.name}/, email.encoded)
   end
 
   def test_email_specified_email_full
     # Send the email, then test that it got queued
-    email = RecordsMailer.records_email(@user, @records, "full", @alternative_email).deliver
+    email = RecordsMailer.records_email(@user, @records, "full", @alternative_email).deliver_now
     assert_subject_email(@alternative_email, email)
     # assert_match(/Welcome to example.com, #{user.name}/, email.encoded)
   end
