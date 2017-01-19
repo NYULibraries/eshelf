@@ -132,7 +132,31 @@ class RecordsController < ApplicationController
     @record = Record.find(params[:id])
     head :bad_request and return if @record.nil?
     @record.rebuild_openurl! if @record.expired?
-    redirect_to current_primary_institution.getit_url + @record.url
+    # If theres no getit and we have an external system we use that
+    if institution_getit_url.blank? && has_primo_as_external_system?
+      redirect_to "#{ENV['PERSISTENT_LINKER_URL']}#{@record.external_id}"
+    else
+      # Otherwise use getit
+      redirect_to getit_url + @record.url
+    end
+  end
+
+  # Get's the institution's getit url if it exists
+  def institution_getit_url
+    current_primary_institution.getit_url if current_primary_institution.respond_to?(:getit_url)
+  end
+  private :institution_getit_url
+
+  # Checks to see if the external system is set to primo
+  def has_primo_as_external_system?
+    @record.external_system.eql?("primo")
+  end
+  private :has_primo_as_external_system?
+
+  def getit_url
+    # Default to the regular GetIt url without specifying institution if URL
+    # doesn't exist
+    @getit_url ||= institution_getit_url || ENV['GETIT_DEFAULT_URL']
   end
 
   # Send back the CSRF token for trusted origins
