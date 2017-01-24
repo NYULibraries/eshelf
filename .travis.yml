@@ -9,7 +9,7 @@ env: ESHELF_DB_USER=root
 
 before_install:
   - echo $JAVA_OPTS
-  - export JAVA_OPTS=-Xmx512m
+  - export JAVA_OPTS='-Xmx512m -XX:MaxPermSize=512m'
 
 before_script:
   - mysql -e 'create database eshelf_test;'
