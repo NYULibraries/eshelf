@@ -24,4 +24,24 @@ describe RecordsController do
     end
   end
 
+  describe '#getit' do
+    before(:each) { allow_any_instance_of(RecordsController).to receive(:current_user).and_return(user) }
+    let!(:record)  { FactoryGirl.create(:user_record, :primo, data: "data") }
+    context 'when the user is an NYU user' do
+      let!(:user)    { FactoryGirl.create(:user) }
+      it 'should redirect to a getit' do
+        get :getit, id: record.id
+        expect(response).to redirect_to("https://getit.library.nyu.edu/nyu/resolve?#{record.url}")
+        expect(response.headers['X-CSRF-Token']).to be_nil
+      end
+    end
+    context 'when the user is not an NYU user' do
+      let!(:user)    { FactoryGirl.create(:nysid_user) }
+      it 'should redirect to a configuration defined persistent linker' do
+        get :getit, id: record.id
+        expect(response).to redirect_to("#{ENV['PERSISTENT_LINKER_URL']}#{record.external_id}")
+        expect(response.headers['X-CSRF-Token']).to be_nil
+      end
+    end
+  end
 end
