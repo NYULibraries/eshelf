@@ -45,7 +45,7 @@ gem 'nyulibraries-assets', github: 'NYULibraries/nyulibraries-assets', tag: 'v4.
 gem 'nyulibraries_errors', github: 'NYULibraries/nyulibraries_errors', tag: 'v1.0.0'
 
 # Deploy the application with Formaggio deploy recipes
-gem 'formaggio', github: 'NYULibraries/formaggio', branch: 'fix/puma-verifymode'
+gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.6.0'
 
 # Figs for configuration
 gem 'figs', '~> 2.0.2'
