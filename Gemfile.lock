@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/NYULibraries/formaggio.git
-  revision: f02dca5ed906fb5178fcfa48f4dd9b391d5355a8
+  revision: 22d3441330908305b519d5f5a5fe3e02b41ef0de
   branch: fix/puma-verifymode
   specs:
     formaggio (1.5.2)
