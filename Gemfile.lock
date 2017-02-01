@@ -329,7 +329,7 @@ GEM
       pry (~> 0.9)
       slop (~> 3.0)
     public_suffix (2.0.5)
-    puma (3.6.2-java)
+    puma (3.7.0-java)
     rack (1.6.5)
     rack-cors (0.2.9)
     rack-test (0.6.3)
@@ -493,7 +493,7 @@ DEPENDENCIES
   omniauth-nyulibraries!
   pry (~> 0.10.0)
   pry-remote (~> 0.1.8)
-  puma (~> 3.6.0)
+  puma (~> 3.7.0)
   rack-cors (~> 0.2.0)
   rails (~> 4.2.7)
   railties (~> 4.2.7.1)

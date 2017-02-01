@@ -81,7 +81,7 @@ gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 
 gem 'devise', '~> 3.5.10'
 
 # Use puma as the app server
-gem 'puma', '~> 3.6.0'
+gem 'puma', '~> 3.7.0'
 
 # Dalli for caching with memcached
 gem 'dalli', '~> 2.7.0'
