@@ -28,10 +28,10 @@ GIT
 
 GIT
   remote: https://github.com/NYULibraries/formaggio.git
-  revision: 22d3441330908305b519d5f5a5fe3e02b41ef0de
-  branch: fix/puma-verifymode
+  revision: b91da0acec65115d051d77a0db62890c9c8e413b
+  tag: v1.6.0
   specs:
-    formaggio (1.5.2)
+    formaggio (1.6.0)
       cap_git_tools (~> 0.9)
       capistrano (~> 2.15)
       figs (~> 2.0)
