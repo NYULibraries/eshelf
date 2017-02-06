@@ -28,10 +28,10 @@ GIT
 
 GIT
   remote: https://github.com/NYULibraries/formaggio.git
-  revision: b91da0acec65115d051d77a0db62890c9c8e413b
-  tag: v1.6.0
+  revision: 0cfcc78204097c44547d233a25162816d46344fd
+  tag: v1.7.1
   specs:
-    formaggio (1.6.0)
+    formaggio (1.7.1)
       cap_git_tools (~> 0.9)
       capistrano (~> 2.15)
       figs (~> 2.0)
@@ -329,7 +329,8 @@ GEM
       pry (~> 0.9)
       slop (~> 3.0)
     public_suffix (2.0.5)
-    puma (3.7.0-java)
+    puma (2.11.3-java)
+      rack (>= 1.1, < 2.0)
     rack (1.6.5)
     rack-cors (0.2.9)
     rack-test (0.6.3)
@@ -493,7 +494,7 @@ DEPENDENCIES
   omniauth-nyulibraries!
   pry (~> 0.10.0)
   pry-remote (~> 0.1.8)
-  puma (~> 3.7.0)
+  puma (~> 2.11.3)
   rack-cors (~> 0.2.0)
   rails (~> 4.2.7)
   railties (~> 4.2.7.1)

@@ -45,7 +45,7 @@ gem 'nyulibraries-assets', github: 'NYULibraries/nyulibraries-assets', tag: 'v4.
 gem 'nyulibraries_errors', github: 'NYULibraries/nyulibraries_errors', tag: 'v1.0.0'
 
 # Deploy the application with Formaggio deploy recipes
-gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.6.0'
+gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.7.1'
 
 # Figs for configuration
 gem 'figs', '~> 2.0.2'
@@ -81,7 +81,7 @@ gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 
 gem 'devise', '~> 3.5.10'
 
 # Use puma as the app server
-gem 'puma', '~> 3.7.0'
+gem 'puma', '~> 2.11.3'
 
 # Dalli for caching with memcached
 gem 'dalli', '~> 2.7.0'
