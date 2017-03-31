@@ -1,0 +1,23 @@
+machine:
+  ruby:
+    version: jruby-9.1.7.0
+
+  java:
+    version: openjdk7
+
+  environment:
+    ESHELF_DB_USER: root
+    JAVA_OPTS: '-Xmx512m -XX:MaxPermSize=512m'
+
+dependencies:
+  post:
+    - npm install -g istanbul
+
+test:
+  post:
+    - bundle exec rake teaspoon
+## Customize database setup
+database:
+  override:
+    - mysql -e 'create database eshelf_test;'
+    - bundle exec rake db:schema:load RAILS_ENV=test
