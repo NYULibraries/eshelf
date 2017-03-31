@@ -4,7 +4,7 @@ require 'rails/all'
 
 require 'figs'
 # Don't run this initializer on travis.
-Figs.load(stage: Rails.env) unless ENV['TRAVIS']
+Figs.load(stage: Rails.env) unless ENV['TRAVIS'] || ENV['CIRCLECI']
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
