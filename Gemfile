@@ -73,7 +73,7 @@ end
 # NYU customization gems
 # Need to include exlibris-primo before citero
 # so we use the nokogiri Xerces-J jar.
-gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.2.0'
+gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.4.0'
 gem 'acts_as_citable', github: "NYULibraries/acts_as_citable", tag: 'v4.0.0'
 gem 'ex_cite', '~> 2.1.0', require: 'ex_cite/engine'
 
