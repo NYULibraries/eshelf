@@ -20,7 +20,7 @@ test:
     - bundle exec cucumber --format pretty --format json --out $CIRCLE_TEST_REPORTS/cucumber/tests.cucumber
   post:
     - bundle exec rake teaspoon
-    - bundle exec rake coveralls:push 
+    - JRUBY_OPTS=--debug bundle exec rake coveralls:push 
 ## Customize database setup
 database:
   override:
