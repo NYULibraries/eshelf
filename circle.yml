@@ -15,11 +15,12 @@ dependencies:
 
 test:
   override:
-    - RAILS_ENV=test bundle exec rspec -r rspec_junit_formatter --format progress --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml
+    - COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN RAILS_ENV=test bundle exec rspec -r rspec_junit_formatter --format progress --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml
     - mkdir -p $CIRCLE_TEST_REPORTS/cucumber
     - bundle exec cucumber --format pretty --format json --out $CIRCLE_TEST_REPORTS/cucumber/tests.cucumber
   post:
     - bundle exec rake teaspoon
+    - bundle exec rake coveralls:push 
 ## Customize database setup
 database:
   override:
