@@ -18,9 +18,10 @@ test:
     - JRUBY_OPTS=--debug RAILS_ENV=test bundle exec rspec -r rspec_junit_formatter --format progress --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml
     - mkdir -p $CIRCLE_TEST_REPORTS/cucumber
     - JRUBY_OPTS=--debug RAILS_ENV=test bundle exec cucumber --format pretty --format json --out $CIRCLE_TEST_REPORTS/cucumber/tests.cucumber
+    - JRUBY_OPTS=--debug RAILS_ENV=test bundle exec rake test
   post:
     - bundle exec rake teaspoon
-    - bundle exec rake coveralls:push
+    - JRUBY_OPTS=--debug bundle exec rake coveralls:push
 ## Customize database setup
 database:
   override:
