@@ -31,7 +31,7 @@ production:
   <<: *eshelf
 
 # Don't load the old eshelf in Travis.
-<% unless ENV['TRAVIS'] %>
+<% unless ENV['TRAVIS'] || ENV['CIRCLECI'] %>
 old_eshelf:
   <<: *development
   host: <%= ENV['OLD_ESHELF_DB_HOST'] %>
