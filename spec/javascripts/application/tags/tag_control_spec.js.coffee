@@ -66,8 +66,8 @@ describe "TagControl", ->
       expect(tagControl.html()).toBeDefined()
 
     it "should be an HTML anchor tag", ->
-      expect(tagControl.html()).toEqual(
-        "<a href=\"#\" class=\"muted\" style=\"display: none; \">"+
+      expect(tagControl.html()).toMatch(
+        "<a href=\"#\" class=\"muted\" style=\"display: none;\\s?\">"+
           "<i class=\"icons-famfamfam-add\"></i><span>add</span></a>")
 
 describe "AddControl", ->
@@ -134,8 +134,8 @@ describe "AddControl", ->
       expect(addControl.html()).toBeDefined()
 
     it "should be an HTML anchor tag", ->
-      expect(addControl.html()).toEqual(
-        "<a href=\"#\" class=\"muted\" style=\"display: none; \">"+
+      expect(addControl.html()).toMatch(
+        "<a href=\"#\" class=\"muted\" style=\"display: none;\\s?\">"+
           "<i class=\"icons-famfamfam-add\"></i><span>add</span></a>")
 
 describe "EditControl", ->
@@ -202,8 +202,8 @@ describe "EditControl", ->
       expect(editControl.html()).toBeDefined()
 
     it "should be an HTML anchor tag", ->
-      expect(editControl.html()).toEqual(
-        "<a href=\"#\" class=\"muted\" style=\"display: none; \">"+
+      expect(editControl.html()).toMatch(
+        "<a href=\"#\" class=\"muted\" style=\"display: none;\\s?\">"+
           "<i class=\"icons-famfamfam-pencil_add\"></i><span>edit</span></a>")
 
 describe "SaveControl", ->
@@ -270,8 +270,8 @@ describe "SaveControl", ->
       expect(saveControl.html()).toBeDefined()
 
     it "should be an HTML anchor tag", ->
-      expect(saveControl.html()).toEqual(
-        "<a href=\"#\" class=\"muted\" style=\"display: none; \">"+
+      expect(saveControl.html()).toMatch(
+        "<a href=\"#\" class=\"muted\" style=\"display: none;\\s?\">"+
           "<i class=\"icons-famfamfam-disk\"></i><span>save</span></a>")
 
 describe "ControlSet", ->
@@ -355,10 +355,10 @@ describe "ControlSet", ->
       expect(controlSet.html).toBeDefined()
 
     it "should be an HTML span with 3 control anchors", ->
-      expect(controlSet.html()).toEqual "<span class=\"controls\">" +
-        "<a href=\"#\" class=\"muted\" style=\"display: none; \">"+
+      expect(controlSet.html()).toMatch "<span class=\"controls\">" +
+        "<a href=\"#\" class=\"muted\" style=\"display: none;\\s?\">"+
           "<i class=\"icons-famfamfam-add\"></i><span>add</span></a>" +
-        "<a href=\"#\" class=\"muted\" style=\"display: none; \">"+
+        "<a href=\"#\" class=\"muted\" style=\"display: none;\\s?\">"+
           "<i class=\"icons-famfamfam-pencil_add\"></i><span>edit</span></a>" +
-        "<a href=\"#\" class=\"muted\" style=\"display: none; \">"+
+        "<a href=\"#\" class=\"muted\" style=\"display: none;\\s?\">"+
           "<i class=\"icons-famfamfam-disk\"></i><span>save</span></a></span>"
