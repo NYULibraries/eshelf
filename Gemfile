@@ -91,7 +91,7 @@ gem 'dalli', '~> 2.7.0'
 gem 'kaminari', '~> 0.16.0'
 
 # Use sorted for sorting
-gem 'sorted', '~> 2.1.2'
+gem 'sorted', '~> 1.0.0'
 
 # New Relic performance monitoring
 gem 'newrelic_rpm', '~> 3.9.0'

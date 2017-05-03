@@ -407,7 +407,7 @@ GEM
     simplecov-html (0.10.0)
     slop (3.6.0)
     socksify (1.7.1)
-    sorted (2.1.2)
+    sorted (1.0.1)
     spoon (0.0.6)
       ffi
     sprockets (2.12.4)
@@ -492,7 +492,7 @@ DEPENDENCIES
   rspec-rails (~> 3.1.0)
   rspec_junit_formatter
   sass-rails (~> 5.0.6)
-  sorted (~> 2.1.2)
+  sorted (~> 1.0.0)
   teaspoon-jasmine (~> 2.3.4)
   therubyrhino (~> 2.0.0)
   uglifier (~> 3.2.0)
