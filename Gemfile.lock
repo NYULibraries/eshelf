@@ -71,10 +71,10 @@ GIT
 
 GIT
   remote: https://github.com/NYULibraries/omniauth-nyulibraries.git
-  revision: 7c208c53e18c8140aebff69c3ba0714309b1143f
-  tag: v2.1.0
+  revision: 97c7a534d5af9b5f21e3edc49b76644782cfc84d
+  tag: v2.1.2
   specs:
-    omniauth-nyulibraries (2.1.0)
+    omniauth-nyulibraries (2.1.2)
       omniauth-oauth2 (~> 1.2.0)
 
 GEM
@@ -497,4 +497,4 @@ DEPENDENCIES
   webmock (~> 1.20.0)
 
 BUNDLED WITH
-   1.14.3
+   1.14.5
