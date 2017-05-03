@@ -15,13 +15,13 @@ gem 'activerecord-jdbcmysql-adapter', '~> 1.3.0'
 gem 'jruby-openssl', '~> 0.9.7-java'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '5.0.0.beta1'
+gem 'sass-rails', '~> 5.0.6'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '~> 2.7.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails', '~> 4.2.1'
 
 # Use jQuery as the JavaScript library
 gem 'jquery-rails', '~> 3.1.0'
@@ -100,7 +100,7 @@ gem 'newrelic_rpm', '~> 3.9.0'
 gem 'acts-as-taggable-on', '~> 3.4.0'
 
 # Convert old records with activerecord-import
-gem 'activerecord-import', '~> 0.6.0'
+gem 'activerecord-import', '~> 0.18.0'
 
 gem 'pry', '~> 0.10.0'
 gem 'pry-remote', '~> 0.1.8'
