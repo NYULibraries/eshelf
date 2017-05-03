@@ -18,7 +18,7 @@ gem 'jruby-openssl', '~> 0.9.7-java'
 gem 'sass-rails', '~> 5.0.6'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '~> 2.7.0'
+gem 'uglifier', '~> 3.2.0'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.2.1'
@@ -91,7 +91,7 @@ gem 'dalli', '~> 2.7.0'
 gem 'kaminari', '~> 0.16.0'
 
 # Use sorted for sorting
-gem 'sorted', '~> 1.0.0'
+gem 'sorted', '~> 2.1.2'
 
 # New Relic performance monitoring
 gem 'newrelic_rpm', '~> 3.9.0'

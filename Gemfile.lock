@@ -407,7 +407,7 @@ GEM
     simplecov-html (0.10.0)
     slop (3.6.0)
     socksify (1.7.1)
-    sorted (1.0.1)
+    sorted (2.1.2)
     spoon (0.0.6)
       ffi
     sprockets (2.12.4)
@@ -434,9 +434,8 @@ GEM
     tins (1.13.2)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
-    uglifier (2.7.2)
-      execjs (>= 0.3.0)
-      json (>= 1.8.0)
+    uglifier (3.2.0)
+      execjs (>= 0.3.0, < 3)
     unf (0.1.4-java)
     vcr (2.9.3)
     warden (1.2.7)
@@ -493,10 +492,10 @@ DEPENDENCIES
   rspec-rails (~> 3.1.0)
   rspec_junit_formatter
   sass-rails (~> 5.0.6)
-  sorted (~> 1.0.0)
+  sorted (~> 2.1.2)
   teaspoon-jasmine (~> 2.3.4)
   therubyrhino (~> 2.0.0)
-  uglifier (~> 2.7.0)
+  uglifier (~> 3.2.0)
   vcr (~> 2.9.0)
   webmock (~> 1.20.0)
 
