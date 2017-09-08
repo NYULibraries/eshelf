@@ -10,4 +10,4 @@ set :app_title, "eshelf"
 set :rvm_ruby_string, "jruby-9.1.7.0"
 set :stages, ["staging", "qa", "production"]
 set :recipient, "lib-eshelf-admin@nyu.edu"
-set :puma_threads, '20:50'
+set :puma_threads, '40:80'
