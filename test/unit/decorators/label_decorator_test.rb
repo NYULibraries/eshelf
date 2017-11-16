@@ -7,12 +7,12 @@ class LabelDecoratorTest < ActiveSupport::TestCase
     VCR.use_cassette('record becomes primo') do
       @record.becomes_external_system.save
     end
-    @xerxes_record = FactoryGirl.build(:user_xerxes_record1)
-    @xerxes_record.becomes_external_system.save
+    # @xerxes_record = FactoryGirl.build(:user_xerxes_record1)
+    # @xerxes_record.becomes_external_system.save
     @normalized_record = RecordDecorator::NormalizeDecorator.new(@record, MockRecordDecoratorViewContext.new())
     @labeled_record = RecordDecorator::LabelDecorator.new(@normalized_record)
-    @normalized_xerxes_record = RecordDecorator::NormalizeDecorator.new(@xerxes_record)
-    @labeled_xerxes_record = RecordDecorator::LabelDecorator.new(@normalized_xerxes_record)
+    # @normalized_xerxes_record = RecordDecorator::NormalizeDecorator.new(@xerxes_record)
+    # @labeled_xerxes_record = RecordDecorator::LabelDecorator.new(@normalized_xerxes_record)
   end
 
   test "label url" do
