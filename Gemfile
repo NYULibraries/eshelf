@@ -28,7 +28,7 @@ gem 'coffee-rails', '~> 4.2.1'
 gem 'jquery-rails', '~> 4.3.1'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyrhino', '~> 2.0.0'
+gem 'therubyracer', '~> 0.12.3'
 
 # Use the Compass CSS framework for sprites, etc.
 gem 'compass-rails', '~> 2.0.0'
