@@ -25,7 +25,7 @@ gem 'uglifier', '~> 3.2.0'
 gem 'coffee-rails', '~> 4.2.1'
 
 # Use jQuery as the JavaScript library
-gem 'jquery-rails', '~> 3.1.0'
+gem 'jquery-rails', '~> 4.3.1'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyrhino', '~> 2.0.0'
@@ -78,9 +78,8 @@ end
 gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.4.0'
 # gem 'acts_as_citable', github: "NYULibraries/acts_as_citable", tag: 'v4.0.0'
 # gem 'ex_cite', '~> 2.1.0', require: 'ex_cite/engine'
-gem "citero", path: '../cruby/citero-ruby'
-gem 'acts_as_citable', path: "../acts_as_citable"
-gem 'ex_cite', '~> 2.1.0', path: "../ex_cite", require: 'ex_cite/engine'
+
+gem 'citero_engine', '~> 3.0.0.beta'
 
 gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.1.2'
 gem 'devise', '~> 3.5.10'
@@ -111,4 +110,4 @@ gem 'pry-remote', '~> 0.1.8'
 
 gem 'railties', '~> 4.2.8'
 
-gem 'citero-renderers', github: "NYULibraries/citero-renderers", tag: "v1.0.3"
+# gem 'citero-renderers', github: "NYULibraries/citero-renderers", tag: "v1.0.3"
