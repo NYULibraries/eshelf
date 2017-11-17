@@ -7,12 +7,12 @@ class LabelDecoratorTest < ActiveSupport::TestCase
     VCR.use_cassette('record becomes primo') do
       @record.becomes_external_system.save
     end
-    @xerxes_record = FactoryGirl.build(:user_xerxes_record1)
-    @xerxes_record.becomes_external_system.save
+    # @xerxes_record = FactoryGirl.build(:user_xerxes_record1)
+    # @xerxes_record.becomes_external_system.save
     @normalized_record = RecordDecorator::NormalizeDecorator.new(@record, MockRecordDecoratorViewContext.new())
     @labeled_record = RecordDecorator::LabelDecorator.new(@normalized_record)
-    @normalized_xerxes_record = RecordDecorator::NormalizeDecorator.new(@xerxes_record)
-    @labeled_xerxes_record = RecordDecorator::LabelDecorator.new(@normalized_xerxes_record)
+    # @normalized_xerxes_record = RecordDecorator::NormalizeDecorator.new(@xerxes_record)
+    # @labeled_xerxes_record = RecordDecorator::LabelDecorator.new(@normalized_xerxes_record)
   end
 
   test "label url" do
@@ -21,11 +21,11 @@ class LabelDecoratorTest < ActiveSupport::TestCase
 
   test "locations label" do
     assert_equal "Locations:", @labeled_record.locations_label, "Unexpected primo locations"
-    assert_equal "Call number:", @labeled_xerxes_record.locations_label, "Unexpected xerxes locations"
+    # assert_equal "Call number:", @labeled_xerxes_record.locations_label, "Unexpected xerxes locations"
   end
 
   test "label author" do
-    assert_equal "Author: Karen Mossberger; Mary Stansbury 1957-; Caroline J Tolbert", @labeled_record.author, "Unexpected author"
+    assert_equal "Author: Karen Mossberger; Caroline J Tolbert; Mary Stansbury 1957-", @labeled_record.author, "Unexpected author"
   end
 
   test "label publisher" do
@@ -37,7 +37,7 @@ class LabelDecoratorTest < ActiveSupport::TestCase
   end
 
   test "label date of publication" do
-    assert_equal "Date of Publication: 2003; c2003", @labeled_record.date_of_publication, "Unexpected publisher"
+    assert_equal "Date of Publication: c2003; 2003", @labeled_record.date_of_publication, "Unexpected publisher"
   end
 
   test "label journal title" do

@@ -3,22 +3,18 @@ machine:
     - "echo Removing project .ruby-version, contents were: && cat $CIRCLE_PROJECT_REPONAME/.ruby-version"
     - "rm $CIRCLE_PROJECT_REPONAME/.ruby-version"
     - |
-      if [[ -e ~/rvm_binaries/jruby-9.1.7.0.tar.bz2 ]]
+      if [[ -e ~/rvm_binaries/ruby-2.3.3.tar.bz2 ]]
       then
-        rvm mount ~/rvm_binaries/jruby-9.1.7.0.tar.bz2
+        rvm mount ~/rvm_binaries/ruby-2.3.3.tar.bz2
       else
         mkdir -p ~/rvm_binaries
-        rvm install jruby-9.1.7.0
-        cd ~/rvm_binaries && rvm prepare jruby-9.1.7.0
+        rvm install ruby-2.3.3
+        cd ~/rvm_binaries && rvm prepare ruby-2.3.3
       fi
-    - rvm --default use jruby-9.1.7.0
-
-  java:
-    version: openjdk7
+    - rvm --default use ruby-2.3.3
 
   environment:
     ESHELF_DB_USER: root
-    JAVA_OPTS: '-Xmx512m -XX:MaxPermSize=512m'
 
 dependencies:
   post:
@@ -26,13 +22,13 @@ dependencies:
 
 test:
   override:
-    - JRUBY_OPTS="-J-Xmx1024m --debug" RAILS_ENV=test bundle exec rspec -r rspec_junit_formatter --format progress --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml
+    - RAILS_ENV=test bundle exec rspec -r rspec_junit_formatter --format progress --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml
     - mkdir -p $CIRCLE_TEST_REPORTS/cucumber
-    - JRUBY_OPTS=--debug RAILS_ENV=test bundle exec cucumber --format pretty --format json --out $CIRCLE_TEST_REPORTS/cucumber/tests.cucumber
-    - JRUBY_OPTS="-J-Xmx1024m --debug" RAILS_ENV=test bundle exec rake test
+    - RAILS_ENV=test bundle exec cucumber --format pretty --format json --out $CIRCLE_TEST_REPORTS/cucumber/tests.cucumber
+    - RAILS_ENV=test bundle exec rake test
   post:
     - bundle exec rake teaspoon
-    - JRUBY_OPTS=--debug bundle exec rake coveralls:push
+    - bundle exec rake coveralls:push
 ## Customize database setup
 database:
   override:

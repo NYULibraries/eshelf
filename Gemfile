@@ -3,16 +3,17 @@ source "https://rubygems.org"
 gem 'rails', '~> 4.2.7'
 
 # Middleware for jruby
-gem 'jruby-rack', '~> 1.1.13'
+# gem 'jruby-rack', '~> 1.1.13'
 
 # Add CORS support
 gem 'rack-cors', '~> 0.2.0', require: 'rack/cors'
 
 # Use MySQL
-gem 'activerecord-jdbcmysql-adapter', '~> 1.3.0'
-
+# gem 'activerecord-jdbcmysql-adapter', '~> 1.3.0'
+gem 'sqlite3'
+gem 'mysql2'
 # Use Java openssl library
-gem 'jruby-openssl', '~> 0.9.7-java'
+# gem 'jruby-openssl', '~> 0.9.7-java'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.6'
@@ -24,10 +25,10 @@ gem 'uglifier', '~> 3.2.0'
 gem 'coffee-rails', '~> 4.2.1'
 
 # Use jQuery as the JavaScript library
-gem 'jquery-rails', '~> 3.1.0'
+gem 'jquery-rails', '~> 4.3.1'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyrhino', '~> 2.0.0'
+gem 'therubyracer', '~> 0.12.3'
 
 # Use the Compass CSS framework for sprites, etc.
 gem 'compass-rails', '~> 2.0.0'
@@ -75,8 +76,10 @@ end
 # Need to include exlibris-primo before citero
 # so we use the nokogiri Xerces-J jar.
 gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.4.0'
-gem 'acts_as_citable', github: "NYULibraries/acts_as_citable", tag: 'v4.0.0'
-gem 'ex_cite', '~> 2.1.0', require: 'ex_cite/engine'
+# gem 'acts_as_citable', github: "NYULibraries/acts_as_citable", tag: 'v4.0.0'
+# gem 'ex_cite', '~> 2.1.0', require: 'ex_cite/engine'
+
+gem 'citero_engine', '~> 3.0.0.beta'
 
 gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.1.2'
 gem 'devise', '~> 3.5.10'
@@ -105,6 +108,6 @@ gem 'activerecord-import', '~> 0.18.0'
 gem 'pry', '~> 0.10.0'
 gem 'pry-remote', '~> 0.1.8'
 
-gem 'railties', '~> 4.2.7.1'
+gem 'railties', '~> 4.2.8'
 
-gem 'citero-renderers', github: "NYULibraries/citero-renderers", tag: "v1.0.0"
+# gem 'citero-renderers', github: "NYULibraries/citero-renderers", tag: "v1.0.3"

@@ -80,7 +80,7 @@ module RecordDecorator
 
     def normalized
       # If Citero doesn't know this from format or the data is blank, just return base.
-      @normalized ||= (Citero.from_formats.include?(base.format) and (not base.data.blank?)) ? csf : base
+      @normalized ||= (Citero.from_formats.include?(base.format.to_sym) and (not base.data.blank?)) ? csf : base
     end
     private :normalized
 

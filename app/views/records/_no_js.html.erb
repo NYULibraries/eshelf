@@ -3,9 +3,9 @@
     <%= content_tag(:span, class: "delete") { link_to(t('record.destroy_html'), record_url(record), method: :delete, target: :_blank) } %> |
     <%= content_tag(:span, class: "email") { link_to(t('record.email_html'), new_email_record_url(record.id), target: :_blank) } %> |
     <%= content_tag(:span, class: "print") { link_to(t('record.print_html'), print_record_url(record.id, "full"), target: :_blank) } %> |
-    <%= content_tag(:span, class: "refworks") { link_to(t('record.refworks_html'), ex_cite.export_citations_url("refworks", record.id), target: :_blank) } %> |
-    <%= content_tag(:span, class: "endnote") { link_to(t('record.endnote_html'), ex_cite.export_citations_url("endnote", record.id), target: :_blank) } %> |
-    <%= content_tag(:span, class: "easybib") { link_to(t('record.easybib_html'), ex_cite.export_citations_url("easybibpush", record.id), target: :_blank) } %> |
+    <%= content_tag(:span, class: "refworks") { link_to(t('record.refworks_html'), citero_engine.citero_engine_url("refworks", record.id), target: :_blank) } %> |
+    <%= content_tag(:span, class: "endnote") { link_to(t('record.endnote_html'), citero_engine.citero_engine_url("endnote", record.id), target: :_blank) } %> |
+    <%= content_tag(:span, class: "easybib") { link_to(t('record.easybib_html'), citero_engine.citero_engine_url("easybibpush", record.id), target: :_blank) } %> |
     <%= content_tag(:span, class: "ris") { link_to(t('record.ris_html'), record_url(record, :ris), target: :_blank) } %> |
     <%= content_tag(:span, class: "bibtex") { link_to(t('record.bibtex_html'), record_url(record, :bibtex), target: :_blank) } %>
   </div>
