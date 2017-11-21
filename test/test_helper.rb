@@ -27,7 +27,7 @@ require 'webmock'
 WebMock.allow_net_connect!
 
 VCR.configure do |c|
-  c.default_cassette_options = { allow_playback_repeats: true, match_requests_on: [:method, :uri, :body], record: :new_episodes }
+  c.default_cassette_options = { allow_playback_repeats: true, match_requests_on: [:method, :uri, :body], record: :once }
   c.cassette_library_dir = 'test/vcr_cassettes'
   # webmock needed for HTTPClient testing
   c.hook_into :webmock
