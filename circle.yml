@@ -5,7 +5,7 @@ machine:
 
   environment:
     ESHELF_DB_USER: root
-    PRIMO_BASE_URL: primo.library.edu
+    PRIMO_BASE_URL: http://primo.library.edu
 
 dependencies:
   post:

@@ -32,7 +32,7 @@ VCR.configure do |c|
   # webmock needed for HTTPClient testing
   c.hook_into :webmock
   # c.debug_logger = $stderr
-  c.filter_sensitive_data("primo.library.edu") { ENV['PRIMO_BASE_URL'] }
+  c.filter_sensitive_data("http://primo.library.edu") { ENV['PRIMO_BASE_URL'] }
 end
 
 class MockRecordDecoratorViewContext
