@@ -833,7 +833,7 @@ class RecordsControllerTest < ActionController::TestCase
   def assert_travels_with_my_aunt(element, record)
     assert_equal("<li>\n      "+
       "<p><strong>Travels with my aunt [videorecording] (video)</strong></p>\n"+
-      "<p>Locations: NYU Bobst Avery Fisher Center Main Collection</p>\n"+
+      "<p>Locations: NYU Bobst Avery Fisher Center Main Collection (VCA 15583 )</p>\n"+
       "<p>#{record_getit_url(record)}</p>\n    </li>", element.to_s)
   end
 
