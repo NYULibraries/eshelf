@@ -51,23 +51,22 @@ gem 'font-awesome-rails', '~> 4.2.0'
 # Development and testing gems
 group :development, :test do
   gem 'teaspoon-jasmine', '~> 2.3.4'
-  gem 'factory_girl_rails', '~> 4.5.0'
-  gem 'rspec-rails', '~> 3.1.0'
+  gem 'factory_girl_rails', '~> 4.9.0'
+  gem 'rspec-rails', '~> 3.7.0'
 end
 
 # Testing gems
 group :test do
   gem 'coveralls', '~> 0.8.20', require: false
-  gem 'vcr', '~> 2.9.0'
-  gem 'webmock', '~> 1.20.0'
-  gem 'cucumber-rails', '~> 1.4.2', require: false
-  gem 'database_cleaner', '~> 1.3.0'
+  gem 'vcr', '~> 3.0.3'
+  gem 'webmock', '~> 3.1.1'
+  gem 'cucumber-rails', '~> 1.5.0', require: false
+  gem 'database_cleaner', '~> 1.6.0'
   gem 'rspec-mocks'
 end
 
 # NYU customization gems
 gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.4.0'
-# gem 'acts_as_citable', '5.0.0.beta'
 
 gem 'citero_engine', '3.0.0.beta'
 
@@ -96,5 +95,3 @@ gem 'pry', '~> 0.10.0'
 gem 'pry-remote', '~> 0.1.8'
 
 gem 'railties', '~> 4.2.8'
-
-# gem 'citero-renderers', github: "NYULibraries/citero-renderers"#, tag: "v1.0.3"
