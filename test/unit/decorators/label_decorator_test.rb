@@ -25,7 +25,7 @@ class LabelDecoratorTest < ActiveSupport::TestCase
   end
 
   test "label author" do
-    assert_equal "Author: Karen Mossberger; Caroline J Tolbert; Mary Stansbury 1957-", @labeled_record.author, "Unexpected author"
+    assert_equal "Author: Karen.  Mossberger; Caroline J Tolbert; Mary Stansbury 1957-", @labeled_record.author, "Unexpected author"
   end
 
   test "label publisher" do

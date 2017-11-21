@@ -21,7 +21,7 @@ class NormalizeDecoratorTest < ActiveSupport::TestCase
   end
 
   test "normalize author" do
-    assert_equal "Karen Mossberger; Caroline J Tolbert; Mary Stansbury 1957-",
+    assert_equal "Karen.  Mossberger; Caroline J Tolbert; Mary Stansbury 1957-",
       @normalized_record.author, "Unexpected author"
   end
 
@@ -60,7 +60,7 @@ class NormalizeDecoratorTest < ActiveSupport::TestCase
   end
 
   test "normalize subjects" do
-    assert_match /Digital divide; Divide, Digital; Global digital divide; GDD \(Global digital divide\)/, @normalized_record.subjects, "Unexpected subjects"
+    assert_match /Digital divide.; Divide, Digital; Global digital divide; GDD \(Global digital divide\); Digital divide/, @normalized_record.subjects, "Unexpected subjects"
   end
 
   test "normalize issn" do

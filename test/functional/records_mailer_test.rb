@@ -79,7 +79,7 @@ class RecordsMailerTest < ActionMailer::TestCase
       "===\n"+
       "Travels with my aunt [videorecording] (video)\n"+
       "#{record_getit_url(@records[1])}\n"+
-      "Locations: NYU Bobst Avery Fisher Center Main Collection\n\n"+
+      "Locations: NYU Bobst Avery Fisher Center Main Collection (VCA 15583 )\n\n"+
       "===\n", email.body.to_s)
   end
 

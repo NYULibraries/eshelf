@@ -26,14 +26,13 @@ require 'webmock'
 # have to tell webmock to let us.
 WebMock.allow_net_connect!
 
-@@primo_url = "bobcatdev.library.nyu.edu"
-
 VCR.configure do |c|
+  c.default_cassette_options = { allow_playback_repeats: true, match_requests_on: [:method, :uri, :body], record: :once }
   c.cassette_library_dir = 'test/vcr_cassettes'
   # webmock needed for HTTPClient testing
   c.hook_into :webmock
   # c.debug_logger = $stderr
-  c.filter_sensitive_data("primo.library.edu") { @@primo_url }
+  c.filter_sensitive_data("http://primo.library.edu") { ENV['PRIMO_BASE_URL'] }
 end
 
 class MockRecordDecoratorViewContext
