@@ -812,14 +812,14 @@ class RecordsControllerTest < ActionController::TestCase
   test "should redirect to record url for existing tmp user" do
     session[:tmp_user] = @tmp_user
     get :getit, id: @tmp_user_record.id
-    assert_redirected_to "https://getit.library.nyu.edu/nyu/resolve?#{@tmp_user_record.url}"
+    assert_redirected_to "https://dev.getit.library.nyu.edu/nyu/resolve?#{@tmp_user_record.url}"
     assert_nil response.headers['X-CSRF-Token']
   end
 
   test "should redirect to record url for existing user" do
     sign_in @user
     get :getit, id: @user_record.id
-    assert_redirected_to "https://getit.library.nyu.edu/nyu/resolve?#{@user_record.url}"
+    assert_redirected_to "https://dev.getit.library.nyu.edu/nyu/resolve?#{@user_record.url}"
     assert_nil response.headers['X-CSRF-Token']
   end
 
