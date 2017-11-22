@@ -7,7 +7,7 @@ module ApplicationHelper
 
   # ILL entry for the current institution
   def ill
-    @ill ||= current_primary_institution.views["ill"]
+    @ill ||= current_primary_institution.institution_views["ill"]
   end
 
   # Eshelf workspace header
