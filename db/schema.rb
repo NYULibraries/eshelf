@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127213705) do
+ActiveRecord::Schema.define(version: 20171127214039) do
 
   create_table "locations", force: :cascade do |t|
     t.integer  "record_id",   limit: 4,   null: false
@@ -66,20 +66,19 @@ ActiveRecord::Schema.define(version: 20171127213705) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",           limit: 255,                null: false
-    t.string   "email",              limit: 255,                null: false
+    t.string   "username",           limit: 255,              null: false
+    t.string   "email",              limit: 255,              null: false
     t.string   "firstname",          limit: 255
     t.string   "lastname",           limit: 255
     t.datetime "refreshed_at"
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
-    t.text     "user_attributes",    limit: 65535
-    t.integer  "sign_in_count",      limit: 4,     default: 0,  null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.integer  "sign_in_count",      limit: 4,   default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip", limit: 255
     t.string   "last_sign_in_ip",    limit: 255
-    t.string   "provider",           limit: 255,   default: "", null: false
+    t.string   "provider",           limit: 255, default: "", null: false
     t.string   "aleph_id",           limit: 255
     t.string   "institution_code",   limit: 255
     t.string   "patron_status",      limit: 255
