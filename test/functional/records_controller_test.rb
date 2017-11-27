@@ -5,14 +5,14 @@ class RecordsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   setup do
-    @user = FactoryGirl.create(:user)
-    @tmp_user = FactoryGirl.create(:tmp_user)
-    @user_record = FactoryGirl.build(:user_primo_record1, user: @user)
-    @user_record2 = FactoryGirl.build(:user_primo_record2, user: @user)
+    @user = FactoryBot.create(:user)
+    @tmp_user = FactoryBot.create(:tmp_user)
+    @user_record = FactoryBot.build(:user_primo_record1, user: @user)
+    @user_record2 = FactoryBot.build(:user_primo_record2, user: @user)
     @tmp_user_record =
-      FactoryGirl.build(:tmp_user_primo_record1, tmp_user: @tmp_user)
+      FactoryBot.build(:tmp_user_primo_record1, tmp_user: @tmp_user)
     @tmp_user_record2 =
-      FactoryGirl.build(:tmp_user_primo_record2, tmp_user: @tmp_user)
+      FactoryBot.build(:tmp_user_primo_record2, tmp_user: @tmp_user)
     @primo_records =
       [@user_record, @user_record2, @tmp_user_record, @tmp_user_record2]
     VCR.use_cassette('record becomes primo') do
@@ -824,7 +824,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should redirect to record url for existing NYSID user" do
-    sign_in FactoryGirl.create(:nysid_user)
+    sign_in FactoryBot.create(:nysid_user)
     get :getit, id: @user_record.id
     assert_redirected_to "#{ENV['PERSISTENT_LINKER_URL']}#{@user_record.external_id}"
     assert_nil response.headers['X-CSRF-Token']

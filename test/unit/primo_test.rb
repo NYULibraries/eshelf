@@ -3,7 +3,7 @@ require 'test_helper'
 
 class PrimoTest < ActiveSupport::TestCase
   setup do
-    @record = FactoryGirl.build(:user_primo_record1)
+    @record = FactoryBot.build(:user_primo_record1)
   end
 
   test "new nokogiri xml document" do

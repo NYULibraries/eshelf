@@ -3,7 +3,7 @@ require 'test_helper'
 
 class XerxesTest < ActiveSupport::TestCase
   setup do
-    @record = FactoryGirl.build(:user_xerxes_record1)
+    @record = FactoryBot.build(:user_xerxes_record1)
   end
 
   # test "new nokogiri xml document" do
