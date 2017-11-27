@@ -31,7 +31,7 @@ describe RecordsController do
       let!(:user)    { FactoryGirl.create(:user) }
       it 'should redirect to a getit' do
         get :getit, id: record.id
-        expect(response).to redirect_to("https://getit.library.nyu.edu/nyu/resolve?#{record.url}")
+        expect(response).to redirect_to("https://dev.getit.library.nyu.edu/nyu/resolve?#{record.url}")
         expect(response.headers['X-CSRF-Token']).to be_nil
       end
     end

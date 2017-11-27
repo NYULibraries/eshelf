@@ -17,12 +17,12 @@ class WayfinderTest < ActionView::TestCase
                 "fn=search&vid=NYU"
     @bobcat_database_search_results = "https://arch.library.nyu.edu/?base=databases&action=find&query=this"
     @bobcat_database_search_details = "https://arch.library.nyu.edu/databases/database/NYU00475"
-    @bobcat_journal_search_results = "https://getit.library.nyu.edu/search/journal_search?utf8=%E2%9C%93&umlaut.institution=NYU&"+
+    @bobcat_journal_search_results = "https://dev.getit.library.nyu.edu/search/journal_search?utf8=%E2%9C%93&umlaut.institution=NYU&"+
       "rfr_id=info%3Asid%2Fsfxit.com%3Acitation&rft.date=&rft.title=&rft.object_id=&umlaut.title_search_type=contains&rft.jtitle=new+york&"+
         "rft.issn=&Generate_OpenURL2=Search&rft.atitle=&rft.aulast=&rft.aufirst=&__year=&__month=&__day=&rft.volume=&rft.issue=&rft.spage=&"+
           "rft.epage=&rft_id_type=doi&rft_id_value="
     @bobcat_database_az_results = "https://arch.library.nyu.edu/databases/alphabetical?alpha=A"
-    @bobcat_journal_az_results = "https://getit.library.nyu.edu/journal_list/J?umlaut.institution=NYU"
+    @bobcat_journal_az_results = "https://dev.getit.library.nyu.edu/journal_list/J?umlaut.institution=NYU"
     @bobcat_book_search = "http://bobcat.library.nyu.edu/primo_library/libweb/action/search.do?vid=NYU"
     @bobcat_reserves_search = "http://bobcat.library.nyu.edu/primo_library/libweb/action/search.do?mode=Basic&vid=NYU&tab=reserves"
     @bobcat_database_search = "https://arch.library.nyu.edu/databases/subject/general-search"
