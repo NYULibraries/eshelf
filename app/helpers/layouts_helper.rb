@@ -19,11 +19,6 @@ module LayoutsHelper
     link_to wayfinder.text, wayfinder.url if wayfinder.match?
   end
 
-  # Yep, we have a print stylesheet.
-  def print_stylesheet?
-    true
-  end
-
   def print_title
     t('application.print_title')
   end
@@ -31,7 +26,7 @@ module LayoutsHelper
   # Print stylesheet is assumed to be in assets/stylesheets/print.css.
   # Media type is all to to render like it will print in most (all?) browsers.
   def print_stylesheet
-    @_view.print_stylesheet :all
+    stylesheet_link_tag "print", media: :all
   end
 
 end
