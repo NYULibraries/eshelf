@@ -4,7 +4,6 @@
 # Copyright:: Copyright (c) 2013 New York University
 # License::   Distributes under the same terms as Ruby
 class ApplicationController < ActionController::Base
-  include Nyulibraries::Assets::InstitutionsHelper
   before_filter :set_wayfinder
   protect_from_forgery
 
