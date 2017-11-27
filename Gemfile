@@ -49,7 +49,7 @@ gem 'font-awesome-rails', '~> 4.2.0'
 # Development and testing gems
 group :development, :test do
   gem 'teaspoon-jasmine', '~> 2.3.4'
-  gem 'factory_girl_rails', '~> 4.9.0'
+  gem 'factory_bot_rails', '~> 4.8.2'
   gem 'rspec-rails', '~> 3.7.0'
 end
 
