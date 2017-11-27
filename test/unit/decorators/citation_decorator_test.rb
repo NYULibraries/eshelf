@@ -3,7 +3,7 @@ require 'test_helper'
 
 class CitationDecoratorTest < ActiveSupport::TestCase
   setup do
-    @record = FactoryGirl.build(:user_primo_record1)
+    @record = FactoryBot.build(:user_primo_record1)
     VCR.use_cassette('record becomes primo') do
       @record.becomes_external_system.save
     end

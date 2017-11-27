@@ -6,8 +6,8 @@ class UsersControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   setup do
-    @user = FactoryGirl.create(:user)
-    @user_record = FactoryGirl.build(:user_primo_record1, user: @user)
+    @user = FactoryBot.create(:user)
+    @user_record = FactoryBot.build(:user_primo_record1, user: @user)
     VCR.use_cassette('record becomes primo') do
       (@user_record = @user_record.becomes_external_system).save!
     end

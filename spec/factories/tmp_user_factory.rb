@@ -1,5 +1,5 @@
 # Tmp user factory
-FactoryGirl.define do
+FactoryBot.define do
   factory :tmp_user do
   end
 end
