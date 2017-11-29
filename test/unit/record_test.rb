@@ -2,8 +2,8 @@ require 'test_helper'
 
 class RecordTest < ActiveSupport::TestCase
   setup do
-    @user_record = FactoryGirl.build(:user_record)
-    @tmp_user_record = FactoryGirl.build(:tmp_user_record)
+    @user_record = FactoryBot.build(:user_record)
+    @tmp_user_record = FactoryBot.build(:tmp_user_record)
   end
 
   test "user record" do

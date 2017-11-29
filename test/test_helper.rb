@@ -7,11 +7,11 @@ ENV['PERSISTENT_LINKER_URL'] = "http://localhost.persistent_linker/"
 
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
-require 'factory_girl'
+require 'factory_bot'
 
 
 # Make sure all Factories are loaded and actually work
-FactoryGirl.reload
+FactoryBot.reload
 
 # VCR is used to 'record' HTTP interactions with
 # third party services used in tests, and play em

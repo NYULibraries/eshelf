@@ -1,6 +1,6 @@
 # encoding: utf-8
 # Record factory
-FactoryGirl.define do
+FactoryBot.define do
   factory :record do
 
     trait :external do
