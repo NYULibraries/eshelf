@@ -9,8 +9,9 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w(
   print.js
   records.js
-  print.css
 )
+
+Rails.application.config.assets.precompile += [/.*\.js/,/.*\.(s?)css/]
 
 # All images
 Rails.application.config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
