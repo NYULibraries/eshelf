@@ -62,11 +62,11 @@ input#select {
     width: 6px;
   }
   &.scroll::-webkit-scrollbar-thumb {
-    @include border-radius(4px);
+    border-radius: 4px;
     background-color: grey;
   }
   &.scroll::-webkit-scrollbar-track-piece {
-    @include border-radius(4px);
+    border-radius: 4px;
     background-color: whitesmoke;
   }
 }
