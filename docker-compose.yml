@@ -1,0 +1,54 @@
+version: '3.2'
+services:
+
+  dev:
+    build: .
+    ports:
+      - "3000:3000"
+    env_file:
+      - test.env
+    environment:
+      CI:
+      CODECLIMATE_REPO_TOKEN:
+      COVERALLS_REPO_TOKEN:
+    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+    depends_on:
+      - setup_dbs
+
+  test:
+    build: .
+    environment:
+      RAILS_ENV: test
+      PRIMO_BASE_URL: http://primo.library.edu
+    env_file:
+      - test.env
+    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake", "spec", "test", "cucumber"]
+    depends_on:
+      - setup_test_dbs
+
+  setup_test_dbs:
+    build: .
+    environment:
+      RAILS_ENV: test
+    env_file:
+      - test.env
+    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake", "db:setup"]
+    depends_on:
+      - db
+
+  setup_dbs:
+    build: .
+    environment:
+      RAILS_ENV: development
+    env_file:
+      - test.env
+    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake", "db:setup"]
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7.22
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    expose:
+      - "3306"
