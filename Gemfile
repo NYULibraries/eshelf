@@ -6,7 +6,7 @@ gem 'rails', '~> 4.2.7'
 gem 'rack-cors', '~> 0.2.0', require: 'rack/cors'
 
 # Use MySQL
-gem 'sqlite3'
+#gem 'sqlite3'
 gem 'mysql2'
 
 # Use SCSS for stylesheets
