@@ -31,8 +31,10 @@ services:
       - setup_test_dbs
 
   setup_test_dbs:
-    image: eshelf_dev
-    build: .
+    image: eshelf_test
+    build:
+      context: .
+      dockerfile: Dockerfile.test
     environment:
       RAILS_ENV: test
     env_file:
