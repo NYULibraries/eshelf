@@ -2,6 +2,7 @@ version: '3.2'
 services:
 
   dev:
+    image: eshelf_dev
     build: .
     ports:
       - "3000:3000"
@@ -16,7 +17,10 @@ services:
       - setup_dbs
 
   test:
-    build: .
+    image: eshelf_test
+    build:
+      context: .
+      dockerfile: Dockerfile.test
     environment:
       RAILS_ENV: test
       PRIMO_BASE_URL: http://primo.library.edu
@@ -27,6 +31,7 @@ services:
       - setup_test_dbs
 
   setup_test_dbs:
+    image: eshelf_dev
     build: .
     environment:
       RAILS_ENV: test
@@ -37,6 +42,7 @@ services:
       - db
 
   setup_dbs:
+    image: eshelf_dev
     build: .
     environment:
       RAILS_ENV: development
