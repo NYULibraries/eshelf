@@ -20,3 +20,8 @@ wiki
 
 # Ignore temporary testing files
 /spec/tmp
+
+Dockerfile*
+docker-compose.yml
+README.md
+test.env
