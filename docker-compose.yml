@@ -22,7 +22,7 @@ services:
       PRIMO_BASE_URL: http://primo.library.edu
     env_file:
       - test.env
-    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake", "spec", "test", "cucumber"]
+    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake", "spec", "test", "teaspoon", "cucumber", "coveralls:push"]
     depends_on:
       - setup_test_dbs
 
