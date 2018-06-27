@@ -1,0 +1,75 @@
+docker-defaults: &docker-defaults
+  docker:
+    - image: docker:18.03.0-ce-git
+  working_directory: ~/app
+
+version: 2
+jobs:
+  test:
+    <<: *docker-defaults
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Install Docker Compose
+          command: |
+            apk add --no-cache python3
+            pip3 install docker-compose==1.20.1
+      - run:
+          name: Start container and run tests
+          command: |
+            docker-compose run setup_test_dbs
+            docker-compose run test
+
+  deploy-dev:
+    <<: *docker-defaults
+    steps:
+      - setup_remote_docker
+      - deploy:
+          name: Deploy into development via Jenkins
+          command: |
+            docker run --rm appropriate/curl -u $JENKINS_USERNAME:$JENKINS_API_KEY -X POST http://jenkins.library.nyu.edu/view/E-Shelf/job/Eshelf%20Development%20Deploy/build/api
+
+  deploy-prod:
+    <<: *docker-defaults
+    steps:
+      - setup_remote_docker
+      - deploy:
+          name: Deploy into production via Jenkins
+          command: |
+            docker run --rm appropriate/curl -u $JENKINS_USERNAME:$JENKINS_API_KEY -X POST http://jenkins.library.nyu.edu/view/E-Shelf/job/Eshelf%20Production%20Deploy/build/api
+
+  deploy-qa:
+    <<: *docker-defaults
+    steps:
+      - setup_remote_docker
+      - deploy:
+          name: Deploy into QA via Jenkins
+          command: |
+            docker run --rm appropriate/curl -u $JENKINS_USERNAME:$JENKINS_API_KEY -X POST http://jenkins.library.nyu.edu/view/E-Shelf/job/EShelf%20QA%20Deploy/build/api
+
+workflows:
+  version: 2
+  build-test-and-deploy:
+    jobs:
+      - test
+      - deploy-dev:
+          requires:
+            - test
+          filters:
+            branches:
+              ignore:
+                - master
+                - qa
+      - deploy-qa:
+          requires:
+            - test
+          filters:
+            branches:
+              only: qa
+      - deploy-prod:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master

@@ -1,0 +1,28 @@
+.git
+
+# Ignore bundler config
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+*.sql
+
+# Ignore all logfiles and tempfiles.
+log/*.log
+spec/log/
+tmp/
+
+# Ignore coverage
+coverage/
+
+# Ignore the wiki.
+wiki
+
+# Ignore temporary testing files
+/spec/tmp
+
+Dockerfile*
+docker-compose.yml
+README.md
+test.env
+.circleci/
