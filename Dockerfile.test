@@ -2,10 +2,6 @@ FROM ruby:2.3.6
 
 ENV INSTALL_PATH /app
 
-# RUN groupadd -g 2000 docker -r && \
-#     useradd -u 1000 -r --no-log-init -m -d $INSTALL_PATH -g docker docker
-# USER docker
-
 # Setup working directory
 WORKDIR $INSTALL_PATH
 
