@@ -483,7 +483,6 @@ DEPENDENCIES
   kaminari (~> 0.16.0)
   modernizr-rails (~> 2.7.0)
   mysql2
-  newrelic_rpm (~> 3.9.0)
   nyulibraries_errors!
   nyulibraries_institutions!
   nyulibraries_javascripts!
@@ -506,4 +505,4 @@ DEPENDENCIES
   webmock (~> 3.1.1)
 
 BUNDLED WITH
-   1.16.0
+   1.16.3

@@ -80,9 +80,6 @@ gem 'kaminari', '~> 0.16.0'
 # Use sorted for sorting
 gem 'sorted', '~> 1.0.0'
 
-# New Relic performance monitoring
-gem 'newrelic_rpm', '~> 3.9.0'
-
 # Acts as taggable on
 gem 'acts-as-taggable-on', '~> 3.4.0'
 
