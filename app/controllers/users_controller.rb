@@ -27,6 +27,7 @@ class UsersController < ApplicationController
     if !cookies[:_pds_logged_in].present?
       cookies[:_return_to_account] = true
       cookies[:_pds_logged_in] = true
+      cookies[:_account_primary_institution] = account_params[:institution]
       redirect_to pds_login
     elsif cookies[:_pds_logged_in]
       cookies.delete(:_pds_logged_in)
