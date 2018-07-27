@@ -8,10 +8,6 @@ services:
       - "3000:3000"
     env_file:
       - test.env
-    environment:
-      CI:
-      CODECLIMATE_REPO_TOKEN:
-      COVERALLS_REPO_TOKEN:
     command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
     depends_on:
       - setup_dbs
@@ -24,9 +20,12 @@ services:
     environment:
       RAILS_ENV: test
       PRIMO_BASE_URL: http://primo.library.edu
+      CI:
+      CODECLIMATE_REPO_TOKEN:
+      COVERALLS_REPO_TOKEN:
     env_file:
       - test.env
-    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake", "spec", "test", "teaspoon", "cucumber", "coveralls:push"]
+    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake"]
     depends_on:
       - setup_test_dbs
 
