@@ -2,8 +2,14 @@ version: '3.2'
 services:
 
   dev:
+    # These options (tty, stdin_open) let you interact with pry with
+    # docker attach {running_dev_container_id}
+    tty: true
+    stdin_open: true
     image: eshelf_dev
     build: .
+    volumes:
+      - .:/app
     ports:
       - "3000:3000"
     env_file:
@@ -19,7 +25,6 @@ services:
       dockerfile: Dockerfile.test
     environment:
       RAILS_ENV: test
-      PRIMO_BASE_URL: http://primo.library.edu
       CI:
       CODECLIMATE_REPO_TOKEN:
       COVERALLS_REPO_TOKEN:
