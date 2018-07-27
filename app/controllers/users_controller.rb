@@ -17,7 +17,7 @@ class UsersController < ApplicationController
         format.html { render :account }
       end
     else
-      redirect_to user_account_path
+      redirect_to user_account_path(account_params)
     end
   end
 
@@ -27,10 +27,11 @@ class UsersController < ApplicationController
     if !cookies[:_pds_logged_in].present?
       cookies[:_return_to_account] = true
       cookies[:_pds_logged_in] = true
+      cookies[:_account_primary_institution] = account_params[:institution]
       redirect_to pds_login
     elsif cookies[:_pds_logged_in]
       cookies.delete(:_pds_logged_in)
-      redirect_to user_account_render_path
+      redirect_to user_account_render_path(account_params)
     else
       head :bad_request
     end
@@ -45,6 +46,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def account_params
+    params.select { |k,v| k === :institution.to_s }
+  end
 
   def pds_login
     "#{ENV['PDS_URL']}/pds?func=load-login&institute=#{current_primary_institution.code}&calling_system=eshelf&url=#{CGI::escape(passive_login_url)}"
