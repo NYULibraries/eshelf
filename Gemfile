@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
 gem 'rails', '~> 4.2.7'
+gem 'railties', '~> 4.2.8'
 
 # Add CORS support
 gem 'rack-cors', '~> 0.2.0', require: 'rack/cors'
@@ -51,6 +52,8 @@ group :development, :test do
   gem 'teaspoon-jasmine', '~> 2.3.4'
   gem 'factory_bot_rails', '~> 4.8.2'
   gem 'rspec-rails', '~> 3.7.0'
+  gem 'pry', '~> 0.10.0'
+  gem 'pry-remote', '~> 0.1.8'
 end
 
 # Testing gems
@@ -85,8 +88,3 @@ gem 'acts-as-taggable-on', '~> 3.4.0'
 
 # Convert old records with activerecord-import
 gem 'activerecord-import', '~> 0.18.0'
-
-gem 'pry', '~> 0.10.0'
-gem 'pry-remote', '~> 0.1.8'
-
-gem 'railties', '~> 4.2.8'
