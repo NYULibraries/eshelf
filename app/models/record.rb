@@ -79,12 +79,13 @@ class Record < ActiveRecord::Base
       becomes(external_system.capitalize.safe_constantize) : self
   end
 
-  def rebuild_openurl!
-    self.url = "#{to_openurl}"
+  def rebuild_openurl!(institution = 'NYU')
+    self.url = Eshelf::PnxJson.new(self.external_id, institution).openurl
     self.save!
   end
 
   def expired?
-    self.updated_at && (1.week.ago > self.updated_at)
+    true
+    # self.updated_at && (1.week.ago > self.updated_at)
   end
 end

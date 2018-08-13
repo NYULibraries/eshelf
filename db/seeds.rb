@@ -14,4 +14,5 @@ if Rails.env.development?
   user.records.destroy_all
   user.records.new({external_id: 'nyu_aleph000864162', external_system: 'primo'}).becomes_external_system.save!
   user.records.new({external_id: 'nyu_aleph002406797', external_system: 'primo'}).becomes_external_system.save!
+  user.records.new({external_id: 'nyu_aleph006048386', external_system: 'primo'}).becomes_external_system.save!
 end

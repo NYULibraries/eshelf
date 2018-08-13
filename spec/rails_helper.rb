@@ -49,3 +49,17 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 end
+
+require 'vcr'
+
+require 'webmock/rspec'
+WebMock.disable_net_connect!(allow_localhost: true)
+
+VCR.configure do |c|
+  #the directory where your cassettes will be saved
+  c.cassette_library_dir = 'spec/vcr'
+  # your HTTP request service.
+  c.hook_into :webmock
+  c.default_cassette_options = { :record => :all }
+  c.configure_rspec_metadata!
+end
