@@ -1,4 +1,15 @@
 GIT
+  remote: https://github.com/NYULibraries/citero_engine.git
+  revision: 4fcc27d68a14ecd1a7965292d3d227ec693f1887
+  branch: bug/use_real_export_citations_url
+  specs:
+    citero_engine (3.0.0.beta)
+      acts_as_citable (~> 5.0.0.beta)
+      citero-renderers (~> 1.0.4)
+      jquery-rails (~> 4.3.1)
+      rails (~> 4.2.10)
+
+GIT
   remote: https://github.com/NYULibraries/exlibris-nyu.git
   revision: f33707f00327899af2519ecd028fde88f13c6bf9
   tag: v2.4.0
@@ -150,11 +161,6 @@ GEM
       ox (~> 2.8.0)
     citero-renderers (1.0.4)
       actionpack (~> 4.2.8)
-    citero_engine (3.0.0.beta)
-      acts_as_citable (~> 5.0.0.beta)
-      citero-renderers (~> 1.0.4)
-      jquery-rails (~> 4.3.1)
-      rails (~> 4.2.10)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -333,7 +339,7 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
-    ox (2.8.2)
+    ox (2.8.4)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -475,7 +481,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-import (~> 0.18.0)
   acts-as-taggable-on (~> 3.4.0)
-  citero_engine (= 3.0.0.beta)
+  citero_engine!
   coffee-rails (~> 4.2.1)
   compass-rails (~> 2.0.0)
   coveralls (~> 0.8.20)

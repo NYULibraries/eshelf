@@ -65,7 +65,7 @@ end
 # NYU customization gems
 gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.4.0'
 
-gem 'citero_engine', '3.0.0.beta'
+gem 'citero_engine', github: 'NYULibraries/citero_engine', branch: 'bug/use_real_export_citations_url' #'3.0.1'
 
 gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.1.2'
 gem 'devise', '~> 3.5.10'
