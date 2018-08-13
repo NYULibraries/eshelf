@@ -18,7 +18,7 @@ jobs:
       - run:
           name: Start container and run tests
           command: |
-            docker-compose up test
+            docker-compose up --abort-on-container-exit test
 
   deploy-dev:
     <<: *docker-defaults
