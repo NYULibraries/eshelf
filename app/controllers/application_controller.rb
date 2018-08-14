@@ -4,7 +4,6 @@
 # Copyright:: Copyright (c) 2013 New York University
 # License::   Distributes under the same terms as Ruby
 class ApplicationController < ActionController::Base
-  before_filter :set_wayfinder
   protect_from_forgery
 
   layout Proc.new { |controller| (controller.request.xhr?) ? false : "eshelf" }
@@ -76,13 +75,6 @@ class ApplicationController < ActionController::Base
     s.gsub(/\"/, "\"\"") unless s.nil?
   end
   protected :double_escape_quotes
-
-  # Wayfinder for the given request
-  def wayfinder
-    @wayfinder ||= Wayfinder.new(request)
-  end
-  alias :set_wayfinder wayfinder
-  helper_method :wayfinder
 
   # Returns the current sort
   # Default sort is newest first.
