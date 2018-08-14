@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127214039) do
+ActiveRecord::Schema.define(version: 20180814205322) do
 
   create_table "locations", force: :cascade do |t|
     t.integer  "record_id",   limit: 4,   null: false
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20171127214039) do
     t.string   "content_type",    limit: 255
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
+    t.text     "data_xerxes_xml", limit: 4294967295
   end
 
   add_index "records", ["tmp_user_id", "external_system", "external_id"], name: "index_records_on_tmp_user_id_and_external_system_and_external_id", unique: true, using: :btree
