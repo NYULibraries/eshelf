@@ -13,6 +13,8 @@ a variety of external systems such as Primo.
 E-Shelf currently supports the following external systems:
 
 - Primo
+- Xerxes
+  - New records can't be created from Xerxes anymore but existing records will continue to link out to their OpenURLs
 
 ## Features
 - [CORS JavaScript API](../../wiki/CORS-JavaScript-API) for external systems

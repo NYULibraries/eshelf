@@ -65,7 +65,6 @@ module RecordsHelper
   def export_options
     [ link_to(t('record.collection.export.options.refworks'), citero_engine.citero_engine_path("refworks"), id: :refworks, target: :_blank),
       link_to(t('record.collection.export.options.endnote'), citero_engine.citero_engine_path("endnote"), id: :endnote, target: :_blank),
-      link_to(t('record.collection.export.options.easybib'), citero_engine.citero_engine_path("easybibpush"), id: :easybib, target: :_blank),
       link_to(t('record.collection.export.options.ris'), records_path(:ris), id: :ris, target: :_blank),
       link_to(t('record.collection.export.options.bibtex'), records_path(:bibtex), id: :bibtex, target: :_blank) ]
   end

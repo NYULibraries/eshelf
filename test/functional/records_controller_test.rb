@@ -36,28 +36,6 @@ class RecordsControllerTest < ActionController::TestCase
     assert_select "title", "BobCat"
   end
 
-  test "should not have back to search results" do
-    sign_in @user
-    get :index
-    assert_response :success
-    assert_nil response.headers['X-CSRF-Token']
-    assert_select ".back-to .icons-famfamfam-arrow_undo", 0
-    assert_select ".back-to a", 0
-  end
-
-  test "should have back to search results" do
-    bobcat_search_results = "http://bobcat.library.nyu.edu/primo_library/libweb/action/search.do?"+
-      "dscnt=0&vl(378633853UI1)=all_items&tab=all&dstmp=1366313551347&srt=rank&ct=search&mode=Basic&dum=true&"+
-        "vl(212921975UI0)=any&indx=1&vl(1UIStartWith0)=contains&vl(freeText0)=digital+divide&vid=NYU&fn=search"
-    session[:referer] = bobcat_search_results
-    sign_in @user
-    get :index
-    assert_response :success
-    assert_nil response.headers['X-CSRF-Token']
-    assert_select ".back-to .icons-famfamfam-arrow_undo", 1
-    assert_select ".back-to a", {count: 1, text: "Back to search results", href: bobcat_search_results}
-  end
-
   test "should show records controls" do
     sign_in @user
     get :index
@@ -807,27 +785,6 @@ class RecordsControllerTest < ActionController::TestCase
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
     assert_select "title", "BobCat Records"
-  end
-
-  test "should redirect to record url for existing tmp user" do
-    session[:tmp_user] = @tmp_user
-    get :getit, id: @tmp_user_record.id
-    assert_redirected_to "https://dev.getit.library.nyu.edu/nyu/resolve?#{@tmp_user_record.url}"
-    assert_nil response.headers['X-CSRF-Token']
-  end
-
-  test "should redirect to record url for existing user" do
-    sign_in @user
-    get :getit, id: @user_record.id
-    assert_redirected_to "https://dev.getit.library.nyu.edu/nyu/resolve?#{@user_record.url}"
-    assert_nil response.headers['X-CSRF-Token']
-  end
-
-  test "should redirect to record url for existing NYSID user" do
-    sign_in FactoryBot.create(:nysid_user)
-    get :getit, id: @user_record.id
-    assert_redirected_to "#{ENV['PERSISTENT_LINKER_URL']}#{@user_record.external_id}"
-    assert_nil response.headers['X-CSRF-Token']
   end
 
   def assert_travels_with_my_aunt(element, record)
