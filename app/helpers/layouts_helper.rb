@@ -11,12 +11,7 @@ module LayoutsHelper
 
   # Back to icon and link
   def back_to
-    (icon_tag(:back) + link_to_back) if link_to_back
-  end
-
-  # Back to link
-  def link_to_back
-    link_to wayfinder.text, wayfinder.url if wayfinder.match?
+    nil
   end
 
   def print_title
