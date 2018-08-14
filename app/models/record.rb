@@ -72,8 +72,12 @@ class Record < ActiveRecord::Base
   end
 
   def rebuild_openurl!(institution = 'NYU')
-    self.url = Eshelf::PnxJson.new(self.external_id, institution).openurl
-    self.save!
+    # We need to continue to support Xerxes openurls for existing Records
+    # even though no new Xerxes records can be created
+    if self.external_system == "primo"
+      self.url = Eshelf::PnxJson.new(self.external_id, institution).openurl
+      self.save!
+    end
   end
 
   def expired?
