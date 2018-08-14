@@ -41,14 +41,6 @@ class Record < ActiveRecord::Base
   end
 
   # Sets the external system
-  #
-  # This method will print out a Java exception
-  # when the xpath it's looking for isn't found.
-  # But this will not cause the function to fail,
-  # it is just doing an over-zealous job of letting us know.
-  #
-  # The error comes from here:
-  # https://github.com/NYULibraries/citero/blob/master/src/main/java/edu/nyu/library/citero/utils/XMLUtil.java#L132
   def set_attributes_from_external_system
     self.external_system = self.class.name.demodulize.downcase if external_system.blank?
     external_attributes_method = "#{external_system}_attributes".to_sym
