@@ -59,6 +59,6 @@ VCR.configure do |c|
   c.cassette_library_dir = 'spec/vcr'
   # your HTTP request service.
   c.hook_into :webmock
-  c.default_cassette_options = { record: :once }
+  c.default_cassette_options = { allow_playback_repeats: true, match_requests_on: [:method, :uri, :body], record: :once }
   c.configure_rspec_metadata!
 end

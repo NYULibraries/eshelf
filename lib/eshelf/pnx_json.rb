@@ -22,7 +22,7 @@ module Eshelf
    private
 
     def strip_absolute_link_resolver_path_from(link)
-      link.sub(@@getit_url_regex, '')
+      link.sub(@@getit_url_regex, '') unless link.nil?
     end
 
     def lln10

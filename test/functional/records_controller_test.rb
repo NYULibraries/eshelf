@@ -809,27 +809,6 @@ class RecordsControllerTest < ActionController::TestCase
     assert_select "title", "BobCat Records"
   end
 
-  test "should redirect to record url for existing tmp user" do
-    session[:tmp_user] = @tmp_user
-    get :getit, id: @tmp_user_record.id
-    assert_redirected_to "https://dev.getit.library.nyu.edu/nyu/resolve?#{@tmp_user_record.url}"
-    assert_nil response.headers['X-CSRF-Token']
-  end
-
-  test "should redirect to record url for existing user" do
-    sign_in @user
-    get :getit, id: @user_record.id
-    assert_redirected_to "https://dev.getit.library.nyu.edu/nyu/resolve?#{@user_record.url}"
-    assert_nil response.headers['X-CSRF-Token']
-  end
-
-  test "should redirect to record url for existing NYSID user" do
-    sign_in FactoryBot.create(:nysid_user)
-    get :getit, id: @user_record.id
-    assert_redirected_to "#{ENV['PERSISTENT_LINKER_URL']}#{@user_record.external_id}"
-    assert_nil response.headers['X-CSRF-Token']
-  end
-
   def assert_travels_with_my_aunt(element, record)
     assert_equal("<li>\n      "+
       "<p><strong>Travels with my aunt [videorecording] (video)</strong></p>\n"+
