@@ -54,10 +54,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7.0'
   gem 'pry', '~> 0.10.0'
   gem 'pry-remote', '~> 0.1.8'
-end
-
-# Testing gems
-group :test do
   gem 'coveralls', '~> 0.8.20', require: false
   gem 'vcr', '~> 3.0.3'
   gem 'webmock', '~> 3.1.1'
@@ -69,10 +65,11 @@ end
 # NYU customization gems
 gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.4.0'
 
-gem 'citero_engine', '3.0.0.beta'
+gem 'citero_engine', github: 'NYULibraries/citero_engine', branch: 'bug/use_real_export_citations_url' #'3.0.1'
 
 gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.1.2'
 gem 'devise', '~> 3.5.10'
+gem 'rest-client', '~> 2.0.2'
 
 # Dalli for caching with memcached
 gem 'dalli', '~> 2.7.0'

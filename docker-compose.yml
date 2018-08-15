@@ -19,6 +19,8 @@ services:
       - setup_dbs
 
   test:
+    tty: true
+    stdin_open: true
     image: eshelf_test
     build:
       context: .

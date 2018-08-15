@@ -455,4 +455,49 @@ http_interactions:
         &lt;/SEGMENTS&gt;</getRecordReturn></ns1:getRecordResponse></soapenv:Body></soapenv:Envelope>
     http_version: 
   recorded_at: Tue, 21 Nov 2017 16:37:10 GMT
+- request:
+    method: get
+    uri: http://primo.library.edu/primo_library/libweb/webservices/rest/v1/pnxs/L/nyu_aleph003376830?inst=NYU
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin17.7.0 x86_64) ruby/2.3.3p222
+      Host:
+      - bobcatdev.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - JSESSIONID=D73E088D60E98928FB13059AF81D4BD6; Path=/primo_library/libweb/;
+        HttpOnly
+      Cache-Control:
+      - max-age=0
+      Expires:
+      - Tue, 14 Aug 2018 16:52:35 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Content-Encoding:
+      - gzip
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Tue, 14 Aug 2018 16:52:35 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAKpWSkpNTM7P8zcyUrJSMjQ3UqoFAAAA//8DABl0+twTAAAA
+    http_version: 
+  recorded_at: Tue, 14 Aug 2018 16:52:35 GMT
 recorded_with: VCR 3.0.3

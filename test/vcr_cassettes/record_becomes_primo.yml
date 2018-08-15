@@ -1114,4 +1114,338 @@ http_interactions:
         &lt;/SEGMENTS&gt;</getRecordReturn></ns1:getRecordResponse></soapenv:Body></soapenv:Envelope>
     http_version: 
   recorded_at: Tue, 21 Nov 2017 16:50:54 GMT
+- request:
+    method: get
+    uri: http://primo.library.edu/primo_library/libweb/webservices/rest/v1/pnxs/L/nyu_aleph000980206?inst=NYU
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin17.7.0 x86_64) ruby/2.3.3p222
+      Host:
+      - bobcatdev.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - JSESSIONID=81B6F569CF018BEE7EA0047AB94FBB39; Path=/primo_library/libweb/;
+        HttpOnly
+      Cache-Control:
+      - max-age=0
+      Expires:
+      - Tue, 14 Aug 2018 16:51:58 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Content-Encoding:
+      - gzip
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Tue, 14 Aug 2018 16:51:58 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+    http_version: 
+  recorded_at: Tue, 14 Aug 2018 16:51:58 GMT
+- request:
+    method: get
+    uri: http://primo.library.edu/primo_library/libweb/webservices/rest/v1/pnxs/L/nyu_aleph000570570?inst=NYU
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin17.7.0 x86_64) ruby/2.3.3p222
+      Host:
+      - bobcatdev.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - JSESSIONID=77FD897C858986099FAB5C248FA94E20; Path=/primo_library/libweb/;
+        HttpOnly
+      Cache-Control:
+      - max-age=0
+      Expires:
+      - Tue, 14 Aug 2018 16:52:00 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Content-Encoding:
+      - gzip
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Tue, 14 Aug 2018 16:52:00 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+        2/8CAAD//wMABALGcUs6AAA=
+    http_version: 
+  recorded_at: Tue, 14 Aug 2018 16:52:00 GMT
+- request:
+    method: get
+    uri: http://primo.library.edu/primo_library/libweb/webservices/rest/v1/pnxs/L/nyu_aleph000570570?inst=NYU
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin17.7.0 x86_64) ruby/2.3.3p222
+      Host:
+      - bobcatdev.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - JSESSIONID=27E9BB0B80BA878E8903DC00E7245BB0; Path=/primo_library/libweb/;
+        HttpOnly
+      Cache-Control:
+      - max-age=0
+      Expires:
+      - Tue, 14 Aug 2018 16:52:01 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Content-Encoding:
+      - gzip
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Tue, 14 Aug 2018 16:52:00 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+        ogDk0pq6/S8AAAD//wMAZRdirUo6AAA=
+    http_version: 
+  recorded_at: Tue, 14 Aug 2018 16:52:01 GMT
 recorded_with: VCR 3.0.3

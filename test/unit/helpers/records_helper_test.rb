@@ -64,12 +64,11 @@ class RecordsHelperTest < ActionView::TestCase
 
   test "should return array of refwork, endnote, easybib, ris, bibtext for export options" do
     assert_kind_of Array, export_options
-    assert_equal 5, export_options.size
+    assert_equal 4, export_options.size
     assert_dom_equal "<a href=\"/citero_engine/refworks\" id=\"refworks\" target=\"_blank\">Push to RefWorks</a>", export_options[0]
     assert_dom_equal "<a href=\"/citero_engine/endnote\" id=\"endnote\" target=\"_blank\">Push to EndNote</a>", export_options[1]
-    assert_dom_equal "<a href=\"/citero_engine/easybibpush\" id=\"easybib\" target=\"_blank\">Push to EasyBib</a>", export_options[2]
-    assert_dom_equal "<a href=\"/records.ris\" id=\"ris\" target=\"_blank\">Download as RIS</a>", export_options[3]
-    assert_dom_equal "<a href=\"/records.bibtex\" id=\"bibtex\" target=\"_blank\">Download as BibTex</a>", export_options[4]
+    assert_dom_equal "<a href=\"/records.ris\" id=\"ris\" target=\"_blank\">Download as RIS</a>", export_options[2]
+    assert_dom_equal "<a href=\"/records.bibtex\" id=\"bibtex\" target=\"_blank\">Download as BibTex</a>", export_options[3]
   end
 
   test "should return array of 10, 20, 50, 100 for per page options" do
