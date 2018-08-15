@@ -7,14 +7,14 @@ namespace :eshelf do
       Record.where(external_system: 'xerxes').find_in_batches(batch_size: 100) do |array_of_records|
         ids = array_of_records.collect(&:id)
         Record.where(id: ids).each do |record|
-          # record.data_xerxes_xml = record.data
-          # record.data = "https://getit.library.nyu.edu/resolve?#{record.url}"
-          # record.format = "openurl"
-          # record.save!
+          record.data_xerxes_xml = record.data
+          record.data = "https://getit.library.nyu.edu/resolve?#{record.url}"
+          record.format = "openurl"
+          record.save!
           rs += 1
         end
       end
-      puts "Will update #{rs} records"
+      puts "Updated #{rs} records"
     end
   end
 end
