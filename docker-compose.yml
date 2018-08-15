@@ -7,7 +7,9 @@ services:
     tty: true
     stdin_open: true
     image: eshelf_dev
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     volumes:
       - .:/app
     ports:
@@ -21,10 +23,10 @@ services:
   test:
     tty: true
     stdin_open: true
-    image: eshelf_test
+    image: eshelf_dev
     build:
       context: .
-      dockerfile: Dockerfile.test
+      dockerfile: Dockerfile.dev
     environment:
       RAILS_ENV: test
       CI:
@@ -37,10 +39,10 @@ services:
       - setup_test_dbs
 
   setup_test_dbs:
-    image: eshelf_test
+    image: eshelf_dev
     build:
       context: .
-      dockerfile: Dockerfile.test
+      dockerfile: Dockerfile.dev
     environment:
       RAILS_ENV: test
     env_file:
@@ -51,7 +53,9 @@ services:
 
   setup_dbs:
     image: eshelf_dev
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     environment:
       RAILS_ENV: development
     env_file:
