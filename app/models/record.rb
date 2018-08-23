@@ -81,8 +81,6 @@ class Record < ActiveRecord::Base
   end
 
   def expired?
-    # Temporary redefine what expired is so records all update after this date
-    self.updated_at && (1.day.ago > self.updated_at)
-    # self.updated_at && (1.week.ago > self.updated_at)
+    self.updated_at && (1.week.ago > self.updated_at)
   end
 end
