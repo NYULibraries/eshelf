@@ -425,6 +425,8 @@ GEM
       nori (~> 2.4)
       wasabi (~> 3.4)
     scrub_rb (1.0.1)
+    sentry-raven (2.7.4)
+      faraday (>= 0.7.6, < 1.0)
     simplecov (0.14.1)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
@@ -513,6 +515,7 @@ DEPENDENCIES
   rspec-mocks
   rspec-rails (~> 3.7.0)
   sass-rails (~> 5.0.6)
+  sentry-raven (~> 2)
   sorted (~> 1.0.0)
   teaspoon-jasmine (~> 2.3.4)
   therubyracer (~> 0.12.3)
