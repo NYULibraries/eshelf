@@ -44,3 +44,7 @@ module Eshelf
     config.action_mailer.default_url_options = {host: 'https://eshelf.library.nyu.edu'}
   end
 end
+
+Raven.configure do |config|
+  config.dsn = ENV['SENTRY_DSN']
+end

@@ -85,3 +85,5 @@ gem 'acts-as-taggable-on', '~> 3.4.0'
 
 # Convert old records with activerecord-import
 gem 'activerecord-import', '~> 0.18.0'
+
+gem 'sentry-raven', '~> 2'
