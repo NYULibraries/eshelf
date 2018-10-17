@@ -10,14 +10,14 @@ class ApplicationHelperTest < ActionView::TestCase
   test "should return ILL for NYU" do
     assert_not_nil ill
     assert_not_nil ill_url
-    assert_equal "http://dev.ill.library.nyu.edu", ill_url
+    assert_equal "https://dev.ill.library.nyu.edu", ill_url
   end
 
   test "should return ILL for NYUAD" do
     @current_primary_institution = Institutions.institutions[:NYUAD]
     assert_not_nil ill
     assert_not_nil ill_url
-    assert_equal "http://dev.ill.library.nyu.edu", ill_url
+    assert_equal "https://dev.ill.library.nyu.edu", ill_url
     @current_primary_institution = nil
   end
 
@@ -25,7 +25,7 @@ class ApplicationHelperTest < ActionView::TestCase
     @current_primary_institution = Institutions.institutions[:NS]
     assert_not_nil ill
     assert_not_nil ill_url
-    assert_equal "http://dev.ill.library.nyu.edu", ill_url
+    assert_equal "https://dev.ill.library.nyu.edu", ill_url
     @current_primary_institution = nil
   end
 
