@@ -1,13 +1,10 @@
 GIT
-  remote: https://github.com/NYULibraries/citero_engine.git
-  revision: 4fcc27d68a14ecd1a7965292d3d227ec693f1887
-  branch: bug/use_real_export_citations_url
+  remote: https://github.com/NYULibraries/citero.git
+  revision: 74bbb13bf8631f5eb5a8298ab7a6a21ffe556f37
+  tag: v1.0.2
   specs:
-    citero_engine (3.0.0.beta)
-      acts_as_citable (~> 5.0.0.beta)
-      citero-renderers (~> 1.0.4)
-      jquery-rails (~> 4.3.1)
-      rails (~> 4.2.10)
+    citero (1.0.2)
+      ox (~> 2.8)
 
 GIT
   remote: https://github.com/NYULibraries/exlibris-nyu.git
@@ -125,9 +122,6 @@ GEM
       tzinfo (~> 1.1)
     acts-as-taggable-on (3.4.4)
       activerecord (>= 3.2, < 5)
-    acts_as_citable (5.0.0.beta)
-      citero (~> 1.0.0.beta)
-      rails (>= 4.0.0, < 5)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     akami (1.3.1)
@@ -158,10 +152,6 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     chunky_png (1.3.8)
-    citero (1.0.0.beta)
-      ox (~> 2.8.0)
-    citero-renderers (1.0.4)
-      actionpack (~> 4.2.8)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -340,7 +330,7 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
-    ox (2.8.4)
+    ox (2.10.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -484,7 +474,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-import (~> 0.18.0)
   acts-as-taggable-on (~> 3.4.0)
-  citero_engine!
+  citero!
   coffee-rails (~> 4.2.1)
   compass-rails (~> 2.0.0)
   coveralls (~> 0.8.20)
@@ -525,4 +515,4 @@ DEPENDENCIES
   webmock (~> 3.1.1)
 
 BUNDLED WITH
-   1.16.3
+   1.16.6

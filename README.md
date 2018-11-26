@@ -4,10 +4,7 @@
 [![Code Climate](https://codeclimate.com/github/NYULibraries/eshelf.png)](https://codeclimate.com/github/NYULibraries/eshelf)
 [![Coverage Status](https://coveralls.io/repos/github/NYULibraries/eshelf/badge.svg?branch=master)](https://coveralls.io/github/NYULibraries/eshelf?branch=master)
 
-
 The e-Shelf application at NYU provides a mechanism for cross system set management.  
-It leverages the [acts_as_citable gem](/NYULibraries/acts_as_citable) to normalize data from
-a variety of external systems such as Primo.
 
 ## External System Support
 E-Shelf currently supports the following external systems:
@@ -18,7 +15,7 @@ E-Shelf currently supports the following external systems:
 
 ## Features
 - [CORS JavaScript API](../../wiki/CORS-JavaScript-API) for external systems
-- Standard Send/Share options based on the [citero_engine gem](/NYULibraries/citero_engine)
+- Standard Send/Share options based on the [Citero gem](/NYULibraries/citero)
 - Labels
 - Brief, medium and full records emailing and printing
 - Import Aleph account via an iframe
