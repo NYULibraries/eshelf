@@ -30,10 +30,10 @@ gather_ids = (event) ->
   else
     event.target.href += $.param(checked_ids)
     # Expire this data
-    $(event.target).attr("data-expired", $.param(checked_ids))  
+    $(event.target).attr("data-expired", $.param(checked_ids))
 
 toggle_all = (event) ->
-  if event.target.checked
+  if $(event.target).find('input#select').is(":not(:checked)")
     select_all()
     true
   else
@@ -41,13 +41,17 @@ toggle_all = (event) ->
     true
 
 select_all = (event)->
-  $("input[name='id[]']:not(:checked)").trigger('click') unless event?
-  $($("input#select:not(:checked)")).trigger('click') if event?
+  $("input[name='id[]']").map( () ->
+    $(this).prop('checked',true)
+  )
+  $($("input#select:not(:checked)")).prop('checked', true)
   false
 
 select_none = (event)->
-  $("input[name='id[]']:checked").trigger('click') unless event?
-  $($("input#select:checked")).trigger('click') if event?
+  $("input[name='id[]']").map( () ->
+    $(this).removeAttr('checked')
+  )
+  $($("input#select:checked")).removeAttr('checked')
   false
 
 $ ->
@@ -59,6 +63,6 @@ $ ->
   $(".email").click(gather_ids)
   $(".print").click(gather_ids)
   $("input[name='id[]']").click (event) -> $("#select_something").hide()
-  $("input#select").click (event) -> toggle_all(event)
+  $("input#select").closest("button").click (event) -> toggle_all(event)
   $(".select-all").click (event) -> select_all(event)
   $(".select-none").click (event) -> select_none(event)
