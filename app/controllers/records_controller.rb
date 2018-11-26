@@ -25,7 +25,6 @@ class RecordsController < ApplicationController
 
   respond_to :xml, :json
   respond_to :html, except: [:create]
-  respond_to :ris, :bibtex, only: [:show, :index, :from_external_system]
   respond_to :js, only: [:api]
 
   # Get the user's records, filtered by
@@ -40,12 +39,8 @@ class RecordsController < ApplicationController
     # Get the selected id(s) if given
     @records = @records.where(id: params[:id]) if params[:id]
     # Get the relevant page unless all is specified
-    if ["ris","bibtex"].include? params[:format]
-      @records = @records.page(1).per(params[:id].count)
-    else
-      @records = (params[:per].eql? "all") ?
-        @records.page(1).per(user_records.count) : @records.page(params[:page]).per(params[:per])
-    end
+    @records = (params[:per].eql? "all") ?
+      @records.page(1).per(user_records.count) : @records.page(params[:page]).per(params[:per])
     respond_with(@records) unless performed?
   end
 
