@@ -22,7 +22,7 @@ gather_ids = (event) ->
   external_ids = $("input[name='id[]']:checked").map( () ->
     $(this).data("external-id")
   ).get()
-  external_ids = "local_ids[]=" + external_ids.join("&local_ids[]=")
+  external_ids = "external_id[]=" + external_ids.join("&external_id[]=")
   if event.target.id in ["refworks", "endnote", "ris", "bibtex"]
     event.target.href += external_ids
     # Expire this data
