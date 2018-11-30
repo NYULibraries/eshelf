@@ -69,12 +69,8 @@ module RecordsHelper
   end
 
   def cite_path(format)
-    cite_path = "#{cite_url}"
-    cite_path += "?calling_system=primo&institution=#{current_user.institution_code || 'NYU'}&cite_to=#{format}"
-  end
-
-  def cite_url
-    @cite_url ||= ENV['CITE_URL'] || 'https://cite-dev.library.nyu.edu/'
+    institution = current_user.institution_code || 'NYU'
+    return Eshelf::Citation.cite_url(format: format, institution: institution)
   end
 
   # Returns an Array of 'per page' pagination options as HTML links
