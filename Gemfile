@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
-gem 'rails', '~> 4.2.7'
-gem 'railties', '~> 4.2.8'
+gem 'rails', '= 4.2.11'
+gem 'railties', '= 4.2.11'
 
 # Add CORS support
 gem 'rack-cors', '~> 0.4.1', require: 'rack/cors'
