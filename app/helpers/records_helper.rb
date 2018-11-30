@@ -69,7 +69,7 @@ module RecordsHelper
   end
 
   def cite_path(format)
-    institution = current_user.institution_code || 'NYU'
+    institution = current_user&.institution_code || 'NYU'
     return Eshelf::Citation.cite_url(format: format, institution: institution)
   end
 
