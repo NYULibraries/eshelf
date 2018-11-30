@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/NYULibraries/acts_as_citable.git
+  revision: f3c1edf757105f11f95688cbce6eeead9261c695
+  tag: v5.0.0.beta
+  specs:
+    acts_as_citable (5.0.0.beta)
+      citero (~> 1.0.0.beta)
+      rails (>= 4.0.0, < 5)
+
+GIT
   remote: https://github.com/NYULibraries/citero.git
   revision: 74bbb13bf8631f5eb5a8298ab7a6a21ffe556f37
   tag: v1.0.2
@@ -385,6 +394,9 @@ GEM
     rspec-expectations (3.7.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.7.0)
+    rspec-its (1.2.0)
+      rspec-core (>= 3.0.0)
+      rspec-expectations (>= 3.0.0)
     rspec-mocks (3.7.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.7.0)
@@ -474,6 +486,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-import (~> 0.18.0)
   acts-as-taggable-on (~> 3.4.0)
+  acts_as_citable!
   citero!
   coffee-rails (~> 4.2.1)
   compass-rails (~> 2.0.0)
@@ -503,6 +516,7 @@ DEPENDENCIES
   rails (~> 4.2.7)
   railties (~> 4.2.8)
   rest-client (~> 2.0.2)
+  rspec-its (~> 1.2)
   rspec-mocks
   rspec-rails (~> 3.7.0)
   sass-rails (~> 5.0.6)
