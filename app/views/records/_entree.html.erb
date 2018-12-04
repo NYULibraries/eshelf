@@ -5,5 +5,4 @@
   content_tag(:span, "#{t('record.created_at_label')} ") +
   content_tag(:span, record.created_at.strftime("%a, %b %d %Y %I:%M%p"))
 end %>
-<%= render 'no_js', :record => record %>
 <%= render 'tag_list', :form => form, :record => record %>

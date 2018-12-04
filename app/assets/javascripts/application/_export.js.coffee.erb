@@ -1,5 +1,5 @@
 # Gather the IDs for the various collection controls
-gather_ids = (event)->
+gather_ids = (event) ->
   # Get the checked IDs
   checked_ids = $("input[name='id[]']:checked")
   if checked_ids.length is 0
@@ -19,12 +19,21 @@ gather_ids = (event)->
   if expired_data
     event.target.href = event.target.href.replace(expired_data, "")
   # Append the checkedIDs to the URL.
-  event.target.href += $.param(checked_ids)
-  # Expire this data
-  $(event.target).attr("data-expired", $.param(checked_ids))
+  external_ids = $("input[name='id[]']:checked").map( () ->
+    $(this).data("external-id")
+  ).get()
+  external_ids = "external_id[]=" + external_ids.join("&external_id[]=")
+  if event.target.id in ["refworks", "endnote", "ris", "bibtex"]
+    event.target.href += external_ids
+    # Expire this data
+    $(event.target).attr("data-expired", external_ids)
+  else
+    event.target.href += $.param(checked_ids)
+    # Expire this data
+    $(event.target).attr("data-expired", $.param(checked_ids))
 
 toggle_all = (event) ->
-  if event.target.checked
+  if $(event.target).find('input#select').is(":not(:checked)")
     select_all()
     true
   else
@@ -32,24 +41,28 @@ toggle_all = (event) ->
     true
 
 select_all = (event)->
-  $("input[name='id[]']:not(:checked)").trigger('click') unless event?
-  $($("input#select:not(:checked)")).trigger('click') if event?
+  $("input[name='id[]']").map( () ->
+    $(this).prop('checked',true)
+  )
+  $($("input#select:not(:checked)")).prop('checked', true)
   false
 
 select_none = (event)->
-  $("input[name='id[]']:checked").trigger('click') unless event?
-  $($("input#select:checked")).trigger('click') if event?
+  $("input[name='id[]']").map( () ->
+    $(this).removeAttr('checked')
+  )
+  $($("input#select:checked")).removeAttr('checked')
   false
 
 $ ->
   # The controls that we are enabling...
   collection_controls =
-    ["delete", "refworks", "endnote", "easybib", "ris", "bibtex"]
+    ["delete", "refworks", "endnote", "ris", "bibtex"]
   # ...need to gather IDs on click.
   $("##{collection_controls.join(",#")}").click(gather_ids)
   $(".email").click(gather_ids)
   $(".print").click(gather_ids)
   $("input[name='id[]']").click (event) -> $("#select_something").hide()
-  $("input#select").click (event) -> toggle_all(event)
+  $("input#select").closest("button").click (event) -> toggle_all(event)
   $(".select-all").click (event) -> select_all(event)
   $(".select-none").click (event) -> select_none(event)

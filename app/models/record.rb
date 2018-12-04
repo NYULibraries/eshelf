@@ -10,7 +10,6 @@ class Record < ActiveRecord::Base
   before_validation :set_attributes_from_external_system, :default_title_sort, :normalize_content_type
   # After we've saved, create the locations from the external system, if necessary
   after_save :create_locations_from_external_system
-  # Records act as citable.
   acts_as_citable
   # Records act as taggable
   acts_as_taggable

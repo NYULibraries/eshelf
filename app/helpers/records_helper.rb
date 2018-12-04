@@ -59,14 +59,18 @@ module RecordsHelper
   # Returns an Array of export options as HTML links
   #   - RefWorks
   #   - EndNote
-  #   - EasyBib
   #   - RIS
-  #   - BibText
+  #   - BibTex
   def export_options
-    [ link_to(t('record.collection.export.options.refworks'), citero_engine.citero_engine_path("refworks"), id: :refworks, target: :_blank),
-      link_to(t('record.collection.export.options.endnote'), citero_engine.citero_engine_path("endnote"), id: :endnote, target: :_blank),
-      link_to(t('record.collection.export.options.ris'), records_path(:ris), id: :ris, target: :_blank),
-      link_to(t('record.collection.export.options.bibtex'), records_path(:bibtex), id: :bibtex, target: :_blank) ]
+    [ link_to(t('record.collection.export.options.refworks'), cite_path("refworks"), id: :refworks, target: :_blank),
+      link_to(t('record.collection.export.options.endnote'), cite_path("endnote"), id: :endnote, target: :_blank),
+      link_to(t('record.collection.export.options.ris'), cite_path("ris"), id: :ris, target: :_blank),
+      link_to(t('record.collection.export.options.bibtex'), cite_path("bibtex"), id: :bibtex, target: :_blank) ]
+  end
+
+  def cite_path(format)
+    institution = current_user&.institution_code || 'NYU'
+    return Eshelf::Citation.cite_url(format: format, institution: institution)
   end
 
   # Returns an Array of 'per page' pagination options as HTML links

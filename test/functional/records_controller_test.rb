@@ -279,12 +279,6 @@ class RecordsControllerTest < ActionController::TestCase
     get :show, format: "xml", id: @tmp_user_record.id
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
-    get :show, format: "ris", id: @tmp_user_record.id
-    assert_response :success
-    assert_nil response.headers['X-CSRF-Token']
-    get :show, format: "bibtex", id: @tmp_user_record.id
-    assert_response :success
-    assert_nil response.headers['X-CSRF-Token']
   end
 
   test "should show user record" do
@@ -293,12 +287,6 @@ class RecordsControllerTest < ActionController::TestCase
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
     get :show, format: "xml", id: @user_record.id
-    assert_response :success
-    assert_nil response.headers['X-CSRF-Token']
-    get :show, format: "ris", id: @user_record.id
-    assert_response :success
-    assert_nil response.headers['X-CSRF-Token']
-    get :show, format: "bibtex", id: @user_record.id
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
   end
