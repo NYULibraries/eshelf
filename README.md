@@ -1,7 +1,7 @@
 # E-Shelf
 
 [![CircleCI](https://circleci.com/gh/NYULibraries/eshelf.svg?style=svg)](https://circleci.com/gh/NYULibraries/eshelf)
-[![Code Climate](https://codeclimate.com/github/NYULibraries/eshelf.png)](https://codeclimate.com/github/NYULibraries/eshelf)
+[![Maintainability](https://api.codeclimate.com/v1/badges/4ed93d1fee6a32b84f50/maintainability)](https://codeclimate.com/github/NYULibraries/eshelf/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/NYULibraries/eshelf/badge.svg?branch=master)](https://coveralls.io/github/NYULibraries/eshelf?branch=master)
 
 The e-Shelf application at NYU provides a mechanism for cross system set management.  
