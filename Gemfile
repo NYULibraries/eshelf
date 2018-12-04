@@ -52,6 +52,7 @@ group :development, :test do
   gem 'teaspoon-jasmine', '~> 2.3.4'
   gem 'factory_bot_rails', '~> 4.8.2'
   gem 'rspec-rails', '~> 3.7.0'
+  gem 'rspec-its', '~> 1.2'
   gem 'pry', '~> 0.10.0'
   gem 'pry-remote', '~> 0.1.8'
   gem 'coveralls', '~> 0.8.20', require: false
@@ -65,7 +66,8 @@ end
 # NYU customization gems
 gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.4.0'
 
-gem 'citero_engine', github: 'NYULibraries/citero_engine', branch: 'bug/use_real_export_citations_url' #'3.0.1'
+gem 'citero', github: 'NYULibraries/citero', tag: 'v1.0.2'
+gem 'acts_as_citable', github: 'NYULibraries/acts_as_citable', tag: 'v5.0.0.beta'
 
 gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.1.2'
 gem 'devise', '~> 3.5.10'

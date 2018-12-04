@@ -18,4 +18,5 @@ if Rails.env.development?
   user.records.new({external_id: 'nyu_aleph002406797', external_system: 'primo'}).becomes_external_system.save!
   user.records.new({external_id: 'nyu_aleph006048386', external_system: 'primo'}).becomes_external_system.save!
   user.records.new({external_id: '293051', external_system: 'xerxes', title: "Gay and Lesbian Aging", author: "Woolf, Linda M", title_sort: "Gay and lesbian aging", content_type: "Article", format: 'openurl', data: xerxes_xml_data, url: xerxes_openurl}).save!
+  user.records.new({external_id: 'nyu_aleph006331830', external_system: 'primo'}).becomes_external_system.save!
 end

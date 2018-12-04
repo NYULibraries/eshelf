@@ -1,6 +1,6 @@
 <div id="controls" class="btn-toolbar js">
   <%= button_dropdown(select_title, select_options, false) %>
-  <div class="btn-group"><%= link_to(t('record.collection.delete.title_html'), records_path, confirm: t('record.collection.delete.confirmation_html'), method: :delete, id: "delete", class: "btn btn-danger") %></div>
+  <div class="btn-group"><%= link_to(t('record.collection.delete.title_html'), records_path, data: { confirm: t('record.collection.delete.confirmation_html') }, method: :delete, id: "delete", class: "btn btn-danger") %></div>
   <%= button_dropdown(t('record.collection.email.title_html'), email_options) %>
   <%= button_dropdown(t('record.collection.print.title_html'), print_options) %>
   <%= button_dropdown(t('record.collection.export.title_html'), export_options) %>

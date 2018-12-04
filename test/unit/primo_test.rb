@@ -53,21 +53,4 @@ class PrimoTest < ActiveSupport::TestCase
       "Unexpected last location call number"
   end
 
-  test "to bibtex" do
-    assert_nothing_raised do
-      VCR.use_cassette('record becomes primo') do
-        @record.becomes_external_system.save
-      end
-      @record.to_bibtex
-    end
-  end
-
-  test "to ris" do
-    assert_nothing_raised do
-      VCR.use_cassette('record becomes primo') do
-        @record.becomes_external_system.save
-      end
-      @record.to_ris
-    end
-  end
 end

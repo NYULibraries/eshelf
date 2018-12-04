@@ -1,0 +1,117 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://cite-dev.library.nyu.edu/?calling_system=primo&cite_to=json&institution=NYU
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.3.6p384
+      Host:
+      - cite-dev.library.nyu.edu
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - text/html;charset=utf-8
+      Date:
+      - Fri, 30 Nov 2018 17:57:34 GMT
+      Server:
+      - nginx/1.15.4
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '1937'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <!-- Global site
+        tag (gtag.js) - Google Analytics -->\n    <script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-55461631-21\"></script>\n
+        \   <script>\n      window.dataLayer = window.dataLayer || [];\n      function
+        gtag(){dataLayer.push(arguments);}\n      gtag('js', new Date());\n\n      gtag('config',
+        'UA-55461631-21');\n    </script>\n    <meta charset=\"utf-8\">\n    <meta
+        content=\"width=device-width, initial-scale=1\" name=\"viewport\">\n    <title>Citation
+        Error | New York University Division of Libraries</title>\n    <link rel=\"stylesheet\"
+        type=\"text/css\" href=\"/css/application.css\">\n    <link rel=\"SHORTCUT
+        ICON\" href=\"https://cdn.library.nyu.edu/images/favicon.ico\">\n    <link
+        rel=\"stylesheet\" type=\"text/css\" href=\"//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\">\n
+        \ </head>\n  <body>\n    <header>\n      <span><a href=\"https://library.nyu.edu\"
+        target=\"_blank\"><img src=\"https://cdn.library.nyu.edu/images/nyulibraries-logo.svg\"
+        alt=\"NYU Libraries\" width=\"233\" height=\"30\"></a></span>\n    </header>\n
+        \   <nav>\n      <ul class=\"breadcrumb\">\n        <li><a href=\"https://library.nyu.edu\">NYU
+        Libraries</a></li>\n        <li class=\"active\">Sorry, there was an error</li>\n
+        \     </ul>\n    </nav>\n    <main>\n      <div class=\"nyu-container\">\n
+        \       <div class=\"col-sm-12\">\n          <h1>Sorry, there was an error</h1>\n\n
+        \         \n            <p>We could not export or download this citation because
+        of missing or incorrect data in the parameters. Please use the link below
+        to report this problem.</p>\n          \n\n          \n\n          <h2>Suggested
+        Links</h2>\n          <ul>\n            <li><a href=\"https://nyu.qualtrics.com/jfe/form/SV_8AnbZWUryVfpWXH\"
+        target=\"_blank\">Report a Broken Link</a></li>\n            <li><a href=\"https://library.nyu.edu/ask/\"
+        target=\"_blank\">Ask a Librarian</a></li>\n          </ul>\n        </div>\n
+        \     </div>\n    </main>\n  </body>\n</html>\n"
+    http_version: 
+  recorded_at: Fri, 30 Nov 2018 17:57:34 GMT
+- request:
+    method: get
+    uri: https://cite-dev.library.nyu.edu/?calling_system=primo&cite_to=json&external_id=nyu_aleph006048386&institution=NYU
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.3.6p384
+      Host:
+      - cite-dev.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 30 Nov 2018 18:03:46 GMT
+      Server:
+      - nginx/1.15.4
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '583'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJueXVfYWxlcGgwMDYwNDgzODYiOnsiaXRlbVR5cGUiOiJib29rIiwiYXV0
+        aG9yIjoiS2VybmVsbCwgU2FtdWVsLCAxOTQ1LSBhdXRob3IiLCJjb250cmli
+        dXRvciI6WyJKYWNvYnNvbiwgR2FyeSBDLiwgYXV0aG9yIiwiS291c3Nlciwg
+        VGhhZCwgMTk3NC0gYXV0aG9yIiwiVmF2cmVjaywgTHlubiwgMTk2OC0gYXV0
+        aG9yIl0sInB1Ymxpc2hlciI6IlNBR0UsIENRIFByZXNzIiwicGxhY2UiOiJU
+        aG91c2FuZCBPYWtzLCBDYWxpZm9ybmlhIiwiaXNibiI6WyI5NzgxNTA2MzU4
+        NjY2IiwiMTUwNjM1ODY2NyJdLCJ0aXRsZSI6IlRoZSBsb2dpYyBvZiBBbWVy
+        aWNhbiBwb2xpdGljcyIsImRhdGUiOiIyMDE4IiwibGFuZ3VhZ2UiOiJlbmci
+        LCJ0YWdzIjpbIlBvbGl0aWNzIGFuZCBnb3Zlcm5tZW50IiwiVW5pdGVkIFN0
+        YXRlc+KAk1BvbGl0aWNzIGFuZCBnb3Zlcm5tZW50IFRleHRib29rcyIsIlVu
+        aXRlZCBTdGF0ZXMiXSwicG54UmVjb3JkSWQiOiJueXVfYWxlcGgwMDYwNDgz
+        ODYiLCJub3RlcyI6IkluY2x1ZGVzIGJpYmxpb2dyYXBoaWNhbCByZWZlcmVu
+        Y2VzIGFuZCBpbmRleC4iLCJpbXBvcnRlZEZyb20iOiJQTlhfSlNPTiJ9fQ==
+    http_version: 
+  recorded_at: Fri, 30 Nov 2018 18:03:46 GMT
+recorded_with: VCR 3.0.3

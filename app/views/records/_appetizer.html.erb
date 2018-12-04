@@ -1,7 +1,7 @@
 <div>
    <label>
        <%= content_tag :strong, "#{record_idx}." %>
-       <%= check_box_tag("id[]", record.id, false, class: "js") %>
+       <%= check_box_tag("id[]", record.id, false, class: "js", data: { external_id: record.external_id, external_system: record.external_system }) %>
    </label>
  </div>
 <%= content_type_tag(record.content_type) %>
