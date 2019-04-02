@@ -8,7 +8,7 @@ gem 'rack-cors', '~> 0.4.1', require: 'rack/cors'
 
 # Use MySQL
 #gem 'sqlite3'
-gem 'mysql2'
+gem 'mysql2', '~> 0.4.10'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.6'
@@ -30,6 +30,8 @@ gem 'compass-rails', '~> 2.0.0'
 
 # Use modernizr to detect CORS availability
 gem 'modernizr-rails', '~> 2.7.0'
+
+# gem 'bootstrap-sass', '3.3.7'
 
 # Use the NYU Libraries assets gem for shared NYU Libraries assets
 gem 'nyulibraries_stylesheets', github: 'NYULibraries/nyulibraries_stylesheets', tag: 'v1.1.2'
@@ -86,6 +88,6 @@ gem 'sorted', '~> 1.0.0'
 gem 'acts-as-taggable-on', '~> 3.4.0'
 
 # Convert old records with activerecord-import
-gem 'activerecord-import', '~> 0.18.0'
+# gem 'activerecord-import', '~> 0.18.0'
 
 gem 'sentry-raven', '~> 2'

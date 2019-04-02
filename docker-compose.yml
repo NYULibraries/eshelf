@@ -1,61 +1,55 @@
-version: '3.2'
-services:
+version: '3.7'
+x-build: &build
+  build:
+    context: .
+    cache_from:
+      - eshelf
+      - quay.io/nyulibraries/eshelf
+      - quay.io/nyulibraries/eshelf:$BRANCH_NO_SLASH
+  image: eshelf
+  tty: true
+  stdin_open: true
+x-test-env: &test-env
+  <<: *build
+  environment:
+    RAILS_ENV: test
+    eshelf_DB_DATABASE: eshelf_test
+    BRANCH_NO_SLASH:
+    CI:
+    CODECLIMATE_REPO_TOKEN:
+    COVERALLS_REPO_TOKEN:
+  env_file:
+    - test.env
+x-dev-env: &dev-env
+  <<: *build
+  env_file:
+    - test.env
 
+services:
   dev:
-    # These options (tty, stdin_open) let you interact with pry with
-    # docker attach {running_dev_container_id}
-    tty: true
-    stdin_open: true
-    image: eshelf_dev
-    build: .
+    <<: *dev-env
     volumes:
       - .:/app
     ports:
       - "3000:3000"
-    env_file:
-      - test.env
     command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
     depends_on:
       - setup_dbs
 
   test:
-    tty: true
-    stdin_open: true
-    image: eshelf_test
-    build:
-      context: .
-      dockerfile: Dockerfile.test
-    environment:
-      RAILS_ENV: test
-      CI:
-      CODECLIMATE_REPO_TOKEN:
-      COVERALLS_REPO_TOKEN:
-    env_file:
-      - test.env
+    <<: *test-env
     command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake"]
     depends_on:
       - setup_test_dbs
 
   setup_test_dbs:
-    image: eshelf_test
-    build:
-      context: .
-      dockerfile: Dockerfile.test
-    environment:
-      RAILS_ENV: test
-    env_file:
-      - test.env
+    <<: *test-env
     command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake", "db:setup"]
     depends_on:
       - db
 
   setup_dbs:
-    image: eshelf_dev
-    build: .
-    environment:
-      RAILS_ENV: development
-    env_file:
-      - test.env
+    <<: *dev-env
     command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake", "db:setup"]
     depends_on:
       - db
