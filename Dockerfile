@@ -1,4 +1,4 @@
-FROM quay.io/nyulibraries/selenium_chrome_headless_ruby:2.6-slim-chrome_73
+FROM ruby:2.5.5-alpine
 
 ENV DOCKER true
 ENV INSTALL_PATH /app
@@ -7,41 +7,48 @@ ENV BUNDLE_PATH=/usr/local/bundle \
     GEM_HOME=/usr/local/bundle
 ENV PATH="${BUNDLE_BIN}:${PATH}"
 ENV USER docker
-ENV NODE_VERSION="10.x"
+ENV NODE_VERSION=10.x
 
-RUN groupadd -g 2000 $USER -r && \
-  useradd -u 1000 -r --no-log-init -m -d $INSTALL_PATH -g $USER $USER
+ENV RUN_PACKAGES bash ca-certificates fontconfig git mariadb-dev nodejs nodejs-npm tzdata 
+ENV BUILD_PACKAGES build-base curl curl-dev linux-headers ruby-dev wget
+
+RUN addgroup -g 2000 $USER && \
+    adduser -D -h $INSTALL_PATH -u 1000 -G $USER $USER
 
 WORKDIR $INSTALL_PATH
 
-COPY bin/ bin/
+# Bundle install
 COPY Gemfile Gemfile.lock ./
-ARG RUN_PACKAGES="curl ruby-mysql2 default-libmysqlclient-dev git"
-ARG BUILD_PACKAGES="build-essential zlib1g-dev"
-RUN apt-get update && apt-get -y --no-install-recommends install $BUILD_PACKAGES $RUN_PACKAGES \
-  && curl -sL https://deb.nodesource.com/setup_${NODE_VERSION} | bash \
-  && apt-get update && apt-get -y --no-install-recommends install nodejs \
+RUN apk add --no-cache --update $BUILD_PACKAGES $RUN_PACKAGES \
   && gem install bundler -v '2.0.1' \
   && bundle config --local github.https true \
   && bundle install --without no_docker --jobs 20 --retry 5 \
+  && chown -R docker:docker $BUNDLE_PATH \
   && wget --no-check-certificate -q -O - https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh > /tmp/wait-for-it.sh \
   && chown docker:docker /tmp/wait-for-it.sh && chmod a+x /tmp/wait-for-it.sh \
-  && rm -rf /root/.bundle && rm -rf /root/.gem \
-  && rm -rf $BUNDLE_PATH/cache \
-  && apt-get --purge -y autoremove $BUILD_PACKAGES \
-  && apt-get clean && rm -rf /var/lib/apt/lists/* \
-  && chown -R docker:docker $BUNDLE_PATH
+  && wget --no-check-certificate -q -O - https://github.com/dustinblackman/phantomized/releases/download/2.1.1a/dockerized-phantomjs.tar.gz | tar xz -C / \
+  && npm config set user 0 \
+  && npm install -g phantomjs-prebuilt istanbul \
+  && npm cache clean --force \
+  && chmod a+x /tmp/wait-for-it.sh \
+  && chown -R docker:docker /tmp/wait-for-it.sh \
+&& apk del $BUILD_PACKAGES
 
-# RUN chown docker:docker .
-
-# Install istabul for teaspoon code coverage
-RUN npm install -g npm \
-  && npm install -g istanbul \
-  && npm cache clean --force
-
-# USER $USER
-
+# precompile assets; use temporary secret token to silence error, real token set at runtime
+USER $USER
 COPY --chown=docker:docker . .
-# RUN bundle exec rake assets:precompile
+RUN RAILS_ENV=production DEVISE_SECRET_KEY=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1) SECRET_TOKEN=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1) \
+    bundle exec rake assets:precompile
 
-# CMD bundle exec rake
+# run microscanner
+USER root
+ARG AQUA_MICROSCANNER_TOKEN
+RUN wget -O /microscanner https://get.aquasec.com/microscanner && \
+  chmod +x /microscanner && \
+  /microscanner ${AQUA_MICROSCANNER_TOKEN} && \
+  rm -rf /microscanner
+
+USER $USER
+EXPOSE 3000
+
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
