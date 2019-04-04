@@ -23,7 +23,11 @@ gem 'coffee-rails', '~> 4.2.1'
 gem 'jquery-rails', '~> 4.3.1'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', '~> 0.12.3'
+group :no_docker do
+  gem 'therubyracer', '~> 0.12.3'
+end
+
+gem 'listen', '~> 3.1.5'
 
 # Use the Compass CSS framework for sprites, etc.
 gem 'compass-rails', '~> 2.0.0'
@@ -31,7 +35,7 @@ gem 'compass-rails', '~> 2.0.0'
 # Use modernizr to detect CORS availability
 gem 'modernizr-rails', '~> 2.7.0'
 
-# gem 'bootstrap-sass', '3.3.7'
+gem 'bootstrap-sass', '3.3.7'
 
 # Use the NYU Libraries assets gem for shared NYU Libraries assets
 gem 'nyulibraries_stylesheets', github: 'NYULibraries/nyulibraries_stylesheets', tag: 'v1.1.2'
