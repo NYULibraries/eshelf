@@ -13,7 +13,7 @@ x-test-env: &test-env
   <<: *build
   environment:
     RAILS_ENV: test
-    eshelf_DB_DATABASE: eshelf_test
+    ESHELF_DB_DATABASE: eshelf_test
     BRANCH_NO_SLASH:
     CI:
     CODECLIMATE_REPO_TOKEN:
@@ -28,19 +28,21 @@ x-dev-env: &dev-env
 services:
   dev:
     <<: *dev-env
-    volumes:
-      - .:/app
     ports:
       - "3000:3000"
     command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
     depends_on:
       - setup_dbs
+    # volumes:
+    #   - .:/app
 
   test:
     <<: *test-env
     command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake"]
     depends_on:
       - setup_test_dbs
+    # volumes:
+    #   - .:/app
 
   setup_test_dbs:
     <<: *test-env
