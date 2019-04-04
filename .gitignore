@@ -32,3 +32,7 @@ wiki
 
 # Ignore temporary testing files
 /spec/tmp
+
+.local
+.pki
+.cache
