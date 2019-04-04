@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: [:nyulibraries]
 
   has_many :records, :dependent => :destroy
