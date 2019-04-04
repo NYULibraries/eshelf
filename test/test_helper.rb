@@ -9,6 +9,8 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'factory_bot'
 
+require "minitest/reporters"
+Minitest::Reporters.use! [Minitest::Reporters::SpecReporter.new, Minitest::Reporters::JUnitReporter.new(reports_dir: 'test-results')]
 
 # Make sure all Factories are loaded and actually work
 FactoryBot.reload

@@ -36,3 +36,5 @@ wiki
 .local
 .pki
 .cache
+
+test-results/

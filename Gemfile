@@ -67,6 +67,8 @@ group :development, :test do
   gem 'cucumber-rails', '~> 1.5.0', require: false
   gem 'database_cleaner', '~> 1.6.0'
   gem 'rspec-mocks'
+  gem 'rspec_junit_formatter'
+  gem 'minitest-reporters'
 end
 
 # NYU customization gems
