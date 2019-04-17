@@ -4,6 +4,18 @@ module LayoutsHelper
     ENV['GAUGES_TOKEN']
   end
 
+  def google_analytics?
+    google_analytics_tracking_code.present?
+  end
+
+  def google_analytics_tracking_code
+    ENV['GOOGLE_ANALYTICS_TRACKING_CODE']
+  end
+
+  def google_tag_manager_tracking_code
+    ENV['GOOGLE_TAG_MANAGER_TRACKING_CODE']
+  end
+
   # Add e-Shelf to the bread crumbs
   def breadcrumbs
     super << "e-Shelf"
