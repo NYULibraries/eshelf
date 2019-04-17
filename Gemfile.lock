@@ -529,6 +529,7 @@ DEPENDENCIES
   rack-cors (~> 0.4.1)
   rails (= 4.2.11.1)
   railties (= 4.2.11.1)
+  rake (~> 10.5.0)
   rest-client (~> 2.0.2)
   rspec-its (~> 1.2)
   rspec-mocks
