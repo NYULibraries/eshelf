@@ -1,8 +1,8 @@
 source "https://rubygems.org"
 
-gem 'rails', '= 4.2.11.1'
-gem 'railties', '= 4.2.11.1'
-gem 'rake', '= 10.5.0'
+gem 'rails', '4.2.11.1'
+# gem 'railties', '4.2.11.1'
+gem 'rake', '~> 10.1'
 
 # Add CORS support
 gem 'rack-cors', '~> 0.4.1', require: 'rack/cors'
@@ -79,7 +79,7 @@ gem 'citero', github: 'NYULibraries/citero', tag: 'v1.0.2'
 gem 'acts_as_citable', github: 'NYULibraries/acts_as_citable', tag: 'v5.0.0.beta'
 
 gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.1.2'
-gem 'devise', '~> 3.5.10'
+gem 'devise', '~> 4.6.0'
 gem 'rest-client', '~> 2.0.2'
 
 # Dalli for caching with memcached
