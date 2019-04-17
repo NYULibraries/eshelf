@@ -5,7 +5,7 @@ require 'formaggio/capistrano'
 set :app_title, "eshelf"
 
 # Overriding defaults
-set :rvm_ruby_string, "ruby-2.5.3"
+set :rvm_ruby_string, "ruby-2.5.5"
 set :stages, ["staging", "qa", "production"]
 set :recipient, "lib-eshelf-admin@nyu.edu"
 set :new_relic_environments, ["none"]
