@@ -1,4 +1,4 @@
-class Record < ActiveRecord::Base
+class Record < ApplicationRecord
   belongs_to :user
   belongs_to :tmp_user
   has_many :locations, :dependent => :destroy
