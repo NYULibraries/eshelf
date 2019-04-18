@@ -26,3 +26,7 @@ docker-compose.yml
 README.md
 test.env
 .circleci/
+
+.local
+.pki
+.cache

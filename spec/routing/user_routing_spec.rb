@@ -6,7 +6,7 @@ describe 'routes for users' do
       should route_to({
         controller: 'users/omniauth_callbacks',
         action: 'passthru',
-        provider: 'nyulibraries'
+        # provider: 'nyulibraries'
       })
     end
   end
@@ -17,7 +17,7 @@ describe 'routes for users' do
       should route_to({
         controller: 'users/omniauth_callbacks',
         action: 'passthru',
-        provider: 'nyulibraries'
+        # provider: 'nyulibraries'
       })
     end
   end

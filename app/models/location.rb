@@ -1,4 +1,4 @@
-class Location < ActiveRecord::Base
+class Location < ApplicationRecord
   belongs_to :record
 
   # Validate presence of either a call number or a collection

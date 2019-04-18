@@ -1,14 +1,15 @@
 source "https://rubygems.org"
 
-gem 'rails', '= 4.2.11.1'
-gem 'railties', '= 4.2.11.1'
+gem 'rails', '4.2.11.1'
+# gem 'railties', '4.2.11.1'
+gem 'rake', '~> 10.1'
 
 # Add CORS support
 gem 'rack-cors', '~> 0.4.1', require: 'rack/cors'
 
 # Use MySQL
 #gem 'sqlite3'
-gem 'mysql2'
+gem 'mysql2', '~> 0.4.10'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.6'
@@ -23,7 +24,11 @@ gem 'coffee-rails', '~> 4.2.1'
 gem 'jquery-rails', '~> 4.3.1'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', '~> 0.12.3'
+group :no_docker do
+  gem 'therubyracer', '~> 0.12.3'
+end
+
+gem 'listen', '~> 3.1.5'
 
 # Use the Compass CSS framework for sprites, etc.
 gem 'compass-rails', '~> 2.0.0'
@@ -31,9 +36,11 @@ gem 'compass-rails', '~> 2.0.0'
 # Use modernizr to detect CORS availability
 gem 'modernizr-rails', '~> 2.7.0'
 
+gem 'bootstrap-sass', '3.3.7'
+
 # Use the NYU Libraries assets gem for shared NYU Libraries assets
 gem 'nyulibraries_stylesheets', github: 'NYULibraries/nyulibraries_stylesheets', tag: 'v1.1.2'
-gem 'nyulibraries_templates', github: 'NYULibraries/nyulibraries_templates', tag: 'v1.2.4'
+gem 'nyulibraries_templates', github: 'NYULibraries/nyulibraries_templates', tag: 'v1.2.5'
 gem 'nyulibraries_institutions', github: 'NYULibraries/nyulibraries_institutions', tag: 'v1.0.4'
 gem 'nyulibraries_javascripts', github: 'NYULibraries/nyulibraries_javascripts', tag: 'v1.0.0'
 gem 'nyulibraries_errors', github: 'NYULibraries/nyulibraries_errors', tag: 'v1.1.1'
@@ -61,6 +68,8 @@ group :development, :test do
   gem 'cucumber-rails', '~> 1.5.0', require: false
   gem 'database_cleaner', '~> 1.6.0'
   gem 'rspec-mocks'
+  gem 'rspec_junit_formatter'
+  gem 'minitest-reporters'
 end
 
 # NYU customization gems
@@ -70,7 +79,7 @@ gem 'citero', github: 'NYULibraries/citero', tag: 'v1.0.2'
 gem 'acts_as_citable', github: 'NYULibraries/acts_as_citable', tag: 'v5.0.0.beta'
 
 gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.1.2'
-gem 'devise', '~> 3.5.10'
+gem 'devise', '~> 4.6.0'
 gem 'rest-client', '~> 2.0.2'
 
 # Dalli for caching with memcached
@@ -86,6 +95,6 @@ gem 'sorted', '~> 1.0.0'
 gem 'acts-as-taggable-on', '~> 3.4.0'
 
 # Convert old records with activerecord-import
-gem 'activerecord-import', '~> 0.18.0'
+# gem 'activerecord-import', '~> 0.18.0'
 
 gem 'sentry-raven', '~> 2'
