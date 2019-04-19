@@ -3,7 +3,7 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
 
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers, type: :controller
 
   setup do
     @user = FactoryBot.create(:user)

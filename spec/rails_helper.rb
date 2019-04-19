@@ -33,9 +33,9 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
   # Include the Devise test helpers
-  config.include Devise::TestHelpers, type: :controller
-  config.include Devise::TestHelpers, type: :view
-  config.include Devise::TestHelpers, type: :helper
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelper, type: :view
+  config.include Devise::Test::ControllerHelper, type: :helper
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
