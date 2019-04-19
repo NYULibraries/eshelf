@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/NYULibraries/acts_as_citable.git
-  revision: cba5e5a08e046e7759dc11dbc61c54072e57fa45
+  revision: 17821aa72a9a0ff9ae78444b6c5609eca407b735
   branch: feature/rails5
   specs:
     acts_as_citable (5.0.0.beta)

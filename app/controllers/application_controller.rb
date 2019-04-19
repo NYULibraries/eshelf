@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  prepend_before_filter :passive_login, unless: -> { ignore_passive_login? }
+  prepend_before_action :passive_login, unless: -> { ignore_passive_login? }
   def passive_login
     if !cookies[:_check_passive_login]
       cookies[:_check_passive_login] = true
