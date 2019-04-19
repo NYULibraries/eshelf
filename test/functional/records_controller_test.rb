@@ -2,7 +2,7 @@ require 'test_helper'
 
 class RecordsControllerTest < ActionController::TestCase
 
-  include Devise::Test::ControllerHelpers, type: :controller
+  include Devise::Test::ControllerHelpers
 
   setup do
     @user = FactoryBot.create(:user)
