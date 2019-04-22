@@ -18,7 +18,7 @@
 class RecordsController < ApplicationController
   API_ACTIONS = %w{ from_external_system create destroy }
 
-  after_filter :respond_with_csrf_header
+  after_action :respond_with_csrf_header
 
   WHITELISTED_EMAIL_FORMATS = ["brief", "medium", "full"]
   WHITELISTED_PRINT_FORMATS = ["brief", "medium", "full"]
