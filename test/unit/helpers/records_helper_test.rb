@@ -114,7 +114,7 @@ class RecordsHelperTest < ActionView::TestCase
 
   # This was WAY too hard to figure out.
   # Need to set params for routes and need to include the helper module
-  include Sorted::ViewHelpers::ActionView
+  # include Sorted::ViewHelpers::ActionView
   test "should return array of created at, title, author for sort options" do
     # Set up params for the sorted gem
     params[:controller] = "records"

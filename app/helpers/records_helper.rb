@@ -79,10 +79,10 @@ module RecordsHelper
   #   - 50
   #   - 100
   def per_page_options
-    [ link_to(10, records_path({per: 10}.merge current_filters)),
-      link_to(20, records_path({per: 20}.merge current_filters)),
-      link_to(50, records_path({per: 50}.merge current_filters)),
-      link_to(100, records_path({per: 100}.merge current_filters)) ]
+    [ link_to(10, records_path(current_filters.merge(per: 10))),
+      link_to(20, records_path(current_filters.merge(per: 20))),
+      link_to(50, records_path(current_filters.merge(per: 50))),
+      link_to(100, records_path(current_filters.merge(per: 100)))]
   end
 
   # Returns an Array of sort options as HTML links
@@ -90,9 +90,12 @@ module RecordsHelper
   #   - Title
   #   - Author
   def sort_options
-    [ link_to_sorted(t('record.collection.sort.options.created_at'), :created_at),
-      link_to_sorted(t('record.collection.sort.options.title_sort'), :title_sort),
-      link_to_sorted(t('record.collection.sort.options.author'), :author) ]
+    # binding.pry
+    [ 
+      link_to(t('record.collection.sort.options.created_at'), records_path(current_filters.merge(sort: sort_param("created_at")))),
+      link_to(t('record.collection.sort.options.title_sort'), records_path(current_filters.merge(sort: sort_param("title_sort")))),
+      link_to(t('record.collection.sort.options.author'), records_path(current_filters.merge(sort: sort_param("author"))))
+    ]
   end
 
   def current_sort_label
@@ -100,8 +103,29 @@ module RecordsHelper
   end
 
   def parsed_current_sort
-    @parsed_current_sort ||= Sorted::Parser.new(current_sort).parse_sort.first
+    @parsed_current_sort ||= (sort_params[:sort].present?) ? sort_params[:sort].split(/(.+)_(desc|asc)/) - ["", nil] : ["created_at", "asc"]
   end
+
+  def sort_param(sort_field)
+    sort_param = "#{sort_field}_"
+    current_sort_field = parsed_current_sort.first
+    current_sort_direction = parsed_current_sort.last
+    if sort_field == current_sort_field
+      sort_param += switch_sort_direction(current_sort_direction)
+    else
+      sort_param += "asc"
+    end
+    sort_param
+  end
+
+  def sort_params
+    params.permit(:sort, :page)
+  end
+
+  def switch_sort_direction(direction)
+    (direction == "asc") ? "desc" : "asc"
+  end
+  protected :switch_sort_direction
 
   # Returns a Hash of the currently applied filters
   #   - content type
@@ -110,10 +134,17 @@ module RecordsHelper
   #   - external_system
   #   - external_id
   #   - sort
+  #   - page
+  #   - per
   def current_filters
-    { content_type: params[:content_type], tag: params[:tag], id: params[:id],
-      external_system: params[:external_system], external_id: params[:external_id],
-      sort: params[:sort] }
+    { content_type: filter_params[:content_type], tag: filter_params[:tag], id: filter_params[:id],
+      external_system: filter_params[:external_system], external_id: filter_params[:external_id],
+      sort: filter_params[:sort], page: filter_params[:page], per: filter_params[:per] }
   end
   protected :current_filters
+
+  def filter_params
+    params.permit(:page, :content_type, :tag, :id, :external_system, :external_id, :sort, :per)
+  end
+  protected :filter_params
 end

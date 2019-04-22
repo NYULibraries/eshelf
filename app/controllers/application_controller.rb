@@ -65,7 +65,8 @@ class ApplicationController < ActionController::Base
 
   # Returns an ActiveRecord relation of the user's record
   def user_records
-    @user_records ||= user.records.sorted(current_sort)
+    # binding.pry
+    @user_records = (view_context.sort_params[:sort].present?) ? user.records.order("#{view_context.parsed_current_sort.first} #{view_context.parsed_current_sort.last}", :created_at) : user.records.order(:created_at) 
   end
   helper_method :user_records
 
@@ -75,13 +76,6 @@ class ApplicationController < ActionController::Base
     s.gsub(/\"/, "\"\"") unless s.nil?
   end
   protected :double_escape_quotes
-
-  # Returns the current sort
-  # Default sort is newest first.
-  def current_sort
-    @current_sort ||= (params[:sort]||"created_at_desc")
-  end
-  helper_method :current_sort
 
  private
 

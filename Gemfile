@@ -90,9 +90,6 @@ gem 'dalli', '~> 2.7.0'
 # Use Kaminari for paging
 gem 'kaminari', '~> 1.1.1'
 
-# Use sorted for sorting
-gem 'sorted', '~> 1.0.0'
-
 # Acts as taggable on
 gem 'acts-as-taggable-on', '~> 6.0.0'
 

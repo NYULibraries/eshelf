@@ -9,7 +9,7 @@ ENV PATH="${BUNDLE_BIN}:${PATH}"
 ENV USER docker
 ENV NODE_VERSION=10.x
 
-ENV RUN_PACKAGES bash ca-certificates fontconfig git mariadb-dev nodejs nodejs-npm tzdata 
+ENV RUN_PACKAGES bash ca-certificates fontconfig git less mariadb-dev nodejs nodejs-npm tzdata 
 ENV BUILD_PACKAGES build-base curl curl-dev linux-headers ruby-dev wget
 
 RUN addgroup -g 2000 $USER && \

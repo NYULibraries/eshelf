@@ -33,19 +33,20 @@ class RecordsController < ApplicationController
     # Get the user's records
     @records = user_records
     # Filter by the specified content type if given
-    @records = @records.where(content_type: params[:content_type]) if params[:content_type]
+    @records = @records.where(content_type: filter_params[:content_type]) if filter_params[:content_type]
     # Filter by the specified tag if given
-    @records = @records.tagged_with(double_escape_quotes(params[:tag])) if current_user && params[:tag]
+    @records = @records.tagged_with(double_escape_quotes(filter_params[:tag])) if current_user && filter_params[:tag]
     # Get the selected id(s) if given
     @records = @records.where(id: params[:id]) if params[:id]
     # Get the relevant page unless all is specified
-    @records = (params[:per].eql? "all") ?
-      @records.page(1).per(user_records.count) : @records.page(params[:page]).per(params[:per])
+    @records = (filter_params[:per].eql? "all") ?
+      @records.page(1).per(user_records.count) : @records.page(filter_params[:page]).per(filter_params[:per])
     respond_with(@records) unless performed?
   end
 
   # Show the record based on id
   def show
+    # binding.pry
     @record = user_records.find(params[:id])
     respond_with(@record)
   end
@@ -183,6 +184,11 @@ class RecordsController < ApplicationController
       :data, :title, :author, :url, :title_sort, :content_type
   end
   private :record_params
+
+  def filter_params
+    params.permit(:tag, :content_type, :per, :page, :sort)
+  end
+  private :filter_params
 
   # Whitelisted CORS origins
   def whitelisted_origins
