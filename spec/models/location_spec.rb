@@ -3,10 +3,11 @@ require 'rails_helper'
 describe Location do
   let(:call_number) { '(HN49.I56 M67 2003)' }
   let(:collection) { 'NYU Bobst Main Collection' }
+  let(:record) { create(:tmp_user_record, data: 'data') }
 
   subject(:location) {
     Location.new(
-      record_id: 1,
+      record_id: record.id,
       call_number: call_number,
       collection: collection
     )
