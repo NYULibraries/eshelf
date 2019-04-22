@@ -77,7 +77,7 @@ class UsersControllerTest < ActionController::TestCase
       tag13 tag14 tag15 tag16 tag17 tag18 tag19 tag20 tag21 }.join(",")
     @user.tag(@user_record, with: tags, on: :tags)
     assert_equal(21, @user.owned_tags.count, "User should have 21 owned tags")
-    get :tags, page: 2
+    get :tags, params: { page: 2 }
     assert_response :success
     # Should have pagination
     assert_select("nav ul.pagination") do |elements|
