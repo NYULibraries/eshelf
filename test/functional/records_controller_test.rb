@@ -281,16 +281,6 @@ class RecordsControllerTest < ActionController::TestCase
     assert_nil response.headers['X-CSRF-Token']
   end
 
-  test "should show user record" do
-    sign_in @user
-    get :show, params: { format: "json", id: @user_record.id }
-    assert_response :success
-    assert_nil response.headers['X-CSRF-Token']
-    get :show, params: { format: "xml", id: @user_record.id }
-    assert_response :success
-    assert_nil response.headers['X-CSRF-Token']
-  end
-
   test "should update user record with tag" do
     sign_in @user
     assert_difference(['ActsAsTaggableOn::Tag.count', 'ActsAsTaggableOn::Tagging.count']) do

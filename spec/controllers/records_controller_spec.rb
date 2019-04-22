@@ -45,4 +45,29 @@ describe RecordsController do
       end
     end
   end
+
+  describe 'GET /records/1' do
+    let(:format) { "xml" }
+    before do
+      record = FactoryBot.create(:user_record, data: "data")
+      user = record.user
+      @record_id = record.id
+      allow_any_instance_of(RecordsController).to receive(:current_user).and_return(user)
+    end
+    
+    before { get :show, params: { format: format, id: @record_id } }
+    subject { response }
+    context 'when format is XML' do
+      its(:status) { is_expected.to eql 200 }
+      its(:headers) { is_expected.to_not include 'X-CSRF-Token' }
+      its(:content_type) { is_expected.to include 'application/xml' }
+    end
+    context 'when format is JSON' do
+      let(:format) { "json" }
+      its(:status) { is_expected.to eql 200 }
+      its(:content_type) { is_expected.to include 'application/json' }
+      its(:headers) { is_expected.to_not include 'X-CSRF-Token' }
+    end
+
+  end
 end
