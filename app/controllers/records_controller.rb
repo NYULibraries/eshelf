@@ -46,7 +46,6 @@ class RecordsController < ApplicationController
 
   # Show the record based on id
   def show
-    # binding.pry
     @record = user_records.find(params[:id])
     respond_with(@record)
   end

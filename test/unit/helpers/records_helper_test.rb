@@ -62,56 +62,6 @@ class RecordsHelperTest < ActionView::TestCase
     assert_dom_equal "<a href=\"/records/print/full\" class=\"print\" target=\"_blank\">Full</a>", print_options[2]
   end
 
-  test "should return array of 10, 20, 50, 100 for per page options" do
-    assert_kind_of Array, per_page_options
-    assert_equal 4, per_page_options.size
-    assert_dom_equal '<a href="/records?per=10">10</a>', per_page_options[0]
-    assert_dom_equal '<a href="/records?per=20">20</a>', per_page_options[1]
-    assert_dom_equal '<a href="/records?per=50">50</a>', per_page_options[2]
-    assert_dom_equal '<a href="/records?per=100">100</a>', per_page_options[3]
-  end
-
-  test "should return array of 10, 20, 50, 100 with merged book content type for per page options" do
-    params[:content_type] = "book"
-    assert_dom_equal '<a href="/records?content_type=book&amp;per=10">10</a>', per_page_options[0]
-    assert_dom_equal '<a href="/records?content_type=book&amp;per=20">20</a>', per_page_options[1]
-    assert_dom_equal '<a href="/records?content_type=book&amp;per=50">50</a>', per_page_options[2]
-    assert_dom_equal '<a href="/records?content_type=book&amp;per=100">100</a>', per_page_options[3]
-  end
-
-  test "should return array of 10, 20, 50, 100 with merged ids type for per page options" do
-    params[:id] = ["1", "2"]
-    assert_dom_equal '<a href="/records?id%5B%5D=1&amp;id%5B%5D=2&amp;per=10">10</a>', per_page_options[0]
-    assert_dom_equal '<a href="/records?id%5B%5D=1&amp;id%5B%5D=2&amp;per=20">20</a>', per_page_options[1]
-    assert_dom_equal '<a href="/records?id%5B%5D=1&amp;id%5B%5D=2&amp;per=50">50</a>', per_page_options[2]
-    assert_dom_equal '<a href="/records?id%5B%5D=1&amp;id%5B%5D=2&amp;per=100">100</a>', per_page_options[3]
-  end
-
-  test "should return array of 10, 20, 50, 100 with merged tag 'test tag' for per page options" do
-    params[:tag] = "test tag"
-    assert_dom_equal '<a href="/records?per=10&amp;tag=test+tag">10</a>', per_page_options[0]
-    assert_dom_equal '<a href="/records?per=20&amp;tag=test+tag">20</a>', per_page_options[1]
-    assert_dom_equal '<a href="/records?per=50&amp;tag=test+tag">50</a>', per_page_options[2]
-    assert_dom_equal '<a href="/records?per=100&amp;tag=test+tag">100</a>', per_page_options[3]
-  end
-
-  test "should return array of 10, 20, 50, 100 with merged title sort asc for per page options" do
-    params[:sort] = "title_sort_asc"
-    assert_dom_equal '<a href="/records?per=10&amp;sort=title_sort_asc">10</a>', per_page_options[0]
-    assert_dom_equal '<a href="/records?per=20&amp;sort=title_sort_asc">20</a>', per_page_options[1]
-    assert_dom_equal '<a href="/records?per=50&amp;sort=title_sort_asc">50</a>', per_page_options[2]
-    assert_dom_equal '<a href="/records?per=100&amp;sort=title_sort_asc">100</a>', per_page_options[3]
-  end
-
-  test "should return array of 10, 20, 50, 100 with merged title sort asc and tag 'test tag' for per page options" do
-    params[:tag] = "test tag"
-    params[:sort] = "title_sort_asc"
-    assert_dom_equal '<a href="/records?per=10&amp;sort=title_sort_asc&amp;tag=test+tag">10</a>', per_page_options[0]
-    assert_dom_equal '<a href="/records?per=20&amp;sort=title_sort_asc&amp;tag=test+tag">20</a>', per_page_options[1]
-    assert_dom_equal '<a href="/records?per=50&amp;sort=title_sort_asc&amp;tag=test+tag">50</a>', per_page_options[2]
-    assert_dom_equal '<a href="/records?per=100&amp;sort=title_sort_asc&amp;tag=test+tag">100</a>', per_page_options[3]
-  end
-
   # This was WAY too hard to figure out.
   # Need to set params for routes and need to include the helper module
   # include Sorted::ViewHelpers::ActionView

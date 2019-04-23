@@ -90,7 +90,6 @@ module RecordsHelper
   #   - Title
   #   - Author
   def sort_options
-    # binding.pry
     [ 
       link_to(t('record.collection.sort.options.created_at'), records_path(current_filters.merge(sort: sort_param("created_at")))),
       link_to(t('record.collection.sort.options.title_sort'), records_path(current_filters.merge(sort: sort_param("title_sort")))),
@@ -103,7 +102,7 @@ module RecordsHelper
   end
 
   def parsed_current_sort
-    @parsed_current_sort ||= (sort_params[:sort].present?) ? sort_params[:sort].split(/(.+)_(desc|asc)/) - ["", nil] : ["created_at", "asc"]
+    @parsed_current_sort ||= (filter_params[:sort].present?) ? filter_params[:sort].split(/(.+)_(desc|asc)/) - ["", nil] : ["created_at", "asc"]
   end
 
   def sort_param(sort_field)
@@ -116,10 +115,6 @@ module RecordsHelper
       sort_param += "asc"
     end
     sort_param
-  end
-
-  def sort_params
-    params.permit(:sort, :page)
   end
 
   def switch_sort_direction(direction)
@@ -144,7 +139,6 @@ module RecordsHelper
   protected :current_filters
 
   def filter_params
-    params.permit(:page, :content_type, :tag, :id, :external_system, :external_id, :sort, :per)
+    params.permit(:page, :content_type, :tag, :external_system, :external_id, :sort, :per, :id, id: [])
   end
-  protected :filter_params
 end

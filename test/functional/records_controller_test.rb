@@ -271,16 +271,6 @@ class RecordsControllerTest < ActionController::TestCase
     assert_equal 'Record was successfully created.', flash[:notice]
   end
 
-  test "should show existing tmp user record" do
-    session[:tmp_user] = @tmp_user
-    get :show, params: { format: "json", id: @tmp_user_record.id }
-    assert_response :success
-    assert_nil response.headers['X-CSRF-Token']
-    get :show, params: { format: "xml", id: @tmp_user_record.id }
-    assert_response :success
-    assert_nil response.headers['X-CSRF-Token']
-  end
-
   test "should update user record with tag" do
     sign_in @user
     assert_difference(['ActsAsTaggableOn::Tag.count', 'ActsAsTaggableOn::Tagging.count']) do
@@ -299,22 +289,6 @@ class RecordsControllerTest < ActionController::TestCase
       assert_nil response.headers['X-CSRF-Token']
     end
   end
-
-  # test "disallowed formats show existing tmp user record" do
-  #   cookies[:tmp_user] = @tmp_user
-  #   get :show, format: "html", id: @tmp_user_record.id
-  #   assert_response :not_acceptable
-  #   get :show, id: @tmp_user_record.id
-  #   assert_response :not_acceptable
-  # end
-  #
-  # test "disallowed formats show user record" do
-  #   sign_in @user
-  #   get :show, format: "html", id: @user_record.id
-  #   assert_response :not_acceptable
-  #   get :show, id: @user_record.id
-  #   assert_response :not_acceptable
-  # end
 
   test "should show by external system existing tmp user record" do
     session[:tmp_user] = @tmp_user
