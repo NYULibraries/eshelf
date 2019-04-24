@@ -14,7 +14,7 @@ module Eshelf
   EXAMPLE_ORIGIN = 'example.com'
 
   class Application < Rails::Application
-    config.autoload_paths += Dir["#{config.root}/lib/**/"]
+    config.eager_load_paths << Rails.root.join('lib')
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.0
 
