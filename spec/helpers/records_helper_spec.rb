@@ -111,4 +111,7 @@ describe RecordsHelper do
   describe '#switch_sort_direction' do
   end
 
+  describe '#sort_direction_class' do
+  end
+
 end

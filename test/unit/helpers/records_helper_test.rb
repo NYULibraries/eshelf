@@ -71,9 +71,9 @@ class RecordsHelperTest < ActionView::TestCase
     params[:action] = "index"
     assert_kind_of Array, sort_options
     assert_equal 3, sort_options.size
-    assert_dom_equal '<a href="/records?sort=created_at_asc" class="sorted">date added</a>', sort_options[0]
-    assert_dom_equal '<a href="/records?sort=title_sort_asc" class="sorted">title</a>', sort_options[1]
-    assert_dom_equal '<a href="/records?sort=author_asc" class="sorted">author</a>', sort_options[2]
+    assert_dom_equal '<a class="sorted asc" href="/records?sort=created_at_desc">date added</a>', sort_options[0]
+    assert_dom_equal '<a class="sorted" href="/records?sort=title_sort_asc">title</a>', sort_options[1]
+    assert_dom_equal '<a class="sorted" href="/records?sort=author_asc">author</a>', sort_options[2]
   end
 
   test "should return array of created at desc, title, author for sort options" do
@@ -83,9 +83,9 @@ class RecordsHelperTest < ActionView::TestCase
     params[:sort] = "created_at_asc"
     assert_kind_of Array, sort_options
     assert_equal 3, sort_options.size
-    assert_dom_equal '<a href="/records?sort=created_at_desc" class="sorted asc">date added</a>', sort_options[0]
-    assert_dom_equal '<a href="/records?sort=title_sort_asc%21created_at_asc" class="sorted">title</a>', sort_options[1]
-    assert_dom_equal '<a href="/records?sort=author_asc%21created_at_asc" class="sorted">author</a>', sort_options[2]
+    assert_dom_equal '<a class="sorted asc" href="/records?sort=created_at_desc">date added</a>', sort_options[0]
+    assert_dom_equal '<a class="sorted" href="/records?sort=title_sort_asc">title</a>', sort_options[1]
+    assert_dom_equal '<a class="sorted" href="/records?sort=author_asc">author</a>', sort_options[2]
   end
 
   test "should return array of created at, title desc, author for sort options" do
@@ -95,8 +95,8 @@ class RecordsHelperTest < ActionView::TestCase
     params[:sort] = "title_sort_asc"
     assert_kind_of Array, sort_options
     assert_equal 3, sort_options.size
-    assert_dom_equal '<a href="/records?sort=created_at_asc%21title_sort_asc" class="sorted">date added</a>', sort_options[0]
-    assert_dom_equal '<a href="/records?sort=title_sort_desc" class="sorted asc">title</a>', sort_options[1]
-    assert_dom_equal '<a href="/records?sort=author_asc%21title_sort_asc" class="sorted">author</a>', sort_options[2]
+    assert_dom_equal '<a class="sorted" href="/records?sort=created_at_asc">date added</a>', sort_options[0]
+    assert_dom_equal '<a class="sorted asc" href="/records?sort=title_sort_desc">title</a>', sort_options[1]
+    assert_dom_equal '<a class="sorted" href="/records?sort=author_asc">author</a>', sort_options[2]
   end
 end

@@ -91,10 +91,16 @@ module RecordsHelper
   #   - Author
   def sort_options
     [ 
-      link_to(t('record.collection.sort.options.created_at'), records_path(current_filters.merge(sort: sort_param("created_at")))),
-      link_to(t('record.collection.sort.options.title_sort'), records_path(current_filters.merge(sort: sort_param("title_sort")))),
-      link_to(t('record.collection.sort.options.author'), records_path(current_filters.merge(sort: sort_param("author"))))
+      link_to(t('record.collection.sort.options.created_at'), records_path(current_filters.merge(sort: sort_param("created_at"))), class: "sorted#{sort_direction_class("created_at")}"),
+      link_to(t('record.collection.sort.options.title_sort'), records_path(current_filters.merge(sort: sort_param("title_sort"))), class: "sorted#{sort_direction_class("title_sort")}"),
+      link_to(t('record.collection.sort.options.author'), records_path(current_filters.merge(sort: sort_param("author"))), class: "sorted#{sort_direction_class("author")}")
     ]
+  end
+
+  def sort_direction_class(sort_field)
+    if sort_field == parsed_current_sort.first
+      " #{parsed_current_sort.last}"
+    end
   end
 
   def current_sort_label

@@ -65,9 +65,20 @@ class ApplicationController < ActionController::Base
 
   # Returns an ActiveRecord relation of the user's record
   def user_records
-    @user_records = (view_context.filter_params[:sort].present?) ? user.records.order("#{view_context.parsed_current_sort.first} #{view_context.parsed_current_sort.last}", :created_at) : user.records.order(:created_at) 
+    @user_records = (view_context.filter_params[:sort].present?) ? user.records.order("#{view_context.parsed_current_sort.first} #{view_context.parsed_current_sort.last}", secondary_sort) : user.records.order(:created_at) 
   end
   helper_method :user_records
+
+  def secondary_sort
+    case view_context.parsed_current_sort.first.to_sym
+    when :title_sort
+      :created_at
+    when :author
+      :title_sort
+    else
+      :created_at
+    end
+  end
 
   # Need to double escape quotes for ActsAsTaggableOn due to this RegEx.
   # https://github.com/mbleigh/acts-as-taggable-on/blob/master/lib/acts_as_taggable_on/tag_list.rb#L26
