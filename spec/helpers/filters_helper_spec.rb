@@ -127,20 +127,122 @@ describe '#cite_path' do
       it { is_expected.to eql 'title' }
 		end
 		context 'when a random value is the selected sort' do
-      before { controller.params = controller.params.merge(sort: "blahblah_evil") }
+      before { controller.params = controller.params.merge(sort: ";insert malicious_code into user_table") }
       it { is_expected.to eql 'date added' }
 		end
 	end
 
-	describe '#parsed_current_sort' do
+  describe '#parsed_current_sort' do
+    subject { helper.parsed_current_sort }
+
+    context 'when no sort option is selected' do
+      it { is_expected.to eql ["created_at", "asc"] }
+    end
+    context 'when title_sort is the selected sort option' do
+      before { controller.params = controller.params.merge(sort: "title_sort_asc") }
+      it { is_expected.to eql ["title_sort", "asc"] }
+    end
+    context 'when arbitrary text is the selected sort option' do
+      before { controller.params = controller.params.merge(sort: "blah_blah_blah_desc") }
+      it { is_expected.to eql ["created_at", "asc"] }
+    end
+  end
+  
+  describe '#secondary_sort' do
+    subject { helper.secondary_sort }
+    context 'when primary sort id title_sort' do
+      before { controller.params = controller.params.merge(sort: "title_sort_asc") }
+      it { is_expected.to eql :created_at }
+    end
+    context 'when primary sort id author' do
+      before { controller.params = controller.params.merge(sort: "author_desc") }
+      it { is_expected.to eql :title_sort }
+    end
+    context 'when primary sort id created_at' do
+      before { controller.params = controller.params.merge(sort: "created_at_asc") }
+      it { is_expected.to eql :created_at }
+    end
+  end
+
+  describe '#sort_param' do
+    subject { helper.send(:sort_param, sort_field) }
+
+    context 'when sort_field is the current sort field' do
+      context 'and the sort direction is ASC' do
+        before { controller.params = controller.params.merge(sort: "created_at_asc") }
+        let(:sort_field) { "created_at" }
+        it { is_expected.to eql "created_at_desc" }
+      end
+      context 'and the sort direction is DESC' do
+        before { controller.params = controller.params.merge(sort: "created_at_desc") }
+        let(:sort_field) { "created_at" }
+        it { is_expected.to eql "created_at_asc" }
+      end
+    end
+    context 'when sort_field is not the current sort field' do
+      context 'and the sort direction is ASC' do
+        before { controller.params = controller.params.merge(sort: "created_at_asc") }
+        let(:sort_field) { "title_sort" }
+        it { is_expected.to eql "title_sort_asc" }
+      end
+    end
+  end
+  
+  describe '#sort_direction_class' do
+    subject { helper.send(:sort_direction_class, sort_field) }
+
+    context 'when sort_field is the current sort field' do
+      context 'and the sort direction is ASC' do
+        before { controller.params = controller.params.merge(sort: "created_at_asc") }
+        let(:sort_field) { "created_at" }
+        it { is_expected.to eql " asc" }
+      end
+      context 'and the sort direction is DESC' do
+        before { controller.params = controller.params.merge(sort: "created_at_desc") }
+        let(:sort_field) { "created_at" }
+        it { is_expected.to eql " desc" }
+      end
+    end
+    context 'when sort_field is not the current sort field' do
+      before { controller.params = controller.params.merge(sort: "created_at_desc") }
+      let(:sort_field) { "title_sort" }
+      it { is_expected.to be_nil }
+    end
 	end
 
-	describe '#sort_param' do
+  describe '#switch_sort_direction' do
+    subject { helper.send(:switch_sort_direction, direction) }
+
+    context 'when direction is ASC' do
+      let(:direction) { 'asc' }
+      it { is_expected.to eql 'desc' }
+    end
+    context 'when direction is DESC' do
+      let(:direction) { 'desc' }
+      it { is_expected.to eql 'asc' }
+    end
+  end
+  
+  describe '#whitelisted_sort_field?' do
+    subject { helper.send(:whitelisted_sort_field?, sort_field) }
+
+    context 'when sort_field is created_at' do
+      let(:sort_field) { "created_at_asc" }
+      it { is_expected.to be true }
+    end
+    context 'when sort_field is title_sort' do
+      let(:sort_field) { "title_sort_desc" }
+      it { is_expected.to be true }
+    end
+    context 'when sort_field is author' do
+      let(:sort_field) { "author_desc" }
+      it { is_expected.to be true }
+    end
+    context 'when sort_field is anything else' do
+      let(:sort_field) { "title_desc_asc" }
+      it { is_expected.to be false }
+    end
 	end
 
-	describe '#switch_sort_direction' do
-	end
-
-	describe '#sort_direction_class' do
-	end
+	
 end

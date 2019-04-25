@@ -24,11 +24,11 @@ module FiltersHelper
   end
 
   def current_sort_label
-    @current_sort_label ||= t("record.collection.sort.options.#{whitelisted_sort_field(parsed_current_sort.first)}").html_safe
+    @current_sort_label ||= t("record.collection.sort.options.#{parsed_current_sort.first}").html_safe
   end
 
   def parsed_current_sort
-    @parsed_current_sort ||= (filter_params[:sort].present?) ? filter_params[:sort].split(/(.+)_(desc|asc)/) - ["", nil] : ["created_at", "asc"]
+    @parsed_current_sort ||= (whitelisted_sort_field?(filter_params[:sort])) ? filter_params[:sort].split(/(.+)_(desc|asc)/) - ["", nil] : ["created_at", "asc"]
   end
 
   def secondary_sort
@@ -48,15 +48,9 @@ module FiltersHelper
 
  protected
 
-  def sort_direction_class(sort_field)
-    if sort_field == parsed_current_sort.first
-      " #{parsed_current_sort.last}"
-    end
-  end
-
   def sort_param(sort_field)
     sort_param = "#{sort_field}_"
-    current_sort_field = whitelisted_sort_field(parsed_current_sort.first)
+    current_sort_field = parsed_current_sort.first
     current_sort_direction = parsed_current_sort.last
     if sort_field == current_sort_field
       sort_param += switch_sort_direction(current_sort_direction)
@@ -66,12 +60,18 @@ module FiltersHelper
     sort_param
   end
 
-  def whitelisted_sort_field(sort_field)
-    ([:created_at, :title_sort, :author].include?(sort_field.to_sym)) ? sort_field : "created_at"
+  def sort_direction_class(sort_field)
+    if sort_field == parsed_current_sort.first
+      " #{parsed_current_sort.last}"
+    end
   end
 
   def switch_sort_direction(direction)
     (direction == "asc") ? "desc" : "asc"
+  end
+
+  def whitelisted_sort_field?(sort_field)
+    /^(created_at|title_sort|author)_(asc|desc)$/.match?(sort_field)
   end
 
   # Returns a Hash of the currently applied filters
