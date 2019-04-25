@@ -131,8 +131,7 @@ Teaspoon.configure do |config|
   # Note: Output files can be specified by using `"junit>/path/to/output.xml"`.
   #
   # Available: :dot, :clean, :documentation, :json, :junit, :pride, :rspec_html, :snowday, :swayze_or_oprah, :tap, :tap_y, :teamcity
-  config.formatters = [:dot]
-  config.formatters = ["junit>#{Rails.root.join("test-results", "teaspoon.xml")}"]
+  config.formatters = [:dot, "junit>#{Rails.root.join("test-results", "teaspoon.xml")}"]
 
   # Specify if you want color output from the formatters.
   #config.color = true
