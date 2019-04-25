@@ -50,13 +50,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # Returns the session's TmpUser
-  # Sets the sessions' TmpUser if necessary.
-  def tmp_user
-    @tmp_user ||= (session[:tmp_user].blank?) ? (session[:tmp_user] = TmpUser.create) : session[:tmp_user]
-  end
-  private :tmp_user
-
   # Returns the User or TmpUser associated with this session
   def user
     @user ||= (current_user.nil?) ? tmp_user : current_user
@@ -65,20 +58,9 @@ class ApplicationController < ActionController::Base
 
   # Returns an ActiveRecord relation of the user's record
   def user_records
-    @user_records = (view_context.filter_params[:sort].present?) ? user.records.order("#{view_context.parsed_current_sort.first} #{view_context.parsed_current_sort.last}", secondary_sort) : user.records.order(:created_at) 
+    @user_records = (view_context.filter_params[:sort].present?) ? user.records.order("#{view_context.parsed_current_sort.first} #{view_context.parsed_current_sort.last}", view_context.secondary_sort) : user.records.order(:created_at) 
   end
   helper_method :user_records
-
-  def secondary_sort
-    case view_context.parsed_current_sort.first.to_sym
-    when :title_sort
-      :created_at
-    when :author
-      :title_sort
-    else
-      :created_at
-    end
-  end
 
   # Need to double escape quotes for ActsAsTaggableOn due to this RegEx.
   # https://github.com/mbleigh/acts-as-taggable-on/blob/master/lib/acts_as_taggable_on/tag_list.rb#L26
@@ -88,6 +70,12 @@ class ApplicationController < ActionController::Base
   protected :double_escape_quotes
 
  private
+
+  # Returns the session's TmpUser
+  # Sets the sessions' TmpUser if necessary.
+  def tmp_user
+    @tmp_user ||= (session[:tmp_user].blank?) ? (session[:tmp_user] = TmpUser.create) : session[:tmp_user]
+  end
 
   # Save temporary records to the current user
   # Intended to be called after validate on login

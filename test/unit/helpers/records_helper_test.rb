@@ -62,41 +62,4 @@ class RecordsHelperTest < ActionView::TestCase
     assert_dom_equal "<a href=\"/records/print/full\" class=\"print\" target=\"_blank\">Full</a>", print_options[2]
   end
 
-  # This was WAY too hard to figure out.
-  # Need to set params for routes and need to include the helper module
-  # include Sorted::ViewHelpers::ActionView
-  test "should return array of created at, title, author for sort options" do
-    # Set up params for the sorted gem
-    params[:controller] = "records"
-    params[:action] = "index"
-    assert_kind_of Array, sort_options
-    assert_equal 3, sort_options.size
-    assert_dom_equal '<a class="sorted asc" href="/records?sort=created_at_desc">date added</a>', sort_options[0]
-    assert_dom_equal '<a class="sorted" href="/records?sort=title_sort_asc">title</a>', sort_options[1]
-    assert_dom_equal '<a class="sorted" href="/records?sort=author_asc">author</a>', sort_options[2]
-  end
-
-  test "should return array of created at desc, title, author for sort options" do
-    # Set up params for the sorted gem
-    params[:controller] = "records"
-    params[:action] = "index"
-    params[:sort] = "created_at_asc"
-    assert_kind_of Array, sort_options
-    assert_equal 3, sort_options.size
-    assert_dom_equal '<a class="sorted asc" href="/records?sort=created_at_desc">date added</a>', sort_options[0]
-    assert_dom_equal '<a class="sorted" href="/records?sort=title_sort_asc">title</a>', sort_options[1]
-    assert_dom_equal '<a class="sorted" href="/records?sort=author_asc">author</a>', sort_options[2]
-  end
-
-  test "should return array of created at, title desc, author for sort options" do
-    # Set up params for the sorted gem
-    params[:controller] = "records"
-    params[:action] = "index"
-    params[:sort] = "title_sort_asc"
-    assert_kind_of Array, sort_options
-    assert_equal 3, sort_options.size
-    assert_dom_equal '<a class="sorted" href="/records?sort=created_at_asc">date added</a>', sort_options[0]
-    assert_dom_equal '<a class="sorted asc" href="/records?sort=title_sort_desc">title</a>', sort_options[1]
-    assert_dom_equal '<a class="sorted" href="/records?sort=author_asc">author</a>', sort_options[2]
-  end
-end
+ end
