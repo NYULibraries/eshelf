@@ -2,13 +2,13 @@ require_relative 'boot'
 
 require 'rails/all'
 
-# Require the gems listed in Gemfile, including any gems
-# you've limited to :test, :development, or :production.
-Bundler.require(*Rails.groups)
-
 require 'figs'
 # Don't run this initializer on CIRCLECI.
 Figs.load(stage: Rails.env) unless ENV['CIRCLECI']
+
+# Require the gems listed in Gemfile, including any gems
+# you've limited to :test, :development, or :production.
+Bundler.require(*Rails.groups)
 
 module Eshelf
   EXAMPLE_ORIGIN = 'example.com'

@@ -80,7 +80,7 @@ gem 'exlibris-primo', github: 'NYULibraries/exlibris-primo', tag: 'v2.2.0'
 gem 'citero', github: 'NYULibraries/citero', tag: 'v1.0.2'
 gem 'acts_as_citable', github: 'NYULibraries/acts_as_citable', branch: 'feature/rails5' #tag: 'v5.0.0.beta'
 
-gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.1.2'
+gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.2.0'
 gem 'devise', '~> 4.6.0'
 gem 'rest-client', '~> 2.0.2'
 
