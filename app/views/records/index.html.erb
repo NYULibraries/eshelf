@@ -12,8 +12,8 @@
       <%= content_tag :div, flash[:notice] %>
     </div>
   <% end %>
-  <% @records.each_index do |record_idx| %>
-    <%= render 'record', :record => @records[record_idx], :record_idx => @records.offset_value+record_idx+1 %>
+  <% @records.each_with_index do |record, index| %>
+    <%= render 'record', record: record, record_idx: @records.offset_value+index+1 %>
   <% end %>
   <%= paginate @records, :theme => "bootstrap" %>
 </div>

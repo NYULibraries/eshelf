@@ -21,24 +21,5 @@ describe RecordsHelper do
     its([3]) { is_expected.to include %Q(Download as BibTex) }
   end
 
-  describe '#cite_path' do
-    let(:format) { 'refworks' }
-    subject { helper.cite_path(format) }
-    context 'when format is refworks' do
-      it { is_expected.to eql 'https://cite-dev.library.nyu.edu/?calling_system=primo&institution=NYU&cite_to=refworks' }
-    end
-    context 'when format is endnote' do
-      let(:format) { 'endnote' }
-      it { is_expected.to eql 'https://cite-dev.library.nyu.edu/?calling_system=primo&institution=NYU&cite_to=endnote' }
-    end
-    context 'when format is anything' do
-      let(:format) { 'blah' }
-      it { is_expected.to eql 'https://cite-dev.library.nyu.edu/?calling_system=primo&institution=NYU&cite_to=blah' }
-    end
-    context 'when institution is NYSID' do
-      before { sign_in create(:nysid_user) }
-      it { is_expected.to eql 'https://cite-dev.library.nyu.edu/?calling_system=primo&institution=NYSID&cite_to=refworks' }
-    end
-  end
-
+  
 end

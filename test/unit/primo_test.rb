@@ -7,9 +7,9 @@ class PrimoTest < ActiveSupport::TestCase
   end
 
   test "new nokogiri xml document" do
-    assert_nothing_raised("New Nokogiri::XML::Document raises an error.") {
+    assert_nothing_raised do
       Nokogiri::XML::Document.new
-    }
+    end
   end
 
   test "becomes external system" do

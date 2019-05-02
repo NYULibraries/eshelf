@@ -20,7 +20,7 @@ namespace :eshelf do
   # Based on suggestion at https://github.com/rails/sprockets-rails/issues/49#issuecomment-20535134
   # but limited to files in umlaut's namespaced asset directories.
   task :create_non_digest_assets => :"assets:environment"  do
-    manifest_path = Dir.glob(File.join(Rails.root, 'public/assets/manifest-*.json')).first
+    manifest_path = Dir.glob(File.join(Rails.root, 'public/assets/.sprockets-manifest-*.json')).first
     manifest_data = JSON.load(File.new(manifest_path))
 
     manifest_data["assets"].each do |logical_path, digested_path|

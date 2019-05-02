@@ -42,20 +42,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  prepend_before_filter :passive_login, unless: -> { ignore_passive_login? }
+  prepend_before_action :passive_login, unless: -> { ignore_passive_login? }
   def passive_login
     if !cookies[:_check_passive_login]
       cookies[:_check_passive_login] = true
       redirect_to passive_login_url
     end
   end
-
-  # Returns the session's TmpUser
-  # Sets the sessions' TmpUser if necessary.
-  def tmp_user
-    @tmp_user ||= (session[:tmp_user].blank?) ? (session[:tmp_user] = TmpUser.create) : session[:tmp_user]
-  end
-  private :tmp_user
 
   # Returns the User or TmpUser associated with this session
   def user
@@ -65,7 +58,7 @@ class ApplicationController < ActionController::Base
 
   # Returns an ActiveRecord relation of the user's record
   def user_records
-    @user_records ||= user.records.sorted(current_sort)
+    @user_records = (view_context.filter_params[:sort].present?) ? user.records.order("#{view_context.parsed_current_sort.first} #{view_context.parsed_current_sort.last}", view_context.secondary_sort) : user.records.order(:created_at) 
   end
   helper_method :user_records
 
@@ -76,14 +69,13 @@ class ApplicationController < ActionController::Base
   end
   protected :double_escape_quotes
 
-  # Returns the current sort
-  # Default sort is newest first.
-  def current_sort
-    @current_sort ||= (params[:sort]||"created_at_desc")
-  end
-  helper_method :current_sort
-
  private
+
+  # Returns the session's TmpUser
+  # Sets the sessions' TmpUser if necessary.
+  def tmp_user
+    @tmp_user ||= (session[:tmp_user].blank?) ? (session[:tmp_user] = TmpUser.create) : session[:tmp_user]
+  end
 
   # Save temporary records to the current user
   # Intended to be called after validate on login

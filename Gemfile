@@ -1,7 +1,6 @@
 source "https://rubygems.org"
 
-gem 'rails', '4.2.11.1'
-# gem 'railties', '4.2.11.1'
+gem 'rails', '~> 5.2.3'
 gem 'rake', '~> 10.1'
 
 # Add CORS support
@@ -29,9 +28,10 @@ group :no_docker do
 end
 
 gem 'listen', '~> 3.1.5'
+gem 'bootsnap', '~> 1.4.2', require: false
 
 # Use the Compass CSS framework for sprites, etc.
-gem 'compass-rails', '~> 2.0.0'
+gem 'compass-rails', '~> 3.1.0'
 
 # Use modernizr to detect CORS availability
 gem 'modernizr-rails', '~> 2.7.0'
@@ -52,7 +52,7 @@ gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.8.0'
 gem 'figs', '~> 2.0.2'
 
 # Font awesome for icons
-gem 'font-awesome-rails', '~> 4.2.0'
+gem 'font-awesome-rails', '~> 4.7.0.5'
 
 # Development and testing gems
 group :development, :test do
@@ -65,20 +65,22 @@ group :development, :test do
   gem 'coveralls', '~> 0.8.20', require: false
   gem 'vcr', '~> 3.0.3'
   gem 'webmock', '~> 3.1.1'
-  gem 'cucumber-rails', '~> 1.5.0', require: false
+  gem 'cucumber-rails', '~> 1.7.0', require: false
   gem 'database_cleaner', '~> 1.6.0'
   gem 'rspec-mocks'
   gem 'rspec_junit_formatter'
   gem 'minitest-reporters'
+  gem 'rails-controller-testing'
 end
 
 # NYU customization gems
-gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.4.0'
+gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.4.1'
+gem 'exlibris-primo', github: 'NYULibraries/exlibris-primo', tag: 'v2.2.0'
 
 gem 'citero', github: 'NYULibraries/citero', tag: 'v1.0.2'
-gem 'acts_as_citable', github: 'NYULibraries/acts_as_citable', tag: 'v5.0.0.beta'
+gem 'acts_as_citable', github: 'NYULibraries/acts_as_citable', branch: 'feature/rails5' #tag: 'v5.0.0.beta'
 
-gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.1.2'
+gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.2.0'
 gem 'devise', '~> 4.6.0'
 gem 'rest-client', '~> 2.0.2'
 
@@ -86,13 +88,10 @@ gem 'rest-client', '~> 2.0.2'
 gem 'dalli', '~> 2.7.0'
 
 # Use Kaminari for paging
-gem 'kaminari', '~> 0.16.0'
-
-# Use sorted for sorting
-gem 'sorted', '~> 1.0.0'
+gem 'kaminari', '~> 1.1.1'
 
 # Acts as taggable on
-gem 'acts-as-taggable-on', '~> 3.4.0'
+gem 'acts-as-taggable-on', '~> 6.0.0'
 
 # Convert old records with activerecord-import
 # gem 'activerecord-import', '~> 0.18.0'
