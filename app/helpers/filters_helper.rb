@@ -43,7 +43,7 @@ module FiltersHelper
   end
 
   def filter_params
-    params.permit(:page, :content_type, :tag, :external_system, :external_id, :sort, :per, :id, id: [])
+    params.permit(:page, :content_type, :tag, :external_system, :external_id, :sort, :per, :format, :_, :institution, :id, id: [])
   end
 
  protected
