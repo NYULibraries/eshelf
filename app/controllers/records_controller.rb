@@ -53,11 +53,11 @@ class RecordsController < ApplicationController
   # Get the records by external system and external id(s).
   # TODO: probably unnecessary and can be merged with index.
   def from_external_system
-    @records = user_records.where(external_system: params[:external_system])
-    @records = @records.where(external_id: params[:external_id]) if params[:external_id]
+    @records = user_records.where(external_system: from_external_system_params[:external_system])
+    @records = @records.where(external_id: from_external_system_params[:external_id]) if from_external_system_params[:external_id]
     # Get the relevant page unless all is specified
-    @records = (params[:per].eql? "all") ?
-      @records.page(1).per(user_records.count) : @records.page(params[:page]).per(params[:per])
+    @records = (from_external_system_params[:per].eql? "all") ?
+      @records.page(1).per(user_records.count) : @records.page(params[:page]).per(view_context.filter_params[:per])
     respond_with(@records) do |format|
       format.html { render :index }
     end
@@ -178,6 +178,10 @@ class RecordsController < ApplicationController
   def record_params
     params.require(:record).permit(:external_system, :external_id, :format,
       :data, :title, :author, :url, :title_sort, :content_type)
+  end
+
+  def from_external_system_params
+    params.permit(:per, :format, :_, :external_id, :external_system, :institution)
   end
 
   # Whitelisted CORS origins
