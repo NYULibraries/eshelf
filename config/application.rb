@@ -25,11 +25,14 @@ module Eshelf
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
+        # origins 'http://localhost:8004', 'localhost', '127.0.0.1', 'localhost:8004'
         origins *whitelisted_origins
         resource %r{/records/from/\w+.json(\?.*)?}, headers: :any, methods: [:get], expose: 'X-CSRF-Token'
         resource '/records.json', headers: :any, methods: [:post, :delete], expose: 'X-CSRF-Token'
       end
     end
+
+    # config.middleware.insert_after Rails::Rack::Logger, Rack::Cors, :logger => Rails.logger
 
     # Default Mailer Host
     config.action_mailer.default_url_options = {host: 'https://eshelf.library.nyu.edu'}
@@ -42,4 +45,5 @@ end
 
 Raven.configure do |config|
   config.dsn = ENV['SENTRY_DSN']
+  config.environments = ['staging','qa','production']
 end
