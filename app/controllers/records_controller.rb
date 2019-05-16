@@ -25,7 +25,7 @@ class RecordsController < ApplicationController
 
   respond_to :xml, :json
   respond_to :html, except: [:create]
-  respond_to :js, only: [:api]
+  # respond_to :js, only: [:api]
 
   # Get the user's records, filtered by
   # whatever filters were given.
