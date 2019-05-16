@@ -1,6 +1,6 @@
 class Record < ApplicationRecord
-  belongs_to :user
-  belongs_to :tmp_user
+  belongs_to :user, optional: true
+  belongs_to :tmp_user, optional: true
   has_many :locations, :dependent => :destroy
   paginates_per 10
   # Subclasses are defined by their external system

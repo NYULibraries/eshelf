@@ -68,52 +68,11 @@ module RecordsHelper
       link_to(t('record.collection.export.options.bibtex'), cite_path("bibtex"), id: :bibtex, target: :_blank) ]
   end
 
+ protected
+
   def cite_path(format)
     institution = current_user&.institution_code || 'NYU'
     return Eshelf::Citation.cite_url(format: format, institution: institution)
   end
 
-  # Returns an Array of 'per page' pagination options as HTML links
-  #   - 10
-  #   - 20
-  #   - 50
-  #   - 100
-  def per_page_options
-    [ link_to(10, records_path({per: 10}.merge current_filters)),
-      link_to(20, records_path({per: 20}.merge current_filters)),
-      link_to(50, records_path({per: 50}.merge current_filters)),
-      link_to(100, records_path({per: 100}.merge current_filters)) ]
-  end
-
-  # Returns an Array of sort options as HTML links
-  #   - Created at
-  #   - Title
-  #   - Author
-  def sort_options
-    [ link_to_sorted(t('record.collection.sort.options.created_at'), :created_at),
-      link_to_sorted(t('record.collection.sort.options.title_sort'), :title_sort),
-      link_to_sorted(t('record.collection.sort.options.author'), :author) ]
-  end
-
-  def current_sort_label
-    @current_sort_label ||= t("record.collection.sort.options.#{parsed_current_sort.first}").html_safe
-  end
-
-  def parsed_current_sort
-    @parsed_current_sort ||= Sorted::Parser.new(current_sort).parse_sort.first
-  end
-
-  # Returns a Hash of the currently applied filters
-  #   - content type
-  #   - tag
-  #   - id
-  #   - external_system
-  #   - external_id
-  #   - sort
-  def current_filters
-    { content_type: params[:content_type], tag: params[:tag], id: params[:id],
-      external_system: params[:external_system], external_id: params[:external_id],
-      sort: params[:sort] }
-  end
-  protected :current_filters
-end
+ end

@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   private
 
   def account_params
-    params.select { |k,v| k === :institution.to_s }
+    params.permit(:institution).select { |k,v| k === :institution.to_s }
   end
 
   def pds_login
