@@ -25,7 +25,6 @@ module Eshelf
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        # origins 'http://localhost:8004', 'localhost', '127.0.0.1', 'localhost:8004'
         origins *whitelisted_origins
         resource %r{/records/from/\w+.json(\?.*)?}, headers: :any, methods: [:get], expose: 'X-CSRF-Token', credentials: true
         resource '/records.json', headers: :any, methods: [:post, :delete], expose: 'X-CSRF-Token', credentials: true
