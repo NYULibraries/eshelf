@@ -4,8 +4,8 @@
 # Copyright:: Copyright (c) 2013 New York University
 # License::   Distributes under the same terms as Ruby
 class ApplicationController < ActionController::Base
-  protect_from_forgery
-
+  protect_from_forgery with: :exception
+  
   layout Proc.new { |controller| (controller.request.xhr?) ? false : "eshelf" }
 
   # For dev purposes
