@@ -74,11 +74,7 @@ class ApplicationController < ActionController::Base
   # Returns the session's TmpUser
   # Sets the sessions' TmpUser if necessary.
   def tmp_user
-    @tmp_user ||= begin
-      TmpUser.find(session.try(:tmp_user).try('id'))
-    rescue ActiveRecord::RecordNotFound => e
-      session[:tmp_user] = TmpUser.create
-    end
+    @tmp_user ||= (session[:tmp_user].blank?) ? (session[:tmp_user] = TmpUser.create) : TmpUser.find(session[:tmp_user]['id'])
   end
 
   # Save temporary records to the current user
