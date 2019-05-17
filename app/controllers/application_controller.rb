@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def current_user_dev
     @current_user_dev ||= User.find_by_username("hero123")
   end
-  # alias :current_user :current_user_dev if Rails.env.development?
+  alias :current_user :current_user_dev if Rails.env.development?
 
   # Alias new_session_path as login_path for default devise config
   def new_session_path(scope)
@@ -74,7 +74,11 @@ class ApplicationController < ActionController::Base
   # Returns the session's TmpUser
   # Sets the sessions' TmpUser if necessary.
   def tmp_user
-    @tmp_user ||= (session[:tmp_user].blank?) ? (session[:tmp_user] = TmpUser.create) : TmpUser.find(session[:tmp_user]['id'])
+    @tmp_user ||= begin
+      TmpUser.find(session.try(:tmp_user).try('id'))
+    rescue ActiveRecord::RecordNotFound => e
+      session[:tmp_user] = TmpUser.create
+    end
   end
 
   # Save temporary records to the current user

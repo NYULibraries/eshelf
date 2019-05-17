@@ -21,5 +21,21 @@ describe RecordsHelper do
     its([3]) { is_expected.to include %Q(Download as BibTex) }
   end
 
+  describe '#deselect_content_type' do
+    subject { helper.deselect_content_type(content_type, current_content_type) }
+    let(:content_type) { 'book' }
+    let(:current_content_type) { 'article' }
+
+    context 'when content type iteration does not match the currently selected content type' do
+      it { is_expected.to be_nil }
+    end
+
+    context 'when content type iteration matches the currently selected content type' do
+      let(:current_content_type) { 'book' }
+      it { is_expected.to include '<span class="deselect_filter">' }
+      it { is_expected.to include '/records"><i class="fa fa-times"></i></a>' }
+    end
+  end
+
   
 end

@@ -2,10 +2,11 @@
   <%= content_tag :h3, t('shelf.content_types.title_html') %>
   <div id="records_content_types">
     <ul class="nav-list">
-      <% user.records.content_types.each do |record| %>
-        <%= content_tag(:li, class: (record.content_type.eql?(params[:content_type])) ? "active" : "") {
-          link_to record.content_type.capitalize, records_url(content_type: record.content_type)
-        } unless record.content_type.nil? %>
+      <% user.records.content_types.each do |content_type| %>
+        <%= content_tag(:li, class: (content_type.eql?(params[:content_type])) ? "active" : "") do
+          link_to(content_type.capitalize, records_url(content_type: content_type))+
+          deselect_content_type(content_type, params[:content_type])
+        end %>
       <% end %>
     </ul>
   </div>

@@ -68,6 +68,10 @@ module RecordsHelper
       link_to(t('record.collection.export.options.bibtex'), cite_path("bibtex"), id: :bibtex, target: :_blank) ]
   end
 
+  def deselect_content_type(content_type, current_content_type)
+    content_tag(:span, link_to(fa_icon(:times), records_url), class: 'deselect_filter') if content_type.eql?(current_content_type)
+  end
+
  protected
 
   def cite_path(format)
