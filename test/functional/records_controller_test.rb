@@ -66,12 +66,12 @@ class RecordsControllerTest < ActionController::TestCase
     assert_nil response.headers['X-CSRF-Token']
     assert_select "form#user_tags_search.form-search.js" do |elements|
       elements.each do |element|
-        assert_select element, ".search-query", { placeholder: "Filter labels" }
+        assert_select element, ".search-query", { placeholder: "Filter tags" }
       end
     end
     assert_select "div#user_tags" do |elements|
       elements.each do |element|
-        assert_select element, "ul.nav-list > li > a", { count: 1, text: "Your labels", href: "users/tags"}
+        assert_select element, "ul.nav-list > li > a", { count: 1, text: "Your tags", href: "users/tags"}
       end
     end
   end

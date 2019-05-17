@@ -29,15 +29,23 @@ en:
     content_types:
       title_html: Formats
     tags:
-      title_html: Labels
-      user_tags_html: Your labels
-      more: more labels
-      placeholder: Filter labels
+      title_html: Tags
+      user_tags_html: Your tags
+      more: more tags
+      placeholder: Filter tags
     links:
       account_html: My library account
       ill_html: My interlibrary loan (ILL)
       records_html: All saved records
   record:
+    tag_list:
+      add: Add tags
+      edit: Edit tags
+      save: Save tags
+      label_html: "Tags:"
+      placeholder: Add comma delimited tags
+      submit_html: Save tags
+      no_tags: No tags found
     select:
       title_html: Select
       something: Please select some records.

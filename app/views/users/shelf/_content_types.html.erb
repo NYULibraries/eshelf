@@ -5,7 +5,7 @@
       <% user.records.content_types.each do |content_type| %>
         <%= content_tag(:li, class: (content_type.eql?(params[:content_type])) ? "active" : "") do
           link_to(content_type.capitalize, records_url(content_type: content_type))+
-          deselect_content_type(content_type, params[:content_type])
+          deselect_filter(content_type, params[:content_type])
         end %>
       <% end %>
     </ul>

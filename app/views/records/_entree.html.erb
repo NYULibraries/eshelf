@@ -1,5 +1,5 @@
 <%= content_tag(:h2, class: "title") { link_to(record.title, getit_record_url(record), target: "_blank") } %>
-<%= content_tag(:div, t('record.getit_html'), class: ["delivery", "text-success"]) %>
+<%#= content_tag(:div, t('record.getit_html'), class: ["delivery", "text-success"]) %>
 <%= content_tag(:div, record.author, class: "author") %>
 <%= content_tag(:div, class: "created_at") do
   content_tag(:span, "#{t('record.created_at_label')} ") +

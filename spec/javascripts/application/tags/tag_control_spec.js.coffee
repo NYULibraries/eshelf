@@ -6,30 +6,30 @@ describe "TagControl", ->
     @fixtures = fixture.load 'tags/controls.html', true
     controls = $(".controls", fixture.el)
     tagControl = new window.eshelf.tags.TagControl
-      text: "add"
-      icon: "add"
+      text: "Add tags"
+      icon: "fa fa-plus-circle"
     controls.append tagControl.jQuery()
 
   describe "#text", ->
     it "should be defined", ->
       expect(tagControl.text).toBeDefined()
 
-    it "should have 'add' as the text", ->
-      expect(tagControl.text).toEqual "add"
+    it "should have 'Add tags' as the text", ->
+      expect(tagControl.text).toEqual "Add tags"
 
   describe "#icon", ->
     it "should be defined", ->
       expect(tagControl.icon).toBeDefined()
 
-    it "should have 'add' as the icon", ->
-      expect(tagControl.icon).toEqual "add"
+    it "should have 'fa fa-plus-circle' as the icon", ->
+      expect(tagControl.icon).toEqual "fa fa-plus-circle"
 
   describe "#iconClass", ->
     it "should be defined", ->
       expect(tagControl.iconClass).toBeDefined()
 
-    it "should have 'icons-famfamfam-add' as the famfam class", ->
-      expect(tagControl.iconClass).toEqual "icons-famfamfam-add"
+    it "should have 'fa fa-plus-circle' as the famfam class", ->
+      expect(tagControl.iconClass).toEqual "fa fa-plus-circle"
 
   describe "#jQuery", ->
     it "should be defined", ->
@@ -68,7 +68,7 @@ describe "TagControl", ->
     it "should be an HTML anchor tag", ->
       expect(tagControl.html()).toMatch(
         "<a href=\"#\" class=\"muted\" style=\"display: none;\\s?\">"+
-          "<i class=\"icons-famfamfam-add\"></i><span>add</span></a>")
+          "<i class=\"fa fa-plus-circle\"></i><span>Add tags</span></a>")
 
 describe "AddControl", ->
   addControl = null
@@ -82,22 +82,22 @@ describe "AddControl", ->
     it "should be defined", ->
       expect(addControl.text).toBeDefined()
 
-    it "should have 'add' as the text", ->
-      expect(addControl.text).toEqual "add"
+    it "should have 'Add tags' as the text", ->
+      expect(addControl.text).toEqual "Add tags"
 
   describe "#icon", ->
     it "should be defined", ->
       expect(addControl.icon).toBeDefined()
 
-    it "should have 'add' as the icon", ->
-      expect(addControl.icon).toEqual "add"
+    it "should have 'fa fa-plus-circle' as the icon", ->
+      expect(addControl.icon).toEqual "fa fa-plus-circle"
 
   describe "#iconClass", ->
     it "should be defined", ->
       expect(addControl.iconClass).toBeDefined()
 
-    it "should have 'icons-famfamfam-add' as the famfam class", ->
-      expect(addControl.iconClass).toEqual "icons-famfamfam-add"
+    it "should have 'fa fa-plus-circle' as the famfam class", ->
+      expect(addControl.iconClass).toEqual "fa fa-plus-circle"
 
   describe "#jQuery", ->
     it "should be defined", ->
@@ -136,7 +136,7 @@ describe "AddControl", ->
     it "should be an HTML anchor tag", ->
       expect(addControl.html()).toMatch(
         "<a href=\"#\" class=\"muted\" style=\"display: none;\\s?\">"+
-          "<i class=\"icons-famfamfam-add\"></i><span>add</span></a>")
+          "<i class=\"fa fa-plus-circle\"></i><span>Add tags</span></a>")
 
 describe "EditControl", ->
   editControl = null
@@ -151,21 +151,21 @@ describe "EditControl", ->
       expect(editControl.text).toBeDefined()
 
     it "should have 'edit' as the text", ->
-      expect(editControl.text).toEqual "edit"
+      expect(editControl.text).toEqual "Edit tags"
 
   describe "#icon", ->
     it "should be defined", ->
       expect(editControl.icon).toBeDefined()
 
     it "should have 'edit' as the icon", ->
-      expect(editControl.icon).toEqual "pencil_add"
+      expect(editControl.icon).toEqual "fa fa-pencil"
 
   describe "#iconClass", ->
     it "should be defined", ->
       expect(editControl.iconClass).toBeDefined()
 
-    it "should have 'icons-famfamfam-pencil_add' as the famfam class", ->
-      expect(editControl.iconClass).toEqual "icons-famfamfam-pencil_add"
+    it "should have 'fa fa-pencil' as the famfam class", ->
+      expect(editControl.iconClass).toEqual "fa fa-pencil"
 
   describe "#jQuery", ->
     it "should be defined", ->
@@ -204,7 +204,7 @@ describe "EditControl", ->
     it "should be an HTML anchor tag", ->
       expect(editControl.html()).toMatch(
         "<a href=\"#\" class=\"muted\" style=\"display: none;\\s?\">"+
-          "<i class=\"icons-famfamfam-pencil_add\"></i><span>edit</span></a>")
+          "<i class=\"fa fa-pencil\"></i><span>Edit tags</span></a>")
 
 describe "SaveControl", ->
   saveControl = null
@@ -219,21 +219,21 @@ describe "SaveControl", ->
       expect(saveControl.text).toBeDefined()
 
     it "should have add as the text", ->
-      expect(saveControl.text).toEqual "save"
+      expect(saveControl.text).toEqual "Save tags"
 
   describe "#icon", ->
     it "should be defined", ->
       expect(saveControl.icon).toBeDefined()
 
-    it "should have 'disk' as the icon", ->
-      expect(saveControl.icon).toEqual "disk"
+    it "should have 'fa fa-save' as the icon", ->
+      expect(saveControl.icon).toEqual "fa fa-save"
 
   describe "#iconClass", ->
     it "should be defined", ->
       expect(saveControl.iconClass).toBeDefined()
 
-    it "should have 'icons-famfamfam-disk' as the famfam class", ->
-      expect(saveControl.iconClass).toEqual "icons-famfamfam-disk"
+    it "should have 'fa fa-save' as the famfam class", ->
+      expect(saveControl.iconClass).toEqual "fa fa-save"
 
   describe "#jQuery", ->
     it "should be defined", ->
@@ -272,7 +272,7 @@ describe "SaveControl", ->
     it "should be an HTML anchor tag", ->
       expect(saveControl.html()).toMatch(
         "<a href=\"#\" class=\"muted\" style=\"display: none;\\s?\">"+
-          "<i class=\"icons-famfamfam-disk\"></i><span>save</span></a>")
+          "<i class=\"fa fa-save\"></i><span>Save tags</span></a>")
 
 describe "ControlSet", ->
   controlSet = null
@@ -287,13 +287,13 @@ describe "ControlSet", ->
       expect(controlSet.controls).toBeDefined()
 
     it "has an add control", ->
-      expect(controlSet.controls.add.text).toEqual "add"
+      expect(controlSet.controls.add.text).toEqual "Add tags"
 
     it "has an edit control", ->
-      expect(controlSet.controls.edit.text).toEqual "edit"
+      expect(controlSet.controls.edit.text).toEqual "Edit tags"
 
     it "has an save control", ->
-      expect(controlSet.controls.save.text).toEqual "save"
+      expect(controlSet.controls.save.text).toEqual "Save tags"
 
   describe "#showAdd", ->
     beforeEach ->
@@ -357,8 +357,8 @@ describe "ControlSet", ->
     it "should be an HTML span with 3 control anchors", ->
       expect(controlSet.html()).toMatch "<span class=\"controls\">" +
         "<a href=\"#\" class=\"muted\" style=\"display: none;\\s?\">"+
-          "<i class=\"icons-famfamfam-add\"></i><span>add</span></a>" +
+          "<i class=\"fa fa-plus-circle\"></i><span>Add tags</span></a>" +
         "<a href=\"#\" class=\"muted\" style=\"display: none;\\s?\">"+
-          "<i class=\"icons-famfamfam-pencil_add\"></i><span>edit</span></a>" +
+          "<i class=\"fa fa-pencil\"></i><span>Edit tags</span></a>" +
         "<a href=\"#\" class=\"muted\" style=\"display: none;\\s?\">"+
-          "<i class=\"icons-famfamfam-disk\"></i><span>save</span></a></span>"
+          "<i class=\"fa fa-save\"></i><span>Save tags</span></a></span>"

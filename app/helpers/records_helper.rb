@@ -68,11 +68,49 @@ module RecordsHelper
       link_to(t('record.collection.export.options.bibtex'), cite_path("bibtex"), id: :bibtex, target: :_blank) ]
   end
 
-  def deselect_content_type(content_type, current_content_type)
-    content_tag(:span, link_to(fa_icon(:times), records_url), class: 'deselect_filter') if content_type.eql?(current_content_type)
+  def deselect_filter(filter, selected_filter)
+    content_tag(:span, link_to(fa_icon(:times), records_url), class: 'deselect_filter') if filter.eql?(selected_filter)
   end
 
+  def content_type_tag(content_type)
+    raise ArgumentError, "content_type must be a string" unless content_type.is_a? String
+    content_tag(:figure, class: "content-type") do
+      fa_icon(content_type_to_fa_icon(content_type)) +
+        content_tag(:figcaption, content_type.capitalize.tr("_", " "))
+    end
+  end
+    
  protected
+
+  def content_type_to_fa_icon(content_type)
+    content_type = content_type.downcase.to_sym
+    return font_awesome_mapping[content_type]    
+  end
+
+  def font_awesome_mapping
+    {
+      archives: 'archive',
+      article: 'bookmark',
+      audio: 'volume-up',
+      book: 'book',
+      database: 'database',
+      dataset: 'table',
+      essay: 'file-text',
+      image: 'file-image-o',
+      journal: 'file-text-o',
+      map: 'map',
+      newspaper: 'newspaper-o',
+      score: 'music',
+      text: 'file-text',
+      unknown: 'question-circle',
+      video: 'video-camera',
+      conference_paper: 'file-text',
+      conference_proceedings: 'file-text',
+      dissertation: 'file-text',
+      thesis: 'file-text',
+      working_paper: 'file-text',
+    }
+  end
 
   def cite_path(format)
     institution = current_user&.institution_code || 'NYU'

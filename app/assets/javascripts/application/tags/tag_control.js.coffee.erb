@@ -7,7 +7,7 @@ class TagControl
     # Click event for the control
     @click = attributes.click
     # Famfamfam icon class
-    @iconClass = "icons-famfamfam-#{@icon}"
+    @iconClass = "#{@icon}"
     # Initial state is hidden
     @hide()
 
@@ -34,21 +34,21 @@ class AddControl extends TagControl
     super
       click: click
       text: "<%= I18n.t("record.tag_list.add") %>"
-      icon: "add"
+      icon: "fa fa-plus-circle"
 
 class EditControl extends TagControl
   constructor: (click) ->
     super
       click: click
       text: "<%= I18n.t("record.tag_list.edit") %>"
-      icon: "pencil_add"
+      icon: "fa fa-pencil"
 
 class SaveControl extends TagControl
   constructor: (click) ->
     super
       click: click
       text: "<%= I18n.t("record.tag_list.save") %>"
-      icon: "disk"
+      icon: "fa fa-save"
 
 class ControlSet
   constructor: (attributes) ->
