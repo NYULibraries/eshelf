@@ -78,7 +78,7 @@ gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.4.1'
 gem 'exlibris-primo', github: 'NYULibraries/exlibris-primo', tag: 'v2.2.0'
 
 gem 'citero', github: 'NYULibraries/citero', tag: 'v1.0.2'
-gem 'acts_as_citable', github: 'NYULibraries/acts_as_citable', branch: 'feature/rails5' #tag: 'v5.0.0.beta'
+gem 'acts_as_citable', github: 'NYULibraries/acts_as_citable', tag: 'v5.1.0'
 
 gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.2.0'
 gem 'devise', '~> 4.6.0'
