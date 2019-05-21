@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/NYULibraries/acts_as_citable.git
-  revision: 17821aa72a9a0ff9ae78444b6c5609eca407b735
-  branch: feature/rails5
+  revision: 6e86490a199c10fd8dba5b5475855ae491d6ebff
+  tag: v5.1.0
   specs:
-    acts_as_citable (5.0.0.beta)
+    acts_as_citable (5.1.0)
       citero (~> 1.0.0.beta)
       rails (>= 4.0.0, < 6)
 
