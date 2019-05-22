@@ -36,5 +36,8 @@ wiki
 .local
 .pki
 .cache
+node_modules
+yarn.lock
 
 test-results/
+.pry_history

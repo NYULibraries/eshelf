@@ -18,14 +18,14 @@
 class RecordsController < ApplicationController
   API_ACTIONS = %w{ from_external_system create destroy }
 
-  after_filter :respond_with_csrf_header
+  after_action :respond_with_csrf_header
 
   WHITELISTED_EMAIL_FORMATS = ["brief", "medium", "full"]
   WHITELISTED_PRINT_FORMATS = ["brief", "medium", "full"]
 
   respond_to :xml, :json
   respond_to :html, except: [:create]
-  respond_to :js, only: [:api]
+  # respond_to :js, only: [:api]
 
   # Get the user's records, filtered by
   # whatever filters were given.
@@ -33,14 +33,14 @@ class RecordsController < ApplicationController
     # Get the user's records
     @records = user_records
     # Filter by the specified content type if given
-    @records = @records.where(content_type: params[:content_type]) if params[:content_type]
+    @records = @records.where(content_type: view_context.filter_params[:content_type]) if view_context.filter_params[:content_type]
     # Filter by the specified tag if given
-    @records = @records.tagged_with(double_escape_quotes(params[:tag])) if current_user && params[:tag]
+    @records = @records.tagged_with(double_escape_quotes(view_context.filter_params[:tag])) if current_user && view_context.filter_params[:tag]
     # Get the selected id(s) if given
     @records = @records.where(id: params[:id]) if params[:id]
     # Get the relevant page unless all is specified
-    @records = (params[:per].eql? "all") ?
-      @records.page(1).per(user_records.count) : @records.page(params[:page]).per(params[:per])
+    @records = (view_context.filter_params[:per].eql? "all") ?
+      @records.page(1).per(user_records.count) : @records.page(view_context.filter_params[:page]).per(view_context.filter_params[:per])
     respond_with(@records) unless performed?
   end
 
@@ -53,11 +53,11 @@ class RecordsController < ApplicationController
   # Get the records by external system and external id(s).
   # TODO: probably unnecessary and can be merged with index.
   def from_external_system
-    @records = user_records.where(external_system: params[:external_system])
-    @records = @records.where(external_id: params[:external_id]) if params[:external_id]
+    @records = user_records.where(external_system: from_external_system_params[:external_system])
+    @records = @records.where(external_id: from_external_system_params[:external_id]) if from_external_system_params[:external_id]
     # Get the relevant page unless all is specified
-    @records = (params[:per].eql? "all") ?
-      @records.page(1).per(user_records.count) : @records.page(params[:page]).per(params[:per])
+    @records = (from_external_system_params[:per].eql? "all") ?
+      @records.page(1).per(user_records.count) : @records.page(params[:page]).per(view_context.filter_params[:per])
     respond_with(@records) do |format|
       format.html { render :index }
     end
@@ -136,17 +136,17 @@ class RecordsController < ApplicationController
     end
   end
 
+ private
+
   # Get's the institution's getit url if it exists
   def institution_getit_url
     current_primary_institution.getit_url if current_primary_institution.respond_to?(:getit_url)
   end
-  private :institution_getit_url
 
   # Checks to see if the external system is set to primo
   def has_primo_as_external_system?
     @record.external_system.eql?("primo")
   end
-  private :has_primo_as_external_system?
 
   def getit_url
     # Default to the regular GetIt url without specifying institution if URL
@@ -164,25 +164,25 @@ class RecordsController < ApplicationController
       response.headers['X-CSRF-Token'] = form_authenticity_token
     end
   end
-  private :respond_with_csrf_header
 
   # Whitelist the candidate email format
   def whitelist_email_format(candidate)
     WHITELISTED_EMAIL_FORMATS.find{ |format| format == candidate }
   end
-  private :whitelist_email_format
 
   # Whitelist the candidate print format
   def whitelist_print_format(candidate)
     WHITELISTED_PRINT_FORMATS.find{ |format| format == candidate }
   end
-  private :whitelist_print_format
 
   def record_params
-    params.require(:record).permit :external_system, :external_id, :format,
-      :data, :title, :author, :url, :title_sort, :content_type
+    params.require(:record).permit(:external_system, :external_id, :format,
+      :data, :title, :author, :url, :title_sort, :content_type)
   end
-  private :record_params
+
+  def from_external_system_params
+    params.permit(:per, :format, :_, :external_id, :external_system, :institution)
+  end
 
   # Whitelisted CORS origins
   def whitelisted_origins

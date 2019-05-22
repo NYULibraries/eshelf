@@ -1,4 +1,4 @@
-FROM ruby:2.5.5-alpine
+FROM ruby:2.6.2-alpine
 
 ENV DOCKER true
 ENV INSTALL_PATH /app
@@ -9,7 +9,7 @@ ENV PATH="${BUNDLE_BIN}:${PATH}"
 ENV USER docker
 ENV NODE_VERSION=10.x
 
-ENV RUN_PACKAGES bash ca-certificates fontconfig git mariadb-dev nodejs nodejs-npm tzdata 
+ENV RUN_PACKAGES bash ca-certificates fontconfig git less mariadb-dev nodejs nodejs-npm tzdata 
 ENV BUILD_PACKAGES build-base curl curl-dev linux-headers ruby-dev wget
 
 RUN addgroup -g 2000 $USER && \
@@ -20,7 +20,7 @@ WORKDIR $INSTALL_PATH
 # Bundle install
 COPY Gemfile Gemfile.lock ./
 RUN apk add --no-cache --update $BUILD_PACKAGES $RUN_PACKAGES \
-  && gem install bundler -v '1.17.3' \
+  && gem install bundler -v '2.0.1' \
   && bundle config --local github.https true \
   && bundle install --without no_docker --jobs 20 --retry 5 \
   && chown -R docker:docker $BUNDLE_PATH \

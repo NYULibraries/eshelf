@@ -24,14 +24,15 @@ describe RecordsController do
     end
   end
 
-  describe '#getit' do
+  describe 'GET /records/1/getit' do
+    let!(:user)    { FactoryBot.create(:user) }
     before(:each) { allow_any_instance_of(RecordsController).to receive(:current_user).and_return(user) }
     before(:each) { allow_any_instance_of(Eshelf::PnxJson).to receive(:openurl).and_return(record.url) }
     let!(:record)  { FactoryBot.create(:user_record, :primo, data: "data") }
+    before { get :getit, params: {id: record.id} }
+    subject { last_response }
     context 'when the user is an NYU user' do
-      let!(:user)    { FactoryBot.create(:user) }
-      it 'should redirect to a getit', :vcr do
-        get :getit, id: record.id
+      it 'should redirect to a getit' do
         expect(response).to redirect_to("https://dev.getit.library.nyu.edu/nyu/resolve?#{record.url}")
         expect(response.headers['X-CSRF-Token']).to be_nil
       end
@@ -39,10 +40,63 @@ describe RecordsController do
     context 'when the user is not an NYU user' do
       let!(:user)    { FactoryBot.create(:nysid_user) }
       it 'should redirect to a configuration defined persistent linker' do
-        get :getit, id: record.id
         expect(response).to redirect_to("#{ENV['PERSISTENT_LINKER_URL']}#{record.external_id}")
         expect(response.headers['X-CSRF-Token']).to be_nil
       end
     end
   end
+
+  describe 'GET /records/1' do
+    let!(:user_record) { create(:user_record, data: "data") }
+    let!(:user) { user_record.user }
+    let!(:record_id) { user_record.id }
+    let!(:tmp_user_record) { create(:tmp_user_record, data: "data") }
+    let!(:tmp_user) { tmp_user_record.tmp_user }
+    let!(:tmp_record_id) { tmp_user_record.id }
+
+    context 'when user is not a temporary user' do
+      before do
+        allow_any_instance_of(RecordsController).to receive(:current_user).and_return(user)
+      end
+      
+      before { get :show, params: { format: format, id: record_id } }
+      subject { response }
+
+      context 'when format is XML' do
+        let(:format) { "xml" }
+        its(:status) { is_expected.to eql 200 }
+        its(:headers) { is_expected.to_not include 'X-CSRF-Token' }
+        its(:content_type) { is_expected.to include 'application/xml' }
+      end
+      context 'when format is JSON' do
+        let(:format) { "json" }
+        its(:status) { is_expected.to eql 200 }
+        its(:content_type) { is_expected.to include 'application/json' }
+        its(:headers) { is_expected.to_not include 'X-CSRF-Token' }
+      end
+    end
+    context 'when user is a temporary user' do
+      before do
+        allow_any_instance_of(RecordsController).to receive(:user).and_return(tmp_user)
+      end
+
+      before { get :show, params: { format: format, id: tmp_record_id } }
+      subject { response }
+
+      context 'when format is XML' do
+        let(:format) { "xml" }
+        its(:status) { is_expected.to eql 200 }
+        its(:headers) { is_expected.to_not include 'X-CSRF-Token' }
+        its(:content_type) { is_expected.to include 'application/xml' }
+      end
+      context 'when format is JSON' do
+        let(:format) { "json" }
+        its(:status) { is_expected.to eql 200 }
+        its(:content_type) { is_expected.to include 'application/json' }
+        its(:headers) { is_expected.to_not include 'X-CSRF-Token' }
+      end
+
+    end
+  end
+
 end
