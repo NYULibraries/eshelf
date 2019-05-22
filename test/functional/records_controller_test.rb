@@ -53,25 +53,25 @@ class RecordsControllerTest < ActionController::TestCase
       {count: 1, data: {method: :delete, confirm: "Are you sure you want to delete these records?"}}
   end
 
-  test "should show user tag search and tags link only when there are tags" do
+  test "should show user tag search and tags link" do
     sign_in @user
     get :index
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
-    assert_select "form#user_tags_search.form-search.js", 0
-    assert_select "div#user_tags", 0
+    assert_select "form#user_tags_search.form-search.js", 1
+    assert_select "div#user_tags", 1
     @user.tag(@user_record, with: "tag one", on: :tags)
     get :index
     assert_response :success
     assert_nil response.headers['X-CSRF-Token']
     assert_select "form#user_tags_search.form-search.js" do |elements|
       elements.each do |element|
-        assert_select element, ".search-query", { placeholder: "Filter labels" }
+        assert_select element, ".search-query", { placeholder: "Filter tags" }
       end
     end
     assert_select "div#user_tags" do |elements|
       elements.each do |element|
-        assert_select element, "ul.nav-list > li > a", { count: 1, text: "Your labels", href: "users/tags"}
+        assert_select element, "ul.nav-list > li > a", { count: 1, text: "Your tags", href: "users/tags"}
       end
     end
   end

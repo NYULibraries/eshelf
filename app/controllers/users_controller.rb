@@ -42,6 +42,9 @@ class UsersController < ApplicationController
     return head :unauthorized unless current_user
     @tags = current_user.owned_tags.where("name like ?", "%#{params[:tag]}%").
       page(params[:page]).per(20)
+    if @tags.empty?
+      @tags = [current_user.owned_tags.new(name: I18n.t('record.tag_list.no_tags'))]
+    end
     respond_with(@tags)
   end
 

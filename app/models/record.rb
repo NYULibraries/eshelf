@@ -36,7 +36,7 @@ class Record < ApplicationRecord
 
   # Return the (unique) list of content types for records
   def self.content_types
-    select(:content_type).uniq
+    pluck(:content_type).uniq
   end
 
   # Sets the external system
