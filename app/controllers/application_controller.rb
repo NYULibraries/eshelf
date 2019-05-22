@@ -58,7 +58,7 @@ class ApplicationController < ActionController::Base
 
   # Returns an ActiveRecord relation of the user's record
   def user_records
-    @user_records = (view_context.filter_params[:sort].present?) ? user.records.order("#{view_context.parsed_current_sort.first} #{view_context.parsed_current_sort.last}", view_context.secondary_sort) : user.records.order(:created_at) 
+    @user_records = (view_context.filter_params[:sort].present?) ? user.records.order("#{view_context.parsed_current_sort.first} #{view_context.parsed_current_sort.last}", view_context.secondary_sort) : user.records.order(created_at: :desc) 
   end
   helper_method :user_records
 

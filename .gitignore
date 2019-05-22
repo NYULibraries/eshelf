@@ -41,3 +41,5 @@ yarn.lock
 
 test-results/
 .pry_history
+
+http.sh
