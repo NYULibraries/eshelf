@@ -1,5 +1,5 @@
-<% if current_user and current_user.owned_tags.any? %>
-  <%= content_tag :h3, t('shelf.tags.title_html') %>
+<% if current_user %>
+  <%= content_tag(:h3, t('shelf.tags.title_html')) %>
   <%= form_tag user_tags_path, method: :get, remote: true, id: "user_tags_search", class: "form-search js" do %>
     <%= search_field_tag :tag, nil, placeholder: t('shelf.tags.placeholder'), class: ["form-control", "input-sm", "search-query"], autocomplete: "off" %>
   <% end %>

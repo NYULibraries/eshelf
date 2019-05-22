@@ -101,3 +101,25 @@ div.entree {
 .nyu-breadcrumbs > li {
   display: inline !important;
 }
+
+.deselect_filter { padding-left: 3px; }
+
+.content-type {
+  text-align: center;
+  i.fa {
+    font-size: 28px;
+    margin-bottom: 3px;
+  }
+}
+
+.record_tag_list {
+  .muted {
+    font-size: 100% !important;
+  }
+  input[type=text] {
+    width: 100%;
+  }
+  i.fa {
+    margin-right: 3px
+  }
+}
