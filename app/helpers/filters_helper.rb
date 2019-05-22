@@ -28,7 +28,7 @@ module FiltersHelper
   end
 
   def parsed_current_sort
-    @parsed_current_sort ||= (whitelisted_sort_field?(filter_params[:sort])) ? filter_params[:sort].split(/(.+)_(desc|asc)/) - ["", nil] : ["created_at", "asc"]
+    @parsed_current_sort ||= (whitelisted_sort_field?(filter_params[:sort])) ? filter_params[:sort].split(/(.+)_(desc|asc)/) - ["", nil] : ["created_at", "desc"]
   end
 
   def secondary_sort
