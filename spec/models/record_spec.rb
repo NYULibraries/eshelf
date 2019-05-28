@@ -176,4 +176,9 @@ describe Record do
       end
     end
   end
+
+  describe '#becomes_external_system' do
+    subject { record.becomes_external_system }
+    it { is_expected.to eql record }
+  end
 end

@@ -9,7 +9,7 @@ class Primo < Record
       self.title_sort = primo_record.sort_title if title_sort.blank?
       self.content_type = primo_record.display_type if content_type.blank?
       self.author = primo_authors.join("; ") if author.blank?
-      self.url = Eshelf::PnxJson.new(self.external_id).openurl if url.blank?
+      self.url = Eshelf::Citation.new(self.external_id).openurl if url.blank?
     end
   end
 
