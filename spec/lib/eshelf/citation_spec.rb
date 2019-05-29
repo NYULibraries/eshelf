@@ -10,11 +10,11 @@ describe Eshelf::Citation, :vcr do
   describe '.cite_url', :vcr do
     subject { Eshelf::Citation.cite_url(format: format) }
     context 'when RIS is passed in as the format' do
-      it { is_expected.to eql 'https://cite-dev.library.nyu.edu/?calling_system=primo&institution=NYU&cite_to=ris' }
+      it { is_expected.to eql "#{ENV['CITE_URL']}?calling_system=primo&institution=NYU&cite_to=ris" }
     end
     context 'when NYSID is passed in as the institution' do
       subject { Eshelf::Citation.cite_url(format: format, institution: 'NYSID') }
-      it { is_expected.to eql 'https://cite-dev.library.nyu.edu/?calling_system=primo&institution=NYSID&cite_to=ris' }
+      it { is_expected.to eql "#{ENV['CITE_URL']}?calling_system=primo&institution=NYSID&cite_to=ris" }
     end
     context 'when /openurl is passed in as the cite_url' do
       subject { Eshelf::Citation.cite_url(format: format, cite_url: '/openurl') }

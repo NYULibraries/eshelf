@@ -18,10 +18,14 @@ module Eshelf
     end
 
     def openurl
-      @openurl ||= JSON.parse(get_openurl)&.send(:[],"openurl") if get_openurl && get_openurl.headers[:content_type] == 'application/json'
+      @openurl ||= citation_json.dig("links", "lln10")
     end
 
   private
+
+    def citation_json
+      @citation_json ||= JSON.parse(get_citation).dig(self.external_id) if get_citation.headers[:content_type] == 'application/json'
+    end
 
     def get_citation
       @get_citation ||= RestClient.get(Citation.cite_url(format: 'json'), params: { external_id: external_id })
@@ -29,10 +33,5 @@ module Eshelf
       nil
     end
 
-    def get_openurl
-      @get_openurl ||= RestClient.get(Citation.cite_url(format: 'json', institution: institution, cite_url: "#{@@cite_url}openurl/#{external_id}"))
-    rescue RestClient::ExceptionWithResponse => e
-      nil
-    end
   end
 end
