@@ -46,4 +46,10 @@ describe Eshelf::Citation, :vcr do
     end
   end
 
+  describe '#record', :vcr do
+    subject { citation.record }
+    it { is_expected.to eql '' }
+  end
+
+
 end

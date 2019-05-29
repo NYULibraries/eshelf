@@ -21,6 +21,10 @@ module Eshelf
       @openurl ||= citation_json&.dig("links", "lln10")
     end
 
+    def record
+      @record ||= citation_json.to_hash
+    end
+
   private
 
     def citation_json
