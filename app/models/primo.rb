@@ -2,44 +2,32 @@ class Primo < Record
 
   # Grabs missing attributes from the Primo web service
   def primo_attributes
-    self.format = "pnx"
+    self.format = "pnx_json"
     unless primo_record.nil?
-      self.data = primo_record.to_xml if data.blank?
-      self.title = primo_record.display_title if title.blank?
-      self.title_sort = primo_record.sort_title if title_sort.blank?
-      self.content_type = primo_record.display_type if content_type.blank?
+      self.data = primo_record if data.blank?
+      self.title = primo_record["title"] if title.blank?
+      self.title_sort = primo_record["title_sort"] if title_sort.blank?
+      self.content_type = primo_record["itemType"] if content_type.blank?
       self.author = primo_authors.join("; ") if author.blank?
-      self.url = Eshelf::Citation.new(self.external_id).openurl if url.blank?
+      self.url = citation.openurl if url.blank?
     end
   end
 
-  # Return hashes to create locations for Primo
-  # TODO: go to Primo source
-  def primo_locations
-    unless primo_record.nil?
-      @primo_locations ||= primo_record.holdings.collect do |holding|
-        { collection: "#{holding.library} #{holding.collection}",
-          call_number: holding.call_number }
-      end
-    end
-  end
+ private
 
-  # Returns an Exlibris::Primo::Record
-  # TODO:
-  #   Param :refresh forces a trip to the web service.
+  # Returns a Hash with attributes
   def primo_record
-    # If we don't have data for Primo, call the web service.
-    # Otherwise, create the record from that data.
-    @primo_record ||= (data.blank?) ?
-      Exlibris::Primo::Search.new.record_id!(external_id).records.first :
-        Exlibris::Primo::Record.new(raw_xml: data)
+    @primo_record ||= citation.record
   end
-  private :primo_record
 
-  # Returns an array authors from the Exlibris::Primo::Record addata section
-  def primo_authors
-    @primo_authors ||=
-      primo_record.all_addata_au.concat primo_record.all_addata_addau
+  # Returns the Eshelf::Citation object
+  def citation
+    @citation ||= Eshelf::Citation.new(self.external_id)
   end
-  private :primo_authors
+
+  # Returns an array authors from the PNX_JSON addau section
+  def primo_authors
+    @primo_authors ||= (primo_record["addau"].nil?) ? [primo_record["author"]] : 
+      [primo_record["author"]].concat(primo_record["addau"])
+  end
 end

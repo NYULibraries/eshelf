@@ -1,0 +1,87 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://pushtocite:9292/?calling_system=primo&cite_to=json&external_id=nyu_aleph006048386&institution=NYU
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-musl x86_64) ruby/2.6.2p47
+      Host:
+      - pushtocite:9292
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Content-Type:
+      - application/json
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - WEBrick/1.4.2 (Ruby/2.6.3/2019-04-16)
+      Date:
+      - Wed, 29 May 2019 20:14:45 GMT
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIADXo7lwAA+xYbW/bNhD+K4QAGxsgy5LsyLYAoci8pkuyxGntDHvBYFASJbOhSIUvhoOiwP7D/uF+SY+S7KRN92Eolk/+Yt0dj/ccefecIX1w+INZY0bqje9H/ng6mkZO/MGhmlSrh5o4sZMKcee4DjZ6IyTol0RywpiLlrgyBJ7BbHwyQN2662SCa0lTo633H84FzkSqBHfRGywf0NxzH10vhVGKSBetNji3gSbjJ4F+wVtJsjsX/fzAuV2NpofVP12nNimjakNsTsvTN69dNH+LbiRRCvbWDGc2+dUGIDDP0QLfKfDAjBZCcorBh6qU2wxnk2lw4kejk2kURWA/KBMLo6lmbSSCmChphkSBTisiaYY5qgWjmmYWMsfa+oV+MAWNYV4aXFoL4SUYNC6VRbvpdiCbVSm2cJsV4Ro8bjnceo6WGgKpf/76+1880YrstC2K+nJPcyt8945kQubnOUB/pbiuw4X1jZ1znjGTE4VSCjcpSonrDRyKIUkKIgnPSAtNeU52nr2wqhYS4M6kqGD/zfWv64vl4tqeVmRYU8GbE17/dot+gJprhK4w5WguGCOZXUbou4vLcBIh73I8Qfam0Pc2aUY5nAbajjEe+BB6o3Wt4uHwHnslgQp4jKYS2seDA3kkN0Mos2Bb8qqf6d0abib5fTTzptNB6PvjxgbpJ5QXIhYFHYIS367OBtNmSdMqAezZwD8ZhLNVMOmNToMx/IxH58tV30j2LKK12a1FpZuoEBPE+I5s40rvYljqy0Kuad5iKpoPa0kr4ZGdzZyqUgpTe5mo4sY+eF4YCKDXW8wOGPGXKLbm1guuhEuSHNT3TYsmjZy2MjRrL/SbdoWnKOBn37Ig7pu22YENw0onHas7U0El2DqCdzYKrZY8kYOnSrVXlCkKuttr+7AuoHbRevbqYWDAs+Vy5wo9W7fbtoKZqjsPVcp0Yo1lh39vQIQKNYpSvBNqoFsrkkfRSqpLR2puukRheHSCHRQHrC4UeRTtkEg+mxAtGM1o65CJnLS+h/Lngg6bNZG+h8a39hbLlj75euktZtrFgUmS9Ebzg2Nv9PrgC/bh0wXQS1kDBMijKAwmUeiH1ulgBUXg9jncC9DPnaWVPktfYJs+uff2MyxpJ5glZ/BfyGkqBiX2KFfgZewASGA2nP54JO2RtEfSvhxpw28n7fKnI2mPpD2S9uVIO/pG0s5vj4w9MvbI2BdiLLzBarERLKfcvuc31AXmNqkoePcnz7h79qowloiaVIOSiRSzfi6ydedm/3T9oG9frNk6xYokN+/OrxbzxdXV4rpxhHqlUOjHN/uProPzHJv/9avLkxEDp4QkYYsyTS1f4OuGyFgG5wZkSCua+eEIjv3xEwAAAP//AAAA//8DAKPQ653FEgAA
+    http_version: 
+  recorded_at: Wed, 29 May 2019 20:14:45 GMT
+- request:
+    method: get
+    uri: https://cite-dev.library.nyu.edu/?calling_system=primo&cite_to=json&external_id=nyu_aleph006048386&institution=NYU
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-musl x86_64) ruby/2.6.2p47
+      Host:
+      - cite-dev.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 29 May 2019 20:39:08 GMT
+      Server:
+      - nginx/1.15.8
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '1041'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAOzt7lwAA+xYbYvjNhD+K8KQ0ILjOHHiOAZzbNPb6+52X3rJlr5QgmzLjm5lyaeXkOU46H/oP+wv6ch2srnbKxSO7qd8iWdGo3lGmnkm2B8c/mjWmJF64/uhP4mCKHTiDw7VpFo91sSJnVSIB8d1sNEbIUG/IpITxly0xJUh8BzNJ9MB6tZdJxNcS5oabb1/dy5xJlIluIveYPmIFp775HoljFJEumi1wbkNNJscBfoZbyXJHlz04yPndjWMDqt/uE5tUkbVhticlmdvXrto8RO6k0Qp2FsznNnkVxuAwDxHt/hBgQdmtBCSUww+VKXcZjifRaOpHwbTKAxDsB+UmYXRVLM2EkFMlDRDokBnFZE0wxzVglFNMwuZY239xv4oAo1hXhpcWgvhJRg0LpVFu+t2IJtVKbZwmxXhGjzuOdx6jpYaAqm///zrXzzRiuy0LYr6fE9zK3z3lmRC5hc5QH+huK7DhfWNnQueMZMThVIKNylKiesNHIohSQoiCc9IC015TnaevbCqFhLgzqWoYP/dzS/ry+XtjT2tyLCmgjcnvPn1Hn0HNdcIXWPK0UIwRjK7jNA3l1fjWYi8q8kM2ZtC39qkGeVwGmg7xvjIh9AbrWsVD4clgev3GE0l9I4Hp/FIboZQY8G25FU/07s1XEvyWzD3omgw9v1JY4PcE8oLEYuCDkGJ71fng6hZ0rRKAHg+8KeD8Xw1CnvBWTCHHz+6WK76RrJnEa3Nbi0q3USFmCDGD2QbV3oXw1JfFnJN8xZT0XxYS1oJj+xs5lSVUpjay0QVN/bB86pAAL3eYnbAiD9HsQW3Xl5JuCTJQX3X9GfSyGkrQ6f2xn7Tq/AUBfzs+xXEfcc2O7BhWOmko3RnKqgEW8fuzkahz5IjeXSsVHtFmaKgu722D+sCahetZ68epgU8WyJ3rtCwdbttK5ipuvNQpUwn1lh2+O8NiFChRlGKd0INXGtF8iRaSXXpSM1NlyhMjk6wU+KA1YUiT6KdEMkn46EFoxltHTKRk9b3UP5c0GGzJtJ30PXW3mLZ0idfLr3FTLs4MEaSXrA4OPaC1wdfsA+PF0AvZQ0QIE+DyWgajKPAOh2soAjcPod7Afq5s7TSJ+kLbNMn7739AEva8WWZOfrPzDQVg/p6lCvwMpb6CUyFs+9PjD0x9sTYl2Ps+CsZu/zhxNgTY0+MfTnGBl/D2MX9ia4nup7o+kJ0hbdWLTaC5ZTbd/uGt0DbJpVntD1/VRjLQU2qQclEilk/F9m6c7N/tv6ob9+j2TrFiiR3by+ubxe319e3N40jlCqFGj+9yH90HZzn2PyvH1mOpgscEJKELco0ZXyBjxkiYxmcG5AhrXDujwM49sd/AAAA//8DAFZYk2a0EgAA
+    http_version: 
+  recorded_at: Wed, 29 May 2019 20:39:08 GMT
+recorded_with: VCR 3.0.3
