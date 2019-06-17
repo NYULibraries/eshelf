@@ -63,19 +63,19 @@ describe FiltersHelper do
     let(:format) { 'refworks' }
     subject { helper.send(:cite_path, format) }
     context 'when format is refworks' do
-      it { is_expected.to eql "#{ENV['CITE_URL']}?calling_system=primo&institution=NYU&cite_to=refworks" }
+      it { is_expected.to include "#{ENV['CITE_URL']}?calling_system=primo&institution=NYU&cite_to=refworks" }
     end
     context 'when format is endnote' do
       let(:format) { 'endnote' }
-      it { is_expected.to eql "#{ENV['CITE_URL']}?calling_system=primo&institution=NYU&cite_to=endnote" }
+      it { is_expected.to include "#{ENV['CITE_URL']}?calling_system=primo&institution=NYU&cite_to=endnote" }
     end
     context 'when format is anything' do
       let(:format) { 'blah' }
-      it { is_expected.to eql "#{ENV['CITE_URL']}?calling_system=primo&institution=NYU&cite_to=blah" }
+      it { is_expected.to include "#{ENV['CITE_URL']}?calling_system=primo&institution=NYU&cite_to=blah" }
     end
     context 'when institution is NYSID' do
       before { sign_in create(:nysid_user) }
-      it { is_expected.to eql "#{ENV['CITE_URL']}?calling_system=primo&institution=NYSID&cite_to=refworks" }
+      it { is_expected.to include "#{ENV['CITE_URL']}?calling_system=primo&institution=NYSID&cite_to=refworks" }
     end
   end
 
