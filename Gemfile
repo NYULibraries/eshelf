@@ -36,7 +36,7 @@ gem 'compass-rails', '~> 3.1.0'
 # Use modernizr to detect CORS availability
 gem 'modernizr-rails', '~> 2.7.0'
 
-gem 'bootstrap-sass', '3.3.7'
+gem 'bootstrap-sass', '3.4.1'
 
 # Use the NYU Libraries assets gem for shared NYU Libraries assets
 gem 'nyulibraries_stylesheets', github: 'NYULibraries/nyulibraries_stylesheets', tag: 'v1.1.2'
