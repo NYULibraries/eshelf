@@ -12,7 +12,7 @@ http_interactions:
       Accept-Encoding:
       - gzip, deflate
       User-Agent:
-      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.3.6p384
+      - rest-client/2.0.2 (linux-musl x86_64) ruby/2.6.2p47
       Host:
       - cite-dev.library.nyu.edu
   response:
@@ -20,48 +20,26 @@ http_interactions:
       code: 400
       message: Bad Request
     headers:
+      Content-Encoding:
+      - gzip
       Content-Type:
-      - text/html;charset=utf-8
+      - application/json
       Date:
-      - Fri, 30 Nov 2018 18:26:40 GMT
+      - Tue, 18 Jun 2019 16:01:00 GMT
       Server:
-      - nginx/1.15.4
+      - nginx/1.15.8
+      Vary:
+      - Accept-Encoding
       X-Content-Type-Options:
       - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
       Content-Length:
-      - '1937'
+      - '162'
       Connection:
       - keep-alive
     body:
-      encoding: UTF-8
-      string: "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <!-- Global site
-        tag (gtag.js) - Google Analytics -->\n    <script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-55461631-21\"></script>\n
-        \   <script>\n      window.dataLayer = window.dataLayer || [];\n      function
-        gtag(){dataLayer.push(arguments);}\n      gtag('js', new Date());\n\n      gtag('config',
-        'UA-55461631-21');\n    </script>\n    <meta charset=\"utf-8\">\n    <meta
-        content=\"width=device-width, initial-scale=1\" name=\"viewport\">\n    <title>Citation
-        Error | New York University Division of Libraries</title>\n    <link rel=\"stylesheet\"
-        type=\"text/css\" href=\"/css/application.css\">\n    <link rel=\"SHORTCUT
-        ICON\" href=\"https://cdn.library.nyu.edu/images/favicon.ico\">\n    <link
-        rel=\"stylesheet\" type=\"text/css\" href=\"//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\">\n
-        \ </head>\n  <body>\n    <header>\n      <span><a href=\"https://library.nyu.edu\"
-        target=\"_blank\"><img src=\"https://cdn.library.nyu.edu/images/nyulibraries-logo.svg\"
-        alt=\"NYU Libraries\" width=\"233\" height=\"30\"></a></span>\n    </header>\n
-        \   <nav>\n      <ul class=\"breadcrumb\">\n        <li><a href=\"https://library.nyu.edu\">NYU
-        Libraries</a></li>\n        <li class=\"active\">Sorry, there was an error</li>\n
-        \     </ul>\n    </nav>\n    <main>\n      <div class=\"nyu-container\">\n
-        \       <div class=\"col-sm-12\">\n          <h1>Sorry, there was an error</h1>\n\n
-        \         \n            <p>We could not export or download this citation because
-        of missing or incorrect data in the parameters. Please use the link below
-        to report this problem.</p>\n          \n\n          \n\n          <h2>Suggested
-        Links</h2>\n          <ul>\n            <li><a href=\"https://nyu.qualtrics.com/jfe/form/SV_8AnbZWUryVfpWXH\"
-        target=\"_blank\">Report a Broken Link</a></li>\n            <li><a href=\"https://library.nyu.edu/ask/\"
-        target=\"_blank\">Ask a Librarian</a></li>\n          </ul>\n        </div>\n
-        \     </div>\n    </main>\n  </body>\n</html>\n"
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIALwKCV0AAxyNsQ6DMAxEf8XyXCGGTnxFt84mcanVJEa2EZUq/r2B8XT37v2QzdRw+qEHxeY43cfxhtUXnPDJkHQrGZoG8HdVC1CDrHsrShniLQ5JOijaYOZEmzPoC6q4S1vOsbSkZpwCMgX12CmGlYwqB5sP8ChMHTvRsyrSPv2r6A6hYHxZL9NqOheuAx7HHwAA//8DAIrVq1q4AAAA
     http_version: 
-  recorded_at: Fri, 30 Nov 2018 18:26:40 GMT
+  recorded_at: Tue, 18 Jun 2019 16:01:00 GMT
 recorded_with: VCR 3.0.3

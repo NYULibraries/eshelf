@@ -1,6 +1,48 @@
 ---
 http_interactions:
 - request:
+    method: get
+    uri: https://cite-dev.library.nyu.edu/openurl/nyu_aleph001044111?calling_system=primo&cite_to=json&institution=NYU
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-musl x86_64) ruby/2.6.2p47
+      Host:
+      - cite-dev.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 24 May 2019 14:47:41 GMT
+      Server:
+      - nginx/1.15.8
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '525'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAA0E6FwAA2xSy27bMBD8FwP2qZYoW05kAURRBGnRoO2lzqUXg5JWMhOKZPhQHBT99y4lWkkfB1Ezs8udJbk/F0qD9EYsysXJOW3LNO3AcZcIXhlmXhL54hNofGrAKjHA+1XtzscBDP2x3SdFsd4Qko8ayJpy2apStTxFUt4fPq6LMeR4Tzck26/Jbr3JDxlZbj/k12HJPn8/rND+n4pBC1vb3o1VsSbC8hGGsnfnEkMr05ojbyZPy5tUG96rBM6hc247o7xOatWXo77GcxyZAH0iJCN5nmUZFnDHgYnZo/zbpVLqMWQlHUgDdKYPeEEC6IirCX8C2YBZbgiTDa7oq70DYxGX+PkQtQ6DXHbI3QlwbXjHHRMjGngDY0HmBbOO3ih8GROVluNmeqdAJFHhkjv6BmdvSX8h1rctP19YrPkO/UKpqNbK6CljUML38VjcWh+hZiZaPXmE+FAjsVZGoFkXU+EVBmSjs3HSx560r+gX9mxwQMIN3BpRMd9PIcFqoF/Z6ZmdQo/fkrvk0ku0glfIbSUpKciuyPPNFZk64TWforVqYEqcR6RRPB1jqnqAetQn2zAe9P/jEQyrWKdhji63N3Picns756Kevg0g74xGC8S7bX61u94V+5A0q0gUm/7pBeDMR2VCf7SvWGgfnhLBZOfDNYPsFr9+AwAA//8DAIZB8vfBAwAA
+    http_version: 
+  recorded_at: Fri, 24 May 2019 14:47:41 GMT
+- request:
     method: post
     uri: http://primo.library.edu/PrimoWebServices/services/searcher
     body:
@@ -37,7 +79,7 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Date:
-      - Fri, 24 May 2019 14:47:40 GMT
+      - Tue, 18 Jun 2019 16:03:39 GMT
     body:
       encoding: ASCII-8BIT
       string: |-
@@ -239,10 +281,10 @@ http_interactions:
           &lt;/JAGROOT&gt;
         &lt;/SEGMENTS&gt;</getRecordReturn></ns1:getRecordResponse></soapenv:Body></soapenv:Envelope>
     http_version: 
-  recorded_at: Fri, 24 May 2019 14:47:40 GMT
+  recorded_at: Tue, 18 Jun 2019 16:03:40 GMT
 - request:
     method: get
-    uri: https://cite-dev.library.nyu.edu/openurl/nyu_aleph001044111?calling_system=primo&cite_to=json&institution=NYU
+    uri: https://cite-dev.library.nyu.edu/?calling_system=primo&cite_to=json&external_id=nyu_aleph001044111&institution=NYU
     body:
       encoding: US-ASCII
       string: ''
@@ -265,7 +307,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 24 May 2019 14:47:41 GMT
+      - Tue, 18 Jun 2019 16:03:40 GMT
       Server:
       - nginx/1.15.8
       Vary:
@@ -273,13 +315,13 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Content-Length:
-      - '525'
+      - '1058'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        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
+        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
     http_version: 
-  recorded_at: Fri, 24 May 2019 14:47:41 GMT
+  recorded_at: Tue, 18 Jun 2019 16:03:40 GMT
 recorded_with: VCR 3.0.3
