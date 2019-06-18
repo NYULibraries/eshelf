@@ -1,6 +1,48 @@
 ---
 http_interactions:
 - request:
+    method: get
+    uri: https://cite-dev.library.nyu.edu/openurl/nyu_aleph001044111?calling_system=primo&cite_to=json&institution=NYU
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-musl x86_64) ruby/2.6.2p47
+      Host:
+      - cite-dev.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 24 May 2019 14:47:41 GMT
+      Server:
+      - nginx/1.15.8
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '525'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAA0E6FwAA2xSy27bMBD8FwP2qZYoW05kAURRBGnRoO2lzqUXg5JWMhOKZPhQHBT99y4lWkkfB1Ezs8udJbk/F0qD9EYsysXJOW3LNO3AcZcIXhlmXhL54hNofGrAKjHA+1XtzscBDP2x3SdFsd4Qko8ayJpy2apStTxFUt4fPq6LMeR4Tzck26/Jbr3JDxlZbj/k12HJPn8/rND+n4pBC1vb3o1VsSbC8hGGsnfnEkMr05ojbyZPy5tUG96rBM6hc247o7xOatWXo77GcxyZAH0iJCN5nmUZFnDHgYnZo/zbpVLqMWQlHUgDdKYPeEEC6IirCX8C2YBZbgiTDa7oq70DYxGX+PkQtQ6DXHbI3QlwbXjHHRMjGngDY0HmBbOO3ih8GROVluNmeqdAJFHhkjv6BmdvSX8h1rctP19YrPkO/UKpqNbK6CljUML38VjcWh+hZiZaPXmE+FAjsVZGoFkXU+EVBmSjs3HSx560r+gX9mxwQMIN3BpRMd9PIcFqoF/Z6ZmdQo/fkrvk0ku0glfIbSUpKciuyPPNFZk64TWforVqYEqcR6RRPB1jqnqAetQn2zAe9P/jEQyrWKdhji63N3Picns756Kevg0g74xGC8S7bX61u94V+5A0q0gUm/7pBeDMR2VCf7SvWGgfnhLBZOfDNYPsFr9+AwAA//8DAIZB8vfBAwAA
+    http_version: 
+  recorded_at: Fri, 24 May 2019 14:47:41 GMT
+- request:
     method: post
     uri: http://primo.library.edu/PrimoWebServices/services/searcher
     body:
@@ -37,7 +79,7 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Date:
-      - Tue, 21 Nov 2017 16:38:42 GMT
+      - Tue, 18 Jun 2019 16:03:39 GMT
     body:
       encoding: ASCII-8BIT
       string: |-
@@ -86,9 +128,12 @@ http_interactions:
                         &lt;linktouc&gt;$$Tamazon_uc$$DCheck Amazon&lt;/linktouc&gt;
                         &lt;linktouc&gt;$$Tworldcat_isbn$$DCheck other libraries (WorldCat&#xAE;)&lt;/linktouc&gt;
                         &lt;linktoexcerpt&gt;$$Tsyndetics_excerpt$$DExcerpt from item&lt;/linktoexcerpt&gt;
-                        &lt;lln02&gt;$$V$$Tnyugetit&lt;/lln02&gt;
-                        &lt;lln03&gt;$$3$$3&lt;/lln03&gt;
                         &lt;lln10&gt;$$Tnyugetit&lt;/lln10&gt;
+                        &lt;lln11&gt;$$Tnyuadgetit&lt;/lln11&gt;
+                        &lt;lln12&gt;$$Tnyushgetit&lt;/lln12&gt;
+                        &lt;lln13&gt;$$Tcugetit&lt;/lln13&gt;
+                        &lt;lln14&gt;$$Ttest_aleph_holdings$$DCheck Availability:NYU BOBST Main Collection (QA76.9.W65 C66 2003 )$$1BOBST$$2MAIN&lt;/lln14&gt;
+                        &lt;lln15&gt;$$Ttest_aleph_holdings$$DCheck Availability:NYU Bobst  Main Collection  (QA76.9.W65 C66 2003 )  $$1BOBST  $$2MAIN&lt;/lln15&gt;
                       &lt;/links&gt;
                       &lt;search&gt;
                         &lt;creatorcontrib&gt;Joel.  Cooper&lt;/creatorcontrib&gt;
@@ -98,23 +143,16 @@ http_interactions:
                         &lt;creatorcontrib&gt;Kimberlee D.  Weaver&lt;/creatorcontrib&gt;
                         &lt;creatorcontrib&gt;Weaver, K&lt;/creatorcontrib&gt;
                         &lt;title&gt;Gender and computers : understanding the digital divide /&lt;/title&gt;
-                        &lt;subject&gt;Computers and women.&lt;/subject&gt;
+                        &lt;subject&gt;Computers and women&lt;/subject&gt;
                         &lt;subject&gt;Women and computers&lt;/subject&gt;
-                        &lt;subject&gt;Sex differences in education.&lt;/subject&gt;
-                        &lt;subject&gt;Computers Study and teaching.&lt;/subject&gt;
-                        &lt;subject&gt;Digital divide.&lt;/subject&gt;
+                        &lt;subject&gt;Sex differences in education&lt;/subject&gt;
+                        &lt;subject&gt;Computers  Study and teaching&lt;/subject&gt;
+                        &lt;subject&gt;Digital divide&lt;/subject&gt;
                         &lt;subject&gt;Divide, Digital&lt;/subject&gt;
                         &lt;subject&gt;Global digital divide&lt;/subject&gt;
                         &lt;subject&gt;GDD (Global digital divide)&lt;/subject&gt;
-                        &lt;subject&gt;Automatic data processors&lt;/subject&gt;
-                        &lt;subject&gt;Electronic computers&lt;/subject&gt;
-                        &lt;subject&gt;Computer hardware&lt;/subject&gt;
-                        &lt;subject&gt;Electronic brains&lt;/subject&gt;
-                        &lt;subject&gt;Hardware, Computer&lt;/subject&gt;
-                        &lt;subject&gt;Electronic calculating-machines&lt;/subject&gt;
-                        &lt;subject&gt;Computing machines (Computers)&lt;/subject&gt;
-                        &lt;subject&gt;Automatic computers&lt;/subject&gt;
                         &lt;general&gt;Lawrence Erlbaum,&lt;/general&gt;
+                        &lt;general&gt;51652972&lt;/general&gt;
                         &lt;sourceid&gt;nyu_aleph&lt;/sourceid&gt;
                         &lt;recordid&gt;nyu_aleph001044111&lt;/recordid&gt;
                         &lt;isbn&gt;0805844260&lt;/isbn&gt;
@@ -152,7 +190,7 @@ http_interactions:
                         &lt;topic&gt;Sex differences in education&lt;/topic&gt;
                         &lt;topic&gt;Computers&#x2013;Study and teaching&lt;/topic&gt;
                         &lt;topic&gt;Digital divide&lt;/topic&gt;
-                        &lt;collection&gt;NYUBOBSTMain Collection&lt;/collection&gt;
+                        &lt;collection&gt;BOBST&lt;/collection&gt;
                         &lt;toplevel&gt;available&lt;/toplevel&gt;
                         &lt;prefilter&gt;books&lt;/prefilter&gt;
                         &lt;rsrctype&gt;books&lt;/rsrctype&gt;
@@ -160,9 +198,9 @@ http_interactions:
                         &lt;creatorcontrib&gt;Weaver, K&lt;/creatorcontrib&gt;
                         &lt;library&gt;BOBST&lt;/library&gt;
                         &lt;lfc01&gt;Main Collection&lt;/lfc01&gt;
-                        &lt;newrecords&gt;20171013_187&lt;/newrecords&gt;
+                        &lt;newrecords&gt;20111230_61&lt;/newrecords&gt;
                         &lt;classificationlcc&gt;Q - Science.&#x2013;Mathematics&#x2013;Instruments and machines&#x2013;Calculating machines&#x2013;Electronic computers. Computer science&#x2013;Computer software&lt;/classificationlcc&gt;
-                        &lt;frbrgroupid&gt;289990723&lt;/frbrgroupid&gt;
+                        &lt;frbrgroupid&gt;534657589&lt;/frbrgroupid&gt;
                         &lt;frbrtype&gt;6&lt;/frbrtype&gt;
                       &lt;/facets&gt;
                       &lt;dedup&gt;
@@ -215,22 +253,23 @@ http_interactions:
                         &lt;notes&gt;Includes bibliographical references (p. 153-161) and indexes.&lt;/notes&gt;
                         &lt;cop&gt;Mahwah, N.J.&lt;/cop&gt;
                         &lt;pub&gt;Lawrence Erlbaum&lt;/pub&gt;
+                        &lt;oclcid&gt;51652972&lt;/oclcid&gt;
                         &lt;lccn&gt;2003042142&lt;/lccn&gt;
                         &lt;lad01&gt;BOBST&lt;/lad01&gt;
                         &lt;lad01&gt;Physical Item&lt;/lad01&gt;
                       &lt;/addata&gt;
                       &lt;browse&gt;
-                        &lt;author&gt;$$DCooper, Joel$$ECooper, Joel$$INYU10000294623$$PY&lt;/author&gt;
-                        &lt;author&gt;$$DWeaver, Kimberlee D$$EWeaver, Kimberlee D$$INYU10000956721$$PY&lt;/author&gt;
+                        &lt;author&gt;$$DCooper, Joel$$ECooper, Joel$$INYU10001287274$$PY&lt;/author&gt;
+                        &lt;author&gt;$$DWeaver, Kimberlee D$$EWeaver, Kimberlee D$$INYU10003969456$$PY&lt;/author&gt;
                         &lt;title&gt;$$DGender and computers : understanding the digital divide$$EGender and computers : understanding the digital divide&lt;/title&gt;
-                        &lt;subject&gt;$$DComputers and women$$EComputers and women$$INYU10001629401$$PY&lt;/subject&gt;
-                        &lt;subject&gt;$$DWomen and computers$$EWomen and computers$$INYU10001629401$$PN&lt;/subject&gt;
-                        &lt;subject&gt;$$DSex differences in education$$ESex differences in education$$INYU10001518422$$PY&lt;/subject&gt;
-                        &lt;subject&gt;$$DComputers -- Study and teaching$$EComputers Study and teaching$$INYU10001475400$$PY&lt;/subject&gt;
-                        &lt;subject&gt;$$DDigital divide$$EDigital divide$$INYU10001701757$$PY&lt;/subject&gt;
-                        &lt;subject&gt;$$DDivide, Digital$$EDivide, Digital$$INYU10001701757$$PN&lt;/subject&gt;
-                        &lt;subject&gt;$$DGlobal digital divide$$EGlobal digital divide$$INYU10001701757$$PN&lt;/subject&gt;
-                        &lt;subject&gt;$$DGDD (Global digital divide)$$EGDD (Global digital divide)$$INYU10001701757$$PN&lt;/subject&gt;
+                        &lt;subject&gt;$$DComputers and women$$EComputers and women$$INYU10000294703$$PY&lt;/subject&gt;
+                        &lt;subject&gt;$$DWomen and computers$$EWomen and computers$$INYU10000294703$$PN&lt;/subject&gt;
+                        &lt;subject&gt;$$DSex differences in education$$ESex differences in education$$INYU10000176839$$PY&lt;/subject&gt;
+                        &lt;subject&gt;$$DComputers -- Study and teaching$$EComputers Study and teaching$$INYU10000086137$$PY&lt;/subject&gt;
+                        &lt;subject&gt;$$DDigital divide$$EDigital divide$$INYU10000056200$$PY&lt;/subject&gt;
+                        &lt;subject&gt;$$DDivide, Digital$$EDivide, Digital$$INYU10000056200$$PN&lt;/subject&gt;
+                        &lt;subject&gt;$$DGlobal digital divide$$EGlobal digital divide$$INYU10000056200$$PN&lt;/subject&gt;
+                        &lt;subject&gt;$$DGDD (Global digital divide)$$EGDD (Global digital divide)$$INYU10000056200$$PN&lt;/subject&gt;
                         &lt;callnumber&gt;$$INYU$$DQA76.9.W65 C66 2003$$E0qa   0007690000.w  65000  c66 2003$$T0&lt;/callnumber&gt;
                         &lt;institution&gt;NYU&lt;/institution&gt;
                       &lt;/browse&gt;
@@ -242,10 +281,10 @@ http_interactions:
           &lt;/JAGROOT&gt;
         &lt;/SEGMENTS&gt;</getRecordReturn></ns1:getRecordResponse></soapenv:Body></soapenv:Envelope>
     http_version: 
-  recorded_at: Tue, 21 Nov 2017 16:38:42 GMT
+  recorded_at: Tue, 18 Jun 2019 16:03:40 GMT
 - request:
     method: get
-    uri: http://primo.library.edu/primo_library/libweb/webservices/rest/v1/pnxs/L/nyu_aleph001044111?inst=NYU
+    uri: https://cite-dev.library.nyu.edu/?calling_system=primo&cite_to=json&external_id=nyu_aleph001044111&institution=NYU
     body:
       encoding: US-ASCII
       string: ''
@@ -255,98 +294,34 @@ http_interactions:
       Accept-Encoding:
       - gzip, deflate
       User-Agent:
-      - rest-client/2.0.2 (darwin17.7.0 x86_64) ruby/2.3.3p222
+      - rest-client/2.0.2 (linux-musl x86_64) ruby/2.6.2p47
       Host:
-      - bobcatdev.library.nyu.edu
+      - cite-dev.library.nyu.edu
   response:
     status:
       code: 200
       message: OK
     headers:
-      Server:
-      - Apache-Coyote/1.1
-      Set-Cookie:
-      - JSESSIONID=3A235D83BB67C0C195BC52405B6FD743; Path=/primo_library/libweb/;
-        HttpOnly
-      Cache-Control:
-      - max-age=0
-      Expires:
-      - Tue, 14 Aug 2018 16:52:01 GMT
-      Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
       Content-Encoding:
       - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 18 Jun 2019 16:03:40 GMT
+      Server:
+      - nginx/1.15.8
       Vary:
       - Accept-Encoding
-      Date:
-      - Tue, 14 Aug 2018 16:52:00 GMT
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '1058'
+      Connection:
+      - keep-alive
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        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
-        OQAA
+        H4sIAFwLCV0AA+xY62rbSBR+lUGQ0IItS75bIErWaXaTbpJuk9C9sJiRdCxPM5pR5+I4lMC+Q9+wT7JnJFlJmvxYKCz54R+Wz03fOTNzviOkL564tQvKoVwFQRgMh2EYetEXjxkoLm9L8CIvkfLa63jUmpVUqM+lLEF1yIkEjvZUCqNYYk3l/Ah07ZzvWJGA4gDkEGNKm3CmV+AifqU3CkQK5K3iCbWFc3OaukyndHVDVx1y5p/4aGY6EV70lxdMg9F0OOyPAzRulckMldlk2jq/0ydj7++OZ5jhDvlnEBkoQkVGUlmU1oDSJCLWWbVBMxM5MSsgGcuZoRz/1ywDhMyocQD9IBigxqnILc2dBUSOBkNz7Wqct6gux40sQKD3AjaItFxCtWJNmCCQ2ZQaJp27venbP18vjM1uq5sN0HTFKvTDx9Xggkqx+QCpVNlxhjU8c3YdT0gDWJN3LFJuM8yaMNx9mStarliKaAragl6VPglHg244Dl9XyRnuyAZ0tf1FKZWB7EjJAuHen/2+OLk4P3O7IOslVCs/++OK/CQTbQg5pbjAueQcUucm5NVvB5OxP/M/jkdkPh4Tt4vktVsHZ+Jau0bjXIQBwq+MKXXU6+WAZ+Zzliiqbn1coI871lOgJV/Dm/3UbBbYYPGfg5k/nXYRcFjZcDkxE0sZySXroRJdXR51p5XLsCLuB+GsG4y74fQy7O8NDoIBXobB8cXlvlX8CaKzuVuXhalQERPF6BrWUWE2Ebr21VItWFbn1CzrlYoV0oeNq5zpXElb+thqUWXvPj0oBDCLNeVtjuj7LI53LsrPQSiIW/VT1dRxJSe1XLf3Xj/AI8Rr2+IoR/h71OaoY6PjtWn1SnLtVQFSy6k2cc3xxrJkeHPs6O43FiaYiR/I4UOl2CraLpdss9UazA7mc1CNFVu5rCPWktuiWRbT2jZiSVWT6rNFEQ+qUrQWjVAiHWsR7kUn6SazMsI2NeEcirfzB+toJlDtcjMobiYQ+twM2tbSpIJ70Y2m+H4u1ZWwlNXeVGZQB7YtkknWq3wy+YTscPY6rWuP+Pn2cAmTBgfHULw3mLeBe4O3bSzaew8dqOeqxBQojwbD8Wgyms5cUGtFRdL6v7cVsOcbSy09Kl9SVz589rcDMK7Hn2Nv+J/ZawuOTxGfCY1R1o2IGKfHweGO1TtW71j9sljd/0FWX/yyY/WO1TtWvyxWD36E1fOrHaV3lN5R+gVRGt+ijVxJ7jpLN9xGalelPKH20ZuldTw1UHRzLhPK9zOZLpow99AOwn33bs8XCdUQv/9wfHo+Pz89PT+rAvEcE2yA+28Ndx2PZhm17jPAcx9+8D3/wfzA8jAFVq1tdQj/52cTmfIUy8cSRuF41J9N+t7d3b8AAAD//wMA4pWfFfwSAAA=
     http_version: 
-  recorded_at: Tue, 14 Aug 2018 16:52:01 GMT
+  recorded_at: Tue, 18 Jun 2019 16:03:40 GMT
 recorded_with: VCR 3.0.3

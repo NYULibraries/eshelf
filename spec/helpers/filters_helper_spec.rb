@@ -63,19 +63,19 @@ describe FiltersHelper do
     let(:format) { 'refworks' }
     subject { helper.send(:cite_path, format) }
     context 'when format is refworks' do
-      it { is_expected.to eql 'https://cite-dev.library.nyu.edu/?calling_system=primo&institution=NYU&cite_to=refworks' }
+      it { is_expected.to include "#{ENV['CITE_URL']}?calling_system=primo&institution=NYU&cite_to=refworks" }
     end
     context 'when format is endnote' do
       let(:format) { 'endnote' }
-      it { is_expected.to eql 'https://cite-dev.library.nyu.edu/?calling_system=primo&institution=NYU&cite_to=endnote' }
+      it { is_expected.to include "#{ENV['CITE_URL']}?calling_system=primo&institution=NYU&cite_to=endnote" }
     end
     context 'when format is anything' do
       let(:format) { 'blah' }
-      it { is_expected.to eql 'https://cite-dev.library.nyu.edu/?calling_system=primo&institution=NYU&cite_to=blah' }
+      it { is_expected.to include "#{ENV['CITE_URL']}?calling_system=primo&institution=NYU&cite_to=blah" }
     end
     context 'when institution is NYSID' do
       before { sign_in create(:nysid_user) }
-      it { is_expected.to eql 'https://cite-dev.library.nyu.edu/?calling_system=primo&institution=NYSID&cite_to=refworks' }
+      it { is_expected.to include "#{ENV['CITE_URL']}?calling_system=primo&institution=NYSID&cite_to=refworks" }
     end
   end
 
@@ -85,7 +85,7 @@ describe FiltersHelper do
 
     context 'when the default sort option is selected' do
       before { controller.params = controller.params.merge(sort: nil) }
-      its([0]) { is_expected.to include %Q(<a class="sorted asc" href="/records?sort=created_at_desc">date added</a>) }
+      its([0]) { is_expected.to include %Q(<a class="sorted desc" href="/records?sort=created_at_asc">date added</a>) }
       its([1]) { is_expected.to include %Q(<a class="sorted" href="/records?sort=title_sort_asc">title</a>) }
       its([2]) { is_expected.to include %Q(<a class="sorted" href="/records?sort=author_asc">author</a>) }
     end
@@ -136,7 +136,7 @@ describe FiltersHelper do
     subject { helper.parsed_current_sort }
 
     context 'when no sort option is selected' do
-      it { is_expected.to eql ["created_at", "asc"] }
+      it { is_expected.to eql ["created_at", "desc"] }
     end
     context 'when title_sort is the selected sort option' do
       before { controller.params = controller.params.merge(sort: "title_sort_asc") }
@@ -144,7 +144,7 @@ describe FiltersHelper do
     end
     context 'when arbitrary text is the selected sort option' do
       before { controller.params = controller.params.merge(sort: "blah_blah_blah_desc") }
-      it { is_expected.to eql ["created_at", "asc"] }
+      it { is_expected.to eql ["created_at", "desc"] }
     end
   end
   

@@ -1,6 +1,6 @@
 module Eshelf
   class Citation
-    attr_accessor :external_id
+    attr_accessor :external_id, :institution
 
     @@cite_url = ENV['CITE_URL'] || 'https://cite-dev.library.nyu.edu/'
 
@@ -8,8 +8,9 @@ module Eshelf
       return "#{cite_url}?calling_system=#{calling_system}&institution=#{institution}&cite_to=#{format}"
     end
 
-    def initialize(external_id)
+    def initialize(external_id, institution = 'NYU')
       @external_id = external_id
+      @institution = institution
     end
 
     def to_json
@@ -17,10 +18,14 @@ module Eshelf
     end
 
     def openurl
-      @openurl ||= JSON.parse(get_openurl)&.send(:[],"openurl") if get_openurl && get_openurl.headers[:content_type] == 'application/json'
+      @openurl ||= citation_json.dig("links", "lln10")
     end
 
   private
+
+    def citation_json
+      @citation_json ||= JSON.parse(get_citation).dig(self.external_id) if get_citation.headers[:content_type] == 'application/json'
+    end
 
     def get_citation
       @get_citation ||= RestClient.get(Citation.cite_url(format: 'json'), params: { external_id: external_id })
@@ -28,10 +33,5 @@ module Eshelf
       nil
     end
 
-    def get_openurl
-      @get_openurl ||= RestClient.get(Citation.cite_url(format: 'json', cite_url: "#{@@cite_url}openurl/#{external_id}"))
-    rescue RestClient::ExceptionWithResponse => e
-      nil
-    end
   end
 end

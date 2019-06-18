@@ -143,4 +143,46 @@ http_interactions:
       string: '{"openurl":"https://qa.getit.library.nyu.edu/resolve?&ctx_ver=Z39.88-2004&ctx_enc=info:ofi/enc:UTF-8&ctx_tim=2018-11-30T13%3A28%3A47IST&url_ver=Z39.88-2004&url_ctx_fmt=infofi/fmt:kev:mtx:ctx&rfr_id=info:sid/primo.exlibrisgroup.com:primo-nyu_aleph006048386&rft_val_fmt=info:ofi/fmt:kev:mtx:book&rft.genre=book&rft.jtitle=&rft.btitle=The%20logic%20of%20American%20politics&rft.aulast=Kernell&rft.aufirst=Samuel,&rft.auinit=&rft.auinit1=&rft.auinitm=&rft.ausuffix=&rft.au=Kernell,%20Samuel,%201945-%20author&rft.aucorp=&rft.volume=&rft.issue=&rft.part=&rft.quarter=&rft.ssn=&rft.spage=&rft.epage=&rft.pages=&rft.artnum=&rft.pub=&rft.place=&rft.issn=&rft.eissn=&rft.isbn=9781506358666&rft.sici=&rft.coden=&rft_id=info:doi/&rft.object_id=&rft.primo=nyu_aleph006048386&rft.eisbn=&rft_dat=%3Cnyu_aleph%3E006048386%3C/nyu_aleph%3E%3Cgrp_id%3E362176202%3C/grp_id%3E%3Coa%3E%3C/oa%3E%3Curl%3E%3C/url%3E&rft_id=info:oai/&req.language=eng"}'
     http_version: 
   recorded_at: Fri, 30 Nov 2018 18:28:47 GMT
+- request:
+    method: get
+    uri: https://cite-dev.library.nyu.edu/?calling_system=primo&cite_to=json&external_id=nyu_aleph006048386&institution=NYU
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-musl x86_64) ruby/2.6.2p47
+      Host:
+      - cite-dev.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 18 Jun 2019 16:01:00 GMT
+      Server:
+      - nginx/1.15.8
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '1040'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIALwKCV0AA+xYbYvjNhD+K8KQ0ILj2HFeHIM5tuntdXe7L71kS18oQbZlR7ey5NNLyHIc9D/0H/aXdGQ72dztFQpH91O+xDOj0TwjzTwT7A8OfzRrzEi98f2pP47CaOrEHxyqSbV6rIkTO6kQD47rYKM3QoJ+RSQnjLloiStD4BnMx5MB6tZdJxNcS5oabb1/dy5xJlIluIveYPmIFp775HoljFJEumi1wbkNNBsfBfoZbyXJHlz04yPndnUaHVb/cJ3apIyqDbE5Lc/evHbR4id0J4lSsLdmOLPJrzYAgXmObvGDAg/MaCEkpxh8qEq5zXA+i4KJPw0n0XQ6BftBmVkYTTVrIxHEREkzJAp0VhFJM8xRLRjVNLOQOdbWb+QHEWgM89Lg0loIL8Ggcaks2l23A9msSrGF26wI1+Bxz+HWc7TUEEj9/edf/+KJVmSnbVHU53uaW+G7tyQTMr/IAfoLxXUdLqxv7FzwjJmcKJRSuElRSlxv4FAMSVIQSXhGWmjKc7Lz7IVVtZAAdy5FBfvvbn5ZXy5vb+xpRYY1Fbw54c2v9+g7qLlG6BpTjhaCMZLZZYS+ubwazabIuxrPkL0p9K1NmlEOp4G2Y4wHPoTeaF2reDgsCVy/x2gqoXc8OI1HcjOEGgu2Ja/6md6t4VqS38K5F0WDke+PGxvknlBeiFgUdAhKfL86H0TNkqZVAsDzgT8dBNEqGPXCMz+wP/7FctU3kj2LaG12a1HpJirEBDF+INu40rsYlvqykGuat5iK5sNa0kp4ZGczp6qUwtReJqq4sQ+eVwUC6PUWswNG/DmKLbj18krCJUkO6rumP5NGTlsZOrU38ptehaco4GffryDuO7bZgQ3DSicdpTtTQSXYOnZ3Ngp9lhzJwbFS7RVlioLu9to+rAuoXbSevXqYFvBsidy5QsPW7batYKbqzkOVMp1YY9nhvzcgQoUaRSneCTVwrRXJk2gl1aUjNTddojA5OsFOiQNWF4o8iXZCJJ+MhxaMZrR1yEROWt9D+XNBh82aSN9B11t7i2VLn3y59BYz7eLAGEl64eLg2AtfH3zBPjxeAL2UNUCAPAnHwSQcRaF1OlhBEbh9DvcC9HNnaaVP0hfYpk/ee/sBlrTjyzIz+M/MNBWD+nqUK/AylvoJTIWz70+MPTH2xNiXY+zoKxm7/OHE2BNjT4x9OcaGX8PYxf2Jrie6nuj6QnSFt1YtNoLllNt3+4a3QNsmlWe0PX9VGMtBTapByUSKWT8X2bpzs3+2ftC379FsnWJFkru3F9e3i9vr69ubxhFKlUKNn17kP7oOznNs/tePLEfTBQ4IScIWZZoyvsDHDJGxDM4NyJDWdO6PQjj2x38AAAD//wMAmOqLz7QSAAA=
+    http_version: 
+  recorded_at: Tue, 18 Jun 2019 16:01:00 GMT
 recorded_with: VCR 3.0.3

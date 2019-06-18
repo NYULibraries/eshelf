@@ -27,7 +27,7 @@ describe RecordsController do
   describe 'GET /records/1/getit' do
     let!(:user)    { FactoryBot.create(:user) }
     before(:each) { allow_any_instance_of(RecordsController).to receive(:current_user).and_return(user) }
-    before(:each) { allow_any_instance_of(Eshelf::PnxJson).to receive(:openurl).and_return(record.url) }
+    before(:each) { allow_any_instance_of(Eshelf::Citation).to receive(:openurl).and_return(record.url) }
     let!(:record)  { FactoryBot.create(:user_record, :primo, data: "data") }
     before { get :getit, params: {id: record.id} }
     subject { last_response }

@@ -74,7 +74,7 @@ class Record < ApplicationRecord
     # We need to continue to support Xerxes openurls for existing Records
     # even though no new Xerxes records can be created
     if self.external_system == "primo"
-      new_openurl = Eshelf::PnxJson.new(self.external_id, institution).openurl
+      new_openurl = Eshelf::Citation.new(self.external_id, institution).openurl
       self.url = new_openurl if new_openurl
       self.save!
     end

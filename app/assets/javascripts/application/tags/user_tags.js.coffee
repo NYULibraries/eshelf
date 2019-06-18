@@ -83,8 +83,7 @@ class UserTags
     # Set the data
     data =
       page: @currentPage
-      tag: query if query?,
-      querystring: window.location.search.substring(1)
+      tag: query if query?
     # Need to put @ in the referencing environment for the closures
     # so we set it to a local variable, userTags
     userTags = @
