@@ -73,10 +73,6 @@ group :development, :test do
   gem 'rails-controller-testing'
 end
 
-# NYU customization gems
-gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.4.1'
-gem 'exlibris-primo', github: 'NYULibraries/exlibris-primo', tag: 'v2.2.0'
-
 gem 'citero', github: 'NYULibraries/citero', tag: 'v1.0.2'
 gem 'acts_as_citable', github: 'NYULibraries/acts_as_citable', tag: 'v5.1.0'
 
