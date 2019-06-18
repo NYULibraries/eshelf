@@ -11,7 +11,7 @@ describe Primo do
     subject { @record }
     its(:external_id) { is_expected.to eql 'nyu_aleph000980206' }
     its(:external_system) { is_expected.to eql 'primo' }
-    its(:format) { is_expected.to eql 'pnx' }
+    its(:format) { is_expected.to eql 'pnx_json' }
     its(:title) { is_expected.to eql 'Virtual inequality : beyond the digital divide' }
     its(:author) { is_expected.to eql 'Mossberger, Karen; Tolbert, Caroline J; Stansbury, Mary, 1957-' }
     its(:title_sort) { is_expected.to eql 'Virtual inequality : beyond the digital divide /' }
