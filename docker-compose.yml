@@ -33,6 +33,11 @@ services:
     command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
     depends_on:
       - setup_dbs
+    # external_links:
+    #   - push_to_cite_dev_1:pushtocite
+    # networks:
+    #   - default
+    #   - custom
     # volumes:
     #   - .:/app
 
@@ -41,6 +46,11 @@ services:
     command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake"]
     depends_on:
       - setup_test_dbs
+    # external_links:
+    #   - push_to_cite_dev_1:pushtocite
+    # networks:
+    #   - default
+    #   - custom
     # volumes:
     #   - .:/app
 
@@ -62,3 +72,7 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     expose:
       - "3306"
+
+# networks:
+#   custom:
+#     external: true

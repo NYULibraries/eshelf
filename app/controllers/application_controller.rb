@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def current_user_dev
     @current_user_dev ||= User.find_by_username("hero123")
   end
-  alias :current_user :current_user_dev if Rails.env.development?
+  # alias :current_user :current_user_dev if Rails.env.development?
 
   # Alias new_session_path as login_path for default devise config
   def new_session_path(scope)
@@ -58,7 +58,7 @@ class ApplicationController < ActionController::Base
 
   # Returns an ActiveRecord relation of the user's record
   def user_records
-    @user_records = (view_context.filter_params[:sort].present?) ? user.records.order("#{view_context.parsed_current_sort.first} #{view_context.parsed_current_sort.last}", view_context.secondary_sort) : user.records.order(created_at: :desc) 
+    @user_records = (view_context.filter_params[:sort].present?) ? user.records.reorder("#{view_context.parsed_current_sort.first} #{view_context.parsed_current_sort.last}", view_context.secondary_sort) : user.records.reorder(created_at: :desc) 
   end
   helper_method :user_records
 

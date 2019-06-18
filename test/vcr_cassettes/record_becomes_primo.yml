@@ -1,260 +1,6 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: http://primo.library.edu/PrimoWebServices/services/searcher
-    body:
-      encoding: UTF-8
-      string: <?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsdl="http://primo.library.edu/PrimoWebServices/services/searcher"
-        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"><env:Body><wsdl:getRecord><request><![CDATA[<fullViewRequest
-        xmlns="http://www.exlibris.com/primo/xsd/wsRequest" xmlns:uic="http://www.exlibris.com/primo/xsd/primoview/uicomponents"><PrimoSearchRequest
-        xmlns="http://www.exlibris.com/primo/xsd/search/request"><QueryTerms><BoolOpeator>AND</BoolOpeator></QueryTerms><StartIndex>1</StartIndex><BulkSize>5</BulkSize><DidUMeanEnabled>false</DidUMeanEnabled></PrimoSearchRequest><institution>NYU</institution><docId>nyu_aleph000980206</docId></fullViewRequest>]]></request></wsdl:getRecord></env:Body></env:Envelope>
-    headers:
-      Soapaction:
-      - '"getRecord"'
-      Content-Type:
-      - text/xml;charset=UTF-8
-      Content-Length:
-      - '846'
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - Apache-Coyote/1.1
-      Content-Type:
-      - text/xml;charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Vary:
-      - Accept-Encoding
-      Date:
-      - Fri, 24 May 2019 14:42:27 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: |-
-        <?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soapenv:Body><ns1:getRecordResponse soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns1="http://primo.library.edu/PrimoWebServices/services/searcher"><getRecordReturn xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">&lt;SEGMENTS xmlns=&quot;http://www.exlibrisgroup.com/xsd/jaguar/search&quot;&gt;
-          &lt;JAGROOT&gt;
-            &lt;RESULT&gt;
-              &lt;DOCSET TOTALHITS=&quot;1&quot;&gt;
-                &lt;DOC LOCAL=&quot;true&quot;&gt;
-                  &lt;PrimoNMBib xmlns=&quot;http://www.exlibrisgroup.com/xsd/primo/primo_nm_bib&quot;&gt;
-                    &lt;record&gt;
-                      &lt;control&gt;
-                        &lt;sourcerecordid&gt;000980206&lt;/sourcerecordid&gt;
-                        &lt;sourceid&gt;nyu_aleph&lt;/sourceid&gt;
-                        &lt;recordid&gt;nyu_aleph000980206&lt;/recordid&gt;
-                        &lt;originalsourceid&gt;NYU01&lt;/originalsourceid&gt;
-                        &lt;ilsapiid&gt;NYU01000980206&lt;/ilsapiid&gt;
-                        &lt;sourceformat&gt;MARC21&lt;/sourceformat&gt;
-                        &lt;sourcesystem&gt;Aleph&lt;/sourcesystem&gt;
-                      &lt;/control&gt;
-                      &lt;display&gt;
-                        &lt;type&gt;book&lt;/type&gt;
-                        &lt;title&gt;Virtual inequality : beyond the digital divide&lt;/title&gt;
-                        &lt;creator&gt;Karen.  Mossberger&lt;/creator&gt;
-                        &lt;contributor&gt;Caroline J Tolbert; Mary Stansbury 1957-&lt;/contributor&gt;
-                        &lt;publisher&gt;Washington, D.C. : Georgetown University Press&lt;/publisher&gt;
-                        &lt;creationdate&gt;c2003&lt;/creationdate&gt;
-                        &lt;format&gt;xvi, 192 p. ; 22 cm.&lt;/format&gt;
-                        &lt;identifier&gt;$$Cisbn$$V0878409998 (pbk. : alk. paper); $$Cisbn$$V9780878409990&lt;/identifier&gt;
-                        &lt;subject&gt;Digital divide&lt;/subject&gt;
-                        &lt;language&gt;eng&lt;/language&gt;
-                        &lt;relation&gt;$$Cseries $$VAmerican governance and public policy.&lt;/relation&gt;
-                        &lt;source&gt;nyu_aleph&lt;/source&gt;
-                        &lt;availlibrary&gt;$$INYU$$LBOBST$$1Main Collection$$2(HN49.I56 M67 2003 )$$Savailable$$31$$40$$5N$$63$$XNYU50$$YBOBST$$ZMAIN&lt;/availlibrary&gt;
-                        &lt;availlibrary&gt;$$INS$$LNSFO$$1Main Collection$$2(HN49.I56 M67 2003 )$$Sunavailable$$31$$41$$5N$$65$$XNYU50$$YTNSFO$$ZMAIN&lt;/availlibrary&gt;
-                        &lt;lds02&gt;nyu_aleph000980206&lt;/lds02&gt;
-                        &lt;lds01&gt;NYU&lt;/lds01&gt;
-                        &lt;lds01&gt;NS&lt;/lds01&gt;
-                        &lt;availinstitution&gt;$$INS$$Sunavailable&lt;/availinstitution&gt;
-                        &lt;availinstitution&gt;$$INYU$$Savailable&lt;/availinstitution&gt;
-                        &lt;availpnx&gt;available&lt;/availpnx&gt;
-                      &lt;/display&gt;
-                      &lt;links&gt;
-                        &lt;openurl&gt;$$Topenurl_journal&lt;/openurl&gt;
-                        &lt;backlink&gt;$$Taleph_backlink$$DMore bibliographic information&lt;/backlink&gt;
-                        &lt;thumbnail&gt;$$Tamazon_thumb&lt;/thumbnail&gt;
-                        &lt;linktotoc&gt;$$Tamazon_toc$$DCheck for Amazon Search Inside&lt;/linktotoc&gt;
-                        &lt;openurlfulltext&gt;$$Topenurlfull_journal&lt;/openurlfulltext&gt;
-                        &lt;linktoholdings&gt;$$Taleph_holdings&lt;/linktoholdings&gt;
-                        &lt;linktoreview&gt;$$TpersistentUrl$$DCopy item link&lt;/linktoreview&gt;
-                        &lt;linktouc&gt;$$Tamazon_uc$$DCheck Amazon&lt;/linktouc&gt;
-                        &lt;linktouc&gt;$$Tworldcat_isbn$$DCheck other libraries (WorldCat&#xAE;)&lt;/linktouc&gt;
-                        &lt;linktoexcerpt&gt;$$Tsyndetics_excerpt$$DExcerpt from item&lt;/linktoexcerpt&gt;
-                        &lt;lln10&gt;$$Tnyugetit&lt;/lln10&gt;
-                        &lt;lln11&gt;$$Tnyuadgetit&lt;/lln11&gt;
-                        &lt;lln12&gt;$$Tnyushgetit&lt;/lln12&gt;
-                        &lt;lln13&gt;$$Tcugetit&lt;/lln13&gt;
-                        &lt;lln14&gt;$$Ttest_aleph_holdings$$DCheck Availability:NYU BOBST Main Collection (HN49.I56 M67 2003 )$$1BOBST$$2MAIN&lt;/lln14&gt;
-                        &lt;lln14&gt;$$Ttest_aleph_holdings$$DCheck Availability:NS NSFO Main Collection (HN49.I56 M67 2003 )$$1TNSFO$$2MAIN&lt;/lln14&gt;
-                        &lt;lln15&gt;$$Ttest_aleph_holdings$$DCheck Availability:NYU Bobst  Main Collection  (HN49.I56 M67 2003 )  $$1BOBST  $$2MAIN&lt;/lln15&gt;
-                        &lt;lln15&gt;$$Ttest_aleph_holdings$$DCheck Availability:New School List Center  Main Collection  (HN49.I56 M67 2003 )  $$1TNSFO  $$2MAIN&lt;/lln15&gt;
-                      &lt;/links&gt;
-                      &lt;search&gt;
-                        &lt;creatorcontrib&gt;Karen.  Mossberger&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Mossberger, Karen.&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Mossberger, K&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Karen Mossberger, Caroline J. Tolbert, Mary Stansbury.&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Caroline J.  Tolbert&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Mary,  Stansbury  1957-&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Tolbert, C&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Stansbury, M&lt;/creatorcontrib&gt;
-                        &lt;title&gt;Virtual inequality : beyond the digital divide /&lt;/title&gt;
-                        &lt;subject&gt;Digital divide&lt;/subject&gt;
-                        &lt;subject&gt;Divide, Digital&lt;/subject&gt;
-                        &lt;subject&gt;Global digital divide&lt;/subject&gt;
-                        &lt;subject&gt;GDD (Global digital divide)&lt;/subject&gt;
-                        &lt;general&gt;Georgetown University Press,&lt;/general&gt;
-                        &lt;general&gt;51769109&lt;/general&gt;
-                        &lt;sourceid&gt;nyu_aleph&lt;/sourceid&gt;
-                        &lt;recordid&gt;nyu_aleph000980206&lt;/recordid&gt;
-                        &lt;isbn&gt;0878409998&lt;/isbn&gt;
-                        &lt;isbn&gt;9780878409990&lt;/isbn&gt;
-                        &lt;rsrctype&gt;book&lt;/rsrctype&gt;
-                        &lt;creationdate&gt;2003&lt;/creationdate&gt;
-                        &lt;addtitle&gt;American governance and public policy series&lt;/addtitle&gt;
-                        &lt;addtitle&gt;American governance and public policy.&lt;/addtitle&gt;
-                        &lt;addtitle&gt;American governance &amp;amp; public policy series&lt;/addtitle&gt;
-                        &lt;searchscope&gt;BOBST&lt;/searchscope&gt;
-                        &lt;searchscope&gt;BOBST Main Collection&lt;/searchscope&gt;
-                        &lt;searchscope&gt;TNSFO&lt;/searchscope&gt;
-                        &lt;searchscope&gt;TNSFO Main Collection&lt;/searchscope&gt;
-                        &lt;searchscope&gt;nyu_aleph&lt;/searchscope&gt;
-                        &lt;searchscope&gt;NYU&lt;/searchscope&gt;
-                        &lt;searchscope&gt;NS&lt;/searchscope&gt;
-                        &lt;scope&gt;BOBST&lt;/scope&gt;
-                        &lt;scope&gt;BOBST Main Collection&lt;/scope&gt;
-                        &lt;scope&gt;TNSFO&lt;/scope&gt;
-                        &lt;scope&gt;TNSFO Main Collection&lt;/scope&gt;
-                        &lt;scope&gt;nyu_aleph&lt;/scope&gt;
-                        &lt;scope&gt;NYU&lt;/scope&gt;
-                        &lt;scope&gt;NS&lt;/scope&gt;
-                        &lt;lsr01&gt;HN49.I56 M67 2003&lt;/lsr01&gt;
-                        &lt;lsr01&gt;HN49 .I56 M67 2003&lt;/lsr01&gt;
-                        &lt;lsr02&gt;Georgetown University Press,&lt;/lsr02&gt;
-                        &lt;lsr10&gt;0878409998&lt;/lsr10&gt;
-                        &lt;lsr10&gt;9780878409990&lt;/lsr10&gt;
-                      &lt;/search&gt;
-                      &lt;sort&gt;
-                        &lt;title&gt;Virtual inequality : beyond the digital divide /&lt;/title&gt;
-                        &lt;creationdate&gt;2003&lt;/creationdate&gt;
-                        &lt;author&gt;Mossberger, Karen.&lt;/author&gt;
-                        &lt;lso01&gt;2003&lt;/lso01&gt;
-                      &lt;/sort&gt;
-                      &lt;facets&gt;
-                        &lt;language&gt;eng&lt;/language&gt;
-                        &lt;creationdate&gt;2003&lt;/creationdate&gt;
-                        &lt;topic&gt;Digital divide&lt;/topic&gt;
-                        &lt;collection&gt;BOBST&lt;/collection&gt;
-                        &lt;collection&gt;TNSFO&lt;/collection&gt;
-                        &lt;toplevel&gt;available&lt;/toplevel&gt;
-                        &lt;prefilter&gt;books&lt;/prefilter&gt;
-                        &lt;rsrctype&gt;books&lt;/rsrctype&gt;
-                        &lt;creatorcontrib&gt;Mossberger, K&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Tolbert, C&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Stansbury, M&lt;/creatorcontrib&gt;
-                        &lt;library&gt;BOBST&lt;/library&gt;
-                        &lt;library&gt;NSFO&lt;/library&gt;
-                        &lt;lfc01&gt;Main Collection&lt;/lfc01&gt;
-                        &lt;newrecords&gt;20111230_430&lt;/newrecords&gt;
-                        &lt;classificationlcc&gt;H - Social sciences.&#x2013;Social history and conditions. Social problems. Social reform&lt;/classificationlcc&gt;
-                        &lt;frbrgroupid&gt;534545165&lt;/frbrgroupid&gt;
-                        &lt;frbrtype&gt;6&lt;/frbrtype&gt;
-                      &lt;/facets&gt;
-                      &lt;dedup&gt;
-                        &lt;t&gt;1&lt;/t&gt;
-                        &lt;c1&gt;2003004571&lt;/c1&gt;
-                        &lt;c2&gt;0878409998;9780878409990&lt;/c2&gt;
-                        &lt;c3&gt;virtualinequalitybeyitaldivide&lt;/c3&gt;
-                        &lt;c4&gt;2003&lt;/c4&gt;
-                        &lt;f1&gt;2003004571&lt;/f1&gt;
-                        &lt;f3&gt;0878409998;9780878409990&lt;/f3&gt;
-                        &lt;f5&gt;virtualinequalitybeyitaldivide&lt;/f5&gt;
-                        &lt;f6&gt;2003&lt;/f6&gt;
-                        &lt;f7&gt;virtual inequality beyond the digital divide&lt;/f7&gt;
-                        &lt;f8&gt;dcu&lt;/f8&gt;
-                        &lt;f9&gt;xvi, 192 p. ;&lt;/f9&gt;
-                        &lt;f10&gt;georgetown university press&lt;/f10&gt;
-                        &lt;f11&gt;mossberger karen&lt;/f11&gt;
-                      &lt;/dedup&gt;
-                      &lt;frbr&gt;
-                        &lt;t&gt;1&lt;/t&gt;
-                        &lt;k1&gt;$$Kmossberger karen$$AA&lt;/k1&gt;
-                        &lt;k3&gt;$$Kbookvirtual inequality beyond the digital divide$$AT&lt;/k3&gt;
-                      &lt;/frbr&gt;
-                      &lt;delivery&gt;
-                        &lt;institution&gt;NYU&lt;/institution&gt;
-                        &lt;institution&gt;NS&lt;/institution&gt;
-                        &lt;delcategory&gt;Physical Item&lt;/delcategory&gt;
-                      &lt;/delivery&gt;
-                      &lt;enrichment&gt;
-                        &lt;classificationlcc&gt;HN49.I56&lt;/classificationlcc&gt;
-                      &lt;/enrichment&gt;
-                      &lt;ranking&gt;
-                        &lt;booster1&gt;1&lt;/booster1&gt;
-                        &lt;booster2&gt;1&lt;/booster2&gt;
-                      &lt;/ranking&gt;
-                      &lt;addata&gt;
-                        &lt;aulast&gt;Mossberger&lt;/aulast&gt;
-                        &lt;aufirst&gt;Karen.&lt;/aufirst&gt;
-                        &lt;au&gt;Mossberger, Karen&lt;/au&gt;
-                        &lt;addau&gt;Tolbert, Caroline J&lt;/addau&gt;
-                        &lt;addau&gt;Stansbury, Mary, 1957-&lt;/addau&gt;
-                        &lt;btitle&gt;Virtual inequality : beyond the digital divide&lt;/btitle&gt;
-                        &lt;seriestitle&gt;American governance and public policy&lt;/seriestitle&gt;
-                        &lt;seriestitle&gt;American governance and public policy series&lt;/seriestitle&gt;
-                        &lt;seriestitle&gt;American governance &amp;amp; public policy series&lt;/seriestitle&gt;
-                        &lt;date&gt;2003&lt;/date&gt;
-                        &lt;risdate&gt;c2003.&lt;/risdate&gt;
-                        &lt;isbn&gt;0878409998&lt;/isbn&gt;
-                        &lt;isbn&gt;9780878409990&lt;/isbn&gt;
-                        &lt;format&gt;book&lt;/format&gt;
-                        &lt;genre&gt;book&lt;/genre&gt;
-                        &lt;ristype&gt;BOOK&lt;/ristype&gt;
-                        &lt;notes&gt;Includes bibliographical references (p. [171]-183) and index.&lt;/notes&gt;
-                        &lt;cop&gt;Washington, D.C.&lt;/cop&gt;
-                        &lt;pub&gt;Georgetown University Press&lt;/pub&gt;
-                        &lt;oclcid&gt;51769109&lt;/oclcid&gt;
-                        &lt;lccn&gt;2003004571&lt;/lccn&gt;
-                        &lt;lad01&gt;TNSFOBOBST&lt;/lad01&gt;
-                        &lt;lad01&gt;Physical Item&lt;/lad01&gt;
-                      &lt;/addata&gt;
-                      &lt;browse&gt;
-                        &lt;author&gt;$$DMossberger, Karen$$EMossberger, Karen$$INYU10008778854$$PY&lt;/author&gt;
-                        &lt;author&gt;$$DTolbert, Caroline J$$ETolbert, Caroline J$$INYU10008780023$$PY&lt;/author&gt;
-                        &lt;author&gt;$$DStansbury, Mary, 1957-$$EStansbury, Mary, 1957-$$INYU10003971847$$PY&lt;/author&gt;
-                        &lt;title&gt;$$DVirtual inequality : beyond the digital divide$$EVirtual inequality : beyond the digital divide&lt;/title&gt;
-                        &lt;title&gt;$$DAmerican governance and public policy series$$EAmerican governance and public policy series&lt;/title&gt;
-                        &lt;title&gt;$$DAmerican governance and public policy$$EAmerican governance and public policy&lt;/title&gt;
-                        &lt;title&gt;$$DAmerican governance &amp;amp; public policy series$$EAmerican governance &amp;amp; public policy series&lt;/title&gt;
-                        &lt;subject&gt;$$DDigital divide$$EDigital divide$$INYU10000056200$$PY&lt;/subject&gt;
-                        &lt;subject&gt;$$DDivide, Digital$$EDivide, Digital$$INYU10000056200$$PN&lt;/subject&gt;
-                        &lt;subject&gt;$$DGlobal digital divide$$EGlobal digital divide$$INYU10000056200$$PN&lt;/subject&gt;
-                        &lt;subject&gt;$$DGDD (Global digital divide)$$EGDD (Global digital divide)$$INYU10000056200$$PN&lt;/subject&gt;
-                        &lt;callnumber&gt;$$INYU$$DHN49.I56 M67 2003$$E0hn   00049.i  56000  m67 2003$$T0&lt;/callnumber&gt;
-                        &lt;callnumber&gt;$$INS$$DHN49.I56 M67 2003$$E0hn   00049.i  56000  m67 2003$$T0&lt;/callnumber&gt;
-                        &lt;institution&gt;NYU&lt;/institution&gt;
-                        &lt;institution&gt;NS&lt;/institution&gt;
-                      &lt;/browse&gt;
-                    &lt;/record&gt;
-                  &lt;/PrimoNMBib&gt;
-                &lt;/DOC&gt;
-              &lt;/DOCSET&gt;
-            &lt;/RESULT&gt;
-          &lt;/JAGROOT&gt;
-        &lt;/SEGMENTS&gt;</getRecordReturn></ns1:getRecordResponse></soapenv:Body></soapenv:Envelope>
-    http_version: 
-  recorded_at: Fri, 24 May 2019 14:42:27 GMT
-- request:
     method: get
     uri: https://cite-dev.library.nyu.edu/openurl/nyu_aleph000980206?calling_system=primo&cite_to=json&institution=NYU
     body:
@@ -294,359 +40,6 @@ http_interactions:
       encoding: ASCII-8BIT
       string: !binary |-
         H4sIANQC6FwAA2xTXY+bMBD8L5GSpwYcQq6AZFXV9UNVValSc610L5GBhewd2Jw/aKKq/70LOFyu7QMwMzvsrI35tVAdSKebRbY4WtuZLAxrsGiDBnMt9DmQZxdA6UINRjU9vFkV9nToQfP7bRokyTpiLB41kAVHWalMVRgSye72H9bJWLLY8oht0jXbraN4v2HL7ds4oluUfPq2X1H8Px0HbXi1au3YlXoSzB6hz1p7yqi00pU+YDllGizDTmOrAjgNk6OptXJdUKg2G/U1reMgGuiOjLE0YRG7oQb20Itmzsj+TsmVehxcQQ1SA5/pA21QA3zE+YS/o7ZONMuIoYQnQmjPRDK6cjgrWRKwR6B7iTXa0VlijyWMXYRrhLH8izImB12D9mqFmuTPQoMMvIQSLb/Cm2vSXohxVYWnC7tq/IqCx36+VCjdTbZeNa71q0JjnIed0D6PlqUtfaeRGCM96ETtrfAMB2R8vLbS+cE6l/OPoGgQq35KGuVOIn16M+3WVzpkZvI1ogD+Q5gjytoqOUz9LrgNLsP5bHiGaHLJWfI6iVmapsk0GhY4VQtVwmScj0ypMBxrKn+AYtSn6OG48P8flyEw931KYflyezsbl9v3s5f08LpAvNYdRRDebeNdvNvc7AbTrBJRYnqGF0D/gFcm9GJ8JYbx4SlohKzdsO8g68XvPwAAAP//AwBYVmk+0QMAAA==
-    http_version: 
-  recorded_at: Fri, 24 May 2019 14:42:28 GMT
-- request:
-    method: post
-    uri: http://primo.library.edu/PrimoWebServices/services/searcher
-    body:
-      encoding: UTF-8
-      string: <?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsdl="http://primo.library.edu/PrimoWebServices/services/searcher"
-        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"><env:Body><wsdl:getRecord><request><![CDATA[<fullViewRequest
-        xmlns="http://www.exlibris.com/primo/xsd/wsRequest" xmlns:uic="http://www.exlibris.com/primo/xsd/primoview/uicomponents"><PrimoSearchRequest
-        xmlns="http://www.exlibris.com/primo/xsd/search/request"><QueryTerms><BoolOpeator>AND</BoolOpeator></QueryTerms><StartIndex>1</StartIndex><BulkSize>5</BulkSize><DidUMeanEnabled>false</DidUMeanEnabled></PrimoSearchRequest><institution>NYU</institution><docId>nyu_aleph000570570</docId></fullViewRequest>]]></request></wsdl:getRecord></env:Body></env:Envelope>
-    headers:
-      Soapaction:
-      - '"getRecord"'
-      Content-Type:
-      - text/xml;charset=UTF-8
-      Content-Length:
-      - '846'
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - Apache-Coyote/1.1
-      Content-Type:
-      - text/xml;charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Vary:
-      - Accept-Encoding
-      Date:
-      - Fri, 24 May 2019 14:42:27 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: |-
-        <?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soapenv:Body><ns1:getRecordResponse soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns1="http://primo.library.edu/PrimoWebServices/services/searcher"><getRecordReturn xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">&lt;SEGMENTS xmlns=&quot;http://www.exlibrisgroup.com/xsd/jaguar/search&quot;&gt;
-          &lt;JAGROOT&gt;
-            &lt;RESULT&gt;
-              &lt;DOCSET TOTALHITS=&quot;1&quot;&gt;
-                &lt;DOC LOCAL=&quot;true&quot;&gt;
-                  &lt;PrimoNMBib xmlns=&quot;http://www.exlibrisgroup.com/xsd/primo/primo_nm_bib&quot;&gt;
-                    &lt;record&gt;
-                      &lt;control&gt;
-                        &lt;sourcerecordid&gt;000570570&lt;/sourcerecordid&gt;
-                        &lt;sourceid&gt;nyu_aleph&lt;/sourceid&gt;
-                        &lt;recordid&gt;nyu_aleph000570570&lt;/recordid&gt;
-                        &lt;originalsourceid&gt;NYU01&lt;/originalsourceid&gt;
-                        &lt;ilsapiid&gt;NYU01000570570&lt;/ilsapiid&gt;
-                        &lt;sourceformat&gt;MARC21&lt;/sourceformat&gt;
-                        &lt;sourcesystem&gt;Aleph&lt;/sourcesystem&gt;
-                      &lt;/control&gt;
-                      &lt;display&gt;
-                        &lt;type&gt;video&lt;/type&gt;
-                        &lt;title&gt;Travels with my aunt [videorecording]&lt;/title&gt;
-                        &lt;contributor&gt;George Cukor 1899-1983.; Maggie Smith 1934-; Alec McCowen; Louis Gossett Jr., 1936-; Graham Greene 1904-1991.; Metro-Goldwyn-Mayer.; Loew's Incorporated. Metro-Goldwyn-Mayer; M-G-M&lt;/contributor&gt;
-                        &lt;edition&gt;Deluxe letter-box ed.&lt;/edition&gt;
-                        &lt;publisher&gt;Santa Monica, CA : MGM/UA Home Video&lt;/publisher&gt;
-                        &lt;creationdate&gt;1995&lt;/creationdate&gt;
-                        &lt;format&gt;1 videocassette (ca. 109 min.) : sd., col. ; 1/2 in.&lt;/format&gt;
-                        &lt;identifier&gt;$$Cisbn$$V079282783X; $$Cisbn$$V9780792827832; $$Cmuspub$$VM202851 MGM/UA Home Video&lt;/identifier&gt;
-                        &lt;subject&gt;Feature films; Films for the hearing impaired&lt;/subject&gt;
-                        &lt;description&gt;$$Csummary$$VAunt Augusta, a spirited woman of indeterminate years, sets off on a series of European adventures with her stodgy, middle-aged nephew Henry. The once shy Henry is transformed into a virile, vibrant man while his aunt shows him the stylish, graceful lifestyle of her swindling, smuggling and hustling schemes.&lt;/description&gt;
-                        &lt;description&gt;$$Ccredits$$VDirector of photography, Douglas Slocombe ; film editor, John Bloom ; music, Terry Hatch.&lt;/description&gt;
-                        &lt;description&gt;$$Ccredits$$VMaggie Smith, Alec McCowen, Lou Gossett, Robert Stephens, Cindy Williams, Robert Fleming, Jos&#xE9; Luis L&#xF3;pez V&#xE1;zquez.&lt;/description&gt;
-                        &lt;language&gt;eng&lt;/language&gt;
-                        &lt;relation&gt;Greene, Graham, 1904-1991. Travels with my aunt.&lt;/relation&gt;
-                        &lt;source&gt;nyu_aleph&lt;/source&gt;
-                        &lt;availlibrary&gt;$$INYU$$LBAFC$$1Main Collection$$2(VCA 15583 )$$Sunavailable$$31$$41$$5N$$60$$XNYU50$$YBAFC$$ZAFC&lt;/availlibrary&gt;
-                        &lt;lds02&gt;nyu_aleph000570570&lt;/lds02&gt;
-                        &lt;lds13&gt;1 videocassette (ca. 109 min.) : 1/2 in.&lt;/lds13&gt;
-                        &lt;lds01&gt;NYU&lt;/lds01&gt;
-                        &lt;availinstitution&gt;$$INYU$$Sunavailable&lt;/availinstitution&gt;
-                        &lt;availpnx&gt;unavailable&lt;/availpnx&gt;
-                      &lt;/display&gt;
-                      &lt;links&gt;
-                        &lt;openurl&gt;$$Topenurl_journal&lt;/openurl&gt;
-                        &lt;backlink&gt;$$Taleph_backlink$$DMore bibliographic information&lt;/backlink&gt;
-                        &lt;thumbnail&gt;$$Tamazon_thumb&lt;/thumbnail&gt;
-                        &lt;linktotoc&gt;$$Tamazon_toc$$DCheck for Amazon Search Inside&lt;/linktotoc&gt;
-                        &lt;openurlfulltext&gt;$$Topenurlfull_journal&lt;/openurlfulltext&gt;
-                        &lt;linktoholdings&gt;$$Taleph_holdings&lt;/linktoholdings&gt;
-                        &lt;linktoreview&gt;$$TpersistentUrl$$DCopy item link&lt;/linktoreview&gt;
-                        &lt;linktouc&gt;$$Tamazon_uc$$DCheck Amazon&lt;/linktouc&gt;
-                        &lt;linktouc&gt;$$Tworldcat_isbn$$DCheck other libraries (WorldCat&#xAE;)&lt;/linktouc&gt;
-                        &lt;linktoexcerpt&gt;$$Tsyndetics_excerpt$$DExcerpt from item&lt;/linktoexcerpt&gt;
-                        &lt;lln10&gt;$$Tnyugetit&lt;/lln10&gt;
-                        &lt;lln11&gt;$$Tnyuadgetit&lt;/lln11&gt;
-                        &lt;lln12&gt;$$Tnyushgetit&lt;/lln12&gt;
-                        &lt;lln13&gt;$$Tcugetit&lt;/lln13&gt;
-                        &lt;lln14&gt;$$Ttest_aleph_holdings$$DCheck Availability:NYU BAFC Main Collection (VCA 15583 )$$1BAFC$$2AFC&lt;/lln14&gt;
-                        &lt;lln15&gt;$$Ttest_aleph_holdings$$DCheck Availability:NYU Bobst Avery Fisher Center  Main Collection  (VCA 15583 )  $$1BAFC  $$2AFC&lt;/lln15&gt;
-                      &lt;/links&gt;
-                      &lt;search&gt;
-                        &lt;creatorcontrib&gt;Metro Goldwyn Mayer ; a George Cukor-Robert Fryer and James Cresson production ; screenplay by Jay Presson Allen and Hugh Wheeler ; produced by Robert Fryer and James Cresson ; directed by George Cukor.&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Director of photography, Douglas Slocombe ; film editor, John Bloom ; music, Terry Hatch.&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Maggie Smith, Alec McCowen, Lou Gossett, Robert Stephens, Cindy Williams, Robert Fleming, Jos&#xE9; Luis L&#xF3;pez V&#xE1;zquez.&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;George,  Cukor  1899-1983.&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Maggie,  Smith  1934-&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Margaret Natalie,  Smith  1934-&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Alec.  McCowen&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Alec  McCowan&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Alex  McCowen&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Alec  Mc Cowen&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Alexander D.  McCowen  (Alexander Duncan)&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Alec  McOwen&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Louis,  Gossett  1936-&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Lou,  Gossett  1936-&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Louis,  Gossett  Jr., 1936-&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Graham,  Greene  1904-1991.&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Greiems,  Gr&#x12B;ns  1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Henry Graham,  Greene  1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;G&#x16D;re&#x14F;m,  G&#x16D;rin  1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Greham,  Grin  1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Gr&#x101;hama,  Gr&#x12B;na  1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Gr&#x117;m,  Grin  1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;G.  Gr&#x12B;ns  (Greiems), 1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;&#x683C;&#x62C9;&#x59C6;&#x30FB;&#x845B;&#x6797;,  1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;&#x5D2;&#x5E8;&#x5D9;&#x5DF;, &#x5D2;&#x5E8;&#x5D4;&#x5DD;,  1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Graham,  Grin  1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;&#x30B0;&#x30EA;&#x30FC;&#x30F3;, &#x30B0;&#x30EC;&#x30A2;&#x30E0;,  1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Gureamu,  Gur&#x12B;n  1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Greihamas,  Grinas  1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;&#x413;&#x440;&#x44D;&#x43C;,  &#x413;&#x440;&#x438;&#x43D;  1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Cukor, G&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Smith, M&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;McCowen, A&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;McCowan, A&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Mc Cowen, A&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;McOwen, A&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Gossett, L&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Greene, G&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Gr&#x12B;ns, G&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Greene, H&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;G&#x16D;rin, G&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Grin, G&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Gr&#x12B;na, G&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;&#x683C;&#x62C9;&#x59C6;&#x30FB;&#x845B;&#x6797;&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;&#x5D2;&#x5E8;&#x5D9;&#x5DF;&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;&#x30B0;&#x30EA;&#x30FC;&#x30F3;&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Gur&#x12B;n, G&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Grinas, G&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;&#x413;&#x440;&#x438;&#x43D;, &#x413;&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Metro-Goldwyn-Mayer.&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Loew's Incorporated. Metro-Goldwyn-Mayer&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Metro-Goldwyn-Mayer Distributing Corporation&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;M-G-M&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Metro-Goldwyn-Mayer Pictures&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Metro-Goldwyn-Mayer Pictures Corporation&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Metro-Goldwyn-Mayer Corporation&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;MGM (Metro-Goldwyn-Mayer)&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;MGM/UA Home Video (Firm)&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Gr&#x12B;ns, Greiems, 1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Greene, Henry Graham, 1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;G&#x16D;rin, G&#x16D;re&#x14F;m, 1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Grin, Greham, 1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Gr&#x12B;na, Gr&#x101;hama, 1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Grin, Gr&#x117;m, 1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Gr&#x12B;ns, G. (Greiems), 1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;&#x683C;&#x62C9;&#x59C6;&#x30FB;&#x845B;&#x6797;, 1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;&#x5D2;&#x5E8;&#x5D9;&#x5DF;, &#x5D2;&#x5E8;&#x5D4;&#x5DD;, 1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Grin, Graham, 1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;&#x30B0;&#x30EA;&#x30FC;&#x30F3;, &#x30B0;&#x30EC;&#x30A2;&#x30E0;, 1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Gur&#x12B;n, Gureamu, 1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Grinas, Greihamas, 1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;&#x413;&#x440;&#x438;&#x43D;, &#x413;&#x440;&#x44D;&#x43C;, 1904-1991&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;McCowan, Alec&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;McCowen, Alex&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Mc Cowen, Alec&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;McCowen, Alexander D. (Alexander Duncan)&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;McOwen, Alec&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Gossett, Lou, 1936-&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Gossett, Louis, 1936-&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Smith, Margaret Natalie, 1934-&lt;/creatorcontrib&gt;
-                        &lt;title&gt;Travels with my aunt&lt;/title&gt;
-                        &lt;description&gt;Aunt Augusta, a spirited woman of indeterminate years, sets off on a series of European adventures with her stodgy, middle-aged nephew Henry. The once shy Henry is transformed into a virile, vibrant man while his aunt shows him the stylish, graceful lifestyle of her swindling, smuggling and hustling schemes.&lt;/description&gt;
-                        &lt;subject&gt;Feature films&lt;/subject&gt;
-                        &lt;subject&gt;Films for the hearing impaired&lt;/subject&gt;
-                        &lt;general&gt;MGM/UA Home Video,&lt;/general&gt;
-                        &lt;general&gt;Closed captioned for the hearing impaired.&lt;/general&gt;
-                        &lt;general&gt;Originally produced as a motion picture in 1972.&lt;/general&gt;
-                        &lt;general&gt;Based upon the novel by Graham Greene.&lt;/general&gt;
-                        &lt;general&gt;&quot;M202851&quot;--Cassette label.&lt;/general&gt;
-                        &lt;general&gt;Director of photography, Douglas Slocombe ; film editor, John Bloom ; music, Terry Hatch.&lt;/general&gt;
-                        &lt;general&gt;Rated PG.&lt;/general&gt;
-                        &lt;general&gt;M202851&lt;/general&gt;
-                        &lt;general&gt;[videorecording] /&lt;/general&gt;
-                        &lt;general&gt;35619373&lt;/general&gt;
-                        &lt;general&gt;33891106&lt;/general&gt;
-                        &lt;sourceid&gt;nyu_aleph&lt;/sourceid&gt;
-                        &lt;recordid&gt;nyu_aleph000570570&lt;/recordid&gt;
-                        &lt;isbn&gt;079282783X&lt;/isbn&gt;
-                        &lt;isbn&gt;9780792827832&lt;/isbn&gt;
-                        &lt;rsrctype&gt;video&lt;/rsrctype&gt;
-                        &lt;creationdate&gt;1995&lt;/creationdate&gt;
-                        &lt;creationdate&gt;1972&lt;/creationdate&gt;
-                        &lt;addtitle&gt;Travels with my aunt.&lt;/addtitle&gt;
-                        &lt;searchscope&gt;BAFC&lt;/searchscope&gt;
-                        &lt;searchscope&gt;BAFC Main Collection&lt;/searchscope&gt;
-                        &lt;searchscope&gt;nyu_aleph&lt;/searchscope&gt;
-                        &lt;searchscope&gt;NYU&lt;/searchscope&gt;
-                        &lt;scope&gt;BAFC&lt;/scope&gt;
-                        &lt;scope&gt;BAFC Main Collection&lt;/scope&gt;
-                        &lt;scope&gt;nyu_aleph&lt;/scope&gt;
-                        &lt;scope&gt;NYU&lt;/scope&gt;
-                        &lt;lsr01&gt;VCA 15583&lt;/lsr01&gt;
-                        &lt;lsr02&gt;MGM/UA Home Video,&lt;/lsr02&gt;
-                        &lt;lsr10&gt;079282783X&lt;/lsr10&gt;
-                        &lt;lsr10&gt;9780792827832&lt;/lsr10&gt;
-                      &lt;/search&gt;
-                      &lt;sort&gt;
-                        &lt;title&gt;Travels with my aunt&lt;/title&gt;
-                        &lt;creationdate&gt;1995&lt;/creationdate&gt;
-                        &lt;author&gt;Cukor, George, 1899-1983.&lt;/author&gt;
-                        &lt;lso01&gt;1995&lt;/lso01&gt;
-                      &lt;/sort&gt;
-                      &lt;facets&gt;
-                        &lt;language&gt;eng&lt;/language&gt;
-                        &lt;creationdate&gt;1995&lt;/creationdate&gt;
-                        &lt;collection&gt;BAFC&lt;/collection&gt;
-                        &lt;prefilter&gt;video&lt;/prefilter&gt;
-                        &lt;rsrctype&gt;video&lt;/rsrctype&gt;
-                        &lt;creatorcontrib&gt;Cukor, G&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Smith, M&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;McCowen, A&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Gossett, L&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Greene, G&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Metro-Goldwyn-Mayer&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;MGM/UA Home Video (Firm)&lt;/creatorcontrib&gt;
-                        &lt;genre&gt;Feature films&lt;/genre&gt;
-                        &lt;genre&gt;Films for the hearing impaired&lt;/genre&gt;
-                        &lt;library&gt;BOBST&lt;/library&gt;
-                        &lt;lfc01&gt;Main Collection&lt;/lfc01&gt;
-                        &lt;newrecords&gt;20111230_332&lt;/newrecords&gt;
-                        &lt;classificationlcc&gt;P - Language and literature.&#x2013;English literature&lt;/classificationlcc&gt;
-                        &lt;frbrgroupid&gt;590554224&lt;/frbrgroupid&gt;
-                        &lt;frbrtype&gt;6&lt;/frbrtype&gt;
-                      &lt;/facets&gt;
-                      &lt;dedup&gt;
-                        &lt;t&gt;1&lt;/t&gt;
-                        &lt;c2&gt;079282783X;9780792827832&lt;/c2&gt;
-                        &lt;c3&gt;travelswithmyaunt&lt;/c3&gt;
-                        &lt;c4&gt;1995&lt;/c4&gt;
-                        &lt;f3&gt;079282783X;9780792827832&lt;/f3&gt;
-                        &lt;f5&gt;travelswithmyaunt&lt;/f5&gt;
-                        &lt;f6&gt;1995&lt;/f6&gt;
-                        &lt;f7&gt;travels with my aunt&lt;/f7&gt;
-                        &lt;f8&gt;cau&lt;/f8&gt;
-                        &lt;f9&gt;1 videocassette (ca. 109 min.) :&lt;/f9&gt;
-                        &lt;f10&gt;mgm ua home video&lt;/f10&gt;
-                      &lt;/dedup&gt;
-                      &lt;frbr&gt;
-                        &lt;t&gt;99&lt;/t&gt;
-                        &lt;k1&gt;$$Kcukor george 1899 1983$$AA&lt;/k1&gt;
-                        &lt;k1&gt;$$Ksmith maggie 1934$$AA&lt;/k1&gt;
-                        &lt;k1&gt;$$Kmccowen alec$$AA&lt;/k1&gt;
-                        &lt;k1&gt;$$Kgossett louis jr 1936$$AA&lt;/k1&gt;
-                        &lt;k1&gt;$$Kgreene graham 1904 1991$$AA&lt;/k1&gt;
-                        &lt;k3&gt;$$Kvideotravels with my aunt$$AT&lt;/k3&gt;
-                      &lt;/frbr&gt;
-                      &lt;delivery&gt;
-                        &lt;institution&gt;NYU&lt;/institution&gt;
-                        &lt;delcategory&gt;Physical Item&lt;/delcategory&gt;
-                      &lt;/delivery&gt;
-                      &lt;enrichment&gt;
-                        &lt;classificationlcc&gt;PR6013.R44&lt;/classificationlcc&gt;
-                      &lt;/enrichment&gt;
-                      &lt;ranking&gt;
-                        &lt;booster1&gt;1&lt;/booster1&gt;
-                        &lt;booster2&gt;1&lt;/booster2&gt;
-                      &lt;/ranking&gt;
-                      &lt;addata&gt;
-                        &lt;aulast&gt;Cukor&lt;/aulast&gt;
-                        &lt;aufirst&gt;George,&lt;/aufirst&gt;
-                        &lt;addau&gt;Cukor, George, 1899-1983&lt;/addau&gt;
-                        &lt;addau&gt;Smith, Maggie, 1934-&lt;/addau&gt;
-                        &lt;addau&gt;McCowen, Alec&lt;/addau&gt;
-                        &lt;addau&gt;Gossett, Louis, Jr., 1936-&lt;/addau&gt;
-                        &lt;addau&gt;Greene, Graham, 1904-1991&lt;/addau&gt;
-                        &lt;addau&gt;Metro-Goldwyn-Mayer&lt;/addau&gt;
-                        &lt;addau&gt;MGM/UA Home Video (Firm)&lt;/addau&gt;
-                        &lt;btitle&gt;Travels with my aunt [videorecording]&lt;/btitle&gt;
-                        &lt;date&gt;1995&lt;/date&gt;
-                        &lt;risdate&gt;[1995]&lt;/risdate&gt;
-                        &lt;isbn&gt;079282783X&lt;/isbn&gt;
-                        &lt;isbn&gt;9780792827832&lt;/isbn&gt;
-                        &lt;format&gt;video&lt;/format&gt;
-                        &lt;genre&gt;video&lt;/genre&gt;
-                        &lt;ristype&gt;VIDEO&lt;/ristype&gt;
-                        &lt;abstract&gt;Aunt Augusta, a spirited woman of indeterminate years, sets off on a series of European adventures with her stodgy, middle-aged nephew Henry. The once shy Henry is transformed into a virile, vibrant man while his aunt shows him the stylish, graceful lifestyle of her swindling, smuggling and hustling schemes.&lt;/abstract&gt;
-                        &lt;cop&gt;Santa Monica, CA&lt;/cop&gt;
-                        &lt;pub&gt;MGM/UA Home Video&lt;/pub&gt;
-                        &lt;oclcid&gt;35619373&lt;/oclcid&gt;
-                        &lt;lad01&gt;BAFC&lt;/lad01&gt;
-                        &lt;lad01&gt;Physical Item&lt;/lad01&gt;
-                      &lt;/addata&gt;
-                      &lt;browse&gt;
-                        &lt;author&gt;$$DCukor, George, 1899-1983$$ECukor, George, 1899-1983$$INYU10008656500$$PY&lt;/author&gt;
-                        &lt;author&gt;$$DSmith, Maggie, 1934-$$ESmith, Maggie, 1934-$$INYU10007863110$$PY&lt;/author&gt;
-                        &lt;author&gt;$$DSmith, Margaret Natalie, 1934-$$ESmith, Margaret Natalie, 1934-$$INYU10007863110$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DMcCowen, Alec$$EMcCowen, Alec$$INYU10010059678$$PY&lt;/author&gt;
-                        &lt;author&gt;$$DMcCowan, Alec$$EMcCowan, Alec$$INYU10010059678$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DMcCowen, Alex$$EMcCowen, Alex$$INYU10010059678$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DMc Cowen, Alec$$EMc Cowen, Alec$$INYU10010059678$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DMcCowen, Alexander D. (Alexander Duncan)$$EMcCowen, Alexander D. (Alexander Duncan)$$INYU10010059678$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DMcOwen, Alec$$EMcOwen, Alec$$INYU10010059678$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DGossett, Louis, 1936-$$EGossett, Louis, 1936-$$INYU10009213750$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DGossett, Lou, 1936-$$EGossett, Lou, 1936-$$INYU10009213750$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DGossett, Louis, Jr., 1936-$$EGossett, Louis, Jr., 1936-$$INYU10009213750$$PY&lt;/author&gt;
-                        &lt;author&gt;$$DGreene, Graham, 1904-1991$$EGreene, Graham, 1904-1991$$INYU10009881806$$PY&lt;/author&gt;
-                        &lt;author&gt;$$DGr&#x12B;ns, Greiems, 1904-1991$$EGr&#x12B;ns, Greiems, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DGreene, Henry Graham, 1904-1991$$EGreene, Henry Graham, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DG&#x16D;rin, G&#x16D;re&#x14F;m, 1904-1991$$EG&#x16D;rin, G&#x16D;re&#x14F;m, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DGrin, Greham, 1904-1991$$EGrin, Greham, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DGr&#x12B;na, Gr&#x101;hama, 1904-1991$$EGr&#x12B;na, Gr&#x101;hama, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DGrin, Gr&#x117;m, 1904-1991$$EGrin, Gr&#x117;m, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DGr&#x12B;ns, G. (Greiems), 1904-1991$$EGr&#x12B;ns, G. (Greiems), 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
-                        &lt;author&gt;$$D&#x683C;&#x62C9;&#x59C6;&#x30FB;&#x845B;&#x6797;, 1904-1991$$E&#x683C;&#x62C9;&#x59C6;&#x30FB;&#x845B;&#x6797;, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
-                        &lt;author&gt;$$D&#x5D2;&#x5E8;&#x5D9;&#x5DF;, &#x5D2;&#x5E8;&#x5D4;&#x5DD;, 1904-1991$$E&#x5D2;&#x5E8;&#x5D9;&#x5DF;, &#x5D2;&#x5E8;&#x5D4;&#x5DD;, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DGrin, Graham, 1904-1991$$EGrin, Graham, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
-                        &lt;author&gt;$$D&#x30B0;&#x30EA;&#x30FC;&#x30F3;, &#x30B0;&#x30EC;&#x30A2;&#x30E0;, 1904-1991$$E&#x30B0;&#x30EA;&#x30FC;&#x30F3;, &#x30B0;&#x30EC;&#x30A2;&#x30E0;, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DGur&#x12B;n, Gureamu, 1904-1991$$EGur&#x12B;n, Gureamu, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DGrinas, Greihamas, 1904-1991$$EGrinas, Greihamas, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
-                        &lt;author&gt;$$D&#x413;&#x440;&#x438;&#x43D;, &#x413;&#x440;&#x44D;&#x43C;, 1904-1991$$E&#x413;&#x440;&#x438;&#x43D;, &#x413;&#x440;&#x44D;&#x43C;, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DMetro-Goldwyn-Mayer$$EMetro-Goldwyn-Mayer$$INYU10010124061$$PY&lt;/author&gt;
-                        &lt;author&gt;$$DLoew's Incorporated. Metro-Goldwyn-Mayer$$ELoew's Incorporated. Metro-Goldwyn-Mayer$$INYU10010124061$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DMetro-Goldwyn-Mayer Distributing Corporation$$EMetro-Goldwyn-Mayer Distributing Corporation$$INYU10010124061$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DM-G-M$$EM-G-M$$INYU10010124061$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DMetro-Goldwyn-Mayer Pictures$$EMetro-Goldwyn-Mayer Pictures$$INYU10010124061$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DMetro-Goldwyn-Mayer Pictures Corporation$$EMetro-Goldwyn-Mayer Pictures Corporation$$INYU10010124061$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DMetro-Goldwyn-Mayer Corporation$$EMetro-Goldwyn-Mayer Corporation$$INYU10010124061$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DMGM (Metro-Goldwyn-Mayer)$$EMGM (Metro-Goldwyn-Mayer)$$INYU10010124061$$PN&lt;/author&gt;
-                        &lt;author&gt;$$DMGM/UA Home Video (Firm)$$EMGM/UA Home Video (Firm)$$INYU10005485151$$PY&lt;/author&gt;
-                        &lt;title&gt;$$DTravels with my aunt$$ETravels with my aunt&lt;/title&gt;
-                        &lt;subject&gt;$$DFeature films$$EFeature films&lt;/subject&gt;
-                        &lt;subject&gt;$$DFilms for the hearing impaired$$EFilms for the hearing impaired&lt;/subject&gt;
-                        &lt;callnumber&gt;$$INYU$$DVCA 15583$$Evca 15583$$T4&lt;/callnumber&gt;
-                        &lt;institution&gt;NYU&lt;/institution&gt;
-                      &lt;/browse&gt;
-                    &lt;/record&gt;
-                  &lt;/PrimoNMBib&gt;
-                &lt;/DOC&gt;
-              &lt;/DOCSET&gt;
-            &lt;/RESULT&gt;
-          &lt;/JAGROOT&gt;
-        &lt;/SEGMENTS&gt;</getRecordReturn></ns1:getRecordResponse></soapenv:Body></soapenv:Envelope>
     http_version: 
   recorded_at: Fri, 24 May 2019 14:42:28 GMT
 - request:
@@ -692,260 +85,6 @@ http_interactions:
     http_version: 
   recorded_at: Fri, 24 May 2019 14:42:28 GMT
 - request:
-    method: post
-    uri: http://primo.library.edu/PrimoWebServices/services/searcher
-    body:
-      encoding: UTF-8
-      string: <?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsdl="http://primo.library.edu/PrimoWebServices/services/searcher"
-        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"><env:Body><wsdl:getRecord><request><![CDATA[<fullViewRequest
-        xmlns="http://www.exlibris.com/primo/xsd/wsRequest" xmlns:uic="http://www.exlibris.com/primo/xsd/primoview/uicomponents"><PrimoSearchRequest
-        xmlns="http://www.exlibris.com/primo/xsd/search/request"><QueryTerms><BoolOpeator>AND</BoolOpeator></QueryTerms><StartIndex>1</StartIndex><BulkSize>5</BulkSize><DidUMeanEnabled>false</DidUMeanEnabled></PrimoSearchRequest><institution>NYU</institution><docId>nyu_aleph000980206</docId></fullViewRequest>]]></request></wsdl:getRecord></env:Body></env:Envelope>
-    headers:
-      Soapaction:
-      - '"getRecord"'
-      Content-Type:
-      - text/xml;charset=UTF-8
-      Content-Length:
-      - '846'
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - Apache-Coyote/1.1
-      Content-Type:
-      - text/xml;charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Vary:
-      - Accept-Encoding
-      Date:
-      - Fri, 24 May 2019 14:42:28 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: |-
-        <?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soapenv:Body><ns1:getRecordResponse soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns1="http://primo.library.edu/PrimoWebServices/services/searcher"><getRecordReturn xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">&lt;SEGMENTS xmlns=&quot;http://www.exlibrisgroup.com/xsd/jaguar/search&quot;&gt;
-          &lt;JAGROOT&gt;
-            &lt;RESULT&gt;
-              &lt;DOCSET TOTALHITS=&quot;1&quot;&gt;
-                &lt;DOC LOCAL=&quot;true&quot;&gt;
-                  &lt;PrimoNMBib xmlns=&quot;http://www.exlibrisgroup.com/xsd/primo/primo_nm_bib&quot;&gt;
-                    &lt;record&gt;
-                      &lt;control&gt;
-                        &lt;sourcerecordid&gt;000980206&lt;/sourcerecordid&gt;
-                        &lt;sourceid&gt;nyu_aleph&lt;/sourceid&gt;
-                        &lt;recordid&gt;nyu_aleph000980206&lt;/recordid&gt;
-                        &lt;originalsourceid&gt;NYU01&lt;/originalsourceid&gt;
-                        &lt;ilsapiid&gt;NYU01000980206&lt;/ilsapiid&gt;
-                        &lt;sourceformat&gt;MARC21&lt;/sourceformat&gt;
-                        &lt;sourcesystem&gt;Aleph&lt;/sourcesystem&gt;
-                      &lt;/control&gt;
-                      &lt;display&gt;
-                        &lt;type&gt;book&lt;/type&gt;
-                        &lt;title&gt;Virtual inequality : beyond the digital divide&lt;/title&gt;
-                        &lt;creator&gt;Karen.  Mossberger&lt;/creator&gt;
-                        &lt;contributor&gt;Caroline J Tolbert; Mary Stansbury 1957-&lt;/contributor&gt;
-                        &lt;publisher&gt;Washington, D.C. : Georgetown University Press&lt;/publisher&gt;
-                        &lt;creationdate&gt;c2003&lt;/creationdate&gt;
-                        &lt;format&gt;xvi, 192 p. ; 22 cm.&lt;/format&gt;
-                        &lt;identifier&gt;$$Cisbn$$V0878409998 (pbk. : alk. paper); $$Cisbn$$V9780878409990&lt;/identifier&gt;
-                        &lt;subject&gt;Digital divide&lt;/subject&gt;
-                        &lt;language&gt;eng&lt;/language&gt;
-                        &lt;relation&gt;$$Cseries $$VAmerican governance and public policy.&lt;/relation&gt;
-                        &lt;source&gt;nyu_aleph&lt;/source&gt;
-                        &lt;availlibrary&gt;$$INYU$$LBOBST$$1Main Collection$$2(HN49.I56 M67 2003 )$$Savailable$$31$$40$$5N$$63$$XNYU50$$YBOBST$$ZMAIN&lt;/availlibrary&gt;
-                        &lt;availlibrary&gt;$$INS$$LNSFO$$1Main Collection$$2(HN49.I56 M67 2003 )$$Sunavailable$$31$$41$$5N$$65$$XNYU50$$YTNSFO$$ZMAIN&lt;/availlibrary&gt;
-                        &lt;lds02&gt;nyu_aleph000980206&lt;/lds02&gt;
-                        &lt;lds01&gt;NYU&lt;/lds01&gt;
-                        &lt;lds01&gt;NS&lt;/lds01&gt;
-                        &lt;availinstitution&gt;$$INS$$Sunavailable&lt;/availinstitution&gt;
-                        &lt;availinstitution&gt;$$INYU$$Savailable&lt;/availinstitution&gt;
-                        &lt;availpnx&gt;available&lt;/availpnx&gt;
-                      &lt;/display&gt;
-                      &lt;links&gt;
-                        &lt;openurl&gt;$$Topenurl_journal&lt;/openurl&gt;
-                        &lt;backlink&gt;$$Taleph_backlink$$DMore bibliographic information&lt;/backlink&gt;
-                        &lt;thumbnail&gt;$$Tamazon_thumb&lt;/thumbnail&gt;
-                        &lt;linktotoc&gt;$$Tamazon_toc$$DCheck for Amazon Search Inside&lt;/linktotoc&gt;
-                        &lt;openurlfulltext&gt;$$Topenurlfull_journal&lt;/openurlfulltext&gt;
-                        &lt;linktoholdings&gt;$$Taleph_holdings&lt;/linktoholdings&gt;
-                        &lt;linktoreview&gt;$$TpersistentUrl$$DCopy item link&lt;/linktoreview&gt;
-                        &lt;linktouc&gt;$$Tamazon_uc$$DCheck Amazon&lt;/linktouc&gt;
-                        &lt;linktouc&gt;$$Tworldcat_isbn$$DCheck other libraries (WorldCat&#xAE;)&lt;/linktouc&gt;
-                        &lt;linktoexcerpt&gt;$$Tsyndetics_excerpt$$DExcerpt from item&lt;/linktoexcerpt&gt;
-                        &lt;lln10&gt;$$Tnyugetit&lt;/lln10&gt;
-                        &lt;lln11&gt;$$Tnyuadgetit&lt;/lln11&gt;
-                        &lt;lln12&gt;$$Tnyushgetit&lt;/lln12&gt;
-                        &lt;lln13&gt;$$Tcugetit&lt;/lln13&gt;
-                        &lt;lln14&gt;$$Ttest_aleph_holdings$$DCheck Availability:NYU BOBST Main Collection (HN49.I56 M67 2003 )$$1BOBST$$2MAIN&lt;/lln14&gt;
-                        &lt;lln14&gt;$$Ttest_aleph_holdings$$DCheck Availability:NS NSFO Main Collection (HN49.I56 M67 2003 )$$1TNSFO$$2MAIN&lt;/lln14&gt;
-                        &lt;lln15&gt;$$Ttest_aleph_holdings$$DCheck Availability:NYU Bobst  Main Collection  (HN49.I56 M67 2003 )  $$1BOBST  $$2MAIN&lt;/lln15&gt;
-                        &lt;lln15&gt;$$Ttest_aleph_holdings$$DCheck Availability:New School List Center  Main Collection  (HN49.I56 M67 2003 )  $$1TNSFO  $$2MAIN&lt;/lln15&gt;
-                      &lt;/links&gt;
-                      &lt;search&gt;
-                        &lt;creatorcontrib&gt;Karen.  Mossberger&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Mossberger, Karen.&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Mossberger, K&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Karen Mossberger, Caroline J. Tolbert, Mary Stansbury.&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Caroline J.  Tolbert&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Mary,  Stansbury  1957-&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Tolbert, C&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Stansbury, M&lt;/creatorcontrib&gt;
-                        &lt;title&gt;Virtual inequality : beyond the digital divide /&lt;/title&gt;
-                        &lt;subject&gt;Digital divide&lt;/subject&gt;
-                        &lt;subject&gt;Divide, Digital&lt;/subject&gt;
-                        &lt;subject&gt;Global digital divide&lt;/subject&gt;
-                        &lt;subject&gt;GDD (Global digital divide)&lt;/subject&gt;
-                        &lt;general&gt;Georgetown University Press,&lt;/general&gt;
-                        &lt;general&gt;51769109&lt;/general&gt;
-                        &lt;sourceid&gt;nyu_aleph&lt;/sourceid&gt;
-                        &lt;recordid&gt;nyu_aleph000980206&lt;/recordid&gt;
-                        &lt;isbn&gt;0878409998&lt;/isbn&gt;
-                        &lt;isbn&gt;9780878409990&lt;/isbn&gt;
-                        &lt;rsrctype&gt;book&lt;/rsrctype&gt;
-                        &lt;creationdate&gt;2003&lt;/creationdate&gt;
-                        &lt;addtitle&gt;American governance and public policy series&lt;/addtitle&gt;
-                        &lt;addtitle&gt;American governance and public policy.&lt;/addtitle&gt;
-                        &lt;addtitle&gt;American governance &amp;amp; public policy series&lt;/addtitle&gt;
-                        &lt;searchscope&gt;BOBST&lt;/searchscope&gt;
-                        &lt;searchscope&gt;BOBST Main Collection&lt;/searchscope&gt;
-                        &lt;searchscope&gt;TNSFO&lt;/searchscope&gt;
-                        &lt;searchscope&gt;TNSFO Main Collection&lt;/searchscope&gt;
-                        &lt;searchscope&gt;nyu_aleph&lt;/searchscope&gt;
-                        &lt;searchscope&gt;NYU&lt;/searchscope&gt;
-                        &lt;searchscope&gt;NS&lt;/searchscope&gt;
-                        &lt;scope&gt;BOBST&lt;/scope&gt;
-                        &lt;scope&gt;BOBST Main Collection&lt;/scope&gt;
-                        &lt;scope&gt;TNSFO&lt;/scope&gt;
-                        &lt;scope&gt;TNSFO Main Collection&lt;/scope&gt;
-                        &lt;scope&gt;nyu_aleph&lt;/scope&gt;
-                        &lt;scope&gt;NYU&lt;/scope&gt;
-                        &lt;scope&gt;NS&lt;/scope&gt;
-                        &lt;lsr01&gt;HN49.I56 M67 2003&lt;/lsr01&gt;
-                        &lt;lsr01&gt;HN49 .I56 M67 2003&lt;/lsr01&gt;
-                        &lt;lsr02&gt;Georgetown University Press,&lt;/lsr02&gt;
-                        &lt;lsr10&gt;0878409998&lt;/lsr10&gt;
-                        &lt;lsr10&gt;9780878409990&lt;/lsr10&gt;
-                      &lt;/search&gt;
-                      &lt;sort&gt;
-                        &lt;title&gt;Virtual inequality : beyond the digital divide /&lt;/title&gt;
-                        &lt;creationdate&gt;2003&lt;/creationdate&gt;
-                        &lt;author&gt;Mossberger, Karen.&lt;/author&gt;
-                        &lt;lso01&gt;2003&lt;/lso01&gt;
-                      &lt;/sort&gt;
-                      &lt;facets&gt;
-                        &lt;language&gt;eng&lt;/language&gt;
-                        &lt;creationdate&gt;2003&lt;/creationdate&gt;
-                        &lt;topic&gt;Digital divide&lt;/topic&gt;
-                        &lt;collection&gt;BOBST&lt;/collection&gt;
-                        &lt;collection&gt;TNSFO&lt;/collection&gt;
-                        &lt;toplevel&gt;available&lt;/toplevel&gt;
-                        &lt;prefilter&gt;books&lt;/prefilter&gt;
-                        &lt;rsrctype&gt;books&lt;/rsrctype&gt;
-                        &lt;creatorcontrib&gt;Mossberger, K&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Tolbert, C&lt;/creatorcontrib&gt;
-                        &lt;creatorcontrib&gt;Stansbury, M&lt;/creatorcontrib&gt;
-                        &lt;library&gt;BOBST&lt;/library&gt;
-                        &lt;library&gt;NSFO&lt;/library&gt;
-                        &lt;lfc01&gt;Main Collection&lt;/lfc01&gt;
-                        &lt;newrecords&gt;20111230_430&lt;/newrecords&gt;
-                        &lt;classificationlcc&gt;H - Social sciences.&#x2013;Social history and conditions. Social problems. Social reform&lt;/classificationlcc&gt;
-                        &lt;frbrgroupid&gt;534545165&lt;/frbrgroupid&gt;
-                        &lt;frbrtype&gt;6&lt;/frbrtype&gt;
-                      &lt;/facets&gt;
-                      &lt;dedup&gt;
-                        &lt;t&gt;1&lt;/t&gt;
-                        &lt;c1&gt;2003004571&lt;/c1&gt;
-                        &lt;c2&gt;0878409998;9780878409990&lt;/c2&gt;
-                        &lt;c3&gt;virtualinequalitybeyitaldivide&lt;/c3&gt;
-                        &lt;c4&gt;2003&lt;/c4&gt;
-                        &lt;f1&gt;2003004571&lt;/f1&gt;
-                        &lt;f3&gt;0878409998;9780878409990&lt;/f3&gt;
-                        &lt;f5&gt;virtualinequalitybeyitaldivide&lt;/f5&gt;
-                        &lt;f6&gt;2003&lt;/f6&gt;
-                        &lt;f7&gt;virtual inequality beyond the digital divide&lt;/f7&gt;
-                        &lt;f8&gt;dcu&lt;/f8&gt;
-                        &lt;f9&gt;xvi, 192 p. ;&lt;/f9&gt;
-                        &lt;f10&gt;georgetown university press&lt;/f10&gt;
-                        &lt;f11&gt;mossberger karen&lt;/f11&gt;
-                      &lt;/dedup&gt;
-                      &lt;frbr&gt;
-                        &lt;t&gt;1&lt;/t&gt;
-                        &lt;k1&gt;$$Kmossberger karen$$AA&lt;/k1&gt;
-                        &lt;k3&gt;$$Kbookvirtual inequality beyond the digital divide$$AT&lt;/k3&gt;
-                      &lt;/frbr&gt;
-                      &lt;delivery&gt;
-                        &lt;institution&gt;NYU&lt;/institution&gt;
-                        &lt;institution&gt;NS&lt;/institution&gt;
-                        &lt;delcategory&gt;Physical Item&lt;/delcategory&gt;
-                      &lt;/delivery&gt;
-                      &lt;enrichment&gt;
-                        &lt;classificationlcc&gt;HN49.I56&lt;/classificationlcc&gt;
-                      &lt;/enrichment&gt;
-                      &lt;ranking&gt;
-                        &lt;booster1&gt;1&lt;/booster1&gt;
-                        &lt;booster2&gt;1&lt;/booster2&gt;
-                      &lt;/ranking&gt;
-                      &lt;addata&gt;
-                        &lt;aulast&gt;Mossberger&lt;/aulast&gt;
-                        &lt;aufirst&gt;Karen.&lt;/aufirst&gt;
-                        &lt;au&gt;Mossberger, Karen&lt;/au&gt;
-                        &lt;addau&gt;Tolbert, Caroline J&lt;/addau&gt;
-                        &lt;addau&gt;Stansbury, Mary, 1957-&lt;/addau&gt;
-                        &lt;btitle&gt;Virtual inequality : beyond the digital divide&lt;/btitle&gt;
-                        &lt;seriestitle&gt;American governance and public policy&lt;/seriestitle&gt;
-                        &lt;seriestitle&gt;American governance and public policy series&lt;/seriestitle&gt;
-                        &lt;seriestitle&gt;American governance &amp;amp; public policy series&lt;/seriestitle&gt;
-                        &lt;date&gt;2003&lt;/date&gt;
-                        &lt;risdate&gt;c2003.&lt;/risdate&gt;
-                        &lt;isbn&gt;0878409998&lt;/isbn&gt;
-                        &lt;isbn&gt;9780878409990&lt;/isbn&gt;
-                        &lt;format&gt;book&lt;/format&gt;
-                        &lt;genre&gt;book&lt;/genre&gt;
-                        &lt;ristype&gt;BOOK&lt;/ristype&gt;
-                        &lt;notes&gt;Includes bibliographical references (p. [171]-183) and index.&lt;/notes&gt;
-                        &lt;cop&gt;Washington, D.C.&lt;/cop&gt;
-                        &lt;pub&gt;Georgetown University Press&lt;/pub&gt;
-                        &lt;oclcid&gt;51769109&lt;/oclcid&gt;
-                        &lt;lccn&gt;2003004571&lt;/lccn&gt;
-                        &lt;lad01&gt;TNSFOBOBST&lt;/lad01&gt;
-                        &lt;lad01&gt;Physical Item&lt;/lad01&gt;
-                      &lt;/addata&gt;
-                      &lt;browse&gt;
-                        &lt;author&gt;$$DMossberger, Karen$$EMossberger, Karen$$INYU10008778854$$PY&lt;/author&gt;
-                        &lt;author&gt;$$DTolbert, Caroline J$$ETolbert, Caroline J$$INYU10008780023$$PY&lt;/author&gt;
-                        &lt;author&gt;$$DStansbury, Mary, 1957-$$EStansbury, Mary, 1957-$$INYU10003971847$$PY&lt;/author&gt;
-                        &lt;title&gt;$$DVirtual inequality : beyond the digital divide$$EVirtual inequality : beyond the digital divide&lt;/title&gt;
-                        &lt;title&gt;$$DAmerican governance and public policy series$$EAmerican governance and public policy series&lt;/title&gt;
-                        &lt;title&gt;$$DAmerican governance and public policy$$EAmerican governance and public policy&lt;/title&gt;
-                        &lt;title&gt;$$DAmerican governance &amp;amp; public policy series$$EAmerican governance &amp;amp; public policy series&lt;/title&gt;
-                        &lt;subject&gt;$$DDigital divide$$EDigital divide$$INYU10000056200$$PY&lt;/subject&gt;
-                        &lt;subject&gt;$$DDivide, Digital$$EDivide, Digital$$INYU10000056200$$PN&lt;/subject&gt;
-                        &lt;subject&gt;$$DGlobal digital divide$$EGlobal digital divide$$INYU10000056200$$PN&lt;/subject&gt;
-                        &lt;subject&gt;$$DGDD (Global digital divide)$$EGDD (Global digital divide)$$INYU10000056200$$PN&lt;/subject&gt;
-                        &lt;callnumber&gt;$$INYU$$DHN49.I56 M67 2003$$E0hn   00049.i  56000  m67 2003$$T0&lt;/callnumber&gt;
-                        &lt;callnumber&gt;$$INS$$DHN49.I56 M67 2003$$E0hn   00049.i  56000  m67 2003$$T0&lt;/callnumber&gt;
-                        &lt;institution&gt;NYU&lt;/institution&gt;
-                        &lt;institution&gt;NS&lt;/institution&gt;
-                      &lt;/browse&gt;
-                    &lt;/record&gt;
-                  &lt;/PrimoNMBib&gt;
-                &lt;/DOC&gt;
-              &lt;/DOCSET&gt;
-            &lt;/RESULT&gt;
-          &lt;/JAGROOT&gt;
-        &lt;/SEGMENTS&gt;</getRecordReturn></ns1:getRecordResponse></soapenv:Body></soapenv:Envelope>
-    http_version: 
-  recorded_at: Fri, 24 May 2019 14:42:29 GMT
-- request:
     method: get
     uri: https://cite-dev.library.nyu.edu/openurl/nyu_aleph000980206?calling_system=primo&cite_to=json&institution=NYU
     body:
@@ -988,6 +127,48 @@ http_interactions:
     http_version: 
   recorded_at: Fri, 24 May 2019 14:42:29 GMT
 - request:
+    method: get
+    uri: https://cite-dev.library.nyu.edu/openurl/nyu_aleph000570570?calling_system=primo&cite_to=json&institution=NYU
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-musl x86_64) ruby/2.6.2p47
+      Host:
+      - cite-dev.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 24 May 2019 14:42:30 GMT
+      Server:
+      - nginx/1.15.8
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '515'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIANYC6FwAA2xS246bMBD9l0jkaQMOBIUgWVWatts+5GmzVdWXyMBAvAs26wtNVPXfO4BD0ouEPOecGc8ZG/+cyRaEVfUsnZ2MaXUaBBUYbvyaZ4qpiy8u1ofCBgq0rDt4N8/N+diBot+jjZ8ki5CQ1aCByCkXpUxlyQMk6fPh0yIZUoY3NCTLzYLEi3B1WBIv2q5CXCLy5ekwR/t/OvZav7VszNAVeyJMX6FLG3NOMTVXpTryYvTUvAhaxRvpw7mfnOtKSdv6uWzSQV/gOY6shvZECInX/YcNzLFj9eSR/u3S8QJkX+ZXIBTQG3/BK6qBDjgb8UGxDmrtheQHNycMzQUXZoXB4MXvh80KcqkKLiov/jBsZrZm2tCdfZXKCSVXqDxicQUPTuOCG3qHl/ekuRJty5Kfr+wa0bEdcSdr27ipudbWwZYp1/zNIsQ/MRCthQMtq1wp3GCPtPNQRlg3RWszun/cB89bPPZn2QCGr9O9tTXLgT4xYRjqeyl4zh4Q7bbXoZwn3CDXmaBkvQmTcJ1E38aReM7HbC4LGAunx1BIHgw5mb1APuijef8Q6P8fQm+YuT4FM9SLdlOhF32calEP7hPIK9WiBeJ4Q+J4FYarvmhSkUg2xuAK8HU7ZUR/jC9ZPz68+TUTle3vG0Q1+/UbAAD//wMAuQSOG6sDAAA=
+    http_version: 
+  recorded_at: Fri, 24 May 2019 14:42:30 GMT
+- request:
     method: post
     uri: http://primo.library.edu/PrimoWebServices/services/searcher
     body:
@@ -1024,7 +205,7 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Date:
-      - Fri, 24 May 2019 14:42:28 GMT
+      - Tue, 18 Jun 2019 16:04:06 GMT
     body:
       encoding: ASCII-8BIT
       string: |-
@@ -1339,10 +520,10 @@ http_interactions:
           &lt;/JAGROOT&gt;
         &lt;/SEGMENTS&gt;</getRecordReturn></ns1:getRecordResponse></soapenv:Body></soapenv:Envelope>
     http_version: 
-  recorded_at: Fri, 24 May 2019 14:42:29 GMT
+  recorded_at: Tue, 18 Jun 2019 16:04:07 GMT
 - request:
     method: get
-    uri: https://cite-dev.library.nyu.edu/openurl/nyu_aleph000570570?calling_system=primo&cite_to=json&institution=NYU
+    uri: https://cite-dev.library.nyu.edu/?calling_system=primo&cite_to=json&external_id=nyu_aleph000570570&institution=NYU
     body:
       encoding: US-ASCII
       string: ''
@@ -1365,7 +546,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 24 May 2019 14:42:30 GMT
+      - Tue, 18 Jun 2019 16:04:07 GMT
       Server:
       - nginx/1.15.8
       Vary:
@@ -1373,13 +554,1000 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Content-Length:
-      - '515'
+      - '1333'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIANYC6FwAA2xS246bMBD9l0jkaQMOBIUgWVWatts+5GmzVdWXyMBAvAs26wtNVPXfO4BD0ouEPOecGc8ZG/+cyRaEVfUsnZ2MaXUaBBUYbvyaZ4qpiy8u1ofCBgq0rDt4N8/N+diBot+jjZ8ki5CQ1aCByCkXpUxlyQMk6fPh0yIZUoY3NCTLzYLEi3B1WBIv2q5CXCLy5ekwR/t/OvZav7VszNAVeyJMX6FLG3NOMTVXpTryYvTUvAhaxRvpw7mfnOtKSdv6uWzSQV/gOY6shvZECInX/YcNzLFj9eSR/u3S8QJkX+ZXIBTQG3/BK6qBDjgb8UGxDmrtheQHNycMzQUXZoXB4MXvh80KcqkKLiov/jBsZrZm2tCdfZXKCSVXqDxicQUPTuOCG3qHl/ekuRJty5Kfr+wa0bEdcSdr27ipudbWwZYp1/zNIsQ/MRCthQMtq1wp3GCPtPNQRlg3RWszun/cB89bPPZn2QCGr9O9tTXLgT4xYRjqeyl4zh4Q7bbXoZwn3CDXmaBkvQmTcJ1E38aReM7HbC4LGAunx1BIHgw5mb1APuijef8Q6P8fQm+YuT4FM9SLdlOhF32calEP7hPIK9WiBeJ4Q+J4FYarvmhSkUg2xuAK8HU7ZUR/jC9ZPz68+TUTle3vG0Q1+/UbAAD//wMAuQSOG6sDAAA=
+        H4sIAHcLCV0AA+xY22obSRD9lUJgkwXdZcWSliEocnwjskMse7MbgmnNlGY66cukL5KVkI/Zx33eT8iPbfXMSHbWeVjIQ1gQCE1VdXXdTw3S55pa+1smMM/a7Xb/MHxqo8817lDO1jnWRrUlT1C/xlibhKu0Vq8x7zJtaqO3tYn/oE0dTlCbFOvQGQyHjc5w0COlK8ldVocpS1Mejoa9gwaJp/FEr1DVYSwwJv5EW4vO1eGl9tzW4dw0C+WnQfnEICq6fGJYxmSQtw/I/rATDKEzunGiRbJaq8aUrdEE6cm0dT2GUy0RbkLc8OSYG/lL7V29lvu54DYjvdFjPbqbCxaHfK+YcgymWvGY1WEypiNu5yrk2z4cdgfdw0HvDQmHh4Mt3w0OHHciGJgZtkRhYUUVALkG5pWDt0UZzaaM78hAwlxQp4T6xAmmUs/SIMGizLm6K6t+lpDsO20iC2hjw3PHdRHeODga+9RbR5EzsDk31MgEVloyBXoBXCXo0EiuyDeskRmqOTXA0uECtAqX0HAMPLzwRudIF1myROW8wSonqiFYp5N0XQfJk0RggwJPQFF4uIJTVGbdhFmGZDFGsNm6lAG34AxTdqGNJH2unCaPS4pSUJuXfE6HDkKsq4xEkNGFono20ytLrARHVq1bh07WITXUsoUXIPgCgxRD3EV4K0pVUKEpPenTNJDAVAIZFadgbJyhRNukMh5x6ovTJlzOM+002c0zSu5I+1QwC1dCx1rOEX6FBRcSMOEuDP65zhQ8F1pLOpHe8rgOMzSU6SlzcRZslwCACg5h6mGLAZp52ALgtZ6jcXDlQhEVtWVCGazhNy4EZ9JuFY4FyiKvc22//gUvCTbw8uvfOX6Cm69/fvro8VMzTCOXuTbU/GOjJc3Pq4s3t+dXlxdh0nTMwsjYMDMXv1/Dcz23NDhLpMCPC4jAhBpOD8IvVzDRguIOVwCe3EzG0On3Bz0oUEW1/GDDxhBCdWh11DLncjtqtVIkPDRF6ClNA41vExPfohnSYonP9mN3d0sOoz96w+Zg0Oi22weFDFUccbXQI73gLWJG17PjxqA4clxG3XZn2Gg/bXQGs053rzduH4Svw7Or2b434pHFIAtXF9IVVskmkaMPuBxJdzeio32zMLc8KX1anrRyw6Vu4l2InNvUaJ83qfmjQt54DEMy4G6XTGx9jP7tpUB+UGumhAKM7vn3xcqICnpe0tXy2Ou2A9ToIdf0FUBAj73+82/XyF7/qLjMPI2pi4p9XAkW3JCkWs2VjCvuogd05yEjN4z1iwW/23CbJ3nMS3qphZdV1NxaX5E5M5Xxj55I6kTBWKsqIqclUZJ4TwbKVj6MU76KgpZ1VC5pSjusaXrcbOtWrOqoWNQkr1Y1UZPxJqjKJ96TYYdH9wu8DInHvDyNdYKl4nYYEs1bxZmev6fpD/LSeRiE6PuDEBzOKzu03qO93mSruNd7sdUleevhAfGpyckF0f1hu98/6HYPgtJWSoxm5bO1IWi6K0lJfRO+ZiF8/NjcvFii8rUScNr5zzj1UtDrvsmVJS0fVkBEG2N8tMPvDr87/P4s/HZ/EL9Xpzv87vC7w+/Pwm/vR/A7ud6BdwfeHXh/Cnjp167TmRZhfmyFYgJxEcojEB8/W/iASIeykQo9Z2I/0fFtpRZexO3Ofvg1Lm7nzGL06vXZ9HJyOZ1eXhSK1FD6yR/d/+PzpV5jScL8/+6/twf7i4pGiZO+jkVMGRLf6z8lt4e92pcv/wAAAP//AwDd6vNCkBQAAA==
     http_version: 
-  recorded_at: Fri, 24 May 2019 14:42:30 GMT
+  recorded_at: Tue, 18 Jun 2019 16:04:07 GMT
+- request:
+    method: post
+    uri: http://primo.library.edu/PrimoWebServices/services/searcher
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsdl="http://primo.library.edu/PrimoWebServices/services/searcher"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"><env:Body><wsdl:getRecord><request><![CDATA[<fullViewRequest
+        xmlns="http://www.exlibris.com/primo/xsd/wsRequest" xmlns:uic="http://www.exlibris.com/primo/xsd/primoview/uicomponents"><PrimoSearchRequest
+        xmlns="http://www.exlibris.com/primo/xsd/search/request"><QueryTerms><BoolOpeator>AND</BoolOpeator></QueryTerms><StartIndex>1</StartIndex><BulkSize>5</BulkSize><DidUMeanEnabled>false</DidUMeanEnabled></PrimoSearchRequest><institution>NYU</institution><docId>nyu_aleph000570570</docId></fullViewRequest>]]></request></wsdl:getRecord></env:Body></env:Envelope>
+    headers:
+      Soapaction:
+      - '"getRecord"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '846'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Content-Type:
+      - text/xml;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Tue, 18 Jun 2019 16:04:07 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soapenv:Body><ns1:getRecordResponse soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns1="http://primo.library.edu/PrimoWebServices/services/searcher"><getRecordReturn xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">&lt;SEGMENTS xmlns=&quot;http://www.exlibrisgroup.com/xsd/jaguar/search&quot;&gt;
+          &lt;JAGROOT&gt;
+            &lt;RESULT&gt;
+              &lt;DOCSET TOTALHITS=&quot;1&quot;&gt;
+                &lt;DOC LOCAL=&quot;true&quot;&gt;
+                  &lt;PrimoNMBib xmlns=&quot;http://www.exlibrisgroup.com/xsd/primo/primo_nm_bib&quot;&gt;
+                    &lt;record&gt;
+                      &lt;control&gt;
+                        &lt;sourcerecordid&gt;000570570&lt;/sourcerecordid&gt;
+                        &lt;sourceid&gt;nyu_aleph&lt;/sourceid&gt;
+                        &lt;recordid&gt;nyu_aleph000570570&lt;/recordid&gt;
+                        &lt;originalsourceid&gt;NYU01&lt;/originalsourceid&gt;
+                        &lt;ilsapiid&gt;NYU01000570570&lt;/ilsapiid&gt;
+                        &lt;sourceformat&gt;MARC21&lt;/sourceformat&gt;
+                        &lt;sourcesystem&gt;Aleph&lt;/sourcesystem&gt;
+                      &lt;/control&gt;
+                      &lt;display&gt;
+                        &lt;type&gt;video&lt;/type&gt;
+                        &lt;title&gt;Travels with my aunt [videorecording]&lt;/title&gt;
+                        &lt;contributor&gt;George Cukor 1899-1983.; Maggie Smith 1934-; Alec McCowen; Louis Gossett Jr., 1936-; Graham Greene 1904-1991.; Metro-Goldwyn-Mayer.; Loew's Incorporated. Metro-Goldwyn-Mayer; M-G-M&lt;/contributor&gt;
+                        &lt;edition&gt;Deluxe letter-box ed.&lt;/edition&gt;
+                        &lt;publisher&gt;Santa Monica, CA : MGM/UA Home Video&lt;/publisher&gt;
+                        &lt;creationdate&gt;1995&lt;/creationdate&gt;
+                        &lt;format&gt;1 videocassette (ca. 109 min.) : sd., col. ; 1/2 in.&lt;/format&gt;
+                        &lt;identifier&gt;$$Cisbn$$V079282783X; $$Cisbn$$V9780792827832; $$Cmuspub$$VM202851 MGM/UA Home Video&lt;/identifier&gt;
+                        &lt;subject&gt;Feature films; Films for the hearing impaired&lt;/subject&gt;
+                        &lt;description&gt;$$Csummary$$VAunt Augusta, a spirited woman of indeterminate years, sets off on a series of European adventures with her stodgy, middle-aged nephew Henry. The once shy Henry is transformed into a virile, vibrant man while his aunt shows him the stylish, graceful lifestyle of her swindling, smuggling and hustling schemes.&lt;/description&gt;
+                        &lt;description&gt;$$Ccredits$$VDirector of photography, Douglas Slocombe ; film editor, John Bloom ; music, Terry Hatch.&lt;/description&gt;
+                        &lt;description&gt;$$Ccredits$$VMaggie Smith, Alec McCowen, Lou Gossett, Robert Stephens, Cindy Williams, Robert Fleming, Jos&#xE9; Luis L&#xF3;pez V&#xE1;zquez.&lt;/description&gt;
+                        &lt;language&gt;eng&lt;/language&gt;
+                        &lt;relation&gt;Greene, Graham, 1904-1991. Travels with my aunt.&lt;/relation&gt;
+                        &lt;source&gt;nyu_aleph&lt;/source&gt;
+                        &lt;availlibrary&gt;$$INYU$$LBAFC$$1Main Collection$$2(VCA 15583 )$$Sunavailable$$31$$41$$5N$$60$$XNYU50$$YBAFC$$ZAFC&lt;/availlibrary&gt;
+                        &lt;lds02&gt;nyu_aleph000570570&lt;/lds02&gt;
+                        &lt;lds13&gt;1 videocassette (ca. 109 min.) : 1/2 in.&lt;/lds13&gt;
+                        &lt;lds01&gt;NYU&lt;/lds01&gt;
+                        &lt;availinstitution&gt;$$INYU$$Sunavailable&lt;/availinstitution&gt;
+                        &lt;availpnx&gt;unavailable&lt;/availpnx&gt;
+                      &lt;/display&gt;
+                      &lt;links&gt;
+                        &lt;openurl&gt;$$Topenurl_journal&lt;/openurl&gt;
+                        &lt;backlink&gt;$$Taleph_backlink$$DMore bibliographic information&lt;/backlink&gt;
+                        &lt;thumbnail&gt;$$Tamazon_thumb&lt;/thumbnail&gt;
+                        &lt;linktotoc&gt;$$Tamazon_toc$$DCheck for Amazon Search Inside&lt;/linktotoc&gt;
+                        &lt;openurlfulltext&gt;$$Topenurlfull_journal&lt;/openurlfulltext&gt;
+                        &lt;linktoholdings&gt;$$Taleph_holdings&lt;/linktoholdings&gt;
+                        &lt;linktoreview&gt;$$TpersistentUrl$$DCopy item link&lt;/linktoreview&gt;
+                        &lt;linktouc&gt;$$Tamazon_uc$$DCheck Amazon&lt;/linktouc&gt;
+                        &lt;linktouc&gt;$$Tworldcat_isbn$$DCheck other libraries (WorldCat&#xAE;)&lt;/linktouc&gt;
+                        &lt;linktoexcerpt&gt;$$Tsyndetics_excerpt$$DExcerpt from item&lt;/linktoexcerpt&gt;
+                        &lt;lln10&gt;$$Tnyugetit&lt;/lln10&gt;
+                        &lt;lln11&gt;$$Tnyuadgetit&lt;/lln11&gt;
+                        &lt;lln12&gt;$$Tnyushgetit&lt;/lln12&gt;
+                        &lt;lln13&gt;$$Tcugetit&lt;/lln13&gt;
+                        &lt;lln14&gt;$$Ttest_aleph_holdings$$DCheck Availability:NYU BAFC Main Collection (VCA 15583 )$$1BAFC$$2AFC&lt;/lln14&gt;
+                        &lt;lln15&gt;$$Ttest_aleph_holdings$$DCheck Availability:NYU Bobst Avery Fisher Center  Main Collection  (VCA 15583 )  $$1BAFC  $$2AFC&lt;/lln15&gt;
+                      &lt;/links&gt;
+                      &lt;search&gt;
+                        &lt;creatorcontrib&gt;Metro Goldwyn Mayer ; a George Cukor-Robert Fryer and James Cresson production ; screenplay by Jay Presson Allen and Hugh Wheeler ; produced by Robert Fryer and James Cresson ; directed by George Cukor.&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Director of photography, Douglas Slocombe ; film editor, John Bloom ; music, Terry Hatch.&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Maggie Smith, Alec McCowen, Lou Gossett, Robert Stephens, Cindy Williams, Robert Fleming, Jos&#xE9; Luis L&#xF3;pez V&#xE1;zquez.&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;George,  Cukor  1899-1983.&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Maggie,  Smith  1934-&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Margaret Natalie,  Smith  1934-&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Alec.  McCowen&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Alec  McCowan&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Alex  McCowen&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Alec  Mc Cowen&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Alexander D.  McCowen  (Alexander Duncan)&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Alec  McOwen&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Louis,  Gossett  1936-&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Lou,  Gossett  1936-&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Louis,  Gossett  Jr., 1936-&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Graham,  Greene  1904-1991.&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Greiems,  Gr&#x12B;ns  1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Henry Graham,  Greene  1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;G&#x16D;re&#x14F;m,  G&#x16D;rin  1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Greham,  Grin  1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Gr&#x101;hama,  Gr&#x12B;na  1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Gr&#x117;m,  Grin  1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;G.  Gr&#x12B;ns  (Greiems), 1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;&#x683C;&#x62C9;&#x59C6;&#x30FB;&#x845B;&#x6797;,  1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;&#x5D2;&#x5E8;&#x5D9;&#x5DF;, &#x5D2;&#x5E8;&#x5D4;&#x5DD;,  1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Graham,  Grin  1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;&#x30B0;&#x30EA;&#x30FC;&#x30F3;, &#x30B0;&#x30EC;&#x30A2;&#x30E0;,  1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Gureamu,  Gur&#x12B;n  1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Greihamas,  Grinas  1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;&#x413;&#x440;&#x44D;&#x43C;,  &#x413;&#x440;&#x438;&#x43D;  1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Cukor, G&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Smith, M&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;McCowen, A&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;McCowan, A&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Mc Cowen, A&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;McOwen, A&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Gossett, L&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Greene, G&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Gr&#x12B;ns, G&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Greene, H&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;G&#x16D;rin, G&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Grin, G&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Gr&#x12B;na, G&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;&#x683C;&#x62C9;&#x59C6;&#x30FB;&#x845B;&#x6797;&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;&#x5D2;&#x5E8;&#x5D9;&#x5DF;&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;&#x30B0;&#x30EA;&#x30FC;&#x30F3;&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Gur&#x12B;n, G&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Grinas, G&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;&#x413;&#x440;&#x438;&#x43D;, &#x413;&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Metro-Goldwyn-Mayer.&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Loew's Incorporated. Metro-Goldwyn-Mayer&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Metro-Goldwyn-Mayer Distributing Corporation&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;M-G-M&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Metro-Goldwyn-Mayer Pictures&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Metro-Goldwyn-Mayer Pictures Corporation&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Metro-Goldwyn-Mayer Corporation&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;MGM (Metro-Goldwyn-Mayer)&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;MGM/UA Home Video (Firm)&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Gr&#x12B;ns, Greiems, 1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Greene, Henry Graham, 1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;G&#x16D;rin, G&#x16D;re&#x14F;m, 1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Grin, Greham, 1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Gr&#x12B;na, Gr&#x101;hama, 1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Grin, Gr&#x117;m, 1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Gr&#x12B;ns, G. (Greiems), 1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;&#x683C;&#x62C9;&#x59C6;&#x30FB;&#x845B;&#x6797;, 1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;&#x5D2;&#x5E8;&#x5D9;&#x5DF;, &#x5D2;&#x5E8;&#x5D4;&#x5DD;, 1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Grin, Graham, 1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;&#x30B0;&#x30EA;&#x30FC;&#x30F3;, &#x30B0;&#x30EC;&#x30A2;&#x30E0;, 1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Gur&#x12B;n, Gureamu, 1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Grinas, Greihamas, 1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;&#x413;&#x440;&#x438;&#x43D;, &#x413;&#x440;&#x44D;&#x43C;, 1904-1991&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;McCowan, Alec&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;McCowen, Alex&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Mc Cowen, Alec&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;McCowen, Alexander D. (Alexander Duncan)&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;McOwen, Alec&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Gossett, Lou, 1936-&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Gossett, Louis, 1936-&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Smith, Margaret Natalie, 1934-&lt;/creatorcontrib&gt;
+                        &lt;title&gt;Travels with my aunt&lt;/title&gt;
+                        &lt;description&gt;Aunt Augusta, a spirited woman of indeterminate years, sets off on a series of European adventures with her stodgy, middle-aged nephew Henry. The once shy Henry is transformed into a virile, vibrant man while his aunt shows him the stylish, graceful lifestyle of her swindling, smuggling and hustling schemes.&lt;/description&gt;
+                        &lt;subject&gt;Feature films&lt;/subject&gt;
+                        &lt;subject&gt;Films for the hearing impaired&lt;/subject&gt;
+                        &lt;general&gt;MGM/UA Home Video,&lt;/general&gt;
+                        &lt;general&gt;Closed captioned for the hearing impaired.&lt;/general&gt;
+                        &lt;general&gt;Originally produced as a motion picture in 1972.&lt;/general&gt;
+                        &lt;general&gt;Based upon the novel by Graham Greene.&lt;/general&gt;
+                        &lt;general&gt;&quot;M202851&quot;--Cassette label.&lt;/general&gt;
+                        &lt;general&gt;Director of photography, Douglas Slocombe ; film editor, John Bloom ; music, Terry Hatch.&lt;/general&gt;
+                        &lt;general&gt;Rated PG.&lt;/general&gt;
+                        &lt;general&gt;M202851&lt;/general&gt;
+                        &lt;general&gt;[videorecording] /&lt;/general&gt;
+                        &lt;general&gt;35619373&lt;/general&gt;
+                        &lt;general&gt;33891106&lt;/general&gt;
+                        &lt;sourceid&gt;nyu_aleph&lt;/sourceid&gt;
+                        &lt;recordid&gt;nyu_aleph000570570&lt;/recordid&gt;
+                        &lt;isbn&gt;079282783X&lt;/isbn&gt;
+                        &lt;isbn&gt;9780792827832&lt;/isbn&gt;
+                        &lt;rsrctype&gt;video&lt;/rsrctype&gt;
+                        &lt;creationdate&gt;1995&lt;/creationdate&gt;
+                        &lt;creationdate&gt;1972&lt;/creationdate&gt;
+                        &lt;addtitle&gt;Travels with my aunt.&lt;/addtitle&gt;
+                        &lt;searchscope&gt;BAFC&lt;/searchscope&gt;
+                        &lt;searchscope&gt;BAFC Main Collection&lt;/searchscope&gt;
+                        &lt;searchscope&gt;nyu_aleph&lt;/searchscope&gt;
+                        &lt;searchscope&gt;NYU&lt;/searchscope&gt;
+                        &lt;scope&gt;BAFC&lt;/scope&gt;
+                        &lt;scope&gt;BAFC Main Collection&lt;/scope&gt;
+                        &lt;scope&gt;nyu_aleph&lt;/scope&gt;
+                        &lt;scope&gt;NYU&lt;/scope&gt;
+                        &lt;lsr01&gt;VCA 15583&lt;/lsr01&gt;
+                        &lt;lsr02&gt;MGM/UA Home Video,&lt;/lsr02&gt;
+                        &lt;lsr10&gt;079282783X&lt;/lsr10&gt;
+                        &lt;lsr10&gt;9780792827832&lt;/lsr10&gt;
+                      &lt;/search&gt;
+                      &lt;sort&gt;
+                        &lt;title&gt;Travels with my aunt&lt;/title&gt;
+                        &lt;creationdate&gt;1995&lt;/creationdate&gt;
+                        &lt;author&gt;Cukor, George, 1899-1983.&lt;/author&gt;
+                        &lt;lso01&gt;1995&lt;/lso01&gt;
+                      &lt;/sort&gt;
+                      &lt;facets&gt;
+                        &lt;language&gt;eng&lt;/language&gt;
+                        &lt;creationdate&gt;1995&lt;/creationdate&gt;
+                        &lt;collection&gt;BAFC&lt;/collection&gt;
+                        &lt;prefilter&gt;video&lt;/prefilter&gt;
+                        &lt;rsrctype&gt;video&lt;/rsrctype&gt;
+                        &lt;creatorcontrib&gt;Cukor, G&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Smith, M&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;McCowen, A&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Gossett, L&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Greene, G&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Metro-Goldwyn-Mayer&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;MGM/UA Home Video (Firm)&lt;/creatorcontrib&gt;
+                        &lt;genre&gt;Feature films&lt;/genre&gt;
+                        &lt;genre&gt;Films for the hearing impaired&lt;/genre&gt;
+                        &lt;library&gt;BOBST&lt;/library&gt;
+                        &lt;lfc01&gt;Main Collection&lt;/lfc01&gt;
+                        &lt;newrecords&gt;20111230_332&lt;/newrecords&gt;
+                        &lt;classificationlcc&gt;P - Language and literature.&#x2013;English literature&lt;/classificationlcc&gt;
+                        &lt;frbrgroupid&gt;590554224&lt;/frbrgroupid&gt;
+                        &lt;frbrtype&gt;6&lt;/frbrtype&gt;
+                      &lt;/facets&gt;
+                      &lt;dedup&gt;
+                        &lt;t&gt;1&lt;/t&gt;
+                        &lt;c2&gt;079282783X;9780792827832&lt;/c2&gt;
+                        &lt;c3&gt;travelswithmyaunt&lt;/c3&gt;
+                        &lt;c4&gt;1995&lt;/c4&gt;
+                        &lt;f3&gt;079282783X;9780792827832&lt;/f3&gt;
+                        &lt;f5&gt;travelswithmyaunt&lt;/f5&gt;
+                        &lt;f6&gt;1995&lt;/f6&gt;
+                        &lt;f7&gt;travels with my aunt&lt;/f7&gt;
+                        &lt;f8&gt;cau&lt;/f8&gt;
+                        &lt;f9&gt;1 videocassette (ca. 109 min.) :&lt;/f9&gt;
+                        &lt;f10&gt;mgm ua home video&lt;/f10&gt;
+                      &lt;/dedup&gt;
+                      &lt;frbr&gt;
+                        &lt;t&gt;99&lt;/t&gt;
+                        &lt;k1&gt;$$Kcukor george 1899 1983$$AA&lt;/k1&gt;
+                        &lt;k1&gt;$$Ksmith maggie 1934$$AA&lt;/k1&gt;
+                        &lt;k1&gt;$$Kmccowen alec$$AA&lt;/k1&gt;
+                        &lt;k1&gt;$$Kgossett louis jr 1936$$AA&lt;/k1&gt;
+                        &lt;k1&gt;$$Kgreene graham 1904 1991$$AA&lt;/k1&gt;
+                        &lt;k3&gt;$$Kvideotravels with my aunt$$AT&lt;/k3&gt;
+                      &lt;/frbr&gt;
+                      &lt;delivery&gt;
+                        &lt;institution&gt;NYU&lt;/institution&gt;
+                        &lt;delcategory&gt;Physical Item&lt;/delcategory&gt;
+                      &lt;/delivery&gt;
+                      &lt;enrichment&gt;
+                        &lt;classificationlcc&gt;PR6013.R44&lt;/classificationlcc&gt;
+                      &lt;/enrichment&gt;
+                      &lt;ranking&gt;
+                        &lt;booster1&gt;1&lt;/booster1&gt;
+                        &lt;booster2&gt;1&lt;/booster2&gt;
+                      &lt;/ranking&gt;
+                      &lt;addata&gt;
+                        &lt;aulast&gt;Cukor&lt;/aulast&gt;
+                        &lt;aufirst&gt;George,&lt;/aufirst&gt;
+                        &lt;addau&gt;Cukor, George, 1899-1983&lt;/addau&gt;
+                        &lt;addau&gt;Smith, Maggie, 1934-&lt;/addau&gt;
+                        &lt;addau&gt;McCowen, Alec&lt;/addau&gt;
+                        &lt;addau&gt;Gossett, Louis, Jr., 1936-&lt;/addau&gt;
+                        &lt;addau&gt;Greene, Graham, 1904-1991&lt;/addau&gt;
+                        &lt;addau&gt;Metro-Goldwyn-Mayer&lt;/addau&gt;
+                        &lt;addau&gt;MGM/UA Home Video (Firm)&lt;/addau&gt;
+                        &lt;btitle&gt;Travels with my aunt [videorecording]&lt;/btitle&gt;
+                        &lt;date&gt;1995&lt;/date&gt;
+                        &lt;risdate&gt;[1995]&lt;/risdate&gt;
+                        &lt;isbn&gt;079282783X&lt;/isbn&gt;
+                        &lt;isbn&gt;9780792827832&lt;/isbn&gt;
+                        &lt;format&gt;video&lt;/format&gt;
+                        &lt;genre&gt;video&lt;/genre&gt;
+                        &lt;ristype&gt;VIDEO&lt;/ristype&gt;
+                        &lt;abstract&gt;Aunt Augusta, a spirited woman of indeterminate years, sets off on a series of European adventures with her stodgy, middle-aged nephew Henry. The once shy Henry is transformed into a virile, vibrant man while his aunt shows him the stylish, graceful lifestyle of her swindling, smuggling and hustling schemes.&lt;/abstract&gt;
+                        &lt;cop&gt;Santa Monica, CA&lt;/cop&gt;
+                        &lt;pub&gt;MGM/UA Home Video&lt;/pub&gt;
+                        &lt;oclcid&gt;35619373&lt;/oclcid&gt;
+                        &lt;lad01&gt;BAFC&lt;/lad01&gt;
+                        &lt;lad01&gt;Physical Item&lt;/lad01&gt;
+                      &lt;/addata&gt;
+                      &lt;browse&gt;
+                        &lt;author&gt;$$DCukor, George, 1899-1983$$ECukor, George, 1899-1983$$INYU10008656500$$PY&lt;/author&gt;
+                        &lt;author&gt;$$DSmith, Maggie, 1934-$$ESmith, Maggie, 1934-$$INYU10007863110$$PY&lt;/author&gt;
+                        &lt;author&gt;$$DSmith, Margaret Natalie, 1934-$$ESmith, Margaret Natalie, 1934-$$INYU10007863110$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DMcCowen, Alec$$EMcCowen, Alec$$INYU10010059678$$PY&lt;/author&gt;
+                        &lt;author&gt;$$DMcCowan, Alec$$EMcCowan, Alec$$INYU10010059678$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DMcCowen, Alex$$EMcCowen, Alex$$INYU10010059678$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DMc Cowen, Alec$$EMc Cowen, Alec$$INYU10010059678$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DMcCowen, Alexander D. (Alexander Duncan)$$EMcCowen, Alexander D. (Alexander Duncan)$$INYU10010059678$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DMcOwen, Alec$$EMcOwen, Alec$$INYU10010059678$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DGossett, Louis, 1936-$$EGossett, Louis, 1936-$$INYU10009213750$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DGossett, Lou, 1936-$$EGossett, Lou, 1936-$$INYU10009213750$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DGossett, Louis, Jr., 1936-$$EGossett, Louis, Jr., 1936-$$INYU10009213750$$PY&lt;/author&gt;
+                        &lt;author&gt;$$DGreene, Graham, 1904-1991$$EGreene, Graham, 1904-1991$$INYU10009881806$$PY&lt;/author&gt;
+                        &lt;author&gt;$$DGr&#x12B;ns, Greiems, 1904-1991$$EGr&#x12B;ns, Greiems, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DGreene, Henry Graham, 1904-1991$$EGreene, Henry Graham, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DG&#x16D;rin, G&#x16D;re&#x14F;m, 1904-1991$$EG&#x16D;rin, G&#x16D;re&#x14F;m, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DGrin, Greham, 1904-1991$$EGrin, Greham, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DGr&#x12B;na, Gr&#x101;hama, 1904-1991$$EGr&#x12B;na, Gr&#x101;hama, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DGrin, Gr&#x117;m, 1904-1991$$EGrin, Gr&#x117;m, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DGr&#x12B;ns, G. (Greiems), 1904-1991$$EGr&#x12B;ns, G. (Greiems), 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
+                        &lt;author&gt;$$D&#x683C;&#x62C9;&#x59C6;&#x30FB;&#x845B;&#x6797;, 1904-1991$$E&#x683C;&#x62C9;&#x59C6;&#x30FB;&#x845B;&#x6797;, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
+                        &lt;author&gt;$$D&#x5D2;&#x5E8;&#x5D9;&#x5DF;, &#x5D2;&#x5E8;&#x5D4;&#x5DD;, 1904-1991$$E&#x5D2;&#x5E8;&#x5D9;&#x5DF;, &#x5D2;&#x5E8;&#x5D4;&#x5DD;, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DGrin, Graham, 1904-1991$$EGrin, Graham, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
+                        &lt;author&gt;$$D&#x30B0;&#x30EA;&#x30FC;&#x30F3;, &#x30B0;&#x30EC;&#x30A2;&#x30E0;, 1904-1991$$E&#x30B0;&#x30EA;&#x30FC;&#x30F3;, &#x30B0;&#x30EC;&#x30A2;&#x30E0;, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DGur&#x12B;n, Gureamu, 1904-1991$$EGur&#x12B;n, Gureamu, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DGrinas, Greihamas, 1904-1991$$EGrinas, Greihamas, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
+                        &lt;author&gt;$$D&#x413;&#x440;&#x438;&#x43D;, &#x413;&#x440;&#x44D;&#x43C;, 1904-1991$$E&#x413;&#x440;&#x438;&#x43D;, &#x413;&#x440;&#x44D;&#x43C;, 1904-1991$$INYU10009881806$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DMetro-Goldwyn-Mayer$$EMetro-Goldwyn-Mayer$$INYU10010124061$$PY&lt;/author&gt;
+                        &lt;author&gt;$$DLoew's Incorporated. Metro-Goldwyn-Mayer$$ELoew's Incorporated. Metro-Goldwyn-Mayer$$INYU10010124061$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DMetro-Goldwyn-Mayer Distributing Corporation$$EMetro-Goldwyn-Mayer Distributing Corporation$$INYU10010124061$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DM-G-M$$EM-G-M$$INYU10010124061$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DMetro-Goldwyn-Mayer Pictures$$EMetro-Goldwyn-Mayer Pictures$$INYU10010124061$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DMetro-Goldwyn-Mayer Pictures Corporation$$EMetro-Goldwyn-Mayer Pictures Corporation$$INYU10010124061$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DMetro-Goldwyn-Mayer Corporation$$EMetro-Goldwyn-Mayer Corporation$$INYU10010124061$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DMGM (Metro-Goldwyn-Mayer)$$EMGM (Metro-Goldwyn-Mayer)$$INYU10010124061$$PN&lt;/author&gt;
+                        &lt;author&gt;$$DMGM/UA Home Video (Firm)$$EMGM/UA Home Video (Firm)$$INYU10005485151$$PY&lt;/author&gt;
+                        &lt;title&gt;$$DTravels with my aunt$$ETravels with my aunt&lt;/title&gt;
+                        &lt;subject&gt;$$DFeature films$$EFeature films&lt;/subject&gt;
+                        &lt;subject&gt;$$DFilms for the hearing impaired$$EFilms for the hearing impaired&lt;/subject&gt;
+                        &lt;callnumber&gt;$$INYU$$DVCA 15583$$Evca 15583$$T4&lt;/callnumber&gt;
+                        &lt;institution&gt;NYU&lt;/institution&gt;
+                      &lt;/browse&gt;
+                    &lt;/record&gt;
+                  &lt;/PrimoNMBib&gt;
+                &lt;/DOC&gt;
+              &lt;/DOCSET&gt;
+            &lt;/RESULT&gt;
+          &lt;/JAGROOT&gt;
+        &lt;/SEGMENTS&gt;</getRecordReturn></ns1:getRecordResponse></soapenv:Body></soapenv:Envelope>
+    http_version: 
+  recorded_at: Tue, 18 Jun 2019 16:04:08 GMT
+- request:
+    method: get
+    uri: https://cite-dev.library.nyu.edu/?calling_system=primo&cite_to=json&external_id=nyu_aleph000570570&institution=NYU
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-musl x86_64) ruby/2.6.2p47
+      Host:
+      - cite-dev.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 18 Jun 2019 16:04:08 GMT
+      Server:
+      - nginx/1.15.8
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '1333'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAHgLCV0AA+xY22obSRD9lUJgkwXdZcWSliEocnwjskNke7MbgmjNlGY66cukL5KVkI/Zx33eT8iPbfXMWHbWeVjIQ1gQCE1VdXXdTw3S55ra+DkTmGftdrt/GD610ecadyivNjnWRrUVT1C/xlibhKu0Vq8x7zJtaqO3tYn/oE0dTlCbFOvQGQyHjc5w0COlmeQuq8OUpSkPR8PeQYPE03ii16jqMBYYE3+irUXn6vBSe27rcG6ahfLToHxiEBVdPjEsYzLI2wdkf9gJhtAZ3TjRIllvVGPKNmiC9GTauh7DqZYINyFueHLMjfyl9q5ey/1CcJuR3uixHt3NBYtDvjOmHIOpVjxmdZiM6YjbhQr5tg+H3UH3cNB7Q8Lh4WDLd4MDx50IBq4MW6GwsKYKgNwA88rB26KM5q6M78hAwlxQp4T6xAmmUs/SIMGizLm6Lat+lpDsO20iC2hjw3PHdRHeODga+9RbR5EzsDk31MgE1loyBXoJXCXo0EiuyDdskBmqOTXA0uEStAqX0HAMPLzwRudIF1myQuW8wSonqiFYp5N0UwfJk0RggwJPQFF4uIZTVGbThKsMyWKMYLNNKQNuwRmm7FIbSfpcOU0eVxSloDav+IIOHYRY1xmJIKMLRfVspteWWAmOrFq3CZ2sQ2qoZUsvQPAlBimGuIvw1pSqoEJTetKnaSCBqQQyKk7B2DhDibZJZTzi1BenTbicZ9ppsptnlNyR9qlgFmZCx1ouEH6FJRcSMOEuDP65zhQ8F1pLOpHe8rgOV2go01Pm4izYLgEAFRzC1MMWAzTzsAXAa71A42DmQhEVtWVCGWzgNy4EZ9JuFY4FyiKvc22//gUvCTbw8uvfOX6Cm69/fvro8VMzTCOXuTbU/GOjJc3Pq4s38/PZ5UWYNB2zMDI2zMzF79fwXC8sDc4KKfDjAiIwoYbTg/DLFUy0oLjDFYAnN5MxdPr9QQ8KVFEtP9iwMYRQHVodtcy53I5arRQJD00RekrTQOPbxMS3aIa0WOGz/djdzslh9Edv2BwMGt12+6CQoYojrpZ6pJe8Rczo+uq4MSiOHJdRt90ZNtpPG53BVae71xu3D8LX4Gx2te+NeGQxyMLVpXSFVbJJ5OgDrkbS3Y7oaN8szZwnpU/Lk1ZuuNRNvA2Rc5sa7fMmNX9UyBuPYUgG3HzFxNbH6N9eCuQHtWZKKMDonn9frIyooBclXS2PvW47QI0eckNfAQT02Os//3aN7PWPisvM05i6qNjHlWDJDUmq1VzJuOIuekB3HjLyjrF+ueS3d9zdkzzmJb3Swssqam6tr8icmcr4R08kdaJgrFUVkdOSKEm8JwNlKx/GKV9FQcs6Kpc0pR3WND1utnUrVnVULGqSV6uaqMn4LqjKJ96TYYdH9wu8DInHvDyNdYKl4nYYEs1bxZlevKfpD/LSeRiE6PuDEBwuKju03qO93mSruNd7sdUleevhAfGpyckF0f1hu98/6HYPgtJWSoxm5bN1R9B0V5KS+iZ8zUL4+LF592KJytdKwGnnP+PUS0Gv+yZXlrR8WAERbYzx0Q6/O/zu8Puz8Nv9QfzOTnf43eF3h9+fhd/ej+B3cr0D7w68O/D+FPDSr12nMy3C/NgKxQTiIpRHID5+tvQBkQ5lIxV6wcR+ouN5pRZexO3Ofvg1LuYLZjF69fpsejm5nE4vLwpFaij95I/u//H5Uq+xJGH+f/ff24P9RUWjxElfxyKmDInv9Z+S28Ne7cuXfwAAAP//AwBt2uWOkBQAAA==
+    http_version: 
+  recorded_at: Tue, 18 Jun 2019 16:04:08 GMT
+- request:
+    method: post
+    uri: http://primo.library.edu/PrimoWebServices/services/searcher
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsdl="http://primo.library.edu/PrimoWebServices/services/searcher"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"><env:Body><wsdl:getRecord><request><![CDATA[<fullViewRequest
+        xmlns="http://www.exlibris.com/primo/xsd/wsRequest" xmlns:uic="http://www.exlibris.com/primo/xsd/primoview/uicomponents"><PrimoSearchRequest
+        xmlns="http://www.exlibris.com/primo/xsd/search/request"><QueryTerms><BoolOpeator>AND</BoolOpeator></QueryTerms><StartIndex>1</StartIndex><BulkSize>5</BulkSize><DidUMeanEnabled>false</DidUMeanEnabled></PrimoSearchRequest><institution>NYU</institution><docId>nyu_aleph000980206</docId></fullViewRequest>]]></request></wsdl:getRecord></env:Body></env:Envelope>
+    headers:
+      Soapaction:
+      - '"getRecord"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '846'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Content-Type:
+      - text/xml;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Tue, 18 Jun 2019 16:04:37 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soapenv:Body><ns1:getRecordResponse soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns1="http://primo.library.edu/PrimoWebServices/services/searcher"><getRecordReturn xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">&lt;SEGMENTS xmlns=&quot;http://www.exlibrisgroup.com/xsd/jaguar/search&quot;&gt;
+          &lt;JAGROOT&gt;
+            &lt;RESULT&gt;
+              &lt;DOCSET TOTALHITS=&quot;1&quot;&gt;
+                &lt;DOC LOCAL=&quot;true&quot;&gt;
+                  &lt;PrimoNMBib xmlns=&quot;http://www.exlibrisgroup.com/xsd/primo/primo_nm_bib&quot;&gt;
+                    &lt;record&gt;
+                      &lt;control&gt;
+                        &lt;sourcerecordid&gt;000980206&lt;/sourcerecordid&gt;
+                        &lt;sourceid&gt;nyu_aleph&lt;/sourceid&gt;
+                        &lt;recordid&gt;nyu_aleph000980206&lt;/recordid&gt;
+                        &lt;originalsourceid&gt;NYU01&lt;/originalsourceid&gt;
+                        &lt;ilsapiid&gt;NYU01000980206&lt;/ilsapiid&gt;
+                        &lt;sourceformat&gt;MARC21&lt;/sourceformat&gt;
+                        &lt;sourcesystem&gt;Aleph&lt;/sourcesystem&gt;
+                      &lt;/control&gt;
+                      &lt;display&gt;
+                        &lt;type&gt;book&lt;/type&gt;
+                        &lt;title&gt;Virtual inequality : beyond the digital divide&lt;/title&gt;
+                        &lt;creator&gt;Karen.  Mossberger&lt;/creator&gt;
+                        &lt;contributor&gt;Caroline J Tolbert; Mary Stansbury 1957-&lt;/contributor&gt;
+                        &lt;publisher&gt;Washington, D.C. : Georgetown University Press&lt;/publisher&gt;
+                        &lt;creationdate&gt;c2003&lt;/creationdate&gt;
+                        &lt;format&gt;xvi, 192 p. ; 22 cm.&lt;/format&gt;
+                        &lt;identifier&gt;$$Cisbn$$V0878409998 (pbk. : alk. paper); $$Cisbn$$V9780878409990&lt;/identifier&gt;
+                        &lt;subject&gt;Digital divide&lt;/subject&gt;
+                        &lt;language&gt;eng&lt;/language&gt;
+                        &lt;relation&gt;$$Cseries $$VAmerican governance and public policy.&lt;/relation&gt;
+                        &lt;source&gt;nyu_aleph&lt;/source&gt;
+                        &lt;availlibrary&gt;$$INYU$$LBOBST$$1Main Collection$$2(HN49.I56 M67 2003 )$$Savailable$$31$$40$$5N$$63$$XNYU50$$YBOBST$$ZMAIN&lt;/availlibrary&gt;
+                        &lt;availlibrary&gt;$$INS$$LNSFO$$1Main Collection$$2(HN49.I56 M67 2003 )$$Sunavailable$$31$$41$$5N$$65$$XNYU50$$YTNSFO$$ZMAIN&lt;/availlibrary&gt;
+                        &lt;lds02&gt;nyu_aleph000980206&lt;/lds02&gt;
+                        &lt;lds01&gt;NYU&lt;/lds01&gt;
+                        &lt;lds01&gt;NS&lt;/lds01&gt;
+                        &lt;availinstitution&gt;$$INS$$Sunavailable&lt;/availinstitution&gt;
+                        &lt;availinstitution&gt;$$INYU$$Savailable&lt;/availinstitution&gt;
+                        &lt;availpnx&gt;available&lt;/availpnx&gt;
+                      &lt;/display&gt;
+                      &lt;links&gt;
+                        &lt;openurl&gt;$$Topenurl_journal&lt;/openurl&gt;
+                        &lt;backlink&gt;$$Taleph_backlink$$DMore bibliographic information&lt;/backlink&gt;
+                        &lt;thumbnail&gt;$$Tamazon_thumb&lt;/thumbnail&gt;
+                        &lt;linktotoc&gt;$$Tamazon_toc$$DCheck for Amazon Search Inside&lt;/linktotoc&gt;
+                        &lt;openurlfulltext&gt;$$Topenurlfull_journal&lt;/openurlfulltext&gt;
+                        &lt;linktoholdings&gt;$$Taleph_holdings&lt;/linktoholdings&gt;
+                        &lt;linktoreview&gt;$$TpersistentUrl$$DCopy item link&lt;/linktoreview&gt;
+                        &lt;linktouc&gt;$$Tamazon_uc$$DCheck Amazon&lt;/linktouc&gt;
+                        &lt;linktouc&gt;$$Tworldcat_isbn$$DCheck other libraries (WorldCat&#xAE;)&lt;/linktouc&gt;
+                        &lt;linktoexcerpt&gt;$$Tsyndetics_excerpt$$DExcerpt from item&lt;/linktoexcerpt&gt;
+                        &lt;lln10&gt;$$Tnyugetit&lt;/lln10&gt;
+                        &lt;lln11&gt;$$Tnyuadgetit&lt;/lln11&gt;
+                        &lt;lln12&gt;$$Tnyushgetit&lt;/lln12&gt;
+                        &lt;lln13&gt;$$Tcugetit&lt;/lln13&gt;
+                        &lt;lln14&gt;$$Ttest_aleph_holdings$$DCheck Availability:NYU BOBST Main Collection (HN49.I56 M67 2003 )$$1BOBST$$2MAIN&lt;/lln14&gt;
+                        &lt;lln14&gt;$$Ttest_aleph_holdings$$DCheck Availability:NS NSFO Main Collection (HN49.I56 M67 2003 )$$1TNSFO$$2MAIN&lt;/lln14&gt;
+                        &lt;lln15&gt;$$Ttest_aleph_holdings$$DCheck Availability:NYU Bobst  Main Collection  (HN49.I56 M67 2003 )  $$1BOBST  $$2MAIN&lt;/lln15&gt;
+                        &lt;lln15&gt;$$Ttest_aleph_holdings$$DCheck Availability:New School List Center  Main Collection  (HN49.I56 M67 2003 )  $$1TNSFO  $$2MAIN&lt;/lln15&gt;
+                      &lt;/links&gt;
+                      &lt;search&gt;
+                        &lt;creatorcontrib&gt;Karen.  Mossberger&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Mossberger, Karen.&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Mossberger, K&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Karen Mossberger, Caroline J. Tolbert, Mary Stansbury.&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Caroline J.  Tolbert&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Mary,  Stansbury  1957-&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Tolbert, C&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Stansbury, M&lt;/creatorcontrib&gt;
+                        &lt;title&gt;Virtual inequality : beyond the digital divide /&lt;/title&gt;
+                        &lt;subject&gt;Digital divide&lt;/subject&gt;
+                        &lt;subject&gt;Divide, Digital&lt;/subject&gt;
+                        &lt;subject&gt;Global digital divide&lt;/subject&gt;
+                        &lt;subject&gt;GDD (Global digital divide)&lt;/subject&gt;
+                        &lt;general&gt;Georgetown University Press,&lt;/general&gt;
+                        &lt;general&gt;51769109&lt;/general&gt;
+                        &lt;sourceid&gt;nyu_aleph&lt;/sourceid&gt;
+                        &lt;recordid&gt;nyu_aleph000980206&lt;/recordid&gt;
+                        &lt;isbn&gt;0878409998&lt;/isbn&gt;
+                        &lt;isbn&gt;9780878409990&lt;/isbn&gt;
+                        &lt;rsrctype&gt;book&lt;/rsrctype&gt;
+                        &lt;creationdate&gt;2003&lt;/creationdate&gt;
+                        &lt;addtitle&gt;American governance and public policy series&lt;/addtitle&gt;
+                        &lt;addtitle&gt;American governance and public policy.&lt;/addtitle&gt;
+                        &lt;addtitle&gt;American governance &amp;amp; public policy series&lt;/addtitle&gt;
+                        &lt;searchscope&gt;BOBST&lt;/searchscope&gt;
+                        &lt;searchscope&gt;BOBST Main Collection&lt;/searchscope&gt;
+                        &lt;searchscope&gt;TNSFO&lt;/searchscope&gt;
+                        &lt;searchscope&gt;TNSFO Main Collection&lt;/searchscope&gt;
+                        &lt;searchscope&gt;nyu_aleph&lt;/searchscope&gt;
+                        &lt;searchscope&gt;NYU&lt;/searchscope&gt;
+                        &lt;searchscope&gt;NS&lt;/searchscope&gt;
+                        &lt;scope&gt;BOBST&lt;/scope&gt;
+                        &lt;scope&gt;BOBST Main Collection&lt;/scope&gt;
+                        &lt;scope&gt;TNSFO&lt;/scope&gt;
+                        &lt;scope&gt;TNSFO Main Collection&lt;/scope&gt;
+                        &lt;scope&gt;nyu_aleph&lt;/scope&gt;
+                        &lt;scope&gt;NYU&lt;/scope&gt;
+                        &lt;scope&gt;NS&lt;/scope&gt;
+                        &lt;lsr01&gt;HN49.I56 M67 2003&lt;/lsr01&gt;
+                        &lt;lsr01&gt;HN49 .I56 M67 2003&lt;/lsr01&gt;
+                        &lt;lsr02&gt;Georgetown University Press,&lt;/lsr02&gt;
+                        &lt;lsr10&gt;0878409998&lt;/lsr10&gt;
+                        &lt;lsr10&gt;9780878409990&lt;/lsr10&gt;
+                      &lt;/search&gt;
+                      &lt;sort&gt;
+                        &lt;title&gt;Virtual inequality : beyond the digital divide /&lt;/title&gt;
+                        &lt;creationdate&gt;2003&lt;/creationdate&gt;
+                        &lt;author&gt;Mossberger, Karen.&lt;/author&gt;
+                        &lt;lso01&gt;2003&lt;/lso01&gt;
+                      &lt;/sort&gt;
+                      &lt;facets&gt;
+                        &lt;language&gt;eng&lt;/language&gt;
+                        &lt;creationdate&gt;2003&lt;/creationdate&gt;
+                        &lt;topic&gt;Digital divide&lt;/topic&gt;
+                        &lt;collection&gt;BOBST&lt;/collection&gt;
+                        &lt;collection&gt;TNSFO&lt;/collection&gt;
+                        &lt;toplevel&gt;available&lt;/toplevel&gt;
+                        &lt;prefilter&gt;books&lt;/prefilter&gt;
+                        &lt;rsrctype&gt;books&lt;/rsrctype&gt;
+                        &lt;creatorcontrib&gt;Mossberger, K&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Tolbert, C&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Stansbury, M&lt;/creatorcontrib&gt;
+                        &lt;library&gt;BOBST&lt;/library&gt;
+                        &lt;library&gt;NSFO&lt;/library&gt;
+                        &lt;lfc01&gt;Main Collection&lt;/lfc01&gt;
+                        &lt;newrecords&gt;20111230_430&lt;/newrecords&gt;
+                        &lt;classificationlcc&gt;H - Social sciences.&#x2013;Social history and conditions. Social problems. Social reform&lt;/classificationlcc&gt;
+                        &lt;frbrgroupid&gt;534545165&lt;/frbrgroupid&gt;
+                        &lt;frbrtype&gt;6&lt;/frbrtype&gt;
+                      &lt;/facets&gt;
+                      &lt;dedup&gt;
+                        &lt;t&gt;1&lt;/t&gt;
+                        &lt;c1&gt;2003004571&lt;/c1&gt;
+                        &lt;c2&gt;0878409998;9780878409990&lt;/c2&gt;
+                        &lt;c3&gt;virtualinequalitybeyitaldivide&lt;/c3&gt;
+                        &lt;c4&gt;2003&lt;/c4&gt;
+                        &lt;f1&gt;2003004571&lt;/f1&gt;
+                        &lt;f3&gt;0878409998;9780878409990&lt;/f3&gt;
+                        &lt;f5&gt;virtualinequalitybeyitaldivide&lt;/f5&gt;
+                        &lt;f6&gt;2003&lt;/f6&gt;
+                        &lt;f7&gt;virtual inequality beyond the digital divide&lt;/f7&gt;
+                        &lt;f8&gt;dcu&lt;/f8&gt;
+                        &lt;f9&gt;xvi, 192 p. ;&lt;/f9&gt;
+                        &lt;f10&gt;georgetown university press&lt;/f10&gt;
+                        &lt;f11&gt;mossberger karen&lt;/f11&gt;
+                      &lt;/dedup&gt;
+                      &lt;frbr&gt;
+                        &lt;t&gt;1&lt;/t&gt;
+                        &lt;k1&gt;$$Kmossberger karen$$AA&lt;/k1&gt;
+                        &lt;k3&gt;$$Kbookvirtual inequality beyond the digital divide$$AT&lt;/k3&gt;
+                      &lt;/frbr&gt;
+                      &lt;delivery&gt;
+                        &lt;institution&gt;NYU&lt;/institution&gt;
+                        &lt;institution&gt;NS&lt;/institution&gt;
+                        &lt;delcategory&gt;Physical Item&lt;/delcategory&gt;
+                      &lt;/delivery&gt;
+                      &lt;enrichment&gt;
+                        &lt;classificationlcc&gt;HN49.I56&lt;/classificationlcc&gt;
+                      &lt;/enrichment&gt;
+                      &lt;ranking&gt;
+                        &lt;booster1&gt;1&lt;/booster1&gt;
+                        &lt;booster2&gt;1&lt;/booster2&gt;
+                      &lt;/ranking&gt;
+                      &lt;addata&gt;
+                        &lt;aulast&gt;Mossberger&lt;/aulast&gt;
+                        &lt;aufirst&gt;Karen.&lt;/aufirst&gt;
+                        &lt;au&gt;Mossberger, Karen&lt;/au&gt;
+                        &lt;addau&gt;Tolbert, Caroline J&lt;/addau&gt;
+                        &lt;addau&gt;Stansbury, Mary, 1957-&lt;/addau&gt;
+                        &lt;btitle&gt;Virtual inequality : beyond the digital divide&lt;/btitle&gt;
+                        &lt;seriestitle&gt;American governance and public policy&lt;/seriestitle&gt;
+                        &lt;seriestitle&gt;American governance and public policy series&lt;/seriestitle&gt;
+                        &lt;seriestitle&gt;American governance &amp;amp; public policy series&lt;/seriestitle&gt;
+                        &lt;date&gt;2003&lt;/date&gt;
+                        &lt;risdate&gt;c2003.&lt;/risdate&gt;
+                        &lt;isbn&gt;0878409998&lt;/isbn&gt;
+                        &lt;isbn&gt;9780878409990&lt;/isbn&gt;
+                        &lt;format&gt;book&lt;/format&gt;
+                        &lt;genre&gt;book&lt;/genre&gt;
+                        &lt;ristype&gt;BOOK&lt;/ristype&gt;
+                        &lt;notes&gt;Includes bibliographical references (p. [171]-183) and index.&lt;/notes&gt;
+                        &lt;cop&gt;Washington, D.C.&lt;/cop&gt;
+                        &lt;pub&gt;Georgetown University Press&lt;/pub&gt;
+                        &lt;oclcid&gt;51769109&lt;/oclcid&gt;
+                        &lt;lccn&gt;2003004571&lt;/lccn&gt;
+                        &lt;lad01&gt;TNSFOBOBST&lt;/lad01&gt;
+                        &lt;lad01&gt;Physical Item&lt;/lad01&gt;
+                      &lt;/addata&gt;
+                      &lt;browse&gt;
+                        &lt;author&gt;$$DMossberger, Karen$$EMossberger, Karen$$INYU10008778854$$PY&lt;/author&gt;
+                        &lt;author&gt;$$DTolbert, Caroline J$$ETolbert, Caroline J$$INYU10008780023$$PY&lt;/author&gt;
+                        &lt;author&gt;$$DStansbury, Mary, 1957-$$EStansbury, Mary, 1957-$$INYU10003971847$$PY&lt;/author&gt;
+                        &lt;title&gt;$$DVirtual inequality : beyond the digital divide$$EVirtual inequality : beyond the digital divide&lt;/title&gt;
+                        &lt;title&gt;$$DAmerican governance and public policy series$$EAmerican governance and public policy series&lt;/title&gt;
+                        &lt;title&gt;$$DAmerican governance and public policy$$EAmerican governance and public policy&lt;/title&gt;
+                        &lt;title&gt;$$DAmerican governance &amp;amp; public policy series$$EAmerican governance &amp;amp; public policy series&lt;/title&gt;
+                        &lt;subject&gt;$$DDigital divide$$EDigital divide$$INYU10000056200$$PY&lt;/subject&gt;
+                        &lt;subject&gt;$$DDivide, Digital$$EDivide, Digital$$INYU10000056200$$PN&lt;/subject&gt;
+                        &lt;subject&gt;$$DGlobal digital divide$$EGlobal digital divide$$INYU10000056200$$PN&lt;/subject&gt;
+                        &lt;subject&gt;$$DGDD (Global digital divide)$$EGDD (Global digital divide)$$INYU10000056200$$PN&lt;/subject&gt;
+                        &lt;callnumber&gt;$$INYU$$DHN49.I56 M67 2003$$E0hn   00049.i  56000  m67 2003$$T0&lt;/callnumber&gt;
+                        &lt;callnumber&gt;$$INS$$DHN49.I56 M67 2003$$E0hn   00049.i  56000  m67 2003$$T0&lt;/callnumber&gt;
+                        &lt;institution&gt;NYU&lt;/institution&gt;
+                        &lt;institution&gt;NS&lt;/institution&gt;
+                      &lt;/browse&gt;
+                    &lt;/record&gt;
+                  &lt;/PrimoNMBib&gt;
+                &lt;/DOC&gt;
+              &lt;/DOCSET&gt;
+            &lt;/RESULT&gt;
+          &lt;/JAGROOT&gt;
+        &lt;/SEGMENTS&gt;</getRecordReturn></ns1:getRecordResponse></soapenv:Body></soapenv:Envelope>
+    http_version: 
+  recorded_at: Tue, 18 Jun 2019 16:04:37 GMT
+- request:
+    method: get
+    uri: https://cite-dev.library.nyu.edu/?calling_system=primo&cite_to=json&external_id=nyu_aleph000980206&institution=NYU
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-musl x86_64) ruby/2.6.2p47
+      Host:
+      - cite-dev.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 18 Jun 2019 16:04:37 GMT
+      Server:
+      - nginx/1.15.8
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '1043'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAJULCV0AA+xYW2/TShD+KytLjUBKHDt3W7IQJz09BEhakfQAB6FobW+cpetds5eQCPW/M2s7l9PygOClD3mIPfcZz843Vvzd4TuzxIwUa8/zgpHX8QZO+N2hmuSLXUGc0ImFuHOaDjZ6LSTwU6FUTGRGZBO9wZJwUCaCa0ljo63FJ2chGFjoJhpjKRjlBL0Go7nGXMVG7ppoiu3VD/rDlvO56RQmZlStiQ3/DxEQW4tvHN1yuiFSUb1DN5IoBTEKhhNb1Hus1pRnWvAmunTHLqioirlN7o2Go54XBMEIhMFwdOA9m0pTzWyAf6nUBjMExX2Fu80RopjsBE+RXhOU0oxq0Kd0Q1MCkVKsrV/H87rAMcwzgzMrITwDgcaZAubyoVvBt+9IImQ6SUH9k2Y3HS40sb4TnjCTEoViCu0QmcTFmiYQTJIVgT4noHpWuOiTP/Q/t/xR9znCUC3lKdmWDcgLITVJr6TIIdzN7MPy9fx6ZqsVCdZUcGX7M/t4i/4SsdIIjoFyNBaMkcSqEXr2atYL3El/gKaDIbLPip6D/4x8Q/NkLQRDbyk4jgnXRP6qP3QdZuBO2blijPseFLfWulBhuw0nTbXLaCxhIlxoj0tS04bDFmxDXjQSvV3CCET/dQN3NGpBwF4pg2ZElK9EKFa0DUx4u7hqjUqVpnnU8fyg5Q2gRwu/c9F96fXg0h1O5ouGkexRRCuzrqtcl1EhJpDhHdmEud6GoGrIlVzStMqpaNouJM2FS7a2cqoyKUzhJiIPS3nr8TFDAL3cYHbIET7MYmFmrdyMcEmiA/ulnNiopOOKrmf3ouMdpxeYEH7VBAMBMwzXeopLyg5kGQUbhpWOjjiupSsqQVxC2q1FlFMdndD+KZPvGWVWK7rdcyeBm5C4jFerAAdFZbYRzOT1U1GlTE0WWNb54LFglmXFKMVrogDMVSQ5kpZSdXqpuakLg60SHbcJlHLcJ8CUG6WyszslOtkooLU7ZV9cnZscSbtqouOeqUqjCa20iUhJZXgYmVTQdqkT8RfAipVXqe24RD8fF5swruPA8okuuuOD4UX374MtyNunCuAzWUAKoPvdXr/X9wd9a3SQAiNwdW/vCcBALamo/5UvsC2ffHX3ay+qlp5Fs//LaDY5g5eIS7kCK2MXRgS76OXlGeVnlJ9R/rRR3vlDlM9fnVF+RvkZ5U8b5d0/Qfn49gzxM8TPEH/CEId/4VqsBUuhc6rGOkC9LOUR1K9erIzFrSZ5K2MixqyRimRZm9mXuuc37JcFtoyxItHNu8n0enw9nV7PSkM4WBir6Pil477p4DTF5ne+EJ0sGqgbcoO1MuXp2HAPPruAg0hYAhWAcd8fDgLfC5z7+x8AAAD//wMA/kL9U+4SAAA=
+    http_version: 
+  recorded_at: Tue, 18 Jun 2019 16:04:37 GMT
+- request:
+    method: post
+    uri: http://primo.library.edu/PrimoWebServices/services/searcher
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsdl="http://primo.library.edu/PrimoWebServices/services/searcher"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"><env:Body><wsdl:getRecord><request><![CDATA[<fullViewRequest
+        xmlns="http://www.exlibris.com/primo/xsd/wsRequest" xmlns:uic="http://www.exlibris.com/primo/xsd/primoview/uicomponents"><PrimoSearchRequest
+        xmlns="http://www.exlibris.com/primo/xsd/search/request"><QueryTerms><BoolOpeator>AND</BoolOpeator></QueryTerms><StartIndex>1</StartIndex><BulkSize>5</BulkSize><DidUMeanEnabled>false</DidUMeanEnabled></PrimoSearchRequest><institution>NYU</institution><docId>nyu_aleph000980206</docId></fullViewRequest>]]></request></wsdl:getRecord></env:Body></env:Envelope>
+    headers:
+      Soapaction:
+      - '"getRecord"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '846'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Content-Type:
+      - text/xml;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Tue, 18 Jun 2019 16:04:37 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soapenv:Body><ns1:getRecordResponse soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns1="http://primo.library.edu/PrimoWebServices/services/searcher"><getRecordReturn xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">&lt;SEGMENTS xmlns=&quot;http://www.exlibrisgroup.com/xsd/jaguar/search&quot;&gt;
+          &lt;JAGROOT&gt;
+            &lt;RESULT&gt;
+              &lt;DOCSET TOTALHITS=&quot;1&quot;&gt;
+                &lt;DOC LOCAL=&quot;true&quot;&gt;
+                  &lt;PrimoNMBib xmlns=&quot;http://www.exlibrisgroup.com/xsd/primo/primo_nm_bib&quot;&gt;
+                    &lt;record&gt;
+                      &lt;control&gt;
+                        &lt;sourcerecordid&gt;000980206&lt;/sourcerecordid&gt;
+                        &lt;sourceid&gt;nyu_aleph&lt;/sourceid&gt;
+                        &lt;recordid&gt;nyu_aleph000980206&lt;/recordid&gt;
+                        &lt;originalsourceid&gt;NYU01&lt;/originalsourceid&gt;
+                        &lt;ilsapiid&gt;NYU01000980206&lt;/ilsapiid&gt;
+                        &lt;sourceformat&gt;MARC21&lt;/sourceformat&gt;
+                        &lt;sourcesystem&gt;Aleph&lt;/sourcesystem&gt;
+                      &lt;/control&gt;
+                      &lt;display&gt;
+                        &lt;type&gt;book&lt;/type&gt;
+                        &lt;title&gt;Virtual inequality : beyond the digital divide&lt;/title&gt;
+                        &lt;creator&gt;Karen.  Mossberger&lt;/creator&gt;
+                        &lt;contributor&gt;Caroline J Tolbert; Mary Stansbury 1957-&lt;/contributor&gt;
+                        &lt;publisher&gt;Washington, D.C. : Georgetown University Press&lt;/publisher&gt;
+                        &lt;creationdate&gt;c2003&lt;/creationdate&gt;
+                        &lt;format&gt;xvi, 192 p. ; 22 cm.&lt;/format&gt;
+                        &lt;identifier&gt;$$Cisbn$$V0878409998 (pbk. : alk. paper); $$Cisbn$$V9780878409990&lt;/identifier&gt;
+                        &lt;subject&gt;Digital divide&lt;/subject&gt;
+                        &lt;language&gt;eng&lt;/language&gt;
+                        &lt;relation&gt;$$Cseries $$VAmerican governance and public policy.&lt;/relation&gt;
+                        &lt;source&gt;nyu_aleph&lt;/source&gt;
+                        &lt;availlibrary&gt;$$INYU$$LBOBST$$1Main Collection$$2(HN49.I56 M67 2003 )$$Savailable$$31$$40$$5N$$63$$XNYU50$$YBOBST$$ZMAIN&lt;/availlibrary&gt;
+                        &lt;availlibrary&gt;$$INS$$LNSFO$$1Main Collection$$2(HN49.I56 M67 2003 )$$Sunavailable$$31$$41$$5N$$65$$XNYU50$$YTNSFO$$ZMAIN&lt;/availlibrary&gt;
+                        &lt;lds02&gt;nyu_aleph000980206&lt;/lds02&gt;
+                        &lt;lds01&gt;NYU&lt;/lds01&gt;
+                        &lt;lds01&gt;NS&lt;/lds01&gt;
+                        &lt;availinstitution&gt;$$INS$$Sunavailable&lt;/availinstitution&gt;
+                        &lt;availinstitution&gt;$$INYU$$Savailable&lt;/availinstitution&gt;
+                        &lt;availpnx&gt;available&lt;/availpnx&gt;
+                      &lt;/display&gt;
+                      &lt;links&gt;
+                        &lt;openurl&gt;$$Topenurl_journal&lt;/openurl&gt;
+                        &lt;backlink&gt;$$Taleph_backlink$$DMore bibliographic information&lt;/backlink&gt;
+                        &lt;thumbnail&gt;$$Tamazon_thumb&lt;/thumbnail&gt;
+                        &lt;linktotoc&gt;$$Tamazon_toc$$DCheck for Amazon Search Inside&lt;/linktotoc&gt;
+                        &lt;openurlfulltext&gt;$$Topenurlfull_journal&lt;/openurlfulltext&gt;
+                        &lt;linktoholdings&gt;$$Taleph_holdings&lt;/linktoholdings&gt;
+                        &lt;linktoreview&gt;$$TpersistentUrl$$DCopy item link&lt;/linktoreview&gt;
+                        &lt;linktouc&gt;$$Tamazon_uc$$DCheck Amazon&lt;/linktouc&gt;
+                        &lt;linktouc&gt;$$Tworldcat_isbn$$DCheck other libraries (WorldCat&#xAE;)&lt;/linktouc&gt;
+                        &lt;linktoexcerpt&gt;$$Tsyndetics_excerpt$$DExcerpt from item&lt;/linktoexcerpt&gt;
+                        &lt;lln10&gt;$$Tnyugetit&lt;/lln10&gt;
+                        &lt;lln11&gt;$$Tnyuadgetit&lt;/lln11&gt;
+                        &lt;lln12&gt;$$Tnyushgetit&lt;/lln12&gt;
+                        &lt;lln13&gt;$$Tcugetit&lt;/lln13&gt;
+                        &lt;lln14&gt;$$Ttest_aleph_holdings$$DCheck Availability:NYU BOBST Main Collection (HN49.I56 M67 2003 )$$1BOBST$$2MAIN&lt;/lln14&gt;
+                        &lt;lln14&gt;$$Ttest_aleph_holdings$$DCheck Availability:NS NSFO Main Collection (HN49.I56 M67 2003 )$$1TNSFO$$2MAIN&lt;/lln14&gt;
+                        &lt;lln15&gt;$$Ttest_aleph_holdings$$DCheck Availability:NYU Bobst  Main Collection  (HN49.I56 M67 2003 )  $$1BOBST  $$2MAIN&lt;/lln15&gt;
+                        &lt;lln15&gt;$$Ttest_aleph_holdings$$DCheck Availability:New School List Center  Main Collection  (HN49.I56 M67 2003 )  $$1TNSFO  $$2MAIN&lt;/lln15&gt;
+                      &lt;/links&gt;
+                      &lt;search&gt;
+                        &lt;creatorcontrib&gt;Karen.  Mossberger&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Mossberger, Karen.&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Mossberger, K&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Karen Mossberger, Caroline J. Tolbert, Mary Stansbury.&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Caroline J.  Tolbert&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Mary,  Stansbury  1957-&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Tolbert, C&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Stansbury, M&lt;/creatorcontrib&gt;
+                        &lt;title&gt;Virtual inequality : beyond the digital divide /&lt;/title&gt;
+                        &lt;subject&gt;Digital divide&lt;/subject&gt;
+                        &lt;subject&gt;Divide, Digital&lt;/subject&gt;
+                        &lt;subject&gt;Global digital divide&lt;/subject&gt;
+                        &lt;subject&gt;GDD (Global digital divide)&lt;/subject&gt;
+                        &lt;general&gt;Georgetown University Press,&lt;/general&gt;
+                        &lt;general&gt;51769109&lt;/general&gt;
+                        &lt;sourceid&gt;nyu_aleph&lt;/sourceid&gt;
+                        &lt;recordid&gt;nyu_aleph000980206&lt;/recordid&gt;
+                        &lt;isbn&gt;0878409998&lt;/isbn&gt;
+                        &lt;isbn&gt;9780878409990&lt;/isbn&gt;
+                        &lt;rsrctype&gt;book&lt;/rsrctype&gt;
+                        &lt;creationdate&gt;2003&lt;/creationdate&gt;
+                        &lt;addtitle&gt;American governance and public policy series&lt;/addtitle&gt;
+                        &lt;addtitle&gt;American governance and public policy.&lt;/addtitle&gt;
+                        &lt;addtitle&gt;American governance &amp;amp; public policy series&lt;/addtitle&gt;
+                        &lt;searchscope&gt;BOBST&lt;/searchscope&gt;
+                        &lt;searchscope&gt;BOBST Main Collection&lt;/searchscope&gt;
+                        &lt;searchscope&gt;TNSFO&lt;/searchscope&gt;
+                        &lt;searchscope&gt;TNSFO Main Collection&lt;/searchscope&gt;
+                        &lt;searchscope&gt;nyu_aleph&lt;/searchscope&gt;
+                        &lt;searchscope&gt;NYU&lt;/searchscope&gt;
+                        &lt;searchscope&gt;NS&lt;/searchscope&gt;
+                        &lt;scope&gt;BOBST&lt;/scope&gt;
+                        &lt;scope&gt;BOBST Main Collection&lt;/scope&gt;
+                        &lt;scope&gt;TNSFO&lt;/scope&gt;
+                        &lt;scope&gt;TNSFO Main Collection&lt;/scope&gt;
+                        &lt;scope&gt;nyu_aleph&lt;/scope&gt;
+                        &lt;scope&gt;NYU&lt;/scope&gt;
+                        &lt;scope&gt;NS&lt;/scope&gt;
+                        &lt;lsr01&gt;HN49.I56 M67 2003&lt;/lsr01&gt;
+                        &lt;lsr01&gt;HN49 .I56 M67 2003&lt;/lsr01&gt;
+                        &lt;lsr02&gt;Georgetown University Press,&lt;/lsr02&gt;
+                        &lt;lsr10&gt;0878409998&lt;/lsr10&gt;
+                        &lt;lsr10&gt;9780878409990&lt;/lsr10&gt;
+                      &lt;/search&gt;
+                      &lt;sort&gt;
+                        &lt;title&gt;Virtual inequality : beyond the digital divide /&lt;/title&gt;
+                        &lt;creationdate&gt;2003&lt;/creationdate&gt;
+                        &lt;author&gt;Mossberger, Karen.&lt;/author&gt;
+                        &lt;lso01&gt;2003&lt;/lso01&gt;
+                      &lt;/sort&gt;
+                      &lt;facets&gt;
+                        &lt;language&gt;eng&lt;/language&gt;
+                        &lt;creationdate&gt;2003&lt;/creationdate&gt;
+                        &lt;topic&gt;Digital divide&lt;/topic&gt;
+                        &lt;collection&gt;BOBST&lt;/collection&gt;
+                        &lt;collection&gt;TNSFO&lt;/collection&gt;
+                        &lt;toplevel&gt;available&lt;/toplevel&gt;
+                        &lt;prefilter&gt;books&lt;/prefilter&gt;
+                        &lt;rsrctype&gt;books&lt;/rsrctype&gt;
+                        &lt;creatorcontrib&gt;Mossberger, K&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Tolbert, C&lt;/creatorcontrib&gt;
+                        &lt;creatorcontrib&gt;Stansbury, M&lt;/creatorcontrib&gt;
+                        &lt;library&gt;BOBST&lt;/library&gt;
+                        &lt;library&gt;NSFO&lt;/library&gt;
+                        &lt;lfc01&gt;Main Collection&lt;/lfc01&gt;
+                        &lt;newrecords&gt;20111230_430&lt;/newrecords&gt;
+                        &lt;classificationlcc&gt;H - Social sciences.&#x2013;Social history and conditions. Social problems. Social reform&lt;/classificationlcc&gt;
+                        &lt;frbrgroupid&gt;534545165&lt;/frbrgroupid&gt;
+                        &lt;frbrtype&gt;6&lt;/frbrtype&gt;
+                      &lt;/facets&gt;
+                      &lt;dedup&gt;
+                        &lt;t&gt;1&lt;/t&gt;
+                        &lt;c1&gt;2003004571&lt;/c1&gt;
+                        &lt;c2&gt;0878409998;9780878409990&lt;/c2&gt;
+                        &lt;c3&gt;virtualinequalitybeyitaldivide&lt;/c3&gt;
+                        &lt;c4&gt;2003&lt;/c4&gt;
+                        &lt;f1&gt;2003004571&lt;/f1&gt;
+                        &lt;f3&gt;0878409998;9780878409990&lt;/f3&gt;
+                        &lt;f5&gt;virtualinequalitybeyitaldivide&lt;/f5&gt;
+                        &lt;f6&gt;2003&lt;/f6&gt;
+                        &lt;f7&gt;virtual inequality beyond the digital divide&lt;/f7&gt;
+                        &lt;f8&gt;dcu&lt;/f8&gt;
+                        &lt;f9&gt;xvi, 192 p. ;&lt;/f9&gt;
+                        &lt;f10&gt;georgetown university press&lt;/f10&gt;
+                        &lt;f11&gt;mossberger karen&lt;/f11&gt;
+                      &lt;/dedup&gt;
+                      &lt;frbr&gt;
+                        &lt;t&gt;1&lt;/t&gt;
+                        &lt;k1&gt;$$Kmossberger karen$$AA&lt;/k1&gt;
+                        &lt;k3&gt;$$Kbookvirtual inequality beyond the digital divide$$AT&lt;/k3&gt;
+                      &lt;/frbr&gt;
+                      &lt;delivery&gt;
+                        &lt;institution&gt;NYU&lt;/institution&gt;
+                        &lt;institution&gt;NS&lt;/institution&gt;
+                        &lt;delcategory&gt;Physical Item&lt;/delcategory&gt;
+                      &lt;/delivery&gt;
+                      &lt;enrichment&gt;
+                        &lt;classificationlcc&gt;HN49.I56&lt;/classificationlcc&gt;
+                      &lt;/enrichment&gt;
+                      &lt;ranking&gt;
+                        &lt;booster1&gt;1&lt;/booster1&gt;
+                        &lt;booster2&gt;1&lt;/booster2&gt;
+                      &lt;/ranking&gt;
+                      &lt;addata&gt;
+                        &lt;aulast&gt;Mossberger&lt;/aulast&gt;
+                        &lt;aufirst&gt;Karen.&lt;/aufirst&gt;
+                        &lt;au&gt;Mossberger, Karen&lt;/au&gt;
+                        &lt;addau&gt;Tolbert, Caroline J&lt;/addau&gt;
+                        &lt;addau&gt;Stansbury, Mary, 1957-&lt;/addau&gt;
+                        &lt;btitle&gt;Virtual inequality : beyond the digital divide&lt;/btitle&gt;
+                        &lt;seriestitle&gt;American governance and public policy&lt;/seriestitle&gt;
+                        &lt;seriestitle&gt;American governance and public policy series&lt;/seriestitle&gt;
+                        &lt;seriestitle&gt;American governance &amp;amp; public policy series&lt;/seriestitle&gt;
+                        &lt;date&gt;2003&lt;/date&gt;
+                        &lt;risdate&gt;c2003.&lt;/risdate&gt;
+                        &lt;isbn&gt;0878409998&lt;/isbn&gt;
+                        &lt;isbn&gt;9780878409990&lt;/isbn&gt;
+                        &lt;format&gt;book&lt;/format&gt;
+                        &lt;genre&gt;book&lt;/genre&gt;
+                        &lt;ristype&gt;BOOK&lt;/ristype&gt;
+                        &lt;notes&gt;Includes bibliographical references (p. [171]-183) and index.&lt;/notes&gt;
+                        &lt;cop&gt;Washington, D.C.&lt;/cop&gt;
+                        &lt;pub&gt;Georgetown University Press&lt;/pub&gt;
+                        &lt;oclcid&gt;51769109&lt;/oclcid&gt;
+                        &lt;lccn&gt;2003004571&lt;/lccn&gt;
+                        &lt;lad01&gt;TNSFOBOBST&lt;/lad01&gt;
+                        &lt;lad01&gt;Physical Item&lt;/lad01&gt;
+                      &lt;/addata&gt;
+                      &lt;browse&gt;
+                        &lt;author&gt;$$DMossberger, Karen$$EMossberger, Karen$$INYU10008778854$$PY&lt;/author&gt;
+                        &lt;author&gt;$$DTolbert, Caroline J$$ETolbert, Caroline J$$INYU10008780023$$PY&lt;/author&gt;
+                        &lt;author&gt;$$DStansbury, Mary, 1957-$$EStansbury, Mary, 1957-$$INYU10003971847$$PY&lt;/author&gt;
+                        &lt;title&gt;$$DVirtual inequality : beyond the digital divide$$EVirtual inequality : beyond the digital divide&lt;/title&gt;
+                        &lt;title&gt;$$DAmerican governance and public policy series$$EAmerican governance and public policy series&lt;/title&gt;
+                        &lt;title&gt;$$DAmerican governance and public policy$$EAmerican governance and public policy&lt;/title&gt;
+                        &lt;title&gt;$$DAmerican governance &amp;amp; public policy series$$EAmerican governance &amp;amp; public policy series&lt;/title&gt;
+                        &lt;subject&gt;$$DDigital divide$$EDigital divide$$INYU10000056200$$PY&lt;/subject&gt;
+                        &lt;subject&gt;$$DDivide, Digital$$EDivide, Digital$$INYU10000056200$$PN&lt;/subject&gt;
+                        &lt;subject&gt;$$DGlobal digital divide$$EGlobal digital divide$$INYU10000056200$$PN&lt;/subject&gt;
+                        &lt;subject&gt;$$DGDD (Global digital divide)$$EGDD (Global digital divide)$$INYU10000056200$$PN&lt;/subject&gt;
+                        &lt;callnumber&gt;$$INYU$$DHN49.I56 M67 2003$$E0hn   00049.i  56000  m67 2003$$T0&lt;/callnumber&gt;
+                        &lt;callnumber&gt;$$INS$$DHN49.I56 M67 2003$$E0hn   00049.i  56000  m67 2003$$T0&lt;/callnumber&gt;
+                        &lt;institution&gt;NYU&lt;/institution&gt;
+                        &lt;institution&gt;NS&lt;/institution&gt;
+                      &lt;/browse&gt;
+                    &lt;/record&gt;
+                  &lt;/PrimoNMBib&gt;
+                &lt;/DOC&gt;
+              &lt;/DOCSET&gt;
+            &lt;/RESULT&gt;
+          &lt;/JAGROOT&gt;
+        &lt;/SEGMENTS&gt;</getRecordReturn></ns1:getRecordResponse></soapenv:Body></soapenv:Envelope>
+    http_version: 
+  recorded_at: Tue, 18 Jun 2019 16:04:38 GMT
+- request:
+    method: get
+    uri: https://cite-dev.library.nyu.edu/?calling_system=primo&cite_to=json&external_id=nyu_aleph000980206&institution=NYU
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-musl x86_64) ruby/2.6.2p47
+      Host:
+      - cite-dev.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 18 Jun 2019 16:04:38 GMT
+      Server:
+      - nginx/1.15.8
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '1049'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAJYLCV0AA+xYW2+bSBT+KyOkRK1kY/AVkFDVdTZbt2snqp1td6vKGmCMpxlm6FxcW1X++54BfNmkD9X2JQ9+MJz7OZw530Hmu8N3ZokZKdee54WB1/WGTvTdoZoUi11JnMhJhLh3Wg42ei0k8FOhVEJkTmQLvcOScFCmgmtJE6OtxSdnIRhY6BYaYykY5QS9BaO5xlwlRu5aaIrt1Q8Ho7bzueWUJmFUrYkN/wcREFuLbxzdcbohUlG9Q7eSKAUxSoZTW9QHrNaU51rwFrpyxy6oqEq4Te4Fo6DvhWEYgDAcBQfes6k01cwG+ItKbTBDUNxXuNscEUrITvAM6TVBGc2pBn1GNzQjECnD2vp1Pa8HHMM8Nzi3EsJzEGicK2CuHruVfPuepEJmkwzUP2h2y+FCE+s74SkzGVEoodAOkUtcrmkKwSRZEehzCqoXpYs++SP/c9sPei8Rhmopz8i2akBRCqlJdi1FAeFuZx+Xb+c3M1utSLGmgivbn9nfd+g3kSiN4BgoR2PBGEmtGqEXb2b90J0Mhmg6HCH7rOgl+M/INzRP10Iw9CcFxzHhmsif9YeuwwzcKztXjHHfg+LWWpcq6nTgpKl2GU0kTIQL7XFJZjpw2IJtyKvLVG+XMALxP73QDYI2BOxXMmhGTPlKRGJFO8BEd4vrdlCpNC3irueHbW8IPVr43Yvea68Pl14wmS8ujWRPIlqZdV0VuooKMYGM7skmKvQ2AtWlXMklzeqcimadUtJCuGRrK6cql8KUbiqKqJK3nx4zBNDLDWaHHNHjLBZm1srNCZckPrBfqomNKzqp6WZ2L7recXqBieBXTzAQMMNwbaa4ouxAVlGwYVjp+IjjRrqiEsQVpN1GRDnV8QntnzLFnlFmtaLbPXcSuAWJq3iNCnBQ1mYbwUzRPBVVyjRkiWWTDx4LZlnWjFK8IUrAXE2SI2kp1aSXmpumMNgq8XGbQCnHfQJMtVFqO7tT4pONAlq7U/bFNbnJkbSrJj7umbo0mtJam4qM1IaHkckE7VQ6kXwBrFh5ndqOS/zjcbEJkyYOLJ/4ojc+GF70fj/YgrxzqgA+lyWkAHrQ6w/6A384sEYHKTAC1/fOngAMNJKa+k/5AtvyyVd3v/bieulZNPs/jWZTMHiJuJQrsDJ2YcSwi15fnVF+RvkZ5c8b5d1fRPn8zRnlZ5SfUf68Ud77FZSP784QP0P8DPFnDHH4F67FWrAMOqcarAPUq1KeQP361cpY3GpStHMmEswuM5EuGzP7Uvf8S/tlgS0TrEh8+34yvRnfTKc3s8oQDhbGKj5+6XhoOTjLsPk/X4hOFg3UDbnBWpnqdGy4R59dwEGkLIUKwHjgj4ah74XOw8O/AAAA//8AAAD//wMAGSrg2e4SAAA=
+    http_version: 
+  recorded_at: Tue, 18 Jun 2019 16:04:38 GMT
 recorded_with: VCR 3.0.3
