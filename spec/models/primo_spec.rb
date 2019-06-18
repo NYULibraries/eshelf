@@ -27,8 +27,8 @@ describe Primo do
       its(:author) { is_expected.to eql 'Pedró, Francesc; Programme for International Student Assessment; Centre for Educational Research and Innovation; Organisation for Economic Co-operation and Development' }
     end
 
-    describe '#locations' do
-      subject { @record.locations }
+    describe '#primo_locations' do
+      subject { @record.primo_locations }
       its(:size) { is_expected.to eql 2 }
       its(:'first.collection') { is_expected.to eql 'NYU Bobst Main Collection' }
       its(:'first.call_number') { is_expected.to eql '(HN49.I56 M67 2003 )' }

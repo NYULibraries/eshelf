@@ -13,7 +13,7 @@ class Primo < Record
     end
   end
 
-  def locations
+  def primo_locations
     unless primo_record.nil?
       @locations ||= primo_record["locations"].collect do |location|
         holding = location.match(/^(?<collection>.+)\s+\((?<call_number>.+)\)\s*$/)
