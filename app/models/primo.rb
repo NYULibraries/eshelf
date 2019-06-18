@@ -13,6 +13,16 @@ class Primo < Record
     end
   end
 
+  def locations
+    unless primo_record.nil?
+      @locations ||= primo_record["locations"].collect do |location|
+        holding = location.match(/^(?<collection>.+)\s+\((?<call_number>.+)\)\s*$/)
+        { collection: "#{holding[:collection]}",
+          call_number: holding[:call_number] }
+      end
+    end
+  end
+
  private
 
   # Returns a Hash with attributes
