@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://cite-dev.library.nyu.edu/?calling_system=primo&cite_to=json&external_id=nyu_aleph006048386&institution=NYU
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-musl x86_64) ruby/2.6.2p47
+      Host:
+      - cite-dev.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 19 Jun 2019 16:06:06 GMT
+      Server:
+      - nginx/1.15.8
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '1040'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAG5dCl0AA+xYbYvjNhD+K8KQ0ILjOHHiOAZzbNPb6+52X3rJlr5QgmzLjm5lyaeXkOU46H/oP+wv6ch2srnbKxSO7qd8iWdGo3lGmnkm2B8c/mjWmJF64/uhP4mCKHTiDw7VpFo91sSJnVSIB8d1sNEbIUG/IpITxly0xJUh8BzNJ9MB6tZdJxNcS5oabb1/dy5xJlIluIveYPmIFp775HoljFJEumi1wbkNNJscBfoZbyXJHlz04yPndjWMDqt/uE5tUkbVhticlmdvXrto8RO6k0Qp2FsznNnkVxuAwDxHt/hBgQdmtBCSUww+VKXcZjifRaOpHwbTKAxDsB+UmYXRVLM2EkFMlDRDokBnFZE0wxzVglFNMwuZY239xv4oAo1hXhpcWgvhJRg0LpVFu+t2IJtVKbZwmxXhGjzuOdx6jpYaAqm///zrXzzRiuy0LYr6fE9zK3z3lmRC5hc5QH+huK7DhfWNnQueMZMThVIKNylKiesNHIohSQoiCc9IC015TnaevbCqFhLgzqWoYP/dzS/ry+XtjT2tyLCmgjcnvPn1Hn0HNdcIXWPK0UIwRjK7jNA3l1fjWYi8q8kM2ZtC39qkGeVwGmg7xvjIh9AbrWsVD4clgev3GE0l9I4Hp/FIboZQY8G25FU/07s1XEvyWzD3omgw9v1JY4PcE8oLEYuCDkGJ71fng6hZ0rRKAHg+8MPBaL4ajXvBmR/an+nFctU3kj2LaG12a1HpJirEBDF+INu40rsYlvqykGuat5iK5sNa0kp4ZGczp6qUwtReJqq4sQ+eVwUC6PUWswNG/DmKLbj18krCJUkO6rumP5NGTlsZOrU39ptehaco4GffryDuO7bZgQ3DSicdpTtTQSXYOnZ3Ngp9lhzJo2Ol2ivKFAXd7bV9WBdQu2g9e/UwLeDZErlzhYat221bwUzVnYcqZTqxxrLDf29AhAo1ilK8E2rgWiuSJ9FKqktHam66RGFydIKdEgesLhR5Eu2ESD4ZDy0YzWjrkImctL6H8ueCDps1kb6Drrf2FsuWPvly6S1m2sWBMZL0gsXBsRe8PviCfXi8AHopa4AAeRpMRtNgHAXW6WAFReD2OdwL0M+dpZU+SV9gmz557+0HWNKOL8vM0X9mpqkY1NejXIGXsdRPYCqcfX9i7ImxJ8a+HGPHX8nY5Q8nxp4Ye2LsyzE2+BrGLu5PdD3R9UTXF6IrvLVqsREsp9y+2ze8Bdo2qTyj7fmrwlgOalINSiZSzPq5yNadm/2z9Ud9+x7N1ilWJLl7e3F9u7i9vr69aRyhVCnU+OlF/qPr4DzH5n/9yHI0XeCAkCRsUaYp4wt8zBAZy+DcgAxphXN/HMCxP/4DAAD//wMAnbaIYbQSAAA=
+    http_version: 
+  recorded_at: Wed, 19 Jun 2019 16:06:06 GMT
+recorded_with: VCR 3.0.3
