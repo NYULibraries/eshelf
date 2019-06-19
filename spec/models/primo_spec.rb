@@ -14,7 +14,7 @@ describe Primo do
     its(:format) { is_expected.to eql 'pnx_json' }
     its(:title) { is_expected.to eql 'Virtual inequality : beyond the digital divide' }
     its(:author) { is_expected.to eql 'Mossberger, Karen; Tolbert, Caroline J; Stansbury, Mary, 1957-' }
-    its(:title_sort) { is_expected.to eql 'Virtual inequality : beyond the digital divide /' }
+    its(:title_sort) { is_expected.to eql 'Virtual inequality : beyond the digital divide' }
     its(:content_type) { is_expected.to eql 'book' }
     its(:url) { is_expected.to include 'rfr_id=info:sid/primo.exlibrisgroup.com:primo-nyu_aleph00098020' }
 
@@ -24,7 +24,7 @@ describe Primo do
         @record_with_special_chars.save
       end
       subject { @record_with_special_chars }
-      its(:author) { is_expected.to eql 'Pedró, Francesc; Programme for International Student Assessment; Centre for Educational Research and Innovation; Organisation for Economic Co-operation and Development' }
+      its(:author) { is_expected.to include 'Pedró, Francesc' }
     end
 
     describe '#primo_locations' do
