@@ -17,8 +17,8 @@ class Primo < Record
     unless primo_record.nil?
       @locations ||= primo_record["locations"].collect do |location|
         holding = location.match(/^(?<collection>.+)\s+\((?<call_number>.+)\)\s*$/)
-        { collection: "#{holding[:collection]}",
-          call_number: holding[:call_number] }
+        { collection: "#{holding[:collection].strip.gsub(/\s\s+/,' ')}",
+          call_number: holding[:call_number].strip.gsub(/\s\s+/,' ') }
       end
     end
   end
