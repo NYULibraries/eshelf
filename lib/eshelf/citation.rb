@@ -18,13 +18,13 @@ module Eshelf
     end
 
     def openurl
-      @openurl ||= citation_json.dig("links", "lln10")
+      @openurl ||= citation_json&.dig("links", "lln10")
     end
 
   private
 
     def citation_json
-      @citation_json ||= JSON.parse(get_citation).dig(self.external_id) if get_citation&.headers[:content_type] == 'application/json'
+      @citation_json ||= JSON.parse(get_citation).dig(self.external_id) if get_citation&.headers && get_citation.headers[:content_type] == 'application/json'
     end
 
     def get_citation
