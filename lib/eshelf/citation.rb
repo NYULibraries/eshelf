@@ -18,7 +18,7 @@ module Eshelf
     end
 
     def openurl
-      @openurl ||= citation_json.dig("links", "lln10")
+      @openurl ||= citation_json&.dig("links", "lln10")
     end
 
   private
