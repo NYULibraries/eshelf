@@ -1,9 +1,5 @@
 module LayoutsHelper
 
-  def gauges_tracking_code
-    ENV['GAUGES_TOKEN']
-  end
-
   def google_analytics?
     google_analytics_tracking_code.present?
   end
