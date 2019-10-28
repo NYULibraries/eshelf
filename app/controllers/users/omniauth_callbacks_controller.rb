@@ -11,6 +11,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       logger.info(find_message(:success, kind: "NYU Libraries"))
     else
       session["devise.nyulibraries_data"] = request.env["omniauth.auth"]
+      logger.info "Failed callback: #{request.env["omniauth.auth"]}"
+      logger.info "Failed callback: #{request.env["omniauth.auth"].inspect}"
       redirect_to root_path
     end
   end
