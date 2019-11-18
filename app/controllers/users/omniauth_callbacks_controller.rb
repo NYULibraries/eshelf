@@ -11,6 +11,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       logger.info(find_message(:success, kind: "NYU Libraries"))
     else
       session["devise.nyulibraries_data"] = request.env["omniauth.auth"]
+      logger.info "Failed callback: #{request.env["omniauth.auth"]}"
+      logger.info "Failed callback: #{request.env["omniauth.auth"].inspect}"
       redirect_to root_path
     end
   end
@@ -28,6 +30,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def require_valid_omniauth
+    logger.info "Request env: #{request.env}"
+    logger.info "Request env: #{request.env.inspect}"
     head :bad_request unless valid_omniauth?
   end
 
