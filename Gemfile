@@ -4,7 +4,7 @@ gem 'rails', '~> 5.2.3'
 gem 'rake', '~> 10.1'
 
 # Add CORS support
-gem 'rack-cors', '~> 1.0.3', require: 'rack/cors'
+gem 'rack-cors', '~> 1.0.4', require: 'rack/cors'
 
 # Use MySQL
 #gem 'sqlite3'
@@ -81,7 +81,7 @@ gem 'citero', github: 'NYULibraries/citero', tag: 'v1.0.2'
 gem 'acts_as_citable', github: 'NYULibraries/acts_as_citable', tag: 'v5.1.0'
 
 gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.2.0'
-gem 'devise', '~> 4.6.0'
+gem 'devise', '~> 4.7.1'
 gem 'rest-client', '~> 2.0.2'
 
 # Dalli for caching with memcached
