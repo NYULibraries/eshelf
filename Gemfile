@@ -4,7 +4,7 @@ gem 'rails', '~> 5.2.3'
 gem 'rake', '~> 10.1'
 
 # Add CORS support
-gem 'rack-cors', '~> 1.0.3', require: 'rack/cors'
+gem 'rack-cors', '~> 1.0.4', require: 'rack/cors'
 
 # Use MySQL
 #gem 'sqlite3'
