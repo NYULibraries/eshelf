@@ -127,16 +127,20 @@ class RecordsController < ApplicationController
     @record = Record.find(params[:id])
     head :bad_request and return if @record.nil?
     @record.rebuild_openurl!(current_primary_institution.code) if @record.expired?
-    # If theres no getit and we have an external system we use that
-    if institution_getit_url.blank? && has_primo_as_external_system?
-      redirect_to "#{ENV['PERSISTENT_LINKER_URL']}#{@record.external_id}"
+    # If external system is primo and we have a primo_id, link to primo
+    if has_primo_as_external_system? && @record.external_id && ENV['PERSISTENT_LINKER_URL']
+      redirect_to "#{ENV['PERSISTENT_LINKER_URL']}#{@record.external_id}?institution=#{current_primary_institution.code.upcase}"
     else
       # Otherwise use getit
-      redirect_to getit_url + @record.url
+      redirect_to getit_url + strip_getit_prefix(@record.url)
     end
   end
 
  private
+
+  def strip_getit_prefix(url)
+    return url.gsub(/^https:\/\/(dev\.|qa\.)?getit\.library\.nyu\.edu\/resolve(\?)?/,'')
+  end
 
   # Get's the institution's getit url if it exists
   def institution_getit_url

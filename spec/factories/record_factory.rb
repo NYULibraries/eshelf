@@ -9,7 +9,7 @@ FactoryBot.define do
       format 'format1'
       title 'title 1'
       author 'author 1'
-      url 'http://example.com/1'
+      url 'https://dev.getit.library.nyu.edu/resolve?openurl=1&rft.true=true'
       title_sort 'title sort 1'
       content_type 'book'
     end
