@@ -12,6 +12,8 @@ ENV NODE_VERSION=10.x
 ENV RUN_PACKAGES bash ca-certificates fontconfig git less mariadb-dev nodejs nodejs-npm tzdata 
 ENV BUILD_PACKAGES build-base curl curl-dev linux-headers ruby-dev wget
 
+SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
+
 RUN addgroup -g 2000 $USER && \
     adduser -D -h $INSTALL_PATH -u 1000 -G $USER $USER
 
@@ -37,6 +39,7 @@ RUN apk add --no-cache --update $BUILD_PACKAGES $RUN_PACKAGES \
 # precompile assets; use temporary secret token to silence error, real token set at runtime
 USER $USER
 COPY --chown=docker:docker . .
+# hadolint ignore=SC2002
 RUN RAILS_ENV=production DEVISE_SECRET_KEY=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1) SECRET_TOKEN=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1) \
     bundle exec rake assets:precompile
 
