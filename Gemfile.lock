@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: https://github.com/NYULibraries/citero.git
-  revision: 74bbb13bf8631f5eb5a8298ab7a6a21ffe556f37
-  tag: v1.0.2
+  revision: 0225f143dd69c0c661fc074414756157dd516893
+  branch: feature/eshelf_support
   specs:
     citero (1.0.2)
       ox (~> 2.8)
@@ -332,7 +332,7 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
-    ox (2.10.0)
+    ox (2.13.2)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -526,4 +526,4 @@ DEPENDENCIES
   webmock (~> 3.5.0)
 
 BUNDLED WITH
-   2.0.2
+   2.1.4

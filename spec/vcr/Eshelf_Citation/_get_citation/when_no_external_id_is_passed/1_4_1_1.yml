@@ -25,7 +25,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Tue, 18 Jun 2019 17:49:54 GMT
+      - Tue, 25 Feb 2020 21:08:11 GMT
       Server:
       - nginx/1.15.8
       Vary:
@@ -39,7 +39,7 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAEIkCV0AAxyNsQ6DMAxEf8XyXCGGTnxFt84mcanVJEa2EZUq/r2B8XT37v2QzdRw+qEHxeY43cfxhtUXnPDJkHQrGZoG8HdVC1CDrHsrShniLQ5JOijaYOZEmzPoC6q4S1vOsbSkZpwCMgX12CmGlYwqB5sP8ChMHTvRsyrSPv2r6A6hYHxZL9NqOheuAx7HHwAA//8DAIrVq1q4AAAA
+        H4sIALuMVV4AAxyNsQ6DMAxEf8XyXCGGTnxFt84mcanVJEa2EZUq/r2B8XT37v2QzdRw+qEHxeY43cfxhtUXnPDJkHQrGZoG8HdVC1CDrHsrShniLQ5JOijaYOZEmzPoC6q4S1vOsbSkZpwCMgX12CmGlYwqB5sP8ChMHTvRsyrSPv2r6A6hYHxZL9NqOheuAx7HHwAA//8DAIrVq1q4AAAA
     http_version: 
-  recorded_at: Tue, 18 Jun 2019 17:49:54 GMT
+  recorded_at: Tue, 25 Feb 2020 21:08:10 GMT
 recorded_with: VCR 3.0.3
