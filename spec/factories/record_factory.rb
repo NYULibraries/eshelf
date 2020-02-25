@@ -684,5 +684,9 @@ FactoryBot.define do
     factory :tmp_user_primo_record1, traits: [:tmp_user_record, :primo, :virtual_inequality_id]
     factory :tmp_user_primo_record2, traits: [:tmp_user_record, :primo, :travels_with_my_aunt_id]
 
+    after(:build) do |record|
+      record.becomes_external_system.save
+    end
+
   end
 end

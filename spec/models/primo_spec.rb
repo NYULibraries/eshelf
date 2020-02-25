@@ -2,13 +2,10 @@ require 'rails_helper'
 
 describe Primo do
   let(:record) { build(:user_primo_record1) }
+  let(:primo_record) { record.becomes_external_system }
 
   describe '#becomes_external_system', :vcr do
-    before do
-      @record = record.becomes_external_system
-      @record.save
-    end
-    subject { @record }
+    subject { primo_record }
     its(:external_id) { is_expected.to eql 'nyu_aleph000980206' }
     its(:external_system) { is_expected.to eql 'primo' }
     its(:format) { is_expected.to eql 'pnx_json' }
@@ -28,10 +25,10 @@ describe Primo do
     end
 
     describe '#primo_locations' do
-      let(:primo_locations) { @record.primo_locations }
-      # it 'should have two items' do
-      #   expect(primo_locations.size).to eql 2
-      # end
+      let(:primo_locations) { primo_record.primo_locations }
+      it 'should have two items' do
+        expect(primo_locations.size).to eql 2
+      end
       subject { primo_location }
       context 'when it is the first location' do
         let(:primo_location) { primo_locations.first }
@@ -40,15 +37,10 @@ describe Primo do
       end
       context 'when it is the first location' do
         let(:primo_location) { primo_locations.last }
-        its([:collection]) { is_expected.to eql 'NYU Bobst Main Collection' }
+        its([:collection]) { is_expected.to eql 'NYU New School Main Collection' }
         its([:call_number]) { is_expected.to eql 'HN49.I56 M67 2003' }
       end
         
-      
-      # its(:'first') { is_expected.to eql 'NYU Bobst Main Collection' }
-      # its(:'first.call_number') { is_expected.to eql '(HN49.I56 M67 2003 )' }
-      # its(:'last') { is_expected.to eql 'New School Offsite Storage Main Collection' }
-      # its(:'last.call_number') { is_expected.to eql '(HN49.I56 M67 2003 )' }
     end
   end
 

@@ -73,7 +73,7 @@ group :development, :test do
   gem 'rails-controller-testing'
 end
 
-gem 'citero', github: 'NYULibraries/citero', tag: 'v1.0.2'
+gem 'citero', github: 'NYULibraries/citero', branch: 'feature/eshelf_support' #tag: 'v1.0.2'
 gem 'acts_as_citable', github: 'NYULibraries/acts_as_citable', tag: 'v5.1.0'
 
 gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.2.0'

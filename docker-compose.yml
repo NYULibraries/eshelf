@@ -38,9 +38,10 @@ services:
     # networks:
     #   - default
     #   - custom
-    # volumes:
-    #   - .:/app
+    volumes:
+      - .:/app
 
+  # docker-compose run test ruby -Itest ./test/unit/decorators/label_decorator_test.rb --name test_label_notes
   test:
     <<: *test-env
     command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake"]
@@ -51,8 +52,8 @@ services:
     # networks:
     #   - default
     #   - custom
-    # volumes:
-    #   - .:/app
+    volumes:
+      - .:/app
 
   setup_test_dbs:
     <<: *test-env
