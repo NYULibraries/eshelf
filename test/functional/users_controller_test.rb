@@ -7,9 +7,9 @@ class UsersControllerTest < ActionController::TestCase
 
   setup do
     @user = FactoryBot.create(:user)
-    @user_record = FactoryBot.build(:user_primo_record1, user: @user)
     VCR.use_cassette('record becomes primo') do
-      (@user_record = @user_record.becomes_external_system).save!
+      @user_record = FactoryBot.build(:user_primo_record1, user: @user)
+      # (@user_record = @user_record.becomes_external_system).save!
     end
     @request.env["devise.mapping"] = Devise.mappings[:user]
     @request.cookies["_pds_logged_in"] = true

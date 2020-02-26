@@ -3,12 +3,12 @@ require 'test_helper'
 class RecordsMailerTest < ActionMailer::TestCase
   setup do
     @user = FactoryBot.create(:user)
-    @records = [FactoryBot.build(:user_primo_record1, user: @user)]
-    @records << FactoryBot.build(:user_primo_record2, user: @user)
     VCR.use_cassette('record becomes primo', :record => :new_episodes) do
-      @records.each do |record|
-        record.becomes_external_system.save!
-      end
+      @records = [FactoryBot.build(:user_primo_record1, user: @user)]
+      @records << FactoryBot.build(:user_primo_record2, user: @user)
+      # @records.each do |record|
+      #   record.becomes_external_system.save!
+      # end
     end
     @alternative_email = "test@library.edu"
   end

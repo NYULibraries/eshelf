@@ -7,20 +7,17 @@ class RecordsControllerTest < ActionController::TestCase
   setup do
     @user = FactoryBot.create(:user)
     @tmp_user = FactoryBot.create(:tmp_user)
-    @user_record = FactoryBot.build(:user_primo_record1, user: @user)
-    @user_record2 = FactoryBot.build(:user_primo_record2, user: @user)
-    @tmp_user_record =
-      FactoryBot.build(:tmp_user_primo_record1, tmp_user: @tmp_user)
-    @tmp_user_record2 =
-      FactoryBot.build(:tmp_user_primo_record2, tmp_user: @tmp_user)
-    @primo_records =
-      [@user_record, @user_record2, @tmp_user_record, @tmp_user_record2]
     VCR.use_cassette('record becomes primo') do
-      (@user_record = @user_record.becomes_external_system).save!
-      (@user_record2 = @user_record2.becomes_external_system).save!
-      (@tmp_user_record = @tmp_user_record.becomes_external_system).save!
-      (@tmp_user_record2 = @tmp_user_record2.becomes_external_system).save!
+      @user_record = FactoryBot.build(:user_primo_record1, user: @user)
+      @user_record2 = FactoryBot.build(:user_primo_record2, user: @user)
+      @tmp_user_record = FactoryBot.build(:tmp_user_primo_record1, tmp_user: @tmp_user)
+      @tmp_user_record2 = FactoryBot.build(:tmp_user_primo_record2, tmp_user: @tmp_user)
+      # (@user_record = @user_record.becomes_external_system).save!
+      # (@user_record2 = @user_record2.becomes_external_system).save!
+      # (@tmp_user_record = @tmp_user_record.becomes_external_system).save!
+      # (@tmp_user_record2 = @tmp_user_record2.becomes_external_system).save!
     end
+    @primo_records = [@user_record, @user_record2, @tmp_user_record, @tmp_user_record2]
     session[:tmp_user] = nil
     request.env['HTTP_ORIGIN'] = nil
     # Setup dummy Devise user
@@ -194,9 +191,9 @@ class RecordsControllerTest < ActionController::TestCase
 
   test "should create new tmp user record json" do
     assert_difference(['TmpUser.count', 'Record.count', 'Location.count']) do
-      VCR.use_cassette('tmp user record becomes primo') do
+      # VCR.use_cassette('tmp user record becomes primo') do
         post :create, params: { format: "json", record: { external_id: "nyu_aleph001044111", external_system: "primo" } }
-      end
+      # end
     end
     assert_response :created
     assert_nil response.headers['X-CSRF-Token']
@@ -206,9 +203,9 @@ class RecordsControllerTest < ActionController::TestCase
   test "should create existing tmp user record json" do
     session[:tmp_user] = @tmp_user
     assert_difference(['@tmp_user.records.count', 'Location.count']) do
-      VCR.use_cassette('tmp user record becomes primo') do
+      # VCR.use_cassette('tmp user record becomes primo') do
         post :create, params: { format: "json", record: { external_id: "nyu_aleph001044111", external_system: "primo" } }
-      end
+      # end
     end
     assert_response :created
     assert_nil response.headers['X-CSRF-Token']

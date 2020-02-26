@@ -3,9 +3,9 @@ require 'test_helper'
 
 class NormalizeDecoratorTest < ActiveSupport::TestCase
   setup do
-    @record = FactoryBot.build(:user_primo_record1)
     VCR.use_cassette('record becomes primo') do
-      @record.becomes_external_system.save
+      @record = FactoryBot.build(:user_primo_record1)
+      # @record.becomes_external_system.save
     end
     @normalized_record = RecordDecorator::NormalizeDecorator.new(@record)
   end
