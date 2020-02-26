@@ -3,9 +3,9 @@ require 'test_helper'
 
 class BaseRecordDecoratorTest < ActiveSupport::TestCase
   setup do
-    @record = FactoryBot.build(:user_primo_record1)
     VCR.use_cassette('record becomes primo') do
-      @record.becomes_external_system.save
+      @record = FactoryBot.build(:user_primo_record1)
+      # @record.becomes_external_system.save
     end
     @base_decorated_record = nil
     @base_decorated_record_with_view_context = nil
