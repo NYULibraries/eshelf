@@ -1,0 +1,39 @@
+FROM quay.io/nyulibraries/selenium_chrome_headless_ruby:2.6-slim-chrome_79
+
+ENV DOCKER true
+ENV INSTALL_PATH /app
+
+ENV RUN_PACKAGES default-libmysqlclient-dev git nodejs ruby-mysql2
+ENV BUILD_PACKAGES build-essential zlib1g-dev
+
+WORKDIR $INSTALL_PATH
+USER root
+RUN chown docker:docker .
+
+RUN wget --no-check-certificate -q -O - https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh > /tmp/wait-for-it.sh \
+  && chown docker:docker /tmp/wait-for-it.sh && chmod a+x /tmp/wait-for-it.sh
+
+COPY --chown=docker:docker bin/ bin/
+COPY --chown=docker:docker Gemfile Gemfile.lock ./
+
+RUN apt-get update && apt-get -y --no-install-recommends install $BUILD_PACKAGES $RUN_PACKAGES \
+  && gem install bundler -v '2.1.4' \
+  && bundle config --local github.https true \
+  && bundle config set without 'no_docker' \
+  && bundle install --jobs 20 --retry 5 \
+  && wget --no-check-certificate -q -O - https://github.com/dustinblackman/phantomized/releases/download/2.1.1a/dockerized-phantomjs.tar.gz | tar xz -C / \
+  && npm config set user 0 \
+  && npm install -g phantomjs-prebuilt \
+  && npm cache clean --force \
+  && rm -rf /root/.bundle && rm -rf /root/.gem \
+  && rm -rf /usr/local/bundle/cache \
+  && apt-get --purge -y autoremove $BUILD_PACKAGES \
+  && apt-get clean && rm -rf /var/lib/apt/lists/* \
+  && chown -R docker:docker /usr/local/bundle
+
+USER docker
+
+COPY --chown=docker:docker . .
+RUN bin/rails assets:precompile
+
+CMD bundle exec rake

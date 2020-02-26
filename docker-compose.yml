@@ -1,69 +1,76 @@
 version: '3.7'
-x-build: &build
+
+x-build_default: &build_default
+  image: eshelf
   build:
     context: .
     cache_from:
+      - ruby:2.6.2-alpine
       - eshelf
-      - quay.io/nyulibraries/eshelf
-      - quay.io/nyulibraries/eshelf:$BRANCH_NO_SLASH
-  image: eshelf
-  tty: true
-  stdin_open: true
-x-test-env: &test-env
-  <<: *build
-  environment:
-    RAILS_ENV: test
-    ESHELF_DB_DATABASE: eshelf_test
-    BRANCH_NO_SLASH:
-    CI:
-    CODECLIMATE_REPO_TOKEN:
-    COVERALLS_REPO_TOKEN:
-  env_file:
-    - test.env
-x-dev-env: &dev-env
-  <<: *build
-  env_file:
-    - test.env
+      - quay.io/nyulibraries/eshelf:${BRANCH_NO_SLASH}
+      - quay.io/nyulibraries/eshelf:latest
+
+x-build_test: &build_test
+  image: eshelf_test
+  build:
+    context: .
+    dockerfile: Dockerfile.test
+    cache_from:
+      - quay.io/nyulibraries/selenium_chrome_headless_ruby:2.6-slim-chrome_79
+      - eshelf_test
+      - quay.io/nyulibraries/eshelf_test:${BRANCH_NO_SLASH}
+      - quay.io/nyulibraries/eshelf_test:latest
 
 services:
   dev:
-    <<: *dev-env
+    <<: *build_default
+    tty: true
+    stdin_open: true
     ports:
       - "3000:3000"
     command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
     depends_on:
       - setup_dbs
-    # external_links:
-    #   - push_to_cite_dev_1:pushtocite
-    # networks:
-    #   - default
-    #   - custom
+    env_file:
+      - test.env
     # volumes:
     #   - .:/app
 
   # docker-compose run test ruby -Itest ./test/unit/decorators/label_decorator_test.rb --name test_label_notes
   test:
-    <<: *test-env
-    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake"]
+    <<: *build_test
+    tty: true
+    stdin_open: true
+    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "bundle", "exec", "rake"]
     depends_on:
       - setup_test_dbs
-    # external_links:
-    #   - push_to_cite_dev_1:pushtocite
-    # networks:
-    #   - default
-    #   - custom
+    environment:
+      RAILS_ENV: test
+      ESHELF_DB_DATABASE: eshelf_test
+      BRANCH_NO_SLASH:
+      CI:
+      CODECLIMATE_REPO_TOKEN:
+      COVERALLS_REPO_TOKEN:
+    env_file:
+      - test.env
     # volumes:
     #   - .:/app
 
   setup_test_dbs:
-    <<: *test-env
-    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake", "db:setup"]
+    <<: *build_test
+    environment:
+      RAILS_ENV: test
+    env_file:
+      - test.env
+    command: ["/tmp/wait-for-it.sh", "db:3306", "solr:8983", "--", "rake", "db:setup"]
     depends_on:
       - db
 
   setup_dbs:
-    <<: *dev-env
-    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake", "db:setup"]
+    <<: *build_test
+    env_file:
+      - test.env
+    command: ["/tmp/wait-for-it.sh", "db:3306", "solr:8983", "--", "rake", "db:setup"]
     depends_on:
       - db
 
@@ -73,7 +80,3 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     expose:
       - "3306"
-
-# networks:
-#   custom:
-#     external: true
