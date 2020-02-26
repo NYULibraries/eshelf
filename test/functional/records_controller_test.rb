@@ -190,7 +190,7 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   test "should create new tmp user record json" do
-    assert_difference(['TmpUser.count', 'Record.count', 'Location.count']) do
+    assert_difference(['TmpUser.count', 'Record.count']) do
       # VCR.use_cassette('tmp user record becomes primo') do
         post :create, params: { format: "json", record: { external_id: "nyu_aleph001044111", external_system: "primo" } }
       # end
@@ -202,7 +202,7 @@ class RecordsControllerTest < ActionController::TestCase
 
   test "should create existing tmp user record json" do
     session[:tmp_user] = @tmp_user
-    assert_difference(['@tmp_user.records.count', 'Location.count']) do
+    assert_difference(['@tmp_user.records.count']) do
       # VCR.use_cassette('tmp user record becomes primo') do
         post :create, params: { format: "json", record: { external_id: "nyu_aleph001044111", external_system: "primo" } }
       # end
@@ -214,7 +214,7 @@ class RecordsControllerTest < ActionController::TestCase
 
   test "should create user record json" do
     sign_in @user
-    assert_difference(['@user.records.count', 'Location.count']) do
+    assert_difference(['@user.records.count']) do
       VCR.use_cassette('user record becomes primo') do
         post :create, params: { format: "json", record: { external_id: "nyu_aleph001044111", external_system: "primo" } }
       end
@@ -227,7 +227,7 @@ class RecordsControllerTest < ActionController::TestCase
   test "should create new tmp user record CORS json" do
     skip 'until we figure out functional testing with Rack'
     request.env['HTTP_ORIGIN'] = "http://#{Eshelf::EXAMPLE_ORIGIN}"
-    assert_difference(['TmpUser.count', 'Record.count', 'Location.count']) do
+    assert_difference(['TmpUser.count', 'Record.count']) do
       VCR.use_cassette('tmp user record becomes primo') do
         post :create, params: { format: "json", record: { external_id: "nyu_aleph001044111", external_system: "primo" } }
       end
@@ -242,7 +242,7 @@ class RecordsControllerTest < ActionController::TestCase
     skip 'until we figure out functional testing with Rack'
     request.env['HTTP_ORIGIN'] = "https://#{Eshelf::EXAMPLE_ORIGIN}"
     session[:tmp_user] = @tmp_user
-    assert_difference(['@tmp_user.records.count', 'Location.count']) do
+    assert_difference(['@tmp_user.records.count']) do
       VCR.use_cassette('tmp user record becomes primo') do
         post :create, params: { format: "json", record: { external_id: "nyu_aleph001044111", external_system: "primo" } }
       end
@@ -257,7 +257,7 @@ class RecordsControllerTest < ActionController::TestCase
     skip 'until we figure out functional testing with Rack'
     request.env['HTTP_ORIGIN'] = "http://#{Eshelf::EXAMPLE_ORIGIN}"
     sign_in @user
-    assert_difference(['@user.records.count', 'Location.count']) do
+    assert_difference(['@user.records.count']) do
       VCR.use_cassette('user record becomes primo') do
         post :create, params: { format: "json", record: { external_id: "nyu_aleph001044111", external_system: "primo" } }
       end
@@ -737,16 +737,15 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   def assert_travels_with_my_aunt(element, record)
-    assert_equal("<li>\n      "+
-      "<p><strong>Travels with my aunt [videorecording] (video)</strong></p>\n"+
-      "<p>Locations: NYU Bobst Avery Fisher Center Main Collection (VCA 15583 )</p>\n"+
-      "<p>#{record_getit_url(record)}</p>\n    </li>", element.to_s)
+    assert(element.to_s.include?("Travels with my aunt [videorecording] (videorecording)"))
+    assert(element.to_s.include?("NYU BAFC Main Collection VCA 15583"))
+    assert(element.to_s.include?("#{record_getit_url(record)}"))
   end
 
   def assert_virtual_inequality(element, record)
     assert(element.to_s.include?("Virtual inequality : beyond the digital divide (book)"))
-    assert(element.to_s.include?("NYU Bobst Main Collection (HN49.I56 M67 2003 )"))
-    assert(element.to_s.include?("New School Fogelman Library Main Collection (HN49.I56 M67 2003 )"))
+    assert(element.to_s.include?("NYU BOBST Main Collection HN49.I56 M67 2003"))
+    assert(element.to_s.include?("NS NSOS Main Collection HN49.I56 M67 2003"))
     assert(element.to_s.include?("#{record_getit_url(record)}"))
   end
 end

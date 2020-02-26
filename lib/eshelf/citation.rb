@@ -22,7 +22,7 @@ module Eshelf
     end
 
     def record
-      @record ||= citation_json.to_hash
+      @record ||= citation_json&.to_hash
     end
 
   private
