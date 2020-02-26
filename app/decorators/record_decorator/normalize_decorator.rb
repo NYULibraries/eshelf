@@ -78,14 +78,27 @@ module RecordDecorator
       normalize :notes
     end
 
+    def data
+      @data ||= begin
+        JSON.parse(normalized.data.gsub('=>', ':'))
+      rescue JSON::ParserError => e
+        {}
+      end
+    end
+
     def normalized
       # If Citero doesn't know this from format or the data is blank, just return base.
-      @normalized ||= (Citero.from_formats.include?(base.format.to_sym) and (not base.data.blank?)) ? csf : base
+      # Or if format is PNX_JSON, use the JSON data instead of CSF
+      @normalized ||= (Citero.from_formats.include?(base.format.to_sym) and (!base.data.blank?) and (base.format.to_sym != :pnx_json)) ? csf : base
     end
     private :normalized
 
     def normalize(attribute)
-      normalized_value = normalized.send(attribute) if normalized.respond_to? attribute
+      if normalized.respond_to?(attribute)
+        normalized_value = normalized.send(attribute) 
+      elsif data[attribute.to_s]
+        normalized_value = data[attribute.to_s]
+      end
       (normalized_value.respond_to? :uniq) ? normalized_value.uniq.join("; ") : normalized_value
     end
     private :normalize

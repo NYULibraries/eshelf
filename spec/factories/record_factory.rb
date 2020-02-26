@@ -4,7 +4,7 @@ FactoryBot.define do
   factory :record do
 
     trait :external do
-      external_id 'external1'
+      sequence(:external_id) { |n| "external#{n}"}
       external_system 'external_system1'
       format 'format1'
       title 'title 1'
@@ -19,7 +19,7 @@ FactoryBot.define do
     end
 
     trait :xerxes do
-      external_id 'xerxes1'
+      sequence(:external_id) { |n| "xerxes#{n}"}
       external_system 'xerxes'
     end
 

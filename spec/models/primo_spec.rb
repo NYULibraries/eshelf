@@ -27,17 +27,17 @@ describe Primo do
     describe '#primo_locations' do
       let(:primo_locations) { primo_record.primo_locations }
       it 'should have two items' do
-        expect(primo_locations.size).to eql 2
+        expect(primo_locations.size).to eql 3
       end
       subject { primo_location }
       context 'when it is the first location' do
         let(:primo_location) { primo_locations.first }
-        its([:collection]) { is_expected.to eql 'NYU Bobst Main Collection' }
+        its([:collection]) { is_expected.to eql 'NYU BOBST Main Collection' }
         its([:call_number]) { is_expected.to eql 'HN49.I56 M67 2003' }
       end
       context 'when it is the first location' do
         let(:primo_location) { primo_locations.last }
-        its([:collection]) { is_expected.to eql 'NYU New School Main Collection' }
+        its([:collection]) { is_expected.to eql 'NYU Bobst Main Collection' }
         its([:call_number]) { is_expected.to eql 'HN49.I56 M67 2003' }
       end
         
