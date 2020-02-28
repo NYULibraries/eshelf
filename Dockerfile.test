@@ -6,6 +6,9 @@ ENV INSTALL_PATH /app
 ENV RUN_PACKAGES default-libmysqlclient-dev git nodejs ruby-mysql2
 ENV BUILD_PACKAGES build-essential zlib1g-dev
 
+#RUN groupadd -g 2000 docker -r && \
+#  useradd -u 1000 -r --no-log-init -m -d $INSTALL_PATH -g docker docker
+
 WORKDIR $INSTALL_PATH
 USER root
 RUN chown docker:docker .
@@ -21,10 +24,6 @@ RUN apt-get update && apt-get -y --no-install-recommends install $BUILD_PACKAGES
   && bundle config --local github.https true \
   && bundle config set without 'no_docker' \
   && bundle install --jobs 20 --retry 5 \
-  && wget --no-check-certificate -q -O - https://github.com/dustinblackman/phantomized/releases/download/2.1.1a/dockerized-phantomjs.tar.gz | tar xz -C / \
-  && npm config set user 0 \
-  && npm install -g phantomjs-prebuilt \
-  && npm cache clean --force \
   && rm -rf /root/.bundle && rm -rf /root/.gem \
   && rm -rf /usr/local/bundle/cache \
   && apt-get --purge -y autoremove $BUILD_PACKAGES \
@@ -36,4 +35,4 @@ USER docker
 COPY --chown=docker:docker . .
 RUN bin/rails assets:precompile
 
-CMD bundle exec rake
+CMD ["bundle", "exec", "rake"]

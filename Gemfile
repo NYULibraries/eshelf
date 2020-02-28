@@ -56,6 +56,7 @@ gem 'font-awesome-rails', '~> 4.7.0.5'
 
 # Development and testing gems
 group :development, :test do
+  gem 'teaspoon', github: 'jejacks0n/teaspoon', branch: 'master'
   gem 'teaspoon-jasmine', '~> 2.3.4'
   gem 'factory_bot_rails', '~> 4.8.2'
   gem 'rspec-rails', '~> 3.7.0'
@@ -71,6 +72,9 @@ group :development, :test do
   gem 'rspec_junit_formatter'
   gem 'minitest-reporters'
   gem 'rails-controller-testing'
+
+  gem 'selenium-webdriver', '~> 3.0'
+  gem 'webdrivers', '~> 4.2.0'
 end
 
 gem 'citero', github: 'NYULibraries/citero', branch: 'feature/eshelf_support' #tag: 'v1.0.2'

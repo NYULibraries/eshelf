@@ -1,3 +1,6 @@
+require 'selenium-webdriver'
+require 'webdrivers/chromedriver'
+
 Teaspoon.configure do |config|
   # Determines where the Teaspoon routes will be mounted. Changing this to "/jasmine" would allow you to browse to
   # `http://localhost:3000/jasmine` to run your tests.
@@ -97,14 +100,14 @@ Teaspoon.configure do |config|
   # PhantomJS: https://github.com/modeset/teaspoon/wiki/Using-PhantomJS
   # Selenium Webdriver: https://github.com/modeset/teaspoon/wiki/Using-Selenium-WebDriver
   # Capybara Webkit: https://github.com/modeset/teaspoon/wiki/Using-Capybara-Webkit
-  #config.driver = :phantomjs
+  config.driver = :selenium
 
-  # Specify additional options for the driver.
-  #
-  # PhantomJS: https://github.com/modeset/teaspoon/wiki/Using-PhantomJS
-  # Selenium Webdriver: https://github.com/modeset/teaspoon/wiki/Using-Selenium-WebDriver
-  # Capybara Webkit: https://github.com/modeset/teaspoon/wiki/Using-Capybara-Webkit
-  #config.driver_options = nil
+  config.driver_options = {
+   client_driver: :chrome,
+   selenium_options: {
+     options: Selenium::WebDriver::Chrome::Options.new(args: ['headless', 'disable-gpu', 'disable-dev-shm-usage', 'no-sandbox'])
+   }
+  }
 
   # Specify the timeout for the driver. Specs are expected to complete within this time frame or the run will be
   # considered a failure. This is to avoid issues that can arise where tests stall.
