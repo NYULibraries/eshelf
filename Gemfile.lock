@@ -80,6 +80,14 @@ GIT
     omniauth-nyulibraries (2.2.0)
       omniauth-oauth2 (~> 1.2.0)
 
+GIT
+  remote: https://github.com/jejacks0n/teaspoon.git
+  revision: e2637c3118b1e6176eb865c1de94c781a43906f5
+  branch: master
+  specs:
+    teaspoon (1.1.5)
+      railties (>= 3.2.5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -156,6 +164,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.2)
       xpath (~> 3.2)
+    childprocess (3.0.0)
     chunky_png (1.3.11)
     coderay (1.1.2)
     coffee-rails (4.2.2)
@@ -412,6 +421,7 @@ GEM
       rspec-core (>= 2, < 4, != 2.12.0)
     ruby-progressbar (1.10.0)
     ruby_dep (1.5.0)
+    rubyzip (2.2.0)
     rvm-capistrano (1.5.6)
       capistrano (~> 2.15.4)
     safe_yaml (1.0.5)
@@ -422,6 +432,9 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    selenium-webdriver (3.142.7)
+      childprocess (>= 0.5, < 4.0)
+      rubyzip (>= 1.2.2)
     sentry-raven (2.9.0)
       faraday (>= 0.7.6, < 1.0)
     simplecov (0.16.1)
@@ -437,8 +450,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    teaspoon (1.1.5)
-      railties (>= 3.2.5, < 6)
     teaspoon-jasmine (2.3.4)
       teaspoon (>= 1.0.0)
     term-ansicolor (1.7.1)
@@ -460,6 +471,10 @@ GEM
     vcr (3.0.3)
     warden (1.2.8)
       rack (>= 2.0.6)
+    webdrivers (4.2.0)
+      nokogiri (~> 1.6)
+      rubyzip (>= 1.3.0)
+      selenium-webdriver (>= 3.0, < 4.0)
     webmock (3.5.1)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
@@ -514,11 +529,14 @@ DEPENDENCIES
   rspec-rails (~> 3.7.0)
   rspec_junit_formatter
   sass-rails (~> 5.0.6)
+  selenium-webdriver (~> 3.0)
   sentry-raven (~> 2)
+  teaspoon!
   teaspoon-jasmine (~> 2.3.4)
   therubyracer (~> 0.12.3)
   uglifier (~> 3.2.0)
   vcr (~> 3.0.3)
+  webdrivers (~> 4.2.0)
   webmock (~> 3.5.0)
 
 BUNDLED WITH

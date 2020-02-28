@@ -43,3 +43,5 @@ test-results/
 .pry_history
 
 http.sh
+
+.webdrivers/
