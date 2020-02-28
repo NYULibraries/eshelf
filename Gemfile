@@ -66,7 +66,6 @@ group :development, :test do
   gem 'coveralls', '~> 0.8.20', require: false
   gem 'vcr', '~> 3.0.3'
   gem 'webmock', '~> 3.5.0'
-  gem 'cucumber-rails', '~> 1.7.0', require: false
   gem 'database_cleaner', '~> 1.6.0'
   gem 'rspec-mocks'
   gem 'rspec_junit_formatter'
