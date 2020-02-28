@@ -17,7 +17,7 @@ build_docker: &build_docker
     name: Build Docker
     command: |
       export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
-      docker-compose build dev
+      docker-compose build dev test
       docker-compose -f docker-compose.build.yml build
 
 pull_docker: &pull_docker
@@ -26,6 +26,7 @@ pull_docker: &pull_docker
     command: |
       export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
       docker pull quay.io/nyulibraries/${IMAGE_NAME}:${BRANCH_NO_SLASH} || docker pull quay.io/nyulibraries/${IMAGE_NAME}:latest
+      docker pull quay.io/nyulibraries/${IMAGE_NAME}_test:${BRANCH_NO_SLASH} || docker pull quay.io/nyulibraries/${IMAGE_NAME}_test:latest
 
 push_docker: &push_docker
   run:
@@ -35,6 +36,9 @@ push_docker: &push_docker
       docker push quay.io/nyulibraries/${IMAGE_NAME}:latest
       docker push quay.io/nyulibraries/${IMAGE_NAME}:${BRANCH_NO_SLASH}
       docker push quay.io/nyulibraries/${IMAGE_NAME}:${BRANCH_NO_SLASH}-${CIRCLE_SHA1}
+      docker push quay.io/nyulibraries/${IMAGE_NAME}_test:latest
+      docker push quay.io/nyulibraries/${IMAGE_NAME}_test:${BRANCH_NO_SLASH}
+      docker push quay.io/nyulibraries/${IMAGE_NAME}_test:${BRANCH_NO_SLASH}-${CIRCLE_SHA1}
 
 junit_reports: &junit_reports
   run:

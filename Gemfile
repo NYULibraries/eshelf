@@ -59,13 +59,13 @@ group :development, :test do
   gem 'teaspoon', github: 'jejacks0n/teaspoon', branch: 'master'
   gem 'teaspoon-jasmine', '~> 2.3.4'
   gem 'factory_bot_rails', '~> 4.8.2'
-  gem 'rspec-rails', '~> 3.7.0', require: false
-  gem 'rspec-its', '~> 1.2', require: false
+  gem 'rspec-rails', '~> 3.7.0'
+  gem 'rspec-its', '~> 1.2'
   gem 'pry', '~> 0.10.0'
   gem 'pry-remote', '~> 0.1.8'
   gem 'coveralls', '~> 0.8.20', require: false
-  gem 'vcr', '~> 3.0.3', require: false
-  gem 'webmock', '~> 3.5.0', require: false
+  gem 'vcr', '~> 3.0.3'
+  gem 'webmock', '~> 3.5.0'
   gem 'database_cleaner', '~> 1.6.0'
   gem 'rspec-mocks'
   gem 'rspec_junit_formatter'
