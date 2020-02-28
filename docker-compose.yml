@@ -4,6 +4,8 @@ x-volumes: &default-volumes
     - ./lib:/app/lib/
     - ./app:/app/app/
     - ./spec:/app/spec/
+    - ./test:/app/test/
+    - ./Rakefile:/app/Rakefile
     - ./tmp/:/app/tmp/
 
 x-production: &production-image

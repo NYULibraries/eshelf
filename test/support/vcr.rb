@@ -2,9 +2,10 @@ require 'webmock'
 require 'vcr'
 
 VCR.configure do |config|
-  config.allow_http_connections_when_no_cassette = false
+  config.allow_http_connections_when_no_cassette = true
   config.cassette_library_dir = File.expand_path("../../vcr_cassettes", __FILE__)
   config.hook_into :webmock
+  # config.ignore_hosts 'chromedriver.storage.googleapis.co'
   config.ignore_request { ENV["DISABLE_VCR"] }
   config.filter_sensitive_data("http://primo.library.edu") { ENV['PRIMO_BASE_URL'] }
   config.ignore_localhost = true
@@ -14,6 +15,8 @@ VCR.configure do |config|
     record: :new_episodes,
   }
 end
+
+# WebMock.disable_net_connect!(allow_localhost: true, allow: ['chromedriver.storage.googleapis.co'])
 
 # Monkey patch the `test` DSL to enable VCR and configure a cassette named
 # based on the test method. This means that a test written like this:
