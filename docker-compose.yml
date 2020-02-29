@@ -18,7 +18,7 @@ x-production: &production-image
     - eshelf
     - quay.io/nyulibraries/eshelf
     - quay.io/nyulibraries/eshelf:$BRANCH_NO_SLASH
-  image: eshelf:latest
+  image: eshelf
 
 x-development: &development-image
   build:
@@ -28,7 +28,7 @@ x-development: &development-image
     - quay.io/nyulibraries/eshelf_test
     - quay.io/nyulibraries/eshelf_test:$BRANCH_NO_SLASH
     dockerfile: Dockerfile.test
-  image: eshelf_test:latest
+  image: eshelf_test
 
 services:
   dev:
