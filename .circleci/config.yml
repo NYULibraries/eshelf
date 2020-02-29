@@ -51,7 +51,7 @@ run_tests: &run_tests
     name: Run tests
     command: |
       export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
-      docker-compose run all_tests
+      docker-compose run test
 
 version: 2
 jobs:
