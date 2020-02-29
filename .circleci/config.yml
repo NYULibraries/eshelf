@@ -48,17 +48,10 @@ junit_reports: &junit_reports
 
 run_tests: &run_tests
   run:
-    name: Run unit tests
+    name: Run tests
     command: |
       export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
-      docker-compose run test
-
-run_js_tests: &run_js_tests
-  run:
-    name: Run javascript tests
-    command: |
-      export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
-      docker-compose run test bundle exec rake teaspoon
+      docker-compose run all_tests
 
 version: 2
 jobs:
@@ -72,7 +65,6 @@ jobs:
       - <<: *build_docker
       - <<: *push_docker
       - <<: *run_tests
-      - <<: *run_js_tests
       - <<: *junit_reports
       - store_test_results:
           path: ~/app/test-results
