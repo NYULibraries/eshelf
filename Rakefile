@@ -6,15 +6,9 @@ require File.expand_path('../config/application', __FILE__)
 
 Eshelf::Application.load_tasks
 
-if Rails.env.test?
+if ENV['RAILS_ENV'] === "test"
   # Add the coveralls task as the default with the appropriate prereqs
   require 'coveralls/rake/task'
   Coveralls::RakeTask.new
-  # task test_concat: [:teaspoon, :test, :spec, 'coveralls:push']
-  task :test_concat do
-    # Rake::Task["teaspoon"].invoke
-    Rake::Task["spec"].invoke
-    # Rake::Task["test"].invoke
-    Rake::Task["coveralls:push"].invoke
-  end
+  task test_concat: [:teaspoon, :test, :spec, 'coveralls:push']
 end

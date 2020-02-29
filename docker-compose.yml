@@ -7,6 +7,7 @@ x-volumes: &default-volumes
     - ./test:/app/test/
     - ./Rakefile:/app/Rakefile
     - ./tmp/:/app/tmp/
+    - ./test-results:/app/test-results
 
 x-production: &production-image
   build:
@@ -47,7 +48,7 @@ services:
     tty: true
     stdin_open: true
     shm_size: '1g'
-    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "bundle", "exec", "rake"]
+    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "bundle", "exec", "rake", "all_tests"]
     depends_on:
       - setup_test_dbs
     environment:
