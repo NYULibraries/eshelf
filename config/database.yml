@@ -17,8 +17,8 @@ development: &development
 # Do not set this db to the same as development or production.
 test: &test
   <<: *eshelf
-  username: <%= (ENV['ESHELF_DB_USER'] || ENV['JENKINS_DB_USER'] || 'root') %>
-  password: <%= (ENV['ESHELF_DB_PASSWORD'] || ENV['JENKINS_DB_PASSWORD'] || '') %>
+  username: <%= (ENV['ESHELF_DB_USER'] || 'root') %>
+  password: <%= (ENV['ESHELF_DB_PASSWORD'] || '') %>
   database: <%= (ENV['ESHELF_DB_DATABASE'] || 'eshelf_test') %>
 
 staging:
