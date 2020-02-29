@@ -10,5 +10,5 @@ if ENV['RAILS_ENV'] === "test"
   # Add the coveralls task as the default with the appropriate prereqs
   require 'coveralls/rake/task'
   Coveralls::RakeTask.new
-  task test_concat: [:teaspoon, :test, :spec, 'coveralls:push']
+  task all_tests: [:teaspoon, :test, :spec, 'coveralls:push']
 end
