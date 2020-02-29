@@ -22,7 +22,7 @@ COPY --chown=docker:docker Gemfile Gemfile.lock ./
 RUN apt-get update && apt-get -y --no-install-recommends install $BUILD_PACKAGES $RUN_PACKAGES \
   && gem install bundler -v '2.1.4' \
   && bundle config --local github.https true \
-  && bundle config set without 'no_docker' \
+  && bundle config set without 'no_docker production' \
   && bundle install --jobs 20 --retry 5 \
   && rm -rf /root/.bundle && rm -rf /root/.gem \
   && rm -rf /usr/local/bundle/cache \

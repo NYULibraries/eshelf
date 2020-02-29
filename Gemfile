@@ -22,11 +22,6 @@ gem 'coffee-rails', '~> 4.2.1'
 # Use jQuery as the JavaScript library
 gem 'jquery-rails', '~> 4.3.1'
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-group :no_docker do
-  gem 'therubyracer', '~> 0.12.3'
-end
-
 gem 'listen', '~> 3.1.5'
 gem 'bootsnap', '~> 1.4.2', require: false
 
@@ -54,6 +49,34 @@ gem 'figs', '~> 2.0.2'
 # Font awesome for icons
 gem 'font-awesome-rails', '~> 4.7.0.5'
 
+gem 'citero', github: 'NYULibraries/citero', branch: 'feature/eshelf_support' #tag: 'v1.0.2'
+gem 'acts_as_citable', github: 'NYULibraries/acts_as_citable', tag: 'v5.1.0'
+
+gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.2.0'
+gem 'devise', '~> 4.7.1'
+gem 'rest-client', '~> 2.0.2'
+
+# Dalli for caching with memcached
+gem 'dalli', '~> 2.7.0'
+
+# Use Kaminari for paging
+gem 'kaminari', '~> 1.1.1'
+
+# Acts as taggable on
+gem 'acts-as-taggable-on', '~> 6.0.0'
+
+# Convert old records with activerecord-import
+# gem 'activerecord-import', '~> 0.18.0'
+
+gem 'sentry-raven', '~> 2'
+
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+group :no_docker do
+  # For future non-docker gems
+  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  gem 'therubyracer', platforms: :ruby
+end
+
 # Development and testing gems
 group :development, :test do
   gem 'teaspoon', github: 'jejacks0n/teaspoon', branch: 'master'
@@ -76,23 +99,6 @@ group :development, :test do
   gem 'webdrivers', '~> 4.2.0'
 end
 
-gem 'citero', github: 'NYULibraries/citero', branch: 'feature/eshelf_support' #tag: 'v1.0.2'
-gem 'acts_as_citable', github: 'NYULibraries/acts_as_citable', tag: 'v5.1.0'
-
-gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.2.0'
-gem 'devise', '~> 4.7.1'
-gem 'rest-client', '~> 2.0.2'
-
-# Dalli for caching with memcached
-gem 'dalli', '~> 2.7.0'
-
-# Use Kaminari for paging
-gem 'kaminari', '~> 1.1.1'
-
-# Acts as taggable on
-gem 'acts-as-taggable-on', '~> 6.0.0'
-
-# Convert old records with activerecord-import
-# gem 'activerecord-import', '~> 0.18.0'
-
-gem 'sentry-raven', '~> 2'
+group :production do
+  gem 'unicorn', '~> 5.3.0'
+end
