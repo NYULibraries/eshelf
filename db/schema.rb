@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,80 +10,77 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127214039) do
+ActiveRecord::Schema.define(version: 2020_02_29_031927) do
 
-  create_table "locations", force: :cascade do |t|
-    t.integer  "record_id",   limit: 4,   null: false
-    t.string   "collection",  limit: 255
-    t.string   "call_number", limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
-  create_table "records", force: :cascade do |t|
-    t.string   "external_id",     limit: 255,        null: false
-    t.string   "external_system", limit: 255,        null: false
-    t.integer  "user_id",         limit: 4
-    t.integer  "tmp_user_id",     limit: 4
-    t.text     "title",           limit: 65535,      null: false
-    t.text     "author",          limit: 65535
-    t.string   "format",          limit: 255,        null: false
-    t.text     "url",             limit: 65535
-    t.text     "data",            limit: 4294967295, null: false
-    t.text     "title_sort",      limit: 65535,      null: false
-    t.string   "content_type",    limit: 255
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
-  end
-
-  add_index "records", ["tmp_user_id", "external_system", "external_id"], name: "index_records_on_tmp_user_id_and_external_system_and_external_id", unique: true, using: :btree
-  add_index "records", ["user_id", "external_system", "external_id"], name: "index_records_on_user_id_and_external_system_and_external_id", unique: true, using: :btree
-
-  create_table "taggings", force: :cascade do |t|
-    t.integer  "tag_id",        limit: 4
-    t.integer  "taggable_id",   limit: 4
-    t.string   "taggable_type", limit: 255
-    t.integer  "tagger_id",     limit: 4
-    t.string   "tagger_type",   limit: 255
-    t.string   "context",       limit: 128
-    t.datetime "created_at"
-  end
-
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
-
-  create_table "tags", force: :cascade do |t|
-    t.string  "name",           limit: 255
-    t.integer "taggings_count", limit: 4,   default: 0
-  end
-
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
-
-  create_table "tmp_users", force: :cascade do |t|
+  create_table "locations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "record_id", null: false
+    t.string "collection"
+    t.string "call_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "username",           limit: 255,              null: false
-    t.string   "email",              limit: 255,              null: false
-    t.string   "firstname",          limit: 255
-    t.string   "lastname",           limit: 255
-    t.datetime "refreshed_at"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
-    t.integer  "sign_in_count",      limit: 4,   default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip", limit: 255
-    t.string   "last_sign_in_ip",    limit: 255
-    t.string   "provider",           limit: 255, default: "", null: false
-    t.string   "aleph_id",           limit: 255
-    t.string   "institution_code",   limit: 255
-    t.string   "patron_status",      limit: 255
+  create_table "records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "external_id", null: false
+    t.string "external_system", null: false
+    t.integer "user_id"
+    t.integer "tmp_user_id"
+    t.text "title", null: false
+    t.text "author"
+    t.string "format", null: false
+    t.text "url"
+    t.text "data", limit: 4294967295, null: false
+    t.text "title_sort", null: false
+    t.string "content_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "data_xerxes_xml"
+    t.index ["tmp_user_id", "external_system", "external_id"], name: "index_records_on_tmp_user_id_and_external_system_and_external_id", unique: true
+    t.index ["user_id", "external_system", "external_id"], name: "index_records_on_user_id_and_external_system_and_external_id", unique: true
   end
 
-  add_index "users", ["username", "provider"], name: "index_users_on_username_and_provider", unique: true, using: :btree
-  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
+  create_table "taggings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "tag_id"
+    t.integer "taggable_id"
+    t.string "taggable_type"
+    t.integer "tagger_id"
+    t.string "tagger_type"
+    t.string "context", limit: 128
+    t.datetime "created_at"
+    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  end
+
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.integer "taggings_count", default: 0
+    t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
+  create_table "tmp_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "username", null: false
+    t.string "email", null: false
+    t.string "firstname"
+    t.string "lastname"
+    t.datetime "refreshed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "provider", default: "", null: false
+    t.string "aleph_id"
+    t.string "institution_code"
+    t.string "patron_status"
+    t.index ["username", "provider"], name: "index_users_on_username_and_provider", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
+  end
 
 end
