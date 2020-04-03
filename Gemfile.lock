@@ -310,6 +310,7 @@ GEM
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
     ox (2.13.2)
+    prometheus-client (2.0.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -485,6 +486,7 @@ DEPENDENCIES
   nyulibraries_stylesheets!
   nyulibraries_templates!
   omniauth-nyulibraries!
+  prometheus-client (~> 2.0.0)
   pry (~> 0.10.0)
   pry-remote (~> 0.1.8)
   rack-cors (~> 1.0.4)
