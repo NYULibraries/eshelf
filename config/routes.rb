@@ -26,5 +26,7 @@ Rails.application.routes.draw do
     get 'login', to: redirect { |params, request| "#{Rails.application.config.relative_url_root}/users/auth/nyulibraries?#{request.query_string}" }, as: :login
   end
 
+  get '/healthcheck' => 'application#healthcheck'
+
   root 'records#index'
 end
