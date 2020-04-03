@@ -22,11 +22,6 @@ gem 'coffee-rails', '~> 4.2.1'
 # Use jQuery as the JavaScript library
 gem 'jquery-rails', '~> 4.3.1'
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-group :no_docker do
-  gem 'therubyracer', '~> 0.12.3'
-end
-
 gem 'listen', '~> 3.1.5'
 gem 'bootsnap', '~> 1.4.2', require: false
 
@@ -54,25 +49,6 @@ gem 'figs', '~> 2.0.2'
 # Font awesome for icons
 gem 'font-awesome-rails', '~> 4.7.0.5'
 
-# Development and testing gems
-group :development, :test do
-  gem 'teaspoon-jasmine', '~> 2.3.4'
-  gem 'factory_bot_rails', '~> 4.8.2'
-  gem 'rspec-rails', '~> 3.7.0'
-  gem 'rspec-its', '~> 1.2'
-  gem 'pry', '~> 0.10.0'
-  gem 'pry-remote', '~> 0.1.8'
-  gem 'coveralls', '~> 0.8.20', require: false
-  gem 'vcr', '~> 3.0.3'
-  gem 'webmock', '~> 3.5.0'
-  gem 'cucumber-rails', '~> 1.7.0', require: false
-  gem 'database_cleaner', '~> 1.6.0'
-  gem 'rspec-mocks'
-  gem 'rspec_junit_formatter'
-  gem 'minitest-reporters'
-  gem 'rails-controller-testing'
-end
-
 gem 'citero', github: 'NYULibraries/citero', branch: 'feature/eshelf_support' #tag: 'v1.0.2'
 gem 'acts_as_citable', github: 'NYULibraries/acts_as_citable', tag: 'v5.1.0'
 
@@ -93,3 +69,36 @@ gem 'acts-as-taggable-on', '~> 6.0.0'
 # gem 'activerecord-import', '~> 0.18.0'
 
 gem 'sentry-raven', '~> 2'
+
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+group :no_docker do
+  # For future non-docker gems
+  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  gem 'therubyracer', platforms: :ruby
+end
+
+# Development and testing gems
+group :development, :test do
+  gem 'teaspoon', github: 'jejacks0n/teaspoon', branch: 'master'
+  gem 'teaspoon-jasmine', '~> 2.3.4'
+  gem 'factory_bot_rails', '~> 4.8.2'
+  gem 'rspec-rails', '~> 3.7.0'
+  gem 'rspec-its', '~> 1.2'
+  gem 'pry', '~> 0.10.0'
+  gem 'pry-remote', '~> 0.1.8'
+  gem 'coveralls', '~> 0.8.20', require: false
+  gem 'vcr', '~> 3.0.3'
+  gem 'webmock', '~> 3.5.0'
+  gem 'database_cleaner', '~> 1.6.0'
+  gem 'rspec-mocks'
+  gem 'rspec_junit_formatter'
+  gem 'minitest-reporters'
+  gem 'rails-controller-testing'
+
+  gem 'selenium-webdriver', '~> 3.0'
+  gem 'webdrivers', '~> 4.2.0'
+end
+
+group :production do
+  gem 'unicorn', '~> 5.3.0'
+end

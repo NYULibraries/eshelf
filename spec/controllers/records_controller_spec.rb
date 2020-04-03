@@ -33,7 +33,7 @@ describe RecordsController do
     context 'when the user is an NYU user' do
       context 'and the record is a primo record' do
         let(:record) { primo_record }
-        it { is_expected.to redirect_to "https://library.nyu.edu/persistent/lcn/#{record.external_id}?institution=NYU" }
+        it { is_expected.to redirect_to "#{ENV['PERSISTENT_LINKER_URL']}#{record.external_id}?institution=NYU" }
         it 'should not have a X-CSRF-Token header' do
           expect(response.headers['X-CSRF-Token']).to be_nil
         end
