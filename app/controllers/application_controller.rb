@@ -69,6 +69,11 @@ class ApplicationController < ActionController::Base
   end
   protected :double_escape_quotes
 
+  def healthcheck
+    render json: {success: true}
+    return
+  end
+
  private
 
   # Returns the session's TmpUser
