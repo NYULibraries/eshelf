@@ -102,3 +102,5 @@ end
 group :production do
   gem 'unicorn', '~> 5.3.0'
 end
+
+gem 'prometheus-client', '~> 2.0.0'
