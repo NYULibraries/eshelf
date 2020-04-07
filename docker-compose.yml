@@ -72,11 +72,11 @@ services:
       - test.env
     environment:
       UNICORN_PORT: 9292
-      RAILS_LOG_LEVEL: debug
+      RAILS_LOG_LEVEL: info
       ESHELF_DB_HOST: db
       RAILS_ENV: staging
     depends_on:
-      - setup_dev_dbs
+      - db
     # <<: *default-volumes
 
   setup_test_dbs:
