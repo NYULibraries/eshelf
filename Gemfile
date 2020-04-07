@@ -57,7 +57,7 @@ gem 'devise', '~> 4.7.1'
 gem 'rest-client', '~> 2.0.2'
 
 # Dalli for caching with memcached
-gem 'dalli', '~> 2.7.0'
+# gem 'dalli', '~> 2.7.0'
 
 # Use Kaminari for paging
 gem 'kaminari', '~> 1.1.1'
