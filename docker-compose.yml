@@ -74,6 +74,7 @@ services:
       UNICORN_PORT: 9292
       RAILS_LOG_LEVEL: debug
       ESHELF_DB_HOST: db
+      RAILS_ENV: staging
     depends_on:
       - setup_dev_dbs
     # <<: *default-volumes
