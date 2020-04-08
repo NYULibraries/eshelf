@@ -65,7 +65,7 @@ services:
   # Use below settings for testing unicorn image locally
   unicorn:
     <<: *production-image
-    command: ["./script/start.sh", "development"]
+    command: ["./script/start.sh", "staging"]
     ports:
       - "9292:9292"
     env_file:
