@@ -155,16 +155,14 @@ workflows:
           filters:
             branches:
               only: master
-      - deploy-k8s-dev:
-          job: deploy-k8s
+      - deploy-k8s:
           requires:
             - test
           filters:
             branches:
               ignore: master
           context: web-hermes-dev
-      - deploy-k8s-prod:
-          job: deploy-k8s
+      - deploy-k8s:
           requires:
             - test
           filters:
