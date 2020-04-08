@@ -53,6 +53,8 @@ services:
     command: ["/tmp/wait-for-it.sh", "db:3306", "--", "bundle", "exec", "rake", "all_tests"]
     depends_on:
       - setup_test_dbs
+    labels:
+      - 'nyulibraries.app=eshelf_test'
     environment:
       RAILS_ENV: test
       CI:

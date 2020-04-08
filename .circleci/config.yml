@@ -50,7 +50,7 @@ junit_reports: &junit_reports
   run:
     name: Get Junit tests from stopped container
     when: always
-    command: docker cp $(docker ps -aq --filter 'ancestor=eshelf_test'):/app/test-results .
+    command: docker cp $(docker ps -aq --filter 'label=nyulibraries.app=eshelf_test'):/app/test-results .
 
 run_tests: &run_tests
   run:
