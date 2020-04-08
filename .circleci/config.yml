@@ -38,7 +38,7 @@ push_docker: &push_docker
   run:
     name: Push Docker
     command: |
-    export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
+      export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
       docker push quay.io/nyulibraries/${IMAGE_NAME}:latest
       docker push quay.io/nyulibraries/${IMAGE_NAME}:${BRANCH_NO_SLASH}
       docker push quay.io/nyulibraries/${IMAGE_NAME}:${BRANCH_NO_SLASH}-${CIRCLE_SHA1}
