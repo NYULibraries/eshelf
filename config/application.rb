@@ -14,7 +14,8 @@ Bundler.require(*Rails.groups)
 
 module Eshelf
   EXAMPLE_ORIGIN = 'example.com'
-  ESHELF_ORIGINS = [ENV['BOBCAT_ORIGIN_REGEX'], ENV['BOBCAT_ORIGIN_REGEX']].reject(&:nil?)
+  # ESHELF_ORIGINS = [ENV['BOBCAT_ORIGIN_REGEX'], ENV['BOBCAT_ORIGIN_REGEX']].reject(&:nil?)
+  ESHELF_ORIGINS = ["bobcatdev.library.nyu.edu", "bobcat.library.nyu.edu"]
 
   class Application < Rails::Application
     config.eager_load_paths << Rails.root.join('lib')
