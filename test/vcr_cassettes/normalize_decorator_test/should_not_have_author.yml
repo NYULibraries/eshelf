@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://cite-dev.library.nyu.edu/?calling_system=primo&cite_to=json&external_id=dedupmrg39204437&institution=NYU
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-musl x86_64) ruby/2.6.2p47
+      Host:
+      - cite-dev.library.nyu.edu
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 26 Feb 2020 18:30:49 GMT
+      Server:
+      - nginx/1.15.8
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '166'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAFm5Vl4AAxyNsQ6DMAxEf8XyXDGgTnxFt84hcWlUJ0a2EZUq/r2G7U537+6HpCqK0w/Nk2+G030cb9hswQmfBFk2LtDFgb6rqIMoFNk7Syrg72qQa4BVOsyU02YE8oJWzWpfznLtWdrK5AQleQofWOyGZllAKYuWAR5MKdiTP2Ou/RODLDu4ROm6vu5WlZmpDXgcfwAAAP//AwB36+xbvQAAAA==
+    http_version: 
+  recorded_at: Wed, 26 Feb 2020 18:30:49 GMT
+recorded_with: VCR 3.0.3

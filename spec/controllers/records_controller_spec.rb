@@ -28,20 +28,15 @@ describe RecordsController do
     let!(:user)    { FactoryBot.create(:user) }
     before(:each) { allow_any_instance_of(RecordsController).to receive(:current_user).and_return(user) }
     before(:each) { allow_any_instance_of(Eshelf::Citation).to receive(:openurl).and_return(primo_record.url) }
-    let!(:primo_record)  { FactoryBot.create(:user_record, :primo, data: "data") }
-    let!(:nonprimo_record)  { FactoryBot.create(:user_record, :xerxes, data: "data") }
+    let!(:primo_record)  { FactoryBot.build(:user_primo_record1) }
     subject { get :getit, params: {id: record.id} }
     context 'when the user is an NYU user' do
       context 'and the record is a primo record' do
         let(:record) { primo_record }
-        it { is_expected.to redirect_to "https://library.nyu.edu/persistent/lcn/#{record.external_id}?institution=NYU" }
+        it { is_expected.to redirect_to "#{ENV['PERSISTENT_LINKER_URL']}#{record.external_id}?institution=NYU" }
         it 'should not have a X-CSRF-Token header' do
           expect(response.headers['X-CSRF-Token']).to be_nil
         end
-      end
-      context 'but the record is not a primo record' do
-        let(:record) { nonprimo_record }
-        it { is_expected.to redirect_to "https://dev.getit.library.nyu.edu/nyu/resolve?openurl=1&rft.true=true" }
       end
     end
     context 'when the user is not an NYU user' do

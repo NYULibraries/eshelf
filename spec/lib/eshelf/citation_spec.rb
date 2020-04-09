@@ -46,4 +46,28 @@ describe Eshelf::Citation, :vcr do
     end
   end
 
+  describe '#record', :vcr do
+    subject { citation.record }
+    its(["addau"]) { is_expected.to eql ["Jacobson, Gary C., author", "Kousser, Thad, 1974- author", "Vavreck, Lynn, 1968- author"] }
+    its(["author"]) { is_expected.to eql "Kernell, Samuel, 1945- author" }
+    its(["contributor"]) { is_expected.to eql ["Jacobson, Gary C., author", "Kousser, Thad, 1974- author", "Vavreck, Lynn, 1968- author"] }
+    its(["date"]) { is_expected.to eql "2018" }
+    its(["importedFrom"]) { is_expected.to eql "PNX_JSON" }
+    its(["institution"]) { is_expected.to eql "NYU" }
+    its(["isbn"]) { is_expected.to eql ["9781506358666", "1506358667"] }
+    its(["itemType"]) { is_expected.to eql "book" }
+    its(["language"]) { is_expected.to eql "eng" }
+    its(["links"]) { is_expected.to be_instance_of Hash }
+    its(["locations"]) { is_expected.to eql ["NYU Bobst  Main Collection  (JK276 .K47 2018 )"] }
+    its(["notes"]) { is_expected.to eql "Includes bibliographical references and index." }
+    its(["oclcnum"]) { is_expected.to eql "968690236" }
+    its(["place"]) { is_expected.to eql "Thousand Oaks, California" }
+    its(["pnxRecordId"]) { is_expected.to eql "nyu_aleph006048386" }
+    its(["publisher"]) { is_expected.to eql "SAGE, CQ Press" }
+    its(["subject"]) { is_expected.to eql ["Politics and government", "United States–Politics and government Textbooks", "United States"] }
+    its(["tags"]) { is_expected.to eql ["Politics and government", "United States–Politics and government Textbooks", "United States"] }
+    its(["title"]) { is_expected.to eql "The logic of American politics" }
+  end
+
+
 end

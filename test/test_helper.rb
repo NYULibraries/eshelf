@@ -2,7 +2,7 @@
 require 'coveralls'
 Coveralls.wear_merged!('rails')
 
-ENV["RAILS_ENV"] = 'test'
+ENV["RAILS_ENV"] ||= 'test'
 ENV['PERSISTENT_LINKER_URL'] = "http://localhost.persistent_linker/"
 
 require File.expand_path('../../config/environment', __FILE__)
@@ -12,30 +12,10 @@ require 'factory_bot'
 require "minitest/reporters"
 Minitest::Reporters.use! [Minitest::Reporters::SpecReporter.new, Minitest::Reporters::JUnitReporter.new('test-results')]
 
+Dir[File.expand_path("../support/**/*.rb", __FILE__)].each { |rb| require(rb) }
+
 # Make sure all Factories are loaded and actually work
 FactoryBot.reload
-
-# VCR is used to 'record' HTTP interactions with
-# third party services used in tests, and play em
-# back. Useful for efficiency, also useful for
-# testing code against API's that not everyone
-# has access to -- the responses can be cached
-# and re-used.
-require 'vcr'
-require 'webmock'
-
-# To allow us to do real HTTP requests in a VCR.turned_off, we
-# have to tell webmock to let us.
-WebMock.allow_net_connect!
-
-VCR.configure do |c|
-  c.default_cassette_options = { allow_playback_repeats: true, match_requests_on: [:method, :uri, :body], record: :once }
-  c.cassette_library_dir = 'test/vcr_cassettes'
-  # webmock needed for HTTPClient testing
-  c.hook_into :webmock
-  # c.debug_logger = $stderr
-  c.filter_sensitive_data("http://primo.library.edu") { ENV['PRIMO_BASE_URL'] }
-end
 
 class MockRecordDecoratorViewContext
   def getit_record_url(record)

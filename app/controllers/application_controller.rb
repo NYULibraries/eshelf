@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def current_user_dev
     @current_user_dev ||= User.find_by_username("hero123")
   end
-  # alias :current_user :current_user_dev if Rails.env.development?
+  alias :current_user :current_user_dev if Rails.env.development?
 
   # Alias new_session_path as login_path for default devise config
   def new_session_path(scope)
@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  prepend_before_action :passive_login, unless: -> { ignore_passive_login? }
+  prepend_before_action :passive_login, unless: -> { ignore_passive_login? }, except: [:healthcheck]
   def passive_login
     if !cookies[:_check_passive_login]
       cookies[:_check_passive_login] = true
@@ -68,6 +68,11 @@ class ApplicationController < ActionController::Base
     s.gsub(/\"/, "\"\"") unless s.nil?
   end
   protected :double_escape_quotes
+
+  def healthcheck
+    render json: {success: true}
+    return
+  end
 
  private
 

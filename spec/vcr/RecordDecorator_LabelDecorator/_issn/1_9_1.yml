@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://cite-dev.library.nyu.edu/?calling_system=primo&cite_to=json&external_id=nyu_aleph000980206&institution=NYU
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-musl x86_64) ruby/2.6.2p47
+      Host:
+      - cite-dev.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 26 Feb 2020 20:42:44 GMT
+      Server:
+      - nginx/1.15.8
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '1365'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAETYVl4AA+xYbY/aOBD+KxHSRq0EIQEWCKdoRdnulb0urBa2115VIScxwa1jp7azB6r6328mCS/XpVJ12w+Vjg/A2DOemczLMzFfamKTLwin2cp1Xb/vttxubfClxgxN55uM1ga1UMpPtXqN5GYlFaxvpNYhVQlVdesPoqgAZiSFUSzMDUq8r80lBwlTt0ZESc4Eta5BaGaI0GGuNnXrhuC355/3GrUP9VqWh5zpFUX1v1MJuo38W1j3gj1QpZnZWLeKag06Mk4idOpPoldMJEaKunXpjBxgMR0KNO72e/2O6/t+Hzb9Xn+3dtGUYYajgjdMmZxwC5z7DL9oY2CFdCNFbJkVtWKWMAP8mD2wmIKmmBg813LdNqw4EUlOEtyhIoENQxINi8tvj2VifUcjqeJxDOwjwa7XhDQUz45FxPOYaitkEA6ZKJKtWATKFF1SiHMErGeZY733et6HhtdvP7cIeMtETNdFANJMKkPjKyVTUHc7ebu4nk0n6K2MiGFSaIzP5N299WL6YjaHLDBhjSTnNEKu9ezVpOM74/OuddPtWfik1nM4PZlZk9l09sPiqF+G2liPThw/AlmBGvmkse44F50WOL8yJtODZhPqSzuchQoKxoHoOTTOm4qmEDIsyJIfc34xLCwEnmtfSZUGLc+eY6aDKs9nLXefaVgM4FNmGwjIN3xXGS8oTJ49giaIxyJ4nDR7PHs7CTCwXHjugbtQuMwc8VdL/kAv7MisF1DRwV9t3+n3G/D8nWIPchswsZQDuWRNWAzu51eNfsEyDB4GbDbcVqPVnXvnZ+1hp4VfnfFsbueKP9KIe3h0mZpCK+gEcvCJPgxSsx4Ay1ZLtWBxaVOzuJkplkqHrtFzphMl88yJZDoo9htHAqCWZvFA+M7G4FsriBoo5SRUKBrslh+LBgwKOjRPTRFqITkn2gR7WKp2l0zBdoFQTrXFBDPBAe0dLtLtQufLJVtvVweK62C40FexoK2zUuxB8jytnoppnVdkRlRlDx4LWlOVC61FRWQAISVJ9yRSujKvjMgrxwAkgz04git7eIRFAZClHEJkcACQwEWI3DpX2aZ7EpEz2MNm6RqLWMmNZExLwV3JxJI1C54MP0Jr435pGsvlWL9UBsNKD2BpcNYe7QTP2i93srDfPGTAOlEZmAC62/f7537X91FotwsLScrf5paAHqh2Supf7kuC7tPPzhbFgxLDEXzaPwN87DeEQw2M767eQJVK+8l1PiyGb7Adp8C4hk81Zn8DEgcq/OxGLNDFdLVv8/ASJleAWGuPCOeTPIVDwRaI8Wy3d4YQAwJjGPv4CMQM85jJwvuyd78PhhUMej8Mg3nKIXwOExqk8iJyMDOGlyd4PMHjCR5/bXjsQJdXDd96YsPPXp0a/tTwp4b/tRv+8HbDOG9kSq43jzodOIzE1Q++EjWnGRX3d68vXksinnwTQyXVK9Cx6kP2/iVnPJtNDrM3jCKamYkUL0WC/zIE76iuNoccalDAyZcxK2FJ2kPFKC9kZiuWZVAz06y4OyNm4SvWCoK0Isye4LU9UMXlnsWNfcJa7v49q3FAPrr7ViH2fsIrZ9u18Q5tNhkNJIQesvx/BbXvAtRPBoxjKPG9hq9GZvspI3N0f5qXp3l5mpe/8LxEBJYryWOInK56HUEdXdEGBB/1+9XFMsfmhXt3I+EyJNyOZbSoxHDkuJ6Nf9/yRUg0DW7vxjfT0fTmZjopBEV5m98Dzdd6jcQxyf/L3/AHaAPOg22Q1nmRIlT3zX/bcEBGPAIPQPjc63V9z/VrX7/+AwAA//8DALe0PIRTGAAA
+    http_version: 
+  recorded_at: Wed, 26 Feb 2020 20:42:43 GMT
+recorded_with: VCR 3.0.3

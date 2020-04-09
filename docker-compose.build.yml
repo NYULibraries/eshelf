@@ -9,22 +9,42 @@ x-build-image: &build-image
   environment:
     BRANCH_NO_SLASH:
 
+x-build-test-image: &build-test-image
+  build:
+    context: .
+    cache_from:
+      - eshelf_test
+      - quay.io/nyulibraries/eshelf_test
+      - quay.io/nyulibraries/eshelf_test:$BRANCH_NO_SLASH
+  environment:
+    BRANCH_NO_SLASH:
+
 services:
   eshelf_1:
     <<: *build-image
-    image: eshelf
+    image: "quay.io/nyulibraries/eshelf:latest"
   eshelf_2:
     <<: *build-image
-    image: "quay.io/nyulibraries/eshelf:latest"
+    image: "quay.io/nyulibraries/eshelf:${BRANCH_NO_SLASH}"
     depends_on:
       - eshelf_1
   eshelf_3:
     <<: *build-image
-    image: "quay.io/nyulibraries/eshelf:${BRANCH_NO_SLASH}"
+    image: "quay.io/nyulibraries/eshelf:${BRANCH_NO_SLASH}-${CIRCLE_SHA1}"
     depends_on:
       - eshelf_2
   eshelf_4:
     <<: *build-image
-    image: "quay.io/nyulibraries/eshelf:${BRANCH_NO_SLASH}-${CIRCLE_SHA1}"
+    image: "quay.io/nyulibraries/eshelf_test:latest"
     depends_on:
       - eshelf_3
+  eshelf_5:
+    <<: *build-image
+    image: "quay.io/nyulibraries/eshelf_test:${BRANCH_NO_SLASH}"
+    depends_on:
+      - eshelf_4
+  eshelf_6:
+    <<: *build-image
+    image: "quay.io/nyulibraries/eshelf_test:${BRANCH_NO_SLASH}-${CIRCLE_SHA1}"
+    depends_on:
+      - eshelf_5

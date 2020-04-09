@@ -6,6 +6,12 @@ docker-defaults: &docker-defaults
         - COMPOSE_PROJECT_NAME=eshelf
   working_directory: ~/app
 
+setup_env_vars: &setup_env_vars
+  run:
+    name: Sets up environment variables
+    command: |
+      echo 'export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}' >> $BASH_ENV
+
 auth_quay: &auth_quay
   run:
     name: Authenticate Quay
@@ -17,7 +23,7 @@ build_docker: &build_docker
     name: Build Docker
     command: |
       export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
-      docker-compose build dev
+      docker-compose build dev test
       docker-compose -f docker-compose.build.yml build
 
 pull_docker: &pull_docker
@@ -26,6 +32,7 @@ pull_docker: &pull_docker
     command: |
       export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
       docker pull quay.io/nyulibraries/${IMAGE_NAME}:${BRANCH_NO_SLASH} || docker pull quay.io/nyulibraries/${IMAGE_NAME}:latest
+      docker pull quay.io/nyulibraries/${IMAGE_NAME}_test:${BRANCH_NO_SLASH} || docker pull quay.io/nyulibraries/${IMAGE_NAME}_test:latest
 
 push_docker: &push_docker
   run:
@@ -35,27 +42,49 @@ push_docker: &push_docker
       docker push quay.io/nyulibraries/${IMAGE_NAME}:latest
       docker push quay.io/nyulibraries/${IMAGE_NAME}:${BRANCH_NO_SLASH}
       docker push quay.io/nyulibraries/${IMAGE_NAME}:${BRANCH_NO_SLASH}-${CIRCLE_SHA1}
+      docker push quay.io/nyulibraries/${IMAGE_NAME}_test:latest
+      docker push quay.io/nyulibraries/${IMAGE_NAME}_test:${BRANCH_NO_SLASH}
+      docker push quay.io/nyulibraries/${IMAGE_NAME}_test:${BRANCH_NO_SLASH}-${CIRCLE_SHA1}
 
 junit_reports: &junit_reports
   run:
     name: Get Junit tests from stopped container
     when: always
-    command: docker cp eshelf_test_run_1:/app/test-results .
+    command: docker cp $(docker ps -aq --filter 'label=nyulibraries.app=eshelf_test'):/app/test-results .
 
 run_tests: &run_tests
   run:
     name: Run tests
     command: |
-      export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
       docker-compose run test
 
-version: 2
+hermes_deploy: &hermes_deploy
+  run:
+    name: Deploy via Hermes
+    command: |
+      export TAG=${CIRCLE_BRANCH//\//_}-${CIRCLE_SHA1}
+      docker run -e HERMES_HOST -e HERMES_SECRET quay.io/nyulibraries/hermesclient:master setImage -deployment=${IMAGE_NAME}-unicorn -tag=$TAG
+      docker run -e HERMES_HOST -e HERMES_SECRET quay.io/nyulibraries/hermesclient:master rolloutStatus -deployment=${IMAGE_NAME}-unicorn
+
+# s3_assets_deploy: &s3_assets_deploy
+#   aws-s3/sync:
+#     from: 
+#     to: 's3://cdn.library.nyu.edu'
+#     arguments: |
+#       --include "*" \
+#       --delete
+#     overwrite: true
+
+version: 2.1
+# orbs:
+#   aws-s3: circleci/aws-s3@1.0.11
 jobs:
   test:
     <<: *docker-defaults
     steps:
       - checkout
       - setup_remote_docker
+      - <<: *setup_env_vars
       - <<: *auth_quay
       - <<: *pull_docker
       - <<: *build_docker
@@ -67,7 +96,7 @@ jobs:
       - store_artifacts:
           path: ~/app/test-results
 
-  deploy-dev:
+  deploy-local-dev:
     <<: *docker-defaults
     steps:
       - setup_remote_docker
@@ -76,7 +105,7 @@ jobs:
           command: |
             docker run --rm appropriate/curl -u $JENKINS_USERNAME:$JENKINS_API_KEY -X POST http://jenkins.library.nyu.edu/view/E-Shelf/job/Eshelf%20Development%20Deploy/build/api
 
-  deploy-prod:
+  deploy-local-prod:
     <<: *docker-defaults
     steps:
       - setup_remote_docker
@@ -85,7 +114,7 @@ jobs:
           command: |
             docker run --rm appropriate/curl -u $JENKINS_USERNAME:$JENKINS_API_KEY -X POST http://jenkins.library.nyu.edu/view/E-Shelf/job/Eshelf%20Production%20Deploy/build/api
 
-  deploy-qa:
+  deploy-local-qa:
     <<: *docker-defaults
     steps:
       - setup_remote_docker
@@ -93,13 +122,20 @@ jobs:
           name: Deploy into QA via Jenkins
           command: |
             docker run --rm appropriate/curl -u $JENKINS_USERNAME:$JENKINS_API_KEY -X POST http://jenkins.library.nyu.edu/view/E-Shelf/job/EShelf%20QA%20Deploy/build/api
+  
+  deploy-k8s:
+    <<: *docker-defaults
+    steps:
+      - setup_remote_docker
+      - <<: *auth_quay
+      - <<: *hermes_deploy
 
 workflows:
   version: 2
   build-test-and-deploy:
     jobs:
       - test
-      - deploy-dev:
+      - deploy-local-dev:
           requires:
             - test
           filters:
@@ -107,15 +143,30 @@ workflows:
               ignore:
                 - master
                 - qa
-      - deploy-qa:
+      - deploy-local-qa:
           requires:
             - test
           filters:
             branches:
               only: qa
-      - deploy-prod:
+      - deploy-local-prod:
           requires:
             - test
           filters:
             branches:
               only: master
+      - deploy-k8s:
+          requires:
+            - test
+          filters:
+            branches:
+              ignore: master
+          context: web-hermes-dev
+      - deploy-k8s:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
+          context: web-hermes-prod
+      
