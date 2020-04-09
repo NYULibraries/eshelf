@@ -78,9 +78,12 @@ module RecordDecorator
       normalize :notes
     end
 
+    # Data will come back as either a hash or JSON that we want to parse into a has
+    # let's be ready for either scenario
     def data
       @data ||= begin
-        JSON.parse(normalized.data.gsub('=>', ':'))
+        (normalized.data.is_a?(Hash)) ? normalized.data :
+          JSON.parse(normalized.data.gsub('=>', ':'))
       rescue JSON::ParserError => e
         {}
       end
