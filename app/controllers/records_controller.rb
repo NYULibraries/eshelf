@@ -194,6 +194,6 @@ class RecordsController < ApplicationController
   end
 
   def origin_is_whitelisted?
-    whitelisted_origins.any? {|origin| request.headers['HTTP_ORIGIN'].gsub(/https?:\/\//, '').match(/^#{origin}(:(\d)+)?$/) }
+    whitelisted_origins.any? {|origin| request.headers['HTTP_ORIGIN'].gsub(/https?:\/\//, '').match(origin) }
   end
 end
