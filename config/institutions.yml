@@ -1,5 +1,5 @@
 # Defer private institutional settings to Figs
 <% DEFAULT_INSTITUTIONS = {'NYU' => {'ip_addresses' => ['127.0.0.1']}} unless defined?(DEFAULT_INSTITUTIONS) %>
-<% institutions = (ENV.has_key?('INSTITUTIONS')) ?
+<% institutions = (!ENV['DOCKER'] && ENV.has_key?('INSTITUTIONS')) ?
     Figs.env.institutions : DEFAULT_INSTITUTIONS %>
 <%= institutions.to_yaml %>
