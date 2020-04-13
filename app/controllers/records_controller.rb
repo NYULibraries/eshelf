@@ -188,9 +188,15 @@ class RecordsController < ApplicationController
     params.permit(:per, :format, :_, :external_id, :external_system, :institution)
   end
 
+  def eshelf_origins_as_regexp
+    origins_list_strs = Eshelf::ESHELF_ORIGINS&.select { |origin| origin.class != Regexp }&.map { |origin| /\A#{origin}\z/ }
+    origins_list_regexes = Eshelf::ESHELF_ORIGINS&.select { |origin| origin.class == Regexp }
+    @eshelf_origins_as_regexp = (origins_list_strs + origins_list_regexes).uniq
+  end
+
   # Whitelisted CORS origins
   def whitelisted_origins
-    @whitelisted_origins ||= (Eshelf::ESHELF_ORIGINS || [])
+    @whitelisted_origins ||= (eshelf_origins_as_regexp || [])
   end
 
   def origin_is_whitelisted?

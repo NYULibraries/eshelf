@@ -3,11 +3,12 @@ require 'rails_helper'
 describe RecordsController do
 
   let(:whitelisted_origins) do
-    ['https://ezproxy.library.edu','ezproxy.library.edu',/^http(s)?:\/\/ezproxy\.library\.edu:(\d+)$/]
+    ['https://ezproxy.library.edu', /\A(http(s)?:\/\/)?ezproxy\.library\.edu(:(\d{2,4}))?\z/]
   end
 
   describe '#origin_is_whitelisted?' do
-    before { allow_any_instance_of(RecordsController).to receive(:whitelisted_origins).and_return(whitelisted_origins) }
+    before { Eshelf::ESHELF_ORIGINS = whitelisted_origins }
+    # before { allow_any_instance_of(Eshelf).to receive(:ESHELF_ORIGINS).and_return(whitelisted_origins) }
     subject { @controller.send(:origin_is_whitelisted?) }
     context 'when HTTP_ORIGIN is whitelisted' do
       context 'and HTTP_ORIGIN is an exact match' do
