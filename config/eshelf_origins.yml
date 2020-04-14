@@ -1,0 +1,14 @@
+defaults: &defaults
+  origins:
+    - !ruby/regexp '/\A(http(s)?:\/\/)?catalog(dev)?\.library\.edu(:(\d){2,4})?\z/'
+    - !ruby/regexp '/\A(http(s)?:\/\/)?proxy(dev)?\.library\.edu(:(\d){2,4})?\z/'
+test:
+  <<: *defaults
+development:
+  <<: *defaults
+staging:
+  <<: *defaults
+qa:
+  <<: *defaults
+production:
+  <<: *defaults

@@ -190,7 +190,7 @@ class RecordsController < ApplicationController
 
   # Whitelisted CORS origins
   def whitelisted_origins
-    @whitelisted_origins ||= (Eshelf::ESHELF_ORIGINS || [])
+    @whitelisted_origins ||= (Rails.configuration.eshelf_origins || [])
   end
 
   def origin_is_whitelisted?

@@ -14,20 +14,17 @@ Bundler.require(*Rails.groups)
 
 module Eshelf
   EXAMPLE_ORIGIN = 'example.com'
-  eshelf_origins = []
-  eshelf_origins << Regexp.new(ENV['BOBCAT_ORIGIN_REGEX']) if ENV['BOBCAT_ORIGIN_REGEX']
-  eshelf_origins << Regexp.new(ENV['PROXY_ORIGIN_REGEX']) if ENV['PROXY_ORIGIN_REGEX']
-  ESHELF_ORIGINS = eshelf_origins
 
   class Application < Rails::Application
     config.eager_load_paths << Rails.root.join('lib')
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.0
+    config.eshelf_origins = (!ENV['DOCKER']) ? Figs.env['ESHELF_ORIGINS'] : config_for(:eshelf_origins)["origins"]
 
     # Cross Origin Request support
     # Set to a dummy value for tests
     whitelisted_origins = Rails.env.test? ? 
-      Eshelf::EXAMPLE_ORIGIN : (Eshelf::ESHELF_ORIGINS || [])
+      Eshelf::EXAMPLE_ORIGIN : (config.eshelf_origins || [])
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
