@@ -14,7 +14,10 @@ Bundler.require(*Rails.groups)
 
 module Eshelf
   EXAMPLE_ORIGIN = 'example.com'
-  ESHELF_ORIGINS = [Regexp.new(ENV['BOBCAT_ORIGIN_REGEX']), Regexp.new(ENV['PROXY_ORIGIN_REGEX'])].reject(&:nil?)
+  eshelf_origins = []
+  eshelf_origins << Regexp.new(ENV['BOBCAT_ORIGIN_REGEX']) if ENV['BOBCAT_ORIGIN_REGEX']
+  eshelf_origins << Regexp.new(ENV['PROXY_ORIGIN_REGEX']) if ENV['PROXY_ORIGIN_REGEX']
+  ESHELF_ORIGINS = eshelf_origins
 
   class Application < Rails::Application
     config.eager_load_paths << Rails.root.join('lib')
