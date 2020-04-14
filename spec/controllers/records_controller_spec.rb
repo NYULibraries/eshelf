@@ -6,15 +6,15 @@ describe RecordsController do
     subject { @controller.send(:origin_is_whitelisted?) }
     context 'when HTTP_ORIGIN is whitelisted' do
       context 'and HTTP_ORIGIN is an exact match' do
-        before { @request.env['HTTP_ORIGIN'] = 'proxy.library.nyu.edu' }
+        before { @request.env['HTTP_ORIGIN'] = 'proxy.library.edu' }
       end
       context 'and HTTP_ORIGIN includes non-specified port numbers' do
-        before { @request.env['HTTP_ORIGIN'] = 'https://proxy.library.nyu.edu:8982' }
+        before { @request.env['HTTP_ORIGIN'] = 'https://proxy.library.edu:8982' }
         it { is_expected.to be true }
       end
     end
     context 'when HTTP_ORIGIN is not whitelisted' do
-      before { @request.env['HTTP_ORIGIN'] = 'https://evilproxy.library.edu/https://ezproxy.library.edu' }
+      before { @request.env['HTTP_ORIGIN'] = 'https://evilproxy.library.edu/https://proxy.library.edu' }
       it { is_expected.to be false }
     end
   end
