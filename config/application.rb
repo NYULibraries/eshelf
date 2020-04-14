@@ -14,7 +14,10 @@ Bundler.require(*Rails.groups)
 
 module Eshelf
   EXAMPLE_ORIGIN = 'example.com'
-  ESHELF_ORIGINS = [ENV['BOBCAT_ORIGIN_REGEX'], ENV['PROXY_ORIGIN_REGEX']].reject(&:nil?)
+  origins_list_env = [ENV['BOBCAT_ORIGIN_REGEX'], ENV['PROXY_ORIGIN_REGEX']].reject(&:nil?)
+  origins_list_strs = origins_list_env&.select { |origin| origin.class != Regexp }&.map { |origin| /\A#{origin}\z/ }
+  origins_list_regexes = origins_list_env&.select { |origin| origin.class == Regexp }
+  ESHELF_ORIGINS = (origins_list_strs + origins_list_regexes).uniq
   # ESHELF_ORIGINS = ["bobcatdev.library.nyu.edu", "bobcat.library.nyu.edu"]
   # ESHELF_ORIGINS = [/\A(http(s)?:\/\/)?bobcat(dev)?\.library\.nyu\.edu(:(\d){2,4})?\z/]
 
