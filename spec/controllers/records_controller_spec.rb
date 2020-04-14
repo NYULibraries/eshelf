@@ -2,20 +2,14 @@ require 'rails_helper'
 
 describe RecordsController do
 
-  let(:whitelisted_origins) do
-    [/\Ahttps:\/\/ezproxy\.library\.edu\z/, /\A(http(s)?:\/\/)?ezproxy\.library\.edu(:(\d{2,4}))?\z/]
-  end
-
   describe '#origin_is_whitelisted?' do
-    before { Eshelf::ESHELF_ORIGINS = whitelisted_origins }
-    # before { allow_any_instance_of(Eshelf).to receive(:ESHELF_ORIGINS).and_return(whitelisted_origins) }
     subject { @controller.send(:origin_is_whitelisted?) }
     context 'when HTTP_ORIGIN is whitelisted' do
       context 'and HTTP_ORIGIN is an exact match' do
-        before { @request.env['HTTP_ORIGIN'] = 'ezproxy.library.edu' }
+        before { @request.env['HTTP_ORIGIN'] = 'proxy.library.nyu.edu' }
       end
       context 'and HTTP_ORIGIN includes non-specified port numbers' do
-        before { @request.env['HTTP_ORIGIN'] = 'https://ezproxy.library.edu:8982' }
+        before { @request.env['HTTP_ORIGIN'] = 'https://proxy.library.nyu.edu:8982' }
         it { is_expected.to be true }
       end
     end
