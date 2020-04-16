@@ -3,7 +3,7 @@ require 'coveralls'
 Coveralls.wear_merged!('rails')
 
 ENV["RAILS_ENV"] ||= 'test'
-ENV['PERSISTENT_LINKER_URL'] = "http://localhost.persistent_linker/"
+# ENV['PERSISTENT_LINKER_URL'] = "http://localhost.persistent_linker/"
 
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
