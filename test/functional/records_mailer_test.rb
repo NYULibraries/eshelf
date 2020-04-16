@@ -3,12 +3,12 @@ require 'test_helper'
 class RecordsMailerTest < ActionMailer::TestCase
   setup do
     @user = FactoryBot.create(:user)
-    @records = [FactoryBot.build(:user_primo_record1, user: @user)]
-    @records << FactoryBot.build(:user_primo_record2, user: @user)
     VCR.use_cassette('record becomes primo', :record => :new_episodes) do
-      @records.each do |record|
-        record.becomes_external_system.save!
-      end
+      @records = [FactoryBot.build(:user_primo_record1, user: @user)]
+      @records << FactoryBot.build(:user_primo_record2, user: @user)
+      # @records.each do |record|
+      #   record.becomes_external_system.save!
+      # end
     end
     @alternative_email = "test@library.edu"
   end
@@ -74,12 +74,15 @@ class RecordsMailerTest < ActionMailer::TestCase
     assert_equal("Virtual inequality : beyond the digital divide (book)\n"+
       "#{record_getit_url(@records[0])}\n"+
       "Locations: \n"+
-      "\tNYU Bobst Main Collection (HN49.I56 M67 2003 )\n"+
-      "\tNew School Fogelman Library Main Collection (HN49.I56 M67 2003 )\n\n"+
+      "\tNYU BOBST Main Collection HN49.I56 M67 2003\n"+
+      "\tNS NSOS Main Collection HN49.I56 M67 2003\n"+
+      "\tNYU Bobst Main Collection HN49.I56 M67 2003\n\n"+
       "===\n"+
-      "Travels with my aunt [videorecording] (video)\n"+
+      "Travels with my aunt [videorecording] (videorecording)\n"+
       "#{record_getit_url(@records[1])}\n"+
-      "Locations: NYU Bobst Avery Fisher Center Main Collection (VCA 15583 )\n\n"+
+      "Locations: \n"+
+      "\tNYU BAFC Main Collection VCA 15583\n"+
+      "\tNYU Bobst Avery Fisher Center Main Collection VCA 15583\n\n"+
       "===\n", email.body.to_s)
   end
 

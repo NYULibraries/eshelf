@@ -2,149 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://cite-dev.library.nyu.edu/openurl?calling_system=primo&cite_to=json&external_id=nyu_aleph006048386&institution=NYU
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept:
-      - "*/*"
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.3.6p384
-      Host:
-      - cite-dev.library.nyu.edu
-  response:
-    status:
-      code: 302
-      message: Found
-    headers:
-      Content-Type:
-      - text/html;charset=utf-8
-      Date:
-      - Fri, 30 Nov 2018 18:22:33 GMT
-      Location:
-      - https://cite-dev.library.nyu.edu/?cite_to=json&calling_system=primo&external_id=nyu_aleph006048386&institution=NYU&external_id[]=openurl
-      Server:
-      - nginx/1.15.4
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      Content-Length:
-      - '0'
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: ''
-    http_version: 
-  recorded_at: Fri, 30 Nov 2018 18:22:33 GMT
-- request:
-    method: get
-    uri: https://cite-dev.library.nyu.edu/?calling_system=primo&cite_to=json&external_id=nyu_aleph006048386openurl&institution=NYU
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept:
-      - "*/*"
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.3.6p384
-      Host:
-      - cite-dev.library.nyu.edu
-  response:
-    status:
-      code: 400
-      message: Bad Request
-    headers:
-      Content-Type:
-      - text/html;charset=utf-8
-      Date:
-      - Fri, 30 Nov 2018 18:22:34 GMT
-      Server:
-      - nginx/1.15.4
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      Content-Length:
-      - '1868'
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <!-- Global site
-        tag (gtag.js) - Google Analytics -->\n    <script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-55461631-21\"></script>\n
-        \   <script>\n      window.dataLayer = window.dataLayer || [];\n      function
-        gtag(){dataLayer.push(arguments);}\n      gtag('js', new Date());\n\n      gtag('config',
-        'UA-55461631-21');\n    </script>\n    <meta charset=\"utf-8\">\n    <meta
-        content=\"width=device-width, initial-scale=1\" name=\"viewport\">\n    <title>Citation
-        Error | New York University Division of Libraries</title>\n    <link rel=\"stylesheet\"
-        type=\"text/css\" href=\"/css/application.css\">\n    <link rel=\"SHORTCUT
-        ICON\" href=\"https://cdn.library.nyu.edu/images/favicon.ico\">\n    <link
-        rel=\"stylesheet\" type=\"text/css\" href=\"//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\">\n
-        \ </head>\n  <body>\n    <header>\n      <span><a href=\"https://library.nyu.edu\"
-        target=\"_blank\"><img src=\"https://cdn.library.nyu.edu/images/nyulibraries-logo.svg\"
-        alt=\"NYU Libraries\" width=\"233\" height=\"30\"></a></span>\n    </header>\n
-        \   <nav>\n      <ul class=\"breadcrumb\">\n        <li><a href=\"https://library.nyu.edu\">NYU
-        Libraries</a></li>\n        <li class=\"active\">Sorry, there was an error</li>\n
-        \     </ul>\n    </nav>\n    <main>\n      <div class=\"nyu-container\">\n
-        \       <div class=\"col-sm-12\">\n          <h1>Sorry, there was an error</h1>\n\n
-        \         \n            <p>Invalid query parameters: expected Array (got String)
-        for param `external_id&#x27;</p>\n          \n\n          \n\n          <h2>Suggested
-        Links</h2>\n          <ul>\n            <li><a href=\"https://nyu.qualtrics.com/jfe/form/SV_8AnbZWUryVfpWXH\"
-        target=\"_blank\">Report a Broken Link</a></li>\n            <li><a href=\"https://library.nyu.edu/ask/\"
-        target=\"_blank\">Ask a Librarian</a></li>\n          </ul>\n        </div>\n
-        \     </div>\n    </main>\n  </body>\n</html>\n"
-    http_version: 
-  recorded_at: Fri, 30 Nov 2018 18:22:34 GMT
-- request:
-    method: get
-    uri: https://cite-dev.library.nyu.edu/openurl/nyu_aleph006048386?calling_system=primo&cite_to=json&institution=NYU
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept:
-      - "*/*"
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.3.6p384
-      Host:
-      - cite-dev.library.nyu.edu
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json
-      Date:
-      - Fri, 30 Nov 2018 18:28:47 GMT
-      Server:
-      - nginx/1.15.4
-      X-Content-Type-Options:
-      - nosniff
-      Content-Length:
-      - '928'
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: '{"openurl":"https://qa.getit.library.nyu.edu/resolve?&ctx_ver=Z39.88-2004&ctx_enc=info:ofi/enc:UTF-8&ctx_tim=2018-11-30T13%3A28%3A47IST&url_ver=Z39.88-2004&url_ctx_fmt=infofi/fmt:kev:mtx:ctx&rfr_id=info:sid/primo.exlibrisgroup.com:primo-nyu_aleph006048386&rft_val_fmt=info:ofi/fmt:kev:mtx:book&rft.genre=book&rft.jtitle=&rft.btitle=The%20logic%20of%20American%20politics&rft.aulast=Kernell&rft.aufirst=Samuel,&rft.auinit=&rft.auinit1=&rft.auinitm=&rft.ausuffix=&rft.au=Kernell,%20Samuel,%201945-%20author&rft.aucorp=&rft.volume=&rft.issue=&rft.part=&rft.quarter=&rft.ssn=&rft.spage=&rft.epage=&rft.pages=&rft.artnum=&rft.pub=&rft.place=&rft.issn=&rft.eissn=&rft.isbn=9781506358666&rft.sici=&rft.coden=&rft_id=info:doi/&rft.object_id=&rft.primo=nyu_aleph006048386&rft.eisbn=&rft_dat=%3Cnyu_aleph%3E006048386%3C/nyu_aleph%3E%3Cgrp_id%3E362176202%3C/grp_id%3E%3Coa%3E%3C/oa%3E%3Curl%3E%3C/url%3E&rft_id=info:oai/&req.language=eng"}'
-    http_version: 
-  recorded_at: Fri, 30 Nov 2018 18:28:47 GMT
-- request:
-    method: get
     uri: https://cite-dev.library.nyu.edu/?calling_system=primo&cite_to=json&external_id=nyu_aleph006048386&institution=NYU
     body:
       encoding: US-ASCII
@@ -168,7 +25,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Tue, 18 Jun 2019 16:01:00 GMT
+      - Tue, 25 Feb 2020 21:08:10 GMT
       Server:
       - nginx/1.15.8
       Vary:
@@ -176,13 +33,13 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Content-Length:
-      - '1040'
+      - '1378'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        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
+        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
     http_version: 
-  recorded_at: Tue, 18 Jun 2019 16:01:00 GMT
+  recorded_at: Tue, 25 Feb 2020 21:08:09 GMT
 recorded_with: VCR 3.0.3

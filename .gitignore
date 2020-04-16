@@ -39,7 +39,9 @@ wiki
 node_modules
 yarn.lock
 
-test-results/
+test-results/*.xml
 .pry_history
 
 http.sh
+
+.webdrivers/

@@ -2,9 +2,11 @@ require_relative 'boot'
 
 require 'rails/all'
 
-require 'figs'
-# Don't run this initializer on CIRCLECI.
-Figs.load(stage: Rails.env) unless ENV['CIRCLECI']
+unless ENV['DOCKER']
+  require 'figs'
+  # Don't run this initializer when in DOCKER
+  Figs.load(stage: Rails.env)
+end
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -17,11 +19,12 @@ module Eshelf
     config.eager_load_paths << Rails.root.join('lib')
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.0
+    config.eshelf_origins = (!ENV['DOCKER']) ? Figs.env['ESHELF_ORIGINS'] : config_for(:eshelf_origins)["origins"]
 
     # Cross Origin Request support
     # Set to a dummy value for tests
     whitelisted_origins = Rails.env.test? ? 
-      Eshelf::EXAMPLE_ORIGIN : (Figs.env['ESHELF_ORIGINS'] || [])
+      Eshelf::EXAMPLE_ORIGIN : (config.eshelf_origins || [])
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do

@@ -4,12 +4,12 @@ FactoryBot.define do
   factory :record do
 
     trait :external do
-      external_id 'external1'
+      sequence(:external_id) { |n| "external#{n}"}
       external_system 'external_system1'
       format 'format1'
       title 'title 1'
       author 'author 1'
-      url 'http://example.com/1'
+      url 'https://dev.getit.library.nyu.edu/resolve?openurl=1&rft.true=true'
       title_sort 'title sort 1'
       content_type 'book'
     end
@@ -19,7 +19,7 @@ FactoryBot.define do
     end
 
     trait :xerxes do
-      external_id 'xerxes1'
+      sequence(:external_id) { |n| "xerxes#{n}"}
       external_system 'xerxes'
     end
 
@@ -683,6 +683,10 @@ FactoryBot.define do
     factory :tmp_user_record, traits: [:tmp_user_record, :external]
     factory :tmp_user_primo_record1, traits: [:tmp_user_record, :primo, :virtual_inequality_id]
     factory :tmp_user_primo_record2, traits: [:tmp_user_record, :primo, :travels_with_my_aunt_id]
+
+    after(:build) do |record|
+      record.becomes_external_system.save
+    end
 
   end
 end

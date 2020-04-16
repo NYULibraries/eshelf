@@ -1,68 +1,101 @@
 version: '3.7'
-x-build: &build
+x-volumes: &default-volumes
+  volumes:
+    - ./lib:/app/lib/
+    - ./app:/app/app/
+    - ./spec:/app/spec/
+    - ./test:/app/test/
+    - ./config:/app/config
+    - ./Rakefile:/app/Rakefile
+    - ./tmp/:/app/tmp/
+    - ./test-results:/app/test-results
+    - ./public:/app/public
+
+x-production: &production-image
   build:
     context: .
     cache_from:
-      - eshelf
-      - quay.io/nyulibraries/eshelf
-      - quay.io/nyulibraries/eshelf:$BRANCH_NO_SLASH
+    - eshelf
+    - quay.io/nyulibraries/eshelf
+    - quay.io/nyulibraries/eshelf:$BRANCH_NO_SLASH
   image: eshelf
-  tty: true
-  stdin_open: true
-x-test-env: &test-env
-  <<: *build
-  environment:
-    RAILS_ENV: test
-    ESHELF_DB_DATABASE: eshelf_test
-    BRANCH_NO_SLASH:
-    CI:
-    CODECLIMATE_REPO_TOKEN:
-    COVERALLS_REPO_TOKEN:
-  env_file:
-    - test.env
-x-dev-env: &dev-env
-  <<: *build
-  env_file:
-    - test.env
+
+x-development: &development-image
+  build:
+    context: .
+    cache_from:
+    - eshelf_test
+    - quay.io/nyulibraries/eshelf_test
+    - quay.io/nyulibraries/eshelf_test:$BRANCH_NO_SLASH
+    dockerfile: Dockerfile.test
+  image: eshelf_test
 
 services:
   dev:
-    <<: *dev-env
+    <<: *development-image
+    tty: true
+    stdin_open: true
     ports:
       - "3000:3000"
-    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
     depends_on:
-      - setup_dbs
-    # external_links:
-    #   - push_to_cite_dev_1:pushtocite
-    # networks:
-    #   - default
-    #   - custom
-    # volumes:
-    #   - .:/app
+      - setup_dev_dbs
+    env_file:
+      - test.env
+    # <<: *default-volumes
 
+  # docker-compose run test ruby -Itest ./test/unit/decorators/label_decorator_test.rb --name test_label_notes
   test:
-    <<: *test-env
-    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake"]
+    <<: *development-image
+    tty: true
+    stdin_open: true
+    shm_size: '1g'
+    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "bundle", "exec", "rake", "all_tests"]
     depends_on:
       - setup_test_dbs
-    # external_links:
-    #   - push_to_cite_dev_1:pushtocite
-    # networks:
-    #   - default
-    #   - custom
-    # volumes:
-    #   - .:/app
+    labels:
+      - 'nyulibraries.app=eshelf_test'
+    environment:
+      RAILS_ENV: test
+      CI:
+      CODECLIMATE_REPO_TOKEN:
+      COVERALLS_REPO_TOKEN:
+    env_file:
+      - test.env
+    # <<: *default-volumes
+  
+  # Use below settings for testing unicorn image locally
+  unicorn:
+    <<: *production-image
+    command: ["./script/start.sh", "staging"]
+    ports:
+      - "9292:9292"
+    env_file:
+      - test.env
+    environment:
+      UNICORN_PORT: 9292
+      RAILS_LOG_LEVEL: info
+      ESHELF_DB_HOST: db
+      RAILS_ENV: staging
+    depends_on:
+      - db
+    # <<: *default-volumes
 
   setup_test_dbs:
-    <<: *test-env
-    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake", "db:setup"]
+    <<: *development-image
+    environment:
+      RAILS_ENV: test
+    env_file:
+      - test.env
+    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "bundle", "exec", "rake", "db:setup"]
     depends_on:
       - db
 
-  setup_dbs:
-    <<: *dev-env
-    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake", "db:setup"]
+  setup_dev_dbs:
+    <<: *development-image
+    env_file:
+      - test.env
+    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "bundle", "exec", "rake", "db:setup"]
     depends_on:
       - db
 
@@ -72,7 +105,3 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     expose:
       - "3306"
-
-# networks:
-#   custom:
-#     external: true
