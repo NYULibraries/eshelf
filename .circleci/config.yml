@@ -70,7 +70,7 @@ get_assets: &get_assets
   run:
     name: Retrieve compiled assets from container
     command: |
-      docker run -d dev tail -f /dev/null
+      docker-compose run -d dev tail -f /dev/null
       docker cp $(docker ps -aq --filter 'label=nyulibraries.app=eshelf'):/app/public/assets .
 
 s3_assets_deploy: &s3_assets_deploy
