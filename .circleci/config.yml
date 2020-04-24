@@ -66,18 +66,25 @@ hermes_deploy: &hermes_deploy
       docker run -e HERMES_HOST -e HERMES_SECRET quay.io/nyulibraries/hermesclient:master setImage -deployment=${IMAGE_NAME}-unicorn -tag=$TAG
       docker run -e HERMES_HOST -e HERMES_SECRET quay.io/nyulibraries/hermesclient:master rolloutStatus -deployment=${IMAGE_NAME}-unicorn
 
-# s3_assets_deploy: &s3_assets_deploy
-#   aws-s3/sync:
-#     from: 
-#     to: 's3://cdn.library.nyu.edu'
-#     arguments: |
-#       --include "*" \
-#       --delete
-#     overwrite: true
+get_assets: &get_assets
+  run:
+    name: Retrieve compiled assets from container
+    command: |
+      docker run -d dev tail -f /dev/null
+      docker cp $(docker ps -aq --filter 'label=nyulibraries.app=eshelf'):/app/public/assets .
+
+s3_assets_deploy: &s3_assets_deploy
+  aws-s3/sync:
+    from: assets
+    to: 's3://${S3_URI}/eshelf'
+    arguments: |
+      --include "*" \
+      --delete
+    overwrite: true
 
 version: 2.1
-# orbs:
-#   aws-s3: circleci/aws-s3@1.0.11
+orbs:
+  aws-s3: circleci/aws-s3@1.0.11
 jobs:
   test:
     <<: *docker-defaults
@@ -95,6 +102,18 @@ jobs:
           path: ~/app/test-results
       - store_artifacts:
           path: ~/app/test-results
+  
+  deploy-assets:
+    <<: *docker-defaults
+    steps:
+      - checkout
+      - setup_remote_docker
+      - <<: *setup_env_vars
+      - <<: *auth_quay
+      - <<: *pull_docker
+      - <<: *build_docker
+      - <<: *get_assets
+      - <<: *s3_assets_deploy
 
   deploy-local-dev:
     <<: *docker-defaults
@@ -135,6 +154,16 @@ workflows:
   build-test-and-deploy:
     jobs:
       - test
+      - deploy-assets:
+          filters:
+            branches:
+              ignore: master
+          context: web-cdn-aws-nyulitsdev
+      - deploy-assets:
+          filters:
+            branches:
+              only: master
+          context: web-cdn-aws-nyulits
       - deploy-local-dev:
           requires:
             - test
