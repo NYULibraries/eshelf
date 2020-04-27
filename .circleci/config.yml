@@ -12,6 +12,13 @@ setup_env_vars: &setup_env_vars
     command: |
       echo 'export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}' >> $BASH_ENV
 
+aws_env: &aws_env
+  run:
+    name: Export AWS Dev env vars
+    command: |
+      echo 'export AWS_ACCESS_KEY_ID=${WEB_CDN_AWS_ACCESS_KEY_ID}' >> $BASH_ENV
+      echo 'export AWS_SECRET_ACCESS_KEY=${WEB_CDN_AWS_SECRET_ACCESS_KEY}' >> $BASH_ENV
+
 auth_quay: &auth_quay
   run:
     name: Authenticate Quay
@@ -111,7 +118,7 @@ jobs:
       - <<: *setup_env_vars
       - <<: *auth_quay
       - <<: *pull_docker
-      - <<: *build_docker
+      - <<: *aws_env
       - <<: *get_assets
       - <<: *s3_assets_deploy
 
@@ -155,11 +162,15 @@ workflows:
     jobs:
       - test
       - deploy-assets:
+          requires:
+            - test
           filters:
             branches:
               ignore: master
           context: web-cdn-aws-nyulitsdev
       - deploy-assets:
+          requires:
+            - test
           filters:
             branches:
               only: master
