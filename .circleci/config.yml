@@ -115,10 +115,13 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - *setup_env_vars
+      # - *setup_env_vars
+      - run:
+          name: Sets up environment variables
+          command: |
+            echo 'export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}' >> $BASH_ENV
       - *auth_quay
       - *pull_docker
-      - *aws_env
       - *get_assets
       - *s3_assets_deploy
       - store_artifacts:
