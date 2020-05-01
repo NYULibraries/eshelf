@@ -40,6 +40,8 @@ services:
     command: ["/tmp/wait-for-it.sh", "db:3306", "--", "bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
     depends_on:
       - setup_dev_dbs
+    labels:
+      - 'nyulibraries.app=eshelf'
     env_file:
       - test.env
     # <<: *default-volumes

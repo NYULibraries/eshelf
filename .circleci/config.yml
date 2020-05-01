@@ -6,12 +6,6 @@ docker-defaults: &docker-defaults
         - COMPOSE_PROJECT_NAME=eshelf
   working_directory: ~/app
 
-setup_env_vars: &setup_env_vars
-  run:
-    name: Sets up environment variables
-    command: |
-      echo 'export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}' >> $BASH_ENV
-
 auth_quay: &auth_quay
   run:
     name: Authenticate Quay
@@ -66,35 +60,56 @@ hermes_deploy: &hermes_deploy
       docker run -e HERMES_HOST -e HERMES_SECRET quay.io/nyulibraries/hermesclient:master setImage -deployment=${IMAGE_NAME}-unicorn -tag=$TAG
       docker run -e HERMES_HOST -e HERMES_SECRET quay.io/nyulibraries/hermesclient:master rolloutStatus -deployment=${IMAGE_NAME}-unicorn
 
-# s3_assets_deploy: &s3_assets_deploy
-#   aws-s3/sync:
-#     from: 
-#     to: 's3://cdn.library.nyu.edu'
-#     arguments: |
-#       --include "*" \
-#       --delete
-#     overwrite: true
+get_assets: &get_assets
+  run:
+    name: Retrieve compiled assets from container
+    command: |
+      export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
+      docker run --detach --label nyulibraries.app=eshelf_assets quay.io/nyulibraries/${IMAGE_NAME}:${BRANCH_NO_SLASH}-${CIRCLE_SHA1} tail -f /dev/null
+      docker cp $(docker ps -aq --filter 'label=nyulibraries.app=eshelf_assets'):/app/public/assets .
+
+s3_assets_deploy: &s3_assets_deploy
+  aws-s3/sync:
+    from: assets
+    to: '${S3_URI}/eshelf/assets'
+    aws-access-key-id: WEB_CDN_AWS_ACCESS_KEY_ID
+    aws-secret-access-key: WEB_CDN_AWS_SECRET_ACCESS_KEY
+    arguments: |
+      --include "*" \
+      --delete
+    overwrite: true
 
 version: 2.1
-# orbs:
-#   aws-s3: circleci/aws-s3@1.0.11
+orbs:
+  aws-s3: circleci/aws-s3@1.0.11
 jobs:
   test:
     <<: *docker-defaults
     steps:
       - checkout
       - setup_remote_docker
-      - <<: *setup_env_vars
-      - <<: *auth_quay
-      - <<: *pull_docker
-      - <<: *build_docker
-      - <<: *push_docker
-      - <<: *run_tests
-      - <<: *junit_reports
+      - *auth_quay
+      - *pull_docker
+      - *build_docker
+      - *push_docker
+      - *run_tests
+      - *junit_reports
       - store_test_results:
           path: ~/app/test-results
       - store_artifacts:
           path: ~/app/test-results
+  
+  deploy-assets:
+    <<: *docker-defaults
+    steps:
+      - checkout
+      - setup_remote_docker
+      - *auth_quay
+      - *pull_docker
+      - *get_assets
+      - *s3_assets_deploy
+      - store_artifacts:
+          path: assets
 
   deploy-local-dev:
     <<: *docker-defaults
@@ -131,10 +146,24 @@ jobs:
       - <<: *hermes_deploy
 
 workflows:
-  version: 2
+  version: 2.1
   build-test-and-deploy:
     jobs:
       - test
+      - deploy-assets:
+          requires:
+            - test
+          filters:
+            branches:
+              ignore: master
+          context: web-cdn-aws-nyulitsdev
+      - deploy-assets:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
+          context: web-cdn-aws-nyulits
       - deploy-local-dev:
           requires:
             - test
