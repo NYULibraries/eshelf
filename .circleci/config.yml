@@ -84,7 +84,7 @@ get_assets: &get_assets
 s3_assets_deploy: &s3_assets_deploy
   aws-s3/sync:
     from: assets
-    to: 's3://${S3_URI}/eshelf'
+    to: '${S3_URI}/eshelf'
     aws-access-key-id: WEB_CDN_AWS_ACCESS_KEY_ID
     aws-secret-access-key: WEB_CDN_AWS_SECRET_ACCESS_KEY
     arguments: |
@@ -118,12 +118,14 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - <<: *setup_env_vars
-      - <<: *auth_quay
-      - <<: *pull_docker
-      # - <<: *aws_env
-      - <<: *get_assets
-      - <<: *s3_assets_deploy
+      - *setup_env_vars
+      - *auth_quay
+      - *pull_docker
+      - *aws_env
+      - *get_assets
+      - *s3_assets_deploy
+      - store_artifacts:
+          path: assets
 
   deploy-local-dev:
     <<: *docker-defaults
@@ -160,7 +162,7 @@ jobs:
       - <<: *hermes_deploy
 
 workflows:
-  version: 2
+  version: 2.1
   build-test-and-deploy:
     jobs:
       - test
