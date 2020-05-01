@@ -13,13 +13,6 @@ setup_env_vars: &setup_env_vars
       echo 'export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}' >> $BASH_ENV
       source $BASH_ENV
 
-aws_env: &aws_env
-  run:
-    name: Export AWS Dev env vars
-    command: |
-      echo 'export AWS_ACCESS_KEY_ID=${WEB_CDN_AWS_ACCESS_KEY_ID}' >> $BASH_ENV
-      echo 'export AWS_SECRET_ACCESS_KEY=${WEB_CDN_AWS_SECRET_ACCESS_KEY}' >> $BASH_ENV
-
 auth_quay: &auth_quay
   run:
     name: Authenticate Quay
@@ -30,7 +23,7 @@ build_docker: &build_docker
   run:
     name: Build Docker
     command: |
-      export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
+      # export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
       docker-compose build dev test
       docker-compose -f docker-compose.build.yml build
 
@@ -46,7 +39,7 @@ push_docker: &push_docker
   run:
     name: Push Docker
     command: |
-      export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
+      # export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
       docker push quay.io/nyulibraries/${IMAGE_NAME}:latest
       docker push quay.io/nyulibraries/${IMAGE_NAME}:${BRANCH_NO_SLASH}
       docker push quay.io/nyulibraries/${IMAGE_NAME}:${BRANCH_NO_SLASH}-${CIRCLE_SHA1}
@@ -101,7 +94,11 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - *setup_env_vars
+      # - *setup_env_vars
+      - run:
+          name: Sets up environment variables
+          command: |
+            echo 'export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}' >> $BASH_ENV
       - *auth_quay
       - *pull_docker
       - *build_docker
