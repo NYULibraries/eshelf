@@ -37,7 +37,19 @@ module Eshelf
     # config.middleware.insert_after Rails::Rack::Logger, Rack::Cors, :logger => Rails.logger
 
     # Default Mailer Host
-    config.action_mailer.default_url_options = {host: 'https://eshelf.library.nyu.edu'}
+    config.action_mailer.default_url_options = { host: (ENV['ESHELF_DOMAIN'] || 'https://eshelf.library.nyu.edu') }
+
+    if ENV['DOCKER']
+      config.action_mailer.smtp_settings = {
+        address:              ENV['SMTP_HOSTNAME'],
+        port:                 ENV['SMTP_PORT'],
+        domain:               ENV['SMTP_DOMAIN'],
+        user_name:            ENV['SMTP_USERNAME'],
+        password:             ENV['SMTP_PASSWORD'],
+        authentication:       ENV['SMTP_AUTH_TYPE'],
+        enable_starttls_auto: true
+      }
+    end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
