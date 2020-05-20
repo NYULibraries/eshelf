@@ -51,6 +51,8 @@ Rails.application.configure do
     config.action_controller.asset_host = ENV['CDN_URL']
   end
 
+  config.assets.prefix = "/eshelf/assets"
+
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
 
