@@ -51,8 +51,6 @@ Rails.application.configure do
     config.action_controller.asset_host = ENV['CDN_URL']
   end
 
-  config.assets.prefix = "/eshelf/assets"
-
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
 
@@ -81,4 +79,6 @@ Rails.application.configure do
   # config.action_mailer.default_url_options = {host: 'https://dev.eshelf.library.nyu.edu'}
 end
 
-ActionController::Base.asset_host = ENV['CDN_URL'] if ENV['DOCKER'] && ENV['CDN_URL']
+if ENV['DOCKER'] && ENV['CDN_URL']
+  ActionController::Base.asset_host = ENV['CDN_URL'] 
+end
