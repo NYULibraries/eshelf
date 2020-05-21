@@ -35,6 +35,7 @@ module Eshelf
     end
 
     # config.middleware.insert_after Rails::Rack::Logger, Rack::Cors, :logger => Rails.logger
+    config.assets.prefix = "/eshelf/assets"
 
     # Default Mailer Host
     config.action_mailer.default_url_options = { host: (ENV['ESHELF_DOMAIN'] || 'https://eshelf.library.nyu.edu') }
