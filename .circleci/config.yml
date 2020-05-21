@@ -25,8 +25,8 @@ pull_docker: &pull_docker
     name: Pull Docker
     command: |
       export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
-      docker pull quay.io/nyulibraries/${IMAGE_NAME}:${BRANCH_NO_SLASH} || docker pull quay.io/nyulibraries/${IMAGE_NAME}:latest
-      docker pull quay.io/nyulibraries/${IMAGE_NAME}_test:${BRANCH_NO_SLASH} || docker pull quay.io/nyulibraries/${IMAGE_NAME}_test:latest
+      docker pull quay.io/nyulibraries/${IMAGE_NAME}:${BRANCH_NO_SLASH}-${CIRCLE_SHA1} || docker pull quay.io/nyulibraries/${IMAGE_NAME}:${BRANCH_NO_SLASH} || docker pull quay.io/nyulibraries/${IMAGE_NAME}:latest
+      docker pull quay.io/nyulibraries/${IMAGE_NAME}_test:${BRANCH_NO_SLASH}-${CIRCLE_SHA1} || docker pull quay.io/nyulibraries/${IMAGE_NAME}_test:${BRANCH_NO_SLASH} || docker pull quay.io/nyulibraries/${IMAGE_NAME}_test:latest
 
 push_docker: &push_docker
   run:
