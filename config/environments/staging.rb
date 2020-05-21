@@ -80,3 +80,5 @@ Rails.application.configure do
 
   # config.action_mailer.default_url_options = {host: 'https://dev.eshelf.library.nyu.edu'}
 end
+
+ActionController::Base.asset_host = ENV['CDN_URL'] if ENV['DOCKER'] && ENV['CDN_URL']
