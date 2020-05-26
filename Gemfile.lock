@@ -17,10 +17,10 @@ GIT
 
 GIT
   remote: https://github.com/NYULibraries/formaggio.git
-  revision: 8d9b334653b06bf2b0355a5c005e3ccb1563ae77
+  revision: 30c3ba14d29ce3f8dc65f4780574aa0dcb7566af
   branch: feature/config_assets_path
   specs:
-    formaggio (1.8.0)
+    formaggio (1.9.0)
       cap_git_tools (~> 0.9)
       capistrano (~> 2.15)
       figs (~> 2.0)
