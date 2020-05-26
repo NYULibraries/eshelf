@@ -8,4 +8,4 @@ set :app_title, "eshelf"
 set :rvm_ruby_string, "ruby-2.6.2"
 set :stages, ["staging", "qa", "production"]
 set :new_relic_environments, ["none"]
-set :assets_prefix, 'eshelf/assets'
+set :assets_path, "eshelf/assets"

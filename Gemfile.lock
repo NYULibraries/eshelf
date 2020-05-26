@@ -17,8 +17,8 @@ GIT
 
 GIT
   remote: https://github.com/NYULibraries/formaggio.git
-  revision: 674e9ebc0f09800ce41e49802c30a386c2920839
-  tag: v1.8.0
+  revision: 8d9b334653b06bf2b0355a5c005e3ccb1563ae77
+  branch: feature/config_assets_path
   specs:
     formaggio (1.8.0)
       cap_git_tools (~> 0.9)
@@ -222,7 +222,7 @@ GEM
       activesupport (>= 4.2.0)
     hashdiff (0.3.9)
     hashie (3.6.0)
-    highline (2.0.1)
+    highline (2.0.3)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (1.8.2)
@@ -281,15 +281,15 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     mysql2 (0.4.10)
-    net-scp (2.0.0)
-      net-ssh (>= 2.6.5, < 6.0.0)
-    net-sftp (2.1.2)
-      net-ssh (>= 2.6.5)
-    net-ssh (5.2.0)
+    net-scp (3.0.0)
+      net-ssh (>= 2.6.5, < 7.0.0)
+    net-sftp (3.0.0)
+      net-ssh (>= 5.0.0, < 7.0.0)
+    net-ssh (6.0.2)
     net-ssh-gateway (2.0.0)
       net-ssh (>= 4.0.0)
     netrc (0.11.0)
-    newrelic_rpm (6.2.0.354)
+    newrelic_rpm (6.10.0.364)
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)

@@ -72,7 +72,8 @@ group :no_docker do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', platforms: :ruby
   # Deploy the application with Formaggio deploy recipes
-  gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.8.0'
+  # gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.8.0'
+  gem 'formaggio', github: 'NYULibraries/formaggio', branch: 'feature/config_assets_path'
   # Figs for configuration
   gem 'figs', '~> 2.0.2'
 end
