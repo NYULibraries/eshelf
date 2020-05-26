@@ -37,6 +37,11 @@ module Eshelf
     # config.middleware.insert_after Rails::Rack::Logger, Rack::Cors, :logger => Rails.logger
     config.assets.prefix = "/eshelf/assets"
 
+    # Enable serving of images, stylesheets, and JavaScripts from an asset server.
+    if ENV['DOCKER'] && ENV['CDN_URL']
+      config.action_controller.asset_host = ENV['CDN_URL']
+    end
+
     # Default Mailer Host
     config.action_mailer.default_url_options = { host: (ENV['ESHELF_DOMAIN'] || 'https://eshelf.library.nyu.edu') }
 
@@ -56,6 +61,10 @@ module Eshelf
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
   end
+end
+
+if ENV['DOCKER'] && ENV['CDN_URL']
+  ActionController::Base.asset_host = ENV['CDN_URL'] 
 end
 
 Raven.configure do |config|
