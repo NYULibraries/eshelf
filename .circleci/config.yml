@@ -66,7 +66,7 @@ get_assets: &get_assets
     command: |
       export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
       docker run --detach --label nyulibraries.app=eshelf_assets quay.io/nyulibraries/${IMAGE_NAME}:${BRANCH_NO_SLASH}-${CIRCLE_SHA1} tail -f /dev/null
-      docker cp $(docker ps -aq --filter 'label=nyulibraries.app=eshelf_assets'):/app/public/assets/eshelf .
+      docker cp $(docker ps -aq --filter 'label=nyulibraries.app=eshelf_assets'):/app/public/eshelf/assets .
 
 s3_assets_deploy: &s3_assets_deploy
   aws-s3/sync:
