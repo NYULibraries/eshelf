@@ -48,6 +48,7 @@ describe Eshelf::Citation, :vcr do
 
   describe '#record', :vcr do
     subject { citation.record }
+    # it { is_expected.to eql '' }
     its(["addau"]) { is_expected.to eql ["Jacobson, Gary C., author", "Kousser, Thad, 1974- author", "Vavreck, Lynn, 1968- author"] }
     its(["author"]) { is_expected.to eql "Kernell, Samuel, 1945- author" }
     its(["contributor"]) { is_expected.to eql ["Jacobson, Gary C., author", "Kousser, Thad, 1974- author", "Vavreck, Lynn, 1968- author"] }

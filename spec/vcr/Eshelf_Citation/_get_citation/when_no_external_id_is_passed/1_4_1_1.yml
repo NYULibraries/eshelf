@@ -2,30 +2,28 @@
 http_interactions:
 - request:
     method: get
-    uri: https://cite-dev.library.nyu.edu/?calling_system=primo&cite_to=json&external_id&institution=NYU
+    uri: https://cite-dev.library.nyu.edu/?calling_system=primo&cite_to=json&external_id%5B%5D=&institution=NYU
     body:
       encoding: US-ASCII
       string: ''
     headers:
       Accept:
       - "*/*"
-      Accept-Encoding:
-      - gzip, deflate
       User-Agent:
-      - rest-client/2.0.2 (linux-musl x86_64) ruby/2.6.2p47
+      - rest-client/2.1.0 (linux-gnu x86_64) ruby/2.6.5p114
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Host:
       - cite-dev.library.nyu.edu
   response:
     status:
-      code: 400
-      message: Bad Request
+      code: 500
+      message: Internal Server Error
     headers:
-      Content-Encoding:
-      - gzip
       Content-Type:
       - application/json
       Date:
-      - Tue, 25 Feb 2020 21:08:11 GMT
+      - Mon, 01 Jun 2020 18:36:46 GMT
       Server:
       - nginx/1.15.8
       Vary:
@@ -33,13 +31,12 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Content-Length:
-      - '162'
+      - '61'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIALuMVV4AAxyNsQ6DMAxEf8XyXCGGTnxFt84mcanVJEa2EZUq/r2B8XT37v2QzdRw+qEHxeY43cfxhtUXnPDJkHQrGZoG8HdVC1CDrHsrShniLQ5JOijaYOZEmzPoC6q4S1vOsbSkZpwCMgX12CmGlYwqB5sP8ChMHTvRsyrSPv2r6A6hYHxZL9NqOheuAx7HHwAA//8DAIrVq1q4AAAA
+      string: '{"error":{"status":500,"msg":null}}'
     http_version: 
-  recorded_at: Tue, 25 Feb 2020 21:08:10 GMT
+  recorded_at: Mon, 01 Jun 2020 18:36:46 GMT
 recorded_with: VCR 3.0.3
