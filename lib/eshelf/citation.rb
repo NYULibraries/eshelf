@@ -32,7 +32,7 @@ module Eshelf
     end
 
     def get_citation
-      @get_citation ||= RestClient.get(Citation.cite_url(format: 'json'), params: { external_id: external_id })
+      @get_citation ||= RestClient.get(Citation.cite_url(format: 'json') + "&external_id[]=#{external_id}")
     rescue RestClient::ExceptionWithResponse => e
       nil
     end
