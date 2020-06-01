@@ -42,4 +42,40 @@ http_interactions:
         H4sIAPrLVl4AA+xYbW/aSBD+K5alWK0ExoYEMCcroqS5kmsgCiTXXlWhtb3Atutdd3edA1X97zdjm5dLqFRd+qHS8QGY3ZmdGc/LM16+2mKdzwin2dLzvKDrNb223ftqM0PT6Tqjds+OpPxs12ySm6VUsL6WWkdULaiqWX8QRQUwYymMYlFuUOKDPZUcJEzNGhAlORPUugKhiSFCR7la16xrgt9+cNap2x9rdpZHnOklRfW/Uwm6jfxbWHeCPVClmVlbN4pqDToyTmJ06k+il0wsjBQ168IduMBiOhJo3Ot2uqdeEARd2Aw63e3aQ1OGGY4K7pkyOeEWOPcFftFGz4roWorEMktqJWzBDPAT9sASCpoSYvBc0/NasOJELHKywB0qFrBhyELD4uLxsUysbmksVTJMgH0g2DVbSEPx7FDEPE+otiIG4ZALRbIli0GZonMKcY6B9SJzrQ9+x/9Y97utlxYBb5lI6KoIQJpJZWhyqWQK6m5G72ZXk/EIvZUxMUwKjfEZvb+zXo1fTaaQBSasgeScxsi1XrwZnQbu8KxtXbc7Fj6p9RJOjybWaDKe/LA46peRNtaTE4ePQFagRj5rrDvOxWkTnF8ak+leowH1pV3OIgUF40L0XJrkDUVTCBkWZMlPOD/vFxZC33MupUrDpu9MMdNhleeTprfLNCx68CmzDQTkG76rjBcUJs8ZQBMkQxE+TZoznLwbhRhYLnxvz10oXGYO+Kslf6DnTmxWM6jo8K9W4Ha7dXj+02IPchsyMZc9OWcNWPTuppf1bsEyDB4GbNa9Zr3ZnvqnJ63+mQdffnc4mTq54k804h4enaem0Ao6gex9pg+91Kx6wHLUXM1YUtrULGlkiqXSpSv0nOmFknnmxjLtFfv1AwFQczN7IHxro/fYCqIGSrkLKhQNt8tPRQOGBR2Z56YItZCcE23CHSxVu3OmYLtAKLfaYoKZcI/29xfpZqHz+ZytNqs9xTUwXOirWNDWWSn2IHmeVk/FtM4rMiOqsgePBa2pyoXWoiIygJCSpDsSKV2ZV0bklWMAkuEOHMGVHTzCogDIUg4hMtwDSOAiRG6cq2zTHYnIGe5gs3SNxazkxjKhpeC2ZBLJGgVPRp+gtXG/NI3lcqhfKoNRpQewNDxpDbaCJ63XW1nYb+wzYL1QGZgAut0NumdBOwhQaLsLC0nK38aGgB6odkrqX+5Lgu7TL+4GxcMSwxF8Wj8DfJx7wqEGhreX91Cl0nl2nfeL4RtuxikwruBTjdnfgMSBCj/bEQt0MV2dmzy6gMkVItY6A8L5KE/hULgBYjzb7pwgxIDAEMY+PgIx/TxhsvC+7N3vg2EFg/4Pw2Cecgify4QGqbyIHMyM/sURHo/weITHXxseT6HLq4ZvPrPhJ2+ODX9s+GPD/9oNv3+7YZzXMyVX6yedDhxGkuoHX4ka44yKu9u3528lEc++iaGS6hXoUPUhe/eSM5xMRvvZ68cxzcxIitdigf8yhO+prjb7HGpQwMnXCSthSTp9xSgvZCZLlmVQM+OsuDsjZuEr1hKCtCTMGeG1PVTF5Z4l9V3Cmt7uPau+Rz65+1Yh9n/CK2fLc/AObdYZDSWEHrL8fwW17wLUTwaMQyjxvYavRmbrOSNzcHecl8d5eZyXv/C8RASWS8kTiJyueh1BHV3RBgSf9Pvl+TzH5oV7d33BZUS4k8h4VonhyPF8B/++5bOIaBre3A6vx4Px9fV4VAiK8ja/A5pvNZskCcn/y9/we2gDzoNtkNZ5kSJU9+i/bTggYx6DByB85nfage8F9rdv/wAAAP//AwCttX05UxgAAA==
     http_version: 
   recorded_at: Wed, 26 Feb 2020 19:50:19 GMT
+- request:
+    method: get
+    uri: https://cite-dev.library.nyu.edu/?calling_system=primo&cite_to=json&external_id%5B%5D=nyu_aleph000980206&institution=NYU
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (linux-gnu x86_64) ruby/2.6.5p114
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - cite-dev.library.nyu.edu
+  response:
+    status:
+      code: 503
+      message: Service Temporarily Unavailable
+    headers:
+      Content-Type:
+      - text/html
+      Date:
+      - Mon, 01 Jun 2020 17:38:56 GMT
+      Server:
+      - nginx/1.15.8
+      Content-Length:
+      - '197'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503
+        Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx/1.15.8</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Mon, 01 Jun 2020 17:38:56 GMT
 recorded_with: VCR 3.0.3
