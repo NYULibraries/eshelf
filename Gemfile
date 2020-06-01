@@ -50,8 +50,8 @@ gem 'acts_as_citable', github: 'NYULibraries/acts_as_citable', tag: 'v5.1.0'
 
 gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.2.0'
 gem 'devise', '~> 4.7.1'
-gem 'rest-client', '~> 2.0.2'
-gem 'certified', '~> 1.0.0'
+gem 'rest-client', '~> 2.1.0'
+# gem 'faraday', '~> 1'
 
 # Dalli for caching with memcached
 # gem 'dalli', '~> 2.7.0'
