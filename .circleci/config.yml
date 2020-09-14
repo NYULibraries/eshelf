@@ -111,15 +111,6 @@ jobs:
       - store_artifacts:
           path: assets
 
-  deploy-local-dev:
-    <<: *docker-defaults
-    steps:
-      - setup_remote_docker
-      - deploy:
-          name: Deploy into development via Jenkins
-          command: |
-            docker run --rm appropriate/curl -u $JENKINS_USERNAME:$JENKINS_API_KEY -X POST http://jenkins.library.nyu.edu/view/E-Shelf/job/Eshelf%20Development%20Deploy/build/api
-
   deploy-local-prod:
     <<: *docker-defaults
     steps:
@@ -129,15 +120,6 @@ jobs:
           command: |
             docker run --rm appropriate/curl -u $JENKINS_USERNAME:$JENKINS_API_KEY -X POST http://jenkins.library.nyu.edu/view/E-Shelf/job/Eshelf%20Production%20Deploy/build/api
 
-  deploy-local-qa:
-    <<: *docker-defaults
-    steps:
-      - setup_remote_docker
-      - deploy:
-          name: Deploy into QA via Jenkins
-          command: |
-            docker run --rm appropriate/curl -u $JENKINS_USERNAME:$JENKINS_API_KEY -X POST http://jenkins.library.nyu.edu/view/E-Shelf/job/EShelf%20QA%20Deploy/build/api
-  
   deploy-k8s:
     <<: *docker-defaults
     steps:
@@ -164,20 +146,6 @@ workflows:
             branches:
               only: master
           context: web-cdn-aws-nyulits
-      - deploy-local-dev:
-          requires:
-            - test
-          filters:
-            branches:
-              ignore:
-                - master
-                - qa
-      - deploy-local-qa:
-          requires:
-            - test
-          filters:
-            branches:
-              only: qa
       - deploy-local-prod:
           requires:
             - test
