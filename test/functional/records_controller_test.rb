@@ -737,15 +737,15 @@ class RecordsControllerTest < ActionController::TestCase
   end
 
   def assert_travels_with_my_aunt(element, record)
-    assert(element.to_s.include?("Travels with my aunt [videorecording] (videorecording)"))
-    assert(element.to_s.include?("NYU BAFC Main Collection VCA 15583"))
-    assert(element.to_s.include?("#{record_getit_url(record)}"))
+    assert_match(/Travels with my aunt \[videorecording\] \(videorecording\)/, element.to_s)
+    assert_match(/NYU Bobst Avery Fisher Center Main Collection VCA 15583/, element.to_s)
+    assert_match(/#{record_getit_url(record)}/, element.to_s)
   end
 
   def assert_virtual_inequality(element, record)
-    assert(element.to_s.include?("Virtual inequality : beyond the digital divide (book)"))
-    assert(element.to_s.include?("NYU BOBST Main Collection HN49.I56 M67 2003"))
-    assert(element.to_s.include?("NS NSOS Main Collection HN49.I56 M67 2003"))
-    assert(element.to_s.include?("#{record_getit_url(record)}"))
+    assert_match(/Virtual inequality : beyond the digital divide \(book\)/, element.to_s)
+    assert_match(/NYU Bobst Main Collection HN49.I56 M67 2003/, element.to_s)
+    assert_match(/New School Offsite Main Collection HN49.I56 M67 2003/, element.to_s)
+    assert_match(/#{record_getit_url(record)}/, element.to_s)
   end
 end

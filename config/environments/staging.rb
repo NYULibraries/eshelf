@@ -46,11 +46,6 @@ Rails.application.configure do
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
 
-  # Enable serving of images, stylesheets, and JavaScripts from an asset server
-  if ENV['DOCKER'] && ENV['CDN_URL']
-    config.action_controller.asset_host = ENV['CDN_URL']
-  end
-
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
 
@@ -78,3 +73,4 @@ Rails.application.configure do
 
   # config.action_mailer.default_url_options = {host: 'https://dev.eshelf.library.nyu.edu'}
 end
+
