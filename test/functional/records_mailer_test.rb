@@ -74,15 +74,12 @@ class RecordsMailerTest < ActionMailer::TestCase
     assert_equal("Virtual inequality : beyond the digital divide (book)\n"+
       "#{record_getit_url(@records[0])}\n"+
       "Locations: \n"+
-      "\tNYU BOBST Main Collection HN49.I56 M67 2003\n"+
-      "\tNS NSOS Main Collection HN49.I56 M67 2003\n"+
-      "\tNYU Bobst Main Collection HN49.I56 M67 2003\n\n"+
+      "\tNYU Bobst Main Collection HN49.I56 M67 2003\n"+
+      "\tNew School Offsite Main Collection HN49.I56 M67 2003\n\n"+
       "===\n"+
       "Travels with my aunt [videorecording] (videorecording)\n"+
       "#{record_getit_url(@records[1])}\n"+
-      "Locations: \n"+
-      "\tNYU BAFC Main Collection VCA 15583\n"+
-      "\tNYU Bobst Avery Fisher Center Main Collection VCA 15583\n\n"+
+      "Locations: NYU Bobst Avery Fisher Center Main Collection VCA 15583\n\n"+
       "===\n", email.body.to_s)
   end
 

@@ -2,17 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: https://cite-dev.library.nyu.edu/?calling_system=primo&cite_to=json&external_id=nyu_aleph000980206&institution=NYU
+    uri: https://cite-dev.library.nyu.edu/?calling_system=primo&cite_to=json&external_id%5B%5D=nyu_aleph000980206&institution=NYU
     body:
       encoding: US-ASCII
       string: ''
     headers:
       Accept:
       - "*/*"
-      Accept-Encoding:
-      - gzip, deflate
       User-Agent:
-      - rest-client/2.0.2 (linux-musl x86_64) ruby/2.6.2p47
+      - rest-client/2.1.0 (linux-gnu x86_64) ruby/2.6.5p114
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Host:
       - cite-dev.library.nyu.edu
   response:
@@ -20,12 +20,10 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Content-Encoding:
-      - gzip
       Content-Type:
       - application/json
       Date:
-      - Tue, 25 Feb 2020 21:08:04 GMT
+      - Mon, 14 Sep 2020 20:15:06 GMT
       Server:
       - nginx/1.15.8
       Vary:
@@ -33,13 +31,22 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Content-Length:
-      - '1346'
+      - '1417'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIALSMVV4AA+xYbW/bNhD+K4KACC1gy5Kd2JYHIfCcZHXXOEGcZO2KwqAkWmZLkSpJZTaK/vfdSfLL8gIMSz4EmD/YOvKOd8c73nOifthiVcwIp/nC87yg77W9rj34YTNDs+tVTu2BHUn5zW7YpDALqWB8LrWOqEqpali/E0UFMGMpjGJRYVDis30tOUiYhjUiSnImqPUehKaGCB0VatWwzgn++8FRr2l/adh5EXGmFxTV/0Yl6DbyL2HdCHZHlWZmZV0qqjXoyDmJ0ak/iF4wkRopGtaJO3KBxXQk0LjX7/UPvSAI+jAZ9PqbsYemDDMcFdwyZQrCLXDuOzzRxsCK6EqKxDILaiUsZQb4CbtjCQVNCTG4ru15HRhxItKCpDhDRQoThqQaBif3l+VieUVjqZJxAuxHgt2whTQU145FzIuEaitiEA6ZKpIvWAzKFJ1TiHMMrDe5a332e/6Xpt/vvLUIeMtEQpdlALJcKkOTMyUzUHc5+Th7P72YoLcyJoZJoTE+k0831q8y0saCNDBhjSTnNEa2Zb15NzkM3PFR1zrv9izcq/UWowY5/KbxXHAuDtugfGFMrgetFuRfu5xFChLqwu5cmhQtRTPYEh6Yip9wfjwsLYS+55xJlYVt37nGTIR1Hg7a3jYTMBjAr8oGEJAP+K8zUlIYXGcEhzQZi/BhUJ3x9OMkxI1z4Xs77sLBYuYRf7Xkd/TYic1yBicu/LMTuP1+E/Z/WM5B7EMm5nIg56wFg8HN9VmzX7IMg82AzabXbraPrv3uQWfo9fHvcDy9dgrFH2jEOVw6z0ypFXQCOfhG7waZWQ6A5ai5mrGksqlZ0soVy6RLl+g506mSRe7GMhuU881HAqDmZnZH+MbG4L4VrGqUclMqFA03w69lgYQlHZnnpgi1kIITbcItbNSzc6ZgukQQt55igplwh/Z3B9l6oIv5nC3Xox3FDTBc6qtZUHZ5JXYneZHVu2JaFzWZE1Xbg21B6ahqoLWoiRxKvCLplkRK1+aVEUXtGIBYuAUvcGULXzAoAaySQwgLdwAMuAhha+dq23RLIrKFW1irXGMxq7ixTGgluDkyiWStkiejr1DaOF+ZxuPyWL3UBqNaD2BdeNAZbQQPOqcbWZhv7TJgnKocTADd7Qf9o6AbBCi0mYWBJNWztSagBuqZivqH+5Kg+/S7u0bZsMJYBJ/OS4CPc0s4nIHx1dktnFLpPPucD8vmGK7bHTDew69ug78AiQ0PHpsWCHTZ/ZzLIjqBzhIi1jojwvmkyGBRuAZiXNvtHSDEgMAY2jJugZhhkTBZel/V7tNgWMOg/69hsMg4hM9lQoNUUUYOesbwZA+Pe3jcw+PrhsdDqPK64NvPLPjpu33B7wt+X/Cvu+B3bzeM82au5HL1oNKBw0hSP/CVqHWRU3Fz9eH4gyTi2TcxVFK/Aj12+pC9fckZT6eT3ewN45jmZiLFqUjxK0D4iep6csjhDApYeZqwCpakM1SM8lJmumB5DmfmIi/vtohZ+Iq1gCAtCHMmeK0OVXn5Zklzm7C2t33Pau6QD+6+dYj9F3jl7HgO3qHNKqehhNBDlv+voPYkQL0wYDyGEk8VfN0yO89pmaObfb/c98t9v3zF/RIRWC4kTyByuq51BHV0RRsQfFDvZ8fzAosX7t3NlMuIcCeR8awWw5bj+Q5+XuWziGgaXl6Nzy9GF+fnF5NSUFS3+S3Q/GzYJElI8V8+k++gDTgPtkFaF2WKUN29b8+wQMY8Bg9A+MjvdQPfC+yfP/8GAAD//wMAxPzh9vMXAAA=
+      string: '{"nyu_aleph000980206":{"itemType":"book","author":"Mossberger, Karen","contributor":["Tolbert,
+        Caroline J","Stansbury, Mary, 1957-"],"publisher":"Georgetown University Press","place":"Washington,
+        D.C.","isbn":["0878409998","9780878409990"],"title":"Virtual inequality :
+        beyond the digital divide","date":"2003","language":"eng","tags":"Digital
+        divide","pnxRecordId":"nyu_aleph000980206","notes":"Includes bibliographical
+        references (p. [171]-183) and index.","importedFrom":"PNX_JSON","locations":["NYU
+        Bobst  Main Collection  (HN49.I56 M67 2003 )","New School Offsite  Main Collection  (HN49.I56
+        M67 2003 )"],"links":{"lln42":"https://ill-proxy.library.nyu.edu/illiad/illiad.dll?Action=10&Form=23&PhotoJournalTitle=Virtual%20inequality%20:%20beyond%20the%20digital%20divide&PhotoItemAuthor=Karen.%20%20Mossberger&PhotoJournalYear=c2003&ESPNumber=51769109&ISSN=0878409998&AcceptNonEnglish=Yes&ShippingOptions=Scan%20Request&Notes=recordid-nyu_aleph000980206","lln10":"https://getit.library.nyu.edu/resolve?&ctx_ver=Z39.88-2004&ctx_enc=info:ofi/enc:UTF-8&ctx_tim=2020-09-14T16%3A15%3A05IST&url_ver=Z39.88-2004&url_ctx_fmt=infofi/fmt:kev:mtx:ctx&rfr_id=info:sid/primo.exlibrisgroup.com:primo-nyu_aleph000980206&rft_val_fmt=info:ofi/fmt:kev:mtx:book&rft.genre=book&rft.jtitle=&rft.btitle=Virtual%20inequality%20:%20beyond%20the%20digital%20divide&rft.aulast=Mossberger&rft.aufirst=Karen.&rft.auinit=&rft.auinit1=&rft.auinitm=&rft.ausuffix=&rft.au=Mossberger,%20Karen&rft.aucorp=&rft.volume=&rft.issue=&rft.part=&rft.quarter=&rft.ssn=&rft.spage=&rft.epage=&rft.pages=&rft.artnum=&rft.pub=Georgetown%20University%20Press&rft.place=Washington,%20D.C.&rft.issn=&rft.eissn=&rft.isbn=0878409998&rft.sici=&rft.coden=&rft_id=info:doi/&rft.object_id=&rft.primo=nyu_aleph000980206&rft.eisbn=&rft_dat=%3Cnyu_aleph%3E000980206%3C/nyu_aleph%3E%3Cgrp_id%3E717891454%3C/grp_id%3E%3Coa%3E%3C/oa%3E%3Curl%3E%3C/url%3E&rft_id=info:oai/&req.language=eng","lln43":"https://ares.library.nyu.edu/remoteauth/ares.dll?Action=10&Form=2&Value=IRFVideo&title=Virtual%20inequality%20:%20beyond%20the%20digital%20divide&Author=Caroline%20J%20Tolbert;%20Mary%20Stansbury%201957-&PubDate=2003&CallNumber=HN49.I56%20M67%202003&ItemFormatAudioVideo=book&CitedIn=nyu_aleph000980206","lln11":"https://getit.library.nyu.edu/resolve?umlaut.institution=NYUAD&ctx_ver=Z39.88-2004&ctx_enc=info:ofi/enc:UTF-8&ctx_tim=2020-09-14T16%3A15%3A05IST&url_ver=Z39.88-2004&url_ctx_fmt=infofi/fmt:kev:mtx:ctx&rfr_id=info:sid/primo.exlibrisgroup.com:primo-nyu_aleph000980206&rft_val_fmt=info:ofi/fmt:kev:mtx:book&rft.genre=book&rft.jtitle=&rft.btitle=Virtual%20inequality%20:%20beyond%20the%20digital%20divide&rft.aulast=Mossberger&rft.aufirst=Karen.&rft.auinit=&rft.auinit1=&rft.auinitm=&rft.ausuffix=&rft.au=Mossberger,%20Karen&rft.aucorp=&rft.volume=&rft.issue=&rft.part=&rft.quarter=&rft.ssn=&rft.spage=&rft.epage=&rft.pages=&rft.artnum=&rft.pub=Georgetown%20University%20Press&rft.place=Washington,%20D.C.&rft.issn=&rft.eissn=&rft.isbn=0878409998&rft.sici=&rft.coden=&rft_id=info:doi/&rft.object_id=&rft.primo=nyu_aleph000980206&rft.eisbn=&rft_dat=%3Cnyu_aleph%3E000980206%3C/nyu_aleph%3E%3Cgrp_id%3E717891454%3C/grp_id%3E%3Coa%3E%3C/oa%3E%3Curl%3E%3C/url%3E&rft_id=info:oai/&req.language=eng","lln44":"","lln12":"https://getit.library.nyu.edu/resolve?umlaut.institution=NYUSH&ctx_ver=Z39.88-2004&ctx_enc=info:ofi/enc:UTF-8&ctx_tim=2020-09-14T16%3A15%3A05IST&url_ver=Z39.88-2004&url_ctx_fmt=infofi/fmt:kev:mtx:ctx&rfr_id=info:sid/primo.exlibrisgroup.com:primo-nyu_aleph000980206&rft_val_fmt=info:ofi/fmt:kev:mtx:book&rft.genre=book&rft.jtitle=&rft.btitle=Virtual%20inequality%20:%20beyond%20the%20digital%20divide&rft.aulast=Mossberger&rft.aufirst=Karen.&rft.auinit=&rft.auinit1=&rft.auinitm=&rft.ausuffix=&rft.au=Mossberger,%20Karen&rft.aucorp=&rft.volume=&rft.issue=&rft.part=&rft.quarter=&rft.ssn=&rft.spage=&rft.epage=&rft.pages=&rft.artnum=&rft.pub=Georgetown%20University%20Press&rft.place=Washington,%20D.C.&rft.issn=&rft.eissn=&rft.isbn=0878409998&rft.sici=&rft.coden=&rft_id=info:doi/&rft.object_id=&rft.primo=nyu_aleph000980206&rft.eisbn=&rft_dat=%3Cnyu_aleph%3E000980206%3C/nyu_aleph%3E%3Cgrp_id%3E717891454%3C/grp_id%3E%3Coa%3E%3C/oa%3E%3Curl%3E%3C/url%3E&rft_id=info:oai/&req.language=eng","lln40":"https://ill-proxy.library.nyu.edu/illiad/illiad.dll/OpenURL?LoanTitle=Virtual%20inequality%20:%20beyond%20the%20digital%20divide&LoanAuthor=Mossberger,%20Karen&LoanDate=2003&ISSN=0878409998&AcceptNonEnglish=Yes&AcceptAlternateEdition=No&Ariel=Yes&ShippingOptions=NYU%20Shanghai&Notes=recordid-000980206%20CallNumber-CallNumber-HN49.I56
+        M67 2003","lln41":"https://ares.library.nyu.edu/remoteauth/ares.dll?Action=10&Form=30&linktype=openurl&rfr_id=info:sid/primo.exlibrisgroup.com:primo-nyu_aleph000980206&rft_val_fmt=info:ofi/fmt:kev:mtx:book&rft.genre=book&rft.jtitle=&rft.btitle=Virtual%20inequality%20:%20beyond%20the%20digital%20divide&rft.aulast=Mossberger&rft.aufirst=Karen.&rft.au=Mossberger,%20Karen&rft.pub=Georgetown%20University%20Press&rft.place=Washington,%20D.C.&rft.issn=&rft.isbn=0878409998&rft.primo=nyu_aleph000980206","lln13":"https://getit.library.nyu.edu/resolve?umlaut.institution=CU&ctx_ver=Z39.88-2004&ctx_enc=info:ofi/enc:UTF-8&ctx_tim=2020-09-14T16%3A15%3A05IST&url_ver=Z39.88-2004&url_ctx_fmt=infofi/fmt:kev:mtx:ctx&rfr_id=info:sid/primo.exlibrisgroup.com:primo-nyu_aleph000980206&rft_val_fmt=info:ofi/fmt:kev:mtx:book&rft.genre=book&rft.jtitle=&rft.btitle=Virtual%20inequality%20:%20beyond%20the%20digital%20divide&rft.aulast=Mossberger&rft.aufirst=Karen.&rft.auinit=&rft.auinit1=&rft.auinitm=&rft.ausuffix=&rft.au=Mossberger,%20Karen&rft.aucorp=&rft.volume=&rft.issue=&rft.part=&rft.quarter=&rft.ssn=&rft.spage=&rft.epage=&rft.pages=&rft.artnum=&rft.pub=Georgetown%20University%20Press&rft.place=Washington,%20D.C.&rft.issn=&rft.eissn=&rft.isbn=0878409998&rft.sici=&rft.coden=&rft_id=info:doi/&rft.object_id=&rft.primo=nyu_aleph000980206&rft.eisbn=&rft_dat=%3Cnyu_aleph%3E000980206%3C/nyu_aleph%3E%3Cgrp_id%3E717891454%3C/grp_id%3E%3Coa%3E%3C/oa%3E%3Curl%3E%3C/url%3E&rft_id=info:oai/&req.language=eng","linktoholdings":"http://alephstage.library.nyu.edu/F?func=item-global&doc_library=NYU01&local_base=PRIMOCOMMON&doc_number=000980206"},"addau":["Tolbert,
+        Caroline J","Stansbury, Mary, 1957-"],"institution":"NYU","subject":["Digital
+        divide"],"oclcnum":"51769109"}}'
     http_version: 
-  recorded_at: Tue, 25 Feb 2020 21:08:03 GMT
+  recorded_at: Mon, 14 Sep 2020 20:15:06 GMT
 recorded_with: VCR 3.0.3
