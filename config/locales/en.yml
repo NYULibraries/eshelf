@@ -35,7 +35,7 @@ en:
       placeholder: Filter tags
     links:
       account_html: My library account
-      ill_html: My interlibrary loan (ILL)
+      ill_html: My Requests
       records_html: All saved records
   record:
     tag_list:
