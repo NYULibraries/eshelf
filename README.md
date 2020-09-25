@@ -20,15 +20,3 @@ E-Shelf currently supports the following external systems:
 - Brief, medium and full records emailing and printing
 - Import Aleph account via an iframe
 
-## Roadmap
-- Add [CSL](http://citationstyles.org/) export options for Chicago, MLA and APA
-- Support OpenURL external systems
-- Support EAD external systems
-- Aleph integration
-  - display Aleph account natively in e-Shelf
-  - allow renewal of Aleph materials natively in e-Shelf
-- Improve usability
-  - Icons for e-Shelf actions on mobile platforms
-- Improve Wiki documentation
-- Increase testing coverage
-- Improve code quality
