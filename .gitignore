@@ -45,3 +45,5 @@ test-results/*.xml
 http.sh
 
 .webdrivers/
+
+*.wiki
