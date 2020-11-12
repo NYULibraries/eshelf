@@ -1,6 +1,0 @@
---- !ruby/object:Figs::Figsfile
-repo: git@github.com:NYULibraries/configula.git
-method: git
-locations:
-- common
-- eshelf.yml
