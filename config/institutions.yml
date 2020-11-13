@@ -1,5 +1,4 @@
-# Defer private institutional settings to Figs
+# This file is only used for dev/test purposes
+# the actual IP config lives on a K8s config
 <% DEFAULT_INSTITUTIONS = {'NYU' => {'ip_addresses' => ['127.0.0.1']}} unless defined?(DEFAULT_INSTITUTIONS) %>
-<% institutions = (!ENV['DOCKER'] && ENV.has_key?('INSTITUTIONS')) ?
-    Figs.env.institutions : DEFAULT_INSTITUTIONS %>
-<%= institutions.to_yaml %>
+<%= DEFAULT_INSTITUTIONS.to_yaml %>
