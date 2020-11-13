@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 gem 'rails', '~> 5.2.4'
-gem 'rake', '~> 10.1'
+gem 'rake', '~> 12.3'
 # Update rake after we're off formaggio/figs
 # gem 'rake', '~> 12.3.3'
 
