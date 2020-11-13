@@ -45,10 +45,10 @@ gem 'nyulibraries_errors', github: 'NYULibraries/nyulibraries_errors', tag: 'v1.
 # Font awesome for icons
 gem 'font-awesome-rails', '~> 4.7.0.5'
 
-gem 'citero', github: 'NYULibraries/citero', branch: 'feature/eshelf_support' #tag: 'v1.0.2'
+gem 'citero', github: 'NYULibraries/citero', tag: 'v1.0.3'
 gem 'acts_as_citable', github: 'NYULibraries/acts_as_citable', tag: 'v5.1.0'
 
-gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries'#, tag: 'v2.2.0'
+gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.2.1'
 gem 'devise', '~> 4.7.1'
 gem 'rest-client', '~> 2.1.0'
 gem 'faraday', '~> 1'
@@ -66,18 +66,6 @@ gem 'acts-as-taggable-on', '~> 6.0.0'
 # gem 'activerecord-import', '~> 0.18.0'
 
 gem 'sentry-raven', '~> 3'
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-group :no_docker do
-  # For future non-docker gems
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', platforms: :ruby
-  # Deploy the application with Formaggio deploy recipes
-  # gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.8.0'
-  gem 'formaggio', github: 'NYULibraries/formaggio', branch: 'feature/config_assets_path'
-  # Figs for configuration
-  gem 'figs', '~> 2.0.2'
-end
 
 # Development and testing gems
 group :development, :test do
