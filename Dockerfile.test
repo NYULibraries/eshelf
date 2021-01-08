@@ -1,10 +1,10 @@
-FROM quay.io/nyulibraries/selenium_chrome_headless_ruby:2.6-slim-chrome_79
+FROM quay.io/nyulibraries/selenium_chrome_headless_ruby:2.6.6-slim-chrome_85
 
 ENV DOCKER true
 ENV INSTALL_PATH /app
 
 ENV RUN_PACKAGES default-libmysqlclient-dev git nodejs ruby-mysql2
-ENV BUILD_PACKAGES build-essential zlib1g-dev
+ENV BUILD_PACKAGES build-essential zlib1g-dev 
 
 #RUN groupadd -g 2000 docker -r && \
 #  useradd -u 1000 -r --no-log-init -m -d $INSTALL_PATH -g docker docker
