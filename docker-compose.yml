@@ -46,7 +46,7 @@ services:
       - 'nyulibraries.app=eshelf'
     env_file:
       - test.env
-    <<: *default-volumes
+    # <<: *default-volumes
 
   # docker-compose run test ruby -Itest ./test/unit/decorators/label_decorator_test.rb --name test_label_notes
   test:
