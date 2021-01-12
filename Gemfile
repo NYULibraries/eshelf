@@ -1,9 +1,7 @@
 source "https://rubygems.org"
 
 gem 'rails', '~> 5.2.4'
-gem 'rake', '~> 10.1'
-# Update rake after we're off formaggio/figs
-# gem 'rake', '~> 12.3.3'
+gem 'rake', '~> 13.0'
 
 # Add CORS support
 gem 'rack-cors', '~> 1.0.4', require: 'rack/cors'
