@@ -57,7 +57,7 @@ gem 'faraday', '~> 1'
 # gem 'dalli', '~> 2.7.0'
 
 # Use Kaminari for paging
-gem 'kaminari', '~> 1.1.1'
+gem 'kaminari', '~> 1.2.1'
 
 # Acts as taggable on
 gem 'acts-as-taggable-on', '~> 6.0.0'
