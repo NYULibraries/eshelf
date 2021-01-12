@@ -1,4 +1,4 @@
-FROM ruby:2.6-alpine3.10
+FROM ruby:2.6.6-alpine3.10
 
 ENV DOCKER true
 ENV INSTALL_PATH /app

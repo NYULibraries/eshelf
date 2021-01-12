@@ -10,6 +10,8 @@ x-volumes: &default-volumes
     - ./tmp/:/app/tmp/
     - ./test-results:/app/test-results
     - ./public:/app/public
+    - ./Gemfile:/app/Gemfile
+    - ./Gemfile.lock:/app/Gemfile.lock
 
 x-production: &production-image
   build:
