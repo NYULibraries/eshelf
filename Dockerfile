@@ -19,7 +19,7 @@ RUN chown docker:docker .
 COPY --chown=docker:docker bin/ bin/
 COPY --chown=docker:docker Gemfile Gemfile.lock ./
 ARG RUN_PACKAGES="ca-certificates fontconfig mariadb-dev nodejs tzdata git"
-ARG BUILD_PACKAGES="ruby-dev build-base linux-headers mysql-dev python"
+ARG BUILD_PACKAGES="ruby-dev build-base linux-headers mysql-dev python shared-mime-info"
 ARG BUNDLE_WITHOUT="no_docker"
 RUN echo $BUNDLE_WITHOUT
 RUN apk add --no-cache --update $RUN_PACKAGES $BUILD_PACKAGES \
