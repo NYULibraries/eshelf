@@ -14,7 +14,7 @@ module LayoutsHelper
 
   # Add e-Shelf to the bread crumbs
   def breadcrumbs
-    super << "e-Shelf"
+    super << "Saved Items"
   end
 
   # Back to icon and link
