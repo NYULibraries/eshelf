@@ -11,4 +11,8 @@ module UsersHelper
   def aleph_account_url
     URI.escape("#{ENV['ALEPH_HTTPS_BASE_URL']}/F?func=bor-info")
   end
+
+  def bobcat_account_url
+    URI.escape("#{ENV['PRIMO_BASE_URL']}/primo-explore/account?vid=NYU&section=overview")
+  end
 end
