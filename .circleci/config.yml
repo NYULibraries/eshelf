@@ -111,15 +111,6 @@ jobs:
       - store_artifacts:
           path: assets
 
-  deploy-local-prod:
-    <<: *docker-defaults
-    steps:
-      - setup_remote_docker
-      - deploy:
-          name: Deploy into production via Jenkins
-          command: |
-            docker run --rm appropriate/curl -u $JENKINS_USERNAME:$JENKINS_API_KEY -X POST http://jenkins.library.nyu.edu/view/E-Shelf/job/Eshelf%20Production%20Deploy/build/api
-
   deploy-k8s:
     <<: *docker-defaults
     steps:
@@ -146,12 +137,6 @@ workflows:
             branches:
               only: master
           context: web-cdn-aws-nyulits
-      - deploy-local-prod:
-          requires:
-            - test
-          filters:
-            branches:
-              only: master
       - deploy-k8s:
           requires:
             - test
