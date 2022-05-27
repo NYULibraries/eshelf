@@ -87,7 +87,8 @@ jobs:
     <<: *docker-defaults
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
+          version: 20.10.6
       - *auth_quay
       - *pull_docker
       - *build_docker
