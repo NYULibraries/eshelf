@@ -50,10 +50,10 @@ GIT
 
 GIT
   remote: https://github.com/NYULibraries/nyulibraries_templates.git
-  revision: e6c6a005f0609075a31681ae7f5c14f8700c1f53
-  branch: feature/configure_eshelf_title
+  revision: 97161f374723442bf8e5c58fa127b8f570f50199
+  tag: v1.4.0
   specs:
-    nyulibraries_templates (1.3.1)
+    nyulibraries_templates (1.4.0)
       rails (>= 4)
 
 GIT
