@@ -74,6 +74,7 @@ module RecordsHelper
 
   def content_type_tag(content_type)
     raise ArgumentError, "content_type must be a string" unless content_type.is_a? String
+    content_type = 'database' if content_type == 'document'
     content_tag(:figure, class: "content-type") do
       fa_icon(content_type_to_fa_icon(content_type)) +
         content_tag(:figcaption, content_type.capitalize.tr("_", " "))
