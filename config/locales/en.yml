@@ -34,7 +34,7 @@ en:
       more: more tags
       placeholder: Filter tags
     links:
-      account_html: Library Account
+      account_html: My Library Account
       ill_html: My Requests
       records_html: Saved Items
   record:
