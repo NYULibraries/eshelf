@@ -13,7 +13,7 @@ module UsersHelper
   end
 
   def bobcat_account_url
-    if current_primary_institution.code == 'NYUAD'
+    if current_primary_institution.code == :NYUAD
       return URI.escape("#{ENV['PRIMO_BASE_URL']}/primo-explore/account?vid=#{current_primary_institution.code}&section=overview")
     end
     URI.escape("#{ENV['PRIMO_BASE_URL']}/primo-explore/account?vid=NYU&section=overview")
