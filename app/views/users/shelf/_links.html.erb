@@ -1,6 +1,6 @@
 <ul id="eshelf_links" class="nav-list">
   <% if current_user %>
-    <li class="<%= "active" if params[:action].eql? "account" %>"><%= link_to(t('shelf.links.account_html'), user_account_url) %></li>
+    <li class="<%= "active" if params[:action].eql? "account" %>"><%= link_to(t('shelf.links.account_html'), bobcat_account_url) %></li>
     <%= content_tag(:li, link_to(t('shelf.links.ill_html'), ill_url)) if ill_url %>
   <% end %>
   <li class="<%= "active" unless params[:action].eql? "account" %>"><%= link_to("#{t('shelf.links.records_html')} (#{user_records.length})", root_url, html_options = {:id => "records"}) %></li>
