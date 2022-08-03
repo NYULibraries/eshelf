@@ -1,6 +1,9 @@
 <%= render 'controls', per_page: @records.limit_value %>
 <div class="results">
   <p><%= page_entries_info @records %></p>
+  <% if current_user.nil? && @records.empty? %>
+    <a href="<%= login_path %>">Login to see your records</a>
+  <% end %>
   <%= paginate @records, :theme => "bootstrap" %>
   <div id="select_something" class="alert alert-danger fade in" style="display:none;">
     <a href="#" class="close" data-hide="alert">&times;</a>
