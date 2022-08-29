@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   get 'users/account', :as => :user_account
   get 'users/account/show' => 'users#account_render', :as => :user_account_render
   get 'users/tags', :as => :user_tags
-  get 'account' => 'users#account', :as => :account
+  get 'account',
+    # Copied from UsersHelper.bobcat_account_url:
+    # https://github.com/NYULibraries/eshelf/blob/9d8966e342072ea58142482906ff2c5c393e7684/app/helpers/users_helper.rb#L19
+    to: redirect(URI.escape("#{ENV['PRIMO_BASE_URL']}/primo-explore/account?vid=NYU&section=overview")),
+    :as => :account
 
   resources :records, :except => [:new, :edit, :destroy] do
     get 'print/:print_format' => 'records#print', :on => :collection, :as => :print
