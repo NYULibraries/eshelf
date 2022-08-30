@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  get 'users/account', :as => :user_account
-  get 'users/account/show' => 'users#account_render', :as => :user_account_render
   get 'users/tags', :as => :user_tags
   get 'account',
     # Copied from UsersHelper.bobcat_account_url:
