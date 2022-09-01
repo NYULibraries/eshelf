@@ -1,2 +1,0 @@
-<p><%= link_to "Trouble loading? Click here to view your account", "https://aleph.library.nyu.edu/F?func=bor-info" %> </p>
-<%= tag(:iframe, id: "aleph_account", src: aleph_account_url, sandbox: 'allow-same-origin allow-scripts allow-forms') unless current_user.nil? %>
