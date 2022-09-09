@@ -47,7 +47,7 @@ gem 'citero', github: 'NYULibraries/citero', tag: 'v1.0.3'
 gem 'acts_as_citable', github: 'NYULibraries/acts_as_citable', tag: 'v5.1.0'
 
 gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.2.1'
-gem 'devise', '~> 4.7.1'
+gem 'devise', '~> 4.8'
 gem 'rest-client', '~> 2.1.0'
 gem 'faraday', '~> 1'
 
