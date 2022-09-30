@@ -47,6 +47,9 @@ gem 'citero', github: 'NYULibraries/citero', tag: 'v1.0.3'
 gem 'acts_as_citable', github: 'NYULibraries/acts_as_citable', tag: 'v5.1.0'
 
 gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.2.1'
+# lock omniauth: version 2 breaks authentication with "Not found. Authentication passthru." at /users/auth/nyulibraries
+# no test failures to match the authentication failure on dev
+# need to resolve this error AND add tests that fail on this update
 gem 'omniauth', '< 2'
 gem 'devise', '~> 4.8'
 gem 'rest-client', '~> 2.1.0'
