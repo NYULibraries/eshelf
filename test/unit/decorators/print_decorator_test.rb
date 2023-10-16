@@ -26,13 +26,13 @@ class PrintDecoratorTest < ActiveSupport::TestCase
 
   test "brief print attributes" do
     print_record = RecordDecorator::PrintDecorator.new(@brief_citation_record)
-    assert_equal ["title", "locations", "url"], print_record.citation_attributes, "Unexpected brief attributes"
+    assert_equal ["title", "locations"], print_record.citation_attributes, "Unexpected brief attributes"
   end
 
   test "medium print attributes" do
     print_record = RecordDecorator::PrintDecorator.new(@medium_citation_record)
     assert_equal ["title", "locations", "author", "publisher", "city_of_publication",
-      "date_of_publication", "journal_title", "url"], print_record.citation_attributes,
+      "date_of_publication", "journal_title"], print_record.citation_attributes,
         "Unexpected medium attributes"
   end
 
@@ -40,7 +40,7 @@ class PrintDecoratorTest < ActiveSupport::TestCase
     print_record = RecordDecorator::PrintDecorator.new(@full_citation_record)
     assert_equal ["title", "locations", "author", "publisher", "city_of_publication",
       "date_of_publication", "journal_title", "subjects", "issn", "eissn", "isbn",
-        "related_titles", "language", "description", "notes", "url"],
+        "related_titles", "language", "description", "notes"],
           print_record.citation_attributes, "Unexpected full attributes"
   end
 end

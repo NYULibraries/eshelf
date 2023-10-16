@@ -739,13 +739,13 @@ class RecordsControllerTest < ActionController::TestCase
   def assert_travels_with_my_aunt(element, record)
     assert_match(/Travels with my aunt \[videorecording\] \(videorecording\)/, element.to_s)
     assert_match(/NYU Bobst Avery Fisher Center Main Collection VCA 15583/, element.to_s)
-    assert_match(/#{record_getit_url(record)}/, element.to_s)
+    assert_no_match(/#{record_getit_url(record)}/, element.to_s)
   end
 
   def assert_virtual_inequality(element, record)
     assert_match(/Virtual inequality : beyond the digital divide \(book\)/, element.to_s)
     assert_match(/NYU Bobst Main Collection HN49.I56 M67 2003/, element.to_s)
     assert_match(/New School Offsite Main Collection HN49.I56 M67 2003/, element.to_s)
-    assert_match(/#{record_getit_url(record)}/, element.to_s)
+    assert_no_match(/#{record_getit_url(record)}/, element.to_s)
   end
 end

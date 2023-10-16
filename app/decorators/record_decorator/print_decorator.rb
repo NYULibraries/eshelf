@@ -33,21 +33,21 @@ module RecordDecorator
     end
 
     def brief_attributes
-      @brief_attributes ||= move_url_to_end(super)
+      @brief_attributes ||= remove_url(super)
     end
 
     def medium_attributes
-      @medium_attributes ||= move_url_to_end(super)
+      @medium_attributes ||= remove_url(super)
     end
 
     def full_attributes
-      @full_attributes ||= move_url_to_end(super)
+      @full_attributes ||= remove_url(super)
     end
 
     # Returns an array with the URL removed from the given attributes and pushed onto the end
-    def move_url_to_end(attributes)
-      attributes.reject{|attribute| attribute.eql? "url"} << "url"
+    def remove_url(attributes)
+      attributes.reject{|attribute| attribute.eql? "url"}
     end
-    private :move_url_to_end
+    private :remove_url
   end
 end

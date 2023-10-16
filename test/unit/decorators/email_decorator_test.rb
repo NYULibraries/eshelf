@@ -16,19 +16,19 @@ class EmailDecoratorTest < ActiveSupport::TestCase
 
   test "brief email attributes" do
     email_record = RecordDecorator::EmailDecorator.new(@brief_citation_record)
-    assert_equal ["title", "url", "locations"], email_record.citation_attributes, "Unexpected brief attributes"
+    assert_equal ["title", "locations"], email_record.citation_attributes, "Unexpected brief attributes"
   end
 
   test "medium email attributes" do
     email_record = RecordDecorator::EmailDecorator.new(@medium_citation_record)
-    assert_equal ["title", "url", "locations", "author", "publisher", "city_of_publication",
+    assert_equal ["title", "locations", "author", "publisher", "city_of_publication",
       "date_of_publication", "journal_title"], email_record.citation_attributes,
         "Unexpected medium attributes"
   end
 
   test "full email attributes" do
     email_record = RecordDecorator::EmailDecorator.new(@full_citation_record)
-    assert_equal ["title", "url", "locations", "author", "publisher", "city_of_publication",
+    assert_equal ["title", "locations", "author", "publisher", "city_of_publication",
       "date_of_publication", "journal_title", "subjects", "issn", "eissn", "isbn",
         "related_titles", "language", "description", "notes"],
           email_record.citation_attributes, "Unexpected full attributes"

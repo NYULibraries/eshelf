@@ -5,7 +5,7 @@ module RecordDecorator
   # Copyright:: Copyright (c) 2013 New York University
   # License::   Distributes under the same terms as Ruby
   class CitationDecorator < Base
-    BRIEF = %w(title url locations)
+    BRIEF = %w(title locations)
     MEDIUM = %w(author publisher city_of_publication date_of_publication journal_title)
     FULL = %w(subjects issn eissn isbn related_titles language description notes)
 
