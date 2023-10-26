@@ -64,5 +64,6 @@ $ ->
   $(".print").click(gather_ids)
   $("input[name='id[]']").click (event) -> $("#select_something").hide()
   $("input#select").closest("button").click (event) -> toggle_all(event)
+  $("input#select").click (event) -> toggle_all(event)
   $(".select-all").click (event) -> select_all(event)
   $(".select-none").click (event) -> select_none(event)
