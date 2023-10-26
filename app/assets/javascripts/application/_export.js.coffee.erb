@@ -32,6 +32,14 @@ gather_ids = (event) ->
     # Expire this data
     $(event.target).attr("data-expired", $.param(checked_ids))
 
+toggle_all_input = (event) ->
+  if $(event.target).is(":not(:checked)")
+    select_all()
+    true
+  else
+    select_none()
+    true
+
 toggle_all = (event) ->
   if $(event.target).find('input#select').is(":not(:checked)")
     select_all()
@@ -64,6 +72,6 @@ $ ->
   $(".print").click(gather_ids)
   $("input[name='id[]']").click (event) -> $("#select_something").hide()
   $("input#select").closest("button").click (event) -> toggle_all(event)
-  $("input#select").click (event) -> toggle_all(event)
+  $("input#select").click (event) -> toggle_all_input(event)
   $(".select-all").click (event) -> select_all(event)
   $(".select-none").click (event) -> select_none(event)
