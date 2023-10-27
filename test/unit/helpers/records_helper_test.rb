@@ -23,7 +23,7 @@ class RecordsHelperTest < ActionView::TestCase
   end
 
   test "should return a checkbox for select title" do
-    assert_equal "<input type=\"checkbox\" name=\"select\" id=\"select\" value=\"1\" />", select_title
+    assert_equal "<input type=\"checkbox\" name=\"select\" id=\"select\" value=\"1\" style=\"display: none;\" /> Select all on page", select_title
   end
 
   test "should return an array of select options" do

@@ -17,7 +17,7 @@ module RecordsHelper
   end
 
   def select_title
-    check_box_tag(:select)
+    check_box_tag(:select, "1", false, style: "display: none;") + " Select all on page"
   end
 
   # Returns an Array of select options as HTML links
